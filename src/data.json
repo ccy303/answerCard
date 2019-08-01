@@ -1,0 +1,289 @@
+{
+   "schoolId": "109",
+   "id": "557",
+   "subjectId": "1871",
+   "paperSize": "A3",
+   "layoutType": "3",
+   "layoutMode": 2,
+   "sourceType": "2",
+   "prohibitType": "1",
+   "noMode": "1",
+   "noCount": "14",
+   "noBoth": "1",
+   "qrCode": "gF",
+   "alias": "测试作文 高一 语文",
+   "cardJson": null,
+   "cardHtml": "",
+   "attention": null,
+   "examPageCnt": "0",
+   "subjectName": "语文",
+   "pageQus": [
+      {
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1",
+         "pros": [
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "931",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "3",
+                     "pnum": "2",
+                     "quId": "1514",
+                     "quType": "单选题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": false
+                  },
+                  {
+                     "content": "",
+                     "nums": "2",
+                     "pnum": "3",
+                     "quId": "1515",
+                     "quType": "判断题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": false
+                  }
+               ],
+               "score": 20,
+               "sort": "1",
+               "titleType": "注音释义"
+            },
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1325",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "2",
+                     "pnum": "6",
+                     "quId": "2260",
+                     "quType": "单选题",
+                     "rIndex": "1-1",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "2",
+               "titleType": "选择题"
+            },
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1571",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "4",
+                     "pnum": "7",
+                     "quId": "2788",
+                     "quType": "单选题",
+                     "rIndex": "1-1",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "3",
+               "titleType": "选择题"
+            },
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1572",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "4",
+                     "pnum": "8",
+                     "quId": "2789",
+                     "quType": "单选题",
+                     "rIndex": "1-1",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "4",
+               "titleType": "选择题"
+            },
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1573",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "4",
+                     "pnum": "9",
+                     "quId": "2790",
+                     "quType": "单选题",
+                     "rIndex": "1-1",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "5",
+               "titleType": "选择题"
+            },
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1297",
+               "pureObjective": "1",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "4",
+                     "pnum": "10",
+                     "quId": "2231",
+                     "quType": "单选题",
+                     "rIndex": "1-1",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "6",
+               "titleType": "选择题"
+            }
+         ],
+         "sort": "1"
+      },
+      {
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1",
+         "pros": [
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "870",
+               "pureObjective": "2",
+               "qus": [
+                  {
+                     "content": "",
+                     "pnum": "1",
+                     "quId": "1440",
+                     "quType": "解答题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 5,
+               "sort": "1",
+               "titleType": "改错题"
+            }
+         ],
+         "sort": "2"
+      },
+      {
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1",
+         "pros": [
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "931",
+               "pureObjective": "2",
+               "qus": [
+                  {
+                     "content": "",
+                     "nums": "3",
+                     "pnum": "2",
+                     "quId": "1514",
+                     "quType": "单选题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": true
+                  },
+                  {
+                     "content": "",
+                     "nums": "2",
+                     "pnum": "3",
+                     "quId": "1515",
+                     "quType": "判断题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": true
+                  },
+                  {
+                     "content": "",
+                     "nums": "1",
+                     "pnum": "4",
+                     "quId": "1516",
+                     "quType": "填空题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": true
+                  },
+                  {
+                     "content": "",
+                     "pnum": "5",
+                     "quId": "1517",
+                     "quType": "解答题",
+                     "rIndex": "0",
+                     "score": 5,
+                     "visible": true
+                  }
+               ],
+               "score": 20,
+               "sort": "2",
+               "titleType": "注音释义"
+            }
+         ],
+         "sort": "3"
+      },
+      {
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1-2",
+         "pros": [
+            {
+               "content": "",
+               "group": "0",
+               "pnum": "",
+               "proId": "1231",
+               "pureObjective": "2",
+               "qus": [
+                  {
+                     "content": "",
+                     "pnum": "11",
+                     "quId": "2153",
+                     "quType": "作文题",
+                     "rIndex": "0",
+                     "score": 50,
+                     "visible": true
+                  }
+               ],
+               "score": 50,
+               "sort": "8",
+               "titleType": "材料作文"
+            }
+         ],
+         "sort": "4"
+      }
+   ]
+}
