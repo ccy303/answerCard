@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 module.exports = {
-   entry: './src/index.js',
+   entry: './src/index.ts',
    output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
@@ -17,7 +17,13 @@ module.exports = {
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
+      new webpack.ProvidePlugin({
+         $: 'jquery',
+         jQuery: "jquery",
+         "window.jQuery": "jquery"
+      })
    ],
+   devtool: 'inline-source-map',
    devServer: {
       contentBase: './dist',
       hot: true,
@@ -46,7 +52,15 @@ module.exports = {
                   presets: ['@babel/preset-env']
                }
             }
+         },
+         {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
          }
       ]
+   },
+   resolve: {
+      extensions: ['.tsx', '.ts', '.js']
    },
 };

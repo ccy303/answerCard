@@ -1,0 +1,44 @@
+.page {
+  margin: 0 auto;
+  background: #e1e1e1;
+  padding: 70px 40px;
+  box-sizing: border-box;
+  position: relative;
+  .content{
+     padding: 0 15px;
+  }
+  .square {
+    width: 25px;
+    height: 25px;
+    background: #000;
+    position: absolute;
+  }
+  .left-top {
+    left: 15px;
+    top: 30px;
+  }
+  .left-bottom {
+    left: 15px;
+    bottom: 30px;
+  }
+  .right-top {
+    right: 15px;
+    top: 30px;
+  }
+  .right-bottom {
+    right: 15px;
+    bottom: 30px;
+  }
+  .rectangle{
+     background:#000;
+     position: absolute;
+  }
+}
+.A4 {
+  width: 793px;
+  height: 1122px;
+}
+.A3 {
+  width: 1587px;
+  height: 1122px;
+}
