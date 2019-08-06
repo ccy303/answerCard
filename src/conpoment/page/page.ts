@@ -1,19 +1,50 @@
+import Header from '../header/header'
 import './page.scss';
-export default class Page {
+// const data = require('./data.json')
+export
+   default class Page {
    private page: JQuery<HTMLElement> = null
+   private colum: number
    private type: string;
-   constructor(type: string) {
+   //1:1,2:2,3:4,4:8
+   private pageNum: Array<any> = [
+      [1], //1
+      [2], //2
+      [1, 2], //3
+      [3], //4
+      [1, 3], //5
+      [2, 3], //6
+      [1, 2, 3], //7
+      [4], //8
+      [1, 4], //9
+      [2, 4], //10
+      [1, 2, 4], //11
+      [3, 4], //12
+      [1, 3, 4], //13
+      [2, 3, 4], //14
+      [1, 2, 3, 4] //15
+   ]
+   constructor(type: string, colum?: number) {
       this.type = type;
-      this.page = $('<div class="page"><div class="content">content</div></div>')
+      this.colum = colum
+      this.page = $('<div class="page"></div>')
       this.page.addClass(type);
       $('#app').append(this.page);
       this.page.attr('id', `${$('#app .page').length}p`)
+      this.page.append($(`<div class="colum ${type}-${colum}">
+         <div contenteditable="true" class="exam-title">123</div>
+      </div>`))
       this.pageInit();
    }
    private pageInit() {
       this.page.append(this.square());
-      this.rectangle()
-      this.rectangle(true)
+      this.rectangle();
+      this.rectangle(true);
+      let header = new Header({
+         type: this.type,
+         colum: this.colum
+      })
+      $(this.page).find('div.colum:first-child').append(header.initHeader())
    }
    private square(): Array<JQuery<HTMLElement>> {
       let arr: Array<JQuery<HTMLElement>> = [];
@@ -43,9 +74,12 @@ export default class Page {
          innerWidth = $(this.page.find('div.right-top')).position().left - $(this.page.find('div.left-top')).position().left - $(this.page.find('div.left-top')).width()
          innerWidth = this.type === 'A4' ? innerWidth / 5 : innerWidth / 2 / 5;
          let pageIndex = parseInt(this.page.attr('id'));
-         let left = 0;
-         left = innerWidth * pageIndex + $(this.page.find('div.left-top')).width();
-         this.page.append(`<div style="height:${height};width:${width};top:${45}px;left:${left}px" class="rectangle"></div>`)
+         this.pageNum[pageIndex - 1].map((val: any) => {
+            let left = 0;
+            left = innerWidth * val + $(this.page.find('div.left-top')).width();
+            this.page.append(`<div style="height:${height};width:${width};top:${45}px;left:${left}px" class="rectangle"></div>`)
+         })
+
       }
    }
 }

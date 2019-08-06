@@ -1,11 +1,22 @@
 .page {
   margin: 0 auto;
-  background: #e1e1e1;
+  background: #fff;
   padding: 70px 40px;
   box-sizing: border-box;
   position: relative;
-  .content{
-     padding: 0 15px;
+  .colum {
+    padding: 0 15px;
+    box-sizing: border-box;
+    .exam-title {
+      max-height: 75px;
+      font-weight: 600;
+      line-height: 25px;
+      padding: 5px 0;
+      margin-top: 5px;
+      overflow: hidden;
+      text-align: center;
+      font-size: 18px;
+    }
   }
   .square {
     width: 25px;
@@ -29,9 +40,9 @@
     right: 15px;
     bottom: 30px;
   }
-  .rectangle{
-     background:#000;
-     position: absolute;
+  .rectangle {
+    background: #000;
+    position: absolute;
   }
 }
 .A4 {
@@ -41,4 +52,13 @@
 .A3 {
   width: 1587px;
   height: 1122px;
+}
+.A4-1 {
+  width: 100%;
+}
+.A3-2 {
+  width: 50%;
+}
+.A3-3 {
+  width: 33.33%;
 }
