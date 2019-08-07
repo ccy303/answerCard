@@ -27,7 +27,6 @@ export default class Header {
          div.append(this.renderStudentInfo());
          box.append(div);
       } else if (examCountType === 0) {
-         // if (type === 'A4' || type === 'A3' && colum !== 3) {
          let style = {
             width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '50%' : '100%',
             float: studentNumLength <= 9 ? 'left' : 'unset'
