@@ -1,32 +1,17 @@
 import './test.scss'
 // import data from './data.json'
+import { Pages } from './conpoment/global'
 import './test'
-import Page from './conpoment/page/page'
-
-// console.log(Page)
-let page = new Page('A3', 2)
-// console.log(page._page)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4', 1)
-// new Page('A4')
-// let data = require('./data.json')
-// console.log(data)
-// let a = document.createElement('div');
-// a.classList.add('a')
-// document.querySelector('#app').append(a)
-// let b = document.createElement('div')
-// b.classList.add('test')
-// document.querySelector('#app').append(b)
-// console.error('123456')
+import Page from './conpoment/page/page';
+class answerCard {
+   pages: Array<Page> = [];
+   constructor() {
+      let page = new Page('A3', this.addPage.bind(this), 2).pageInit();
+      this.pages.push(page)
+   }
+   private addPage() {
+      let page = new Page('A3', this.addPage.bind(this), 2).pageInit(false, false);
+      this.pages.push(page)
+   }
+}
+new answerCard()

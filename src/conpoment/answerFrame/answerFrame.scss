@@ -3,6 +3,11 @@
   padding: 10px 15px;
   box-sizing: border-box;
   width: 100%;
+  word-wrap: unset;
+  overflow-x: hidden;
+  div {
+    white-space: nowrap;
+  }
   &:not(:first-child) {
     margin-top: 10px;
   }
