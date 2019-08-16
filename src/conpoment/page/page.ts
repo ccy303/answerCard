@@ -197,7 +197,7 @@ export default class Page {
                      this.moveNextEditorBoxToThisColum(editorBox.parent());
                   }
                }
-               nextEditorBox&& !nextEditorBox.children().length && nextEditorBox.remove();
+               nextEditorBox && !nextEditorBox.children().length && nextEditorBox.remove();
             }
          })
          if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
