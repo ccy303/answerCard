@@ -8,16 +8,17 @@
     padding: 0 15px;
     box-sizing: border-box;
     float: left;
-    // height: 100%;
     .exam-title {
       max-height: 75px;
       font-weight: 600;
       line-height: 25px;
+      // line-height: 100PX;
       padding: 5px 0;
       margin-top: 5px;
       overflow: hidden;
       text-align: center;
       font-size: 18px;
+      white-space: nowrap;
     }
   }
   .square {

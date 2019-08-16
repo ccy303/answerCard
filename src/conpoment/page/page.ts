@@ -1,13 +1,17 @@
 import Header from '../header/header';
 import AnswerFrame from '../answerFrame/answerFrame';
-import { AnswerFrameObj } from '../global'
+import GlobalData from '../global'
+import SelQues from '../selQues/selQues';
 import './page.scss';
+
+const dataJSON = require('../../data.json')
 export default class Page {
    private _page: JQuery<HTMLElement> = null
    private colum: number
    private type: string;
    private data: any;
-   private answerFrame: any = []; //本页面中所有的answerFrame对象
+   private selQues: SelQues
+   // private answerFrame: any = []; //本页面中所有的answerFrame对象
    private callback: any; //用于判断是否要添加新一页
    //1->1,2->2,3->4,4->8
    private pageNum: Array<any> = [
@@ -38,7 +42,8 @@ export default class Page {
       this.page = $('<div class="page"></div>')
       this.data = require('../../data.json')
       this.callback = callback;
-      this.answerFrame = AnswerFrameObj
+      // this.answerFrame = GlobalData.AnswerFrameObj
+      this.selQues = new SelQues(dataJSON.pageQus[0]);
    }
    public get page(): JQuery<HTMLElement> {
       return this._page
@@ -46,7 +51,7 @@ export default class Page {
    public set page(val: JQuery<HTMLElement>) {
       this._page = val;
    }
-   public pageInit(addRow: boolean = true, renderHeader: boolean = true) {
+   public async pageInit(addRow: boolean = true, renderHeader: boolean = true) {
       this.page.addClass(this.type);
       $('#answerCard').append(this.page);
       this.page.attr('id', `${$('#answerCard .page').length}p`)
@@ -68,26 +73,31 @@ export default class Page {
       this.page.append(this.square());
       this.rectangle();
       this.rectangle(true);
-      if (renderHeader) {
+      if (renderHeader) {//绘制答题卡头}
          let header = new Header({
             type: this.type,
             colum: this.colum
          })
          $(this.page).find('div.colum:first-child').append(header.initHeader());
       }
-      if (addRow) {
+
+      if (addRow) { //增加空白行
          this.renderDeafultAnswerFrame(1, addRow)
          this.renderDeafultAnswerFrame(2, addRow)
-         this.renderDeafultAnswerFrame(3, addRow)
-         this.renderDeafultAnswerFrame(4, addRow)
-         this.renderDeafultAnswerFrame(5, addRow)
-         this.renderDeafultAnswerFrame(6, addRow)
-         this.renderDeafultAnswerFrame(7, addRow)
-         this.renderDeafultAnswerFrame(8, addRow)
-      } else {
+         this.page.find('.header-box').after(this.selQues.selQuesBox);
+         await this.selQues.initSelQues()
+         // this.renderDeafultAnswerFrame(3, addRow)
+         // this.renderDeafultAnswerFrame(4, addRow)
+         // this.renderDeafultAnswerFrame(5, addRow)
+         // this.renderDeafultAnswerFrame(6, addRow)
+         // this.renderDeafultAnswerFrame(7, addRow)
+      } else { }
 
-      }
-      return this;
+      $('.exam-title').on('keydown', (e) => {
+         e.keyCode === 13 && e.preventDefault()
+      })
+
+      // return this;
    }
    private square(): Array<JQuery<HTMLElement>> {
       let arr: Array<JQuery<HTMLElement>> = [];
@@ -127,67 +137,159 @@ export default class Page {
    }
    private renderDeafultAnswerFrame(bIndex: number, addRow: boolean) {
       let answerFrame = new AnswerFrame().initAnswerFrame(bIndex, addRow);
-      this.answerFrame.push(answerFrame)
+      GlobalData.AnswerFrameObj.push(answerFrame)
       let page = $(this.page);
+      // $('#answerCard').find('.select-box').last().parent().append(answerFrame.answerFrame)
       $(page.find('.colum').get(0)).append(answerFrame.answerFrame)
    }
-   //监听每一列的dom改变
+
+   //监听每一列的dom改变 重要的话说3次：整个app的精华都在这里；整个app的精华都在这里；整个app的精华都在这里
    private observeColum(dom: JQuery<HTMLElement>) {
-      let config = { attributes: true, childList: true, subtree: true, characterData: true, characterDataOldValue: true };
+      let config = { attributes: false, childList: true, subtree: true };
       let observer = new MutationObserver((e: any) => {
-         e.map((mutation: MutationRecord) => {
+         e.map(async (mutation: MutationRecord) => {
+            if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
             let innerHeight = dom.height();
             let pageHeight = this.page.height()
-            if (pageHeight < innerHeight) {
-               //此列中最后一个editorBox
+            if (pageHeight < innerHeight) {//回车和初始化布局
+               await !dom.find('.editor-box').get(0) && this.moveDownSelQues(dom) //如果这一列中有editor-box先移动editor-box然后在移动select-box
+               // 此列中最后一个editorBox
                let lastEditorBox = dom.find('.editor-box:last-child').get(0);
-               //获取生成此editorBox的对象实例
-               let obj = this.answerFrame.filter((val: any) => {
-                  return val.answerFrame.get(0) === lastEditorBox;
-               })[0];
-               let lastRow = obj.getLastRow()
-               let nextBox = this.checkoutEditorBox(dom.find('.editor-box:last-child'), dom);
-               if (nextBox && nextBox.get(0)) {
-                  lastRow.attr('hash', nextBox.attr('hash'))
-                  nextBox.children(':first-child').before(lastRow);
-               } else {
-                  let boxIndex = lastRow.parent().attr('boxIndex')
-                  let box: JQuery<HTMLElement>
-                  if (dom.next('.colum').get(0)) {//本页最后一栏
-                     box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex).answerFrame;
+               if (lastEditorBox) {
+                  //获取生成此editorBox的对象实例
+                  let obj = GlobalData.AnswerFrameObj.filter((val: any) => {
+                     return val.answerFrame.get(0) === lastEditorBox;
+                  })[0];
+                  let lastRow = obj.getLastRow()
+                  let nextBox = this.checkoutEditorBox(dom.find('.editor-box:last-child'), dom);
+                  if (nextBox && nextBox.get(0)) {
+                     lastRow.attr('hash', nextBox.attr('hash'))
+                     nextBox.children(':first-child').before(lastRow);
                   } else {
-                     box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex).answerFrame
+                     let boxIndex = lastRow.parent().attr('boxIndex')
+                     let box: JQuery<HTMLElement>
+                     if (dom.next('.colum').get(0)) {//本页最后一栏
+                        box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex).answerFrame;
+                     } else {
+                        box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex).answerFrame
+                     }
+                     let boxFirstChild = box.children(':first-child');
+                     lastRow.attr('hash', box.attr('hash'))
+                     boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
                   }
-                  let boxFirstChild = box.children(':first-child');
-                  lastRow.attr('hash', box.attr('hash'))
-                  boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
+                  !obj.answerFrame.children().length && obj.answerFrame.remove()
                }
-            } else if (pageHeight > innerHeight && $(mutation.removedNodes[0]).hasClass('row')) {
-               let hash = $(mutation.removedNodes[0]).attr('hash');
+            } else if (pageHeight > innerHeight) {//删除
+               if (!$(mutation.removedNodes[0]).attr('hash') || mutation.removedNodes[0] && mutation.removedNodes[0].nodeName === 'BR') { return }
+               let hash = $(mutation.target).attr('hash');
                let editorBox = this.page.find(`div.editor-box[hash=${hash}]`) //触发删除事件的EditotBox
                let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
-               if (nextEditorBox) {
-                  this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
-               } else if (pageHeight - innerHeight > 40) {//没有由此editorBox拆分出的ediotrBox
-                  this.moveNextEditorBoxToThisColum(editorBox.parent());
+               if (pageHeight - innerHeight > 25 && pageHeight - innerHeight < 40) {
+                  if (nextEditorBox) {
+                     this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
+                  } else {
+                     this.moveNextEditorBoxToThisColum(editorBox.parent());
+                  }
+               } else if (pageHeight - innerHeight > 40) {
+                  if (nextEditorBox) {
+                     this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
+                  } else {
+                     this.moveNextEditorBoxToThisColum(editorBox.parent());
+                  }
                }
+               nextEditorBox&& !nextEditorBox.children().length && nextEditorBox.remove();
             }
          })
-        !dom.parent().find('div.editor-box').get(0) && dom.parent().remove()
+         if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
+            dom.parent().remove()
+         }
+         if (!dom.find('div.select-box').children().last().children().first().children().get(0)) {
+            dom.find('div.select-box').children().last().remove()
+         }
       })
       observer.observe(dom.get(0), config)
    }
+
+   private async moveDownSelQues(colum: JQuery<HTMLElement>) {//下移
+      let innerHeight = colum.height()
+      let pageHieght = this.page.height();
+      let nextColum = this.getNextColum(colum)
+      if (!nextColum) {
+         await this.callback()
+         nextColum = this.getNextColum(colum)
+      }
+      if ((innerHeight - pageHieght) / 120 > 1) { //把框往下移
+         let selGroupBox = colum.find('.select-box').children().last();
+         if (!nextColum.find('div.select-box').get(0)) {
+            let selBox = $(`<div class="select-box" selIndex="1"></div>`)
+            selBox.append(selGroupBox);
+            nextColum.children().first().get(0) ?
+               await nextColum.children().first().before(selBox) :
+               await nextColum.append(selBox)
+         } else {
+            await nextColum.find('.select-box').children(':nth-child(1)').before(selGroupBox);
+         }
+      } else if ((innerHeight - pageHieght) / 120 < 1 && (innerHeight - pageHieght) / 120 > 0) { //要移到下一栏的选择题不够5道
+         let rowLength = Math.round((innerHeight - pageHieght) / 21)
+         let dom = colum.children('.select-box').children().last().children()
+         if (!nextColum.find('div.select-box').get(0)) { //下一栏中没有select-box            
+            let selBox = $(`<div class="select-box" selIndex="${$('.select-box').length + 1}"></div>`)
+            let selGroupBox = $(`<div class="sel-group-box" bIndex="1"></div>`)
+            selBox.append(selGroupBox);
+            for (let i = 0; i < dom.length; i++) {
+               let j = rowLength;
+               let selGroup = $(`<div style="width:${100 / dom.length}%" class="sel-group" bIndex="${i + 1}"></div>`);
+               while (true) {
+                  if (j <= 0) break;
+                  let a = $(dom[i]).children().last();
+                  !selGroup.children().first().get(0) ?
+                     selGroup.append($(a)) :
+                     selGroup.children().first().before($(a));
+                  j--;
+               }
+               selGroupBox.append(selGroup)
+            }
+            await nextColum.append(selBox)
+         } else { //下一栏中有selct-box
+            let length = nextColum.find('div.select-box').children().first().children().first().children().length; //下一栏的select-box中第一个框的行数
+            if (length < 5) {//下一栏中的select-box第一个框没有满
+               for (let i = 0; i < dom.length; i++) {
+                  let a = $(dom[i]).children().last();
+                  nextColum.find('.select-box').children().first().children(`:nth-child(${i + 1})`).children(':nth-child(1)').before($(a))
+               }
+            } else {
+               let selGroupBox = $(`<div class="sel-group-box" bIndex="1"></div>`)
+               for (let i = 0; i < dom.length; i++) {
+                  let j = rowLength;
+                  let selGroup = $(`<div style="width:${100 / dom.length}%" class="sel-group" bIndex="${i + 1}"></div>`);
+                  while (true) {
+                     if (j <= 0) break;
+                     let a = $(dom[i]).children().last();
+                     !selGroup.children().first().get(0) ?
+                        selGroup.append($(a)) :
+                        selGroup.children().first().before($(a));
+                     j--;
+                  }
+                  selGroupBox.append(selGroup)
+               }
+               if (!selGroupBox.children(':nth-child(1)').children().get(0)) return
+               await nextColum.find('.select-box').children().first().before($(selGroupBox))
+            }
+         }
+      }
+   }
+
    private createEditorBoxInNextCol(colum: JQuery<HTMLElement>, bIndex: number): AnswerFrame {//在下一列中创建EditorBox
       let answerFrame = new AnswerFrame().initAnswerFrame(bIndex, false);
-      this.answerFrame.push(answerFrame)
+      GlobalData.AnswerFrameObj.push(answerFrame)
       //判断是否带头
       if (colum.children('div.header-box').get(0)) {
          colum.children('div.editor-box').get(0) ?
             colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
             colum.append(answerFrame.answerFrame)
       } else {
-         colum.children().get(0) ?
-            colum.children(':first-child').before(answerFrame.answerFrame) :
+         colum.children('div.editor-box').get(0) ?
+            colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
             colum.append(answerFrame.answerFrame)
       }
       return answerFrame;
@@ -236,9 +338,20 @@ export default class Page {
       if (!nextColumFirstEditor.get(0)) return;
       let row = nextColumFirstEditor.children().first();
       let answerFrame = new AnswerFrame().initAnswerFrame(Number(nextColumFirstEditor.attr('boxIndex')), false);
-      this.answerFrame.push(answerFrame)
+      GlobalData.AnswerFrameObj.push(answerFrame)
       thisColum.append(answerFrame.answerFrame);
       answerFrame.answerFrame.append(row)
       row.attr('hash', answerFrame.answerFrame.attr('hash'))
+   }
+
+   private getNextColum(thisColum: JQuery<HTMLElement>) {
+      let colums = $('#answerCard').find('.colum');
+      let nextColum: JQuery<HTMLElement> = null;
+      for (let i = 0; i < colums.length; i++) {
+         if (colums.get(i) === thisColum.get(0) && colums.get(i + 1)) {
+            nextColum = $(colums.get(i + 1));
+         }
+      }
+      return nextColum
    }
 }

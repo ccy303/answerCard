@@ -5,6 +5,8 @@
   width: 100%;
   word-wrap: unset;
   overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
   div {
     white-space: nowrap;
   }
@@ -14,5 +16,36 @@
   .row {
     line-height: 25px;
     font-size: 14px;
+  }
+  .image-file-box {
+    position: absolute;
+    top: 10px;
+    z-index: 99;
+    cursor: all-scroll;
+    height: auto;
+    display: inline-block;
+    .image-file {
+      display: block;
+    }
+    .bottom-right {
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      display: inline-block;
+      position: absolute;
+      border-top: 7.5px solid rgba(0, 0, 0, 0);
+      border-right: 7.5px solid #a1a1a1;
+      border-left: 7.5px solid rgba(0, 0, 0, 0);
+      border-bottom: 7.5px solid #a1a1a1;
+      box-sizing: border-box;
+    }
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+      cursor: se-resize;
+    }
+  }
+  .active {
+    border: 1px dashed #000;
   }
 }

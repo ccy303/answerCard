@@ -5,7 +5,7 @@ export default class Header {
    constructor(data?: any) {
       // this.data = data
       this.data = {
-         studentNumLength: 19,
+         studentNumLength: 5,
          examCountType: 0, //0填图，1条形码
          type: data.type,
          colum: data.colum
