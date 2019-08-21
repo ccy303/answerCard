@@ -2,8 +2,8 @@
    "schoolId": null,
    "id": "84",
    "subjectId": "1950",
-   "paperSize": "A4",
-   "layoutType": "1",
+   "paperSize": "A3",
+   "layoutType": "2",
    "sourceType": "2",
    "prohibitType": "1",
    "noMode": "2",
@@ -39,7 +39,7 @@
                      "quId": "1628",
                      "score": 5.0,
                      "quType": "单选题",
-                     "nums": "3",
+                     "nums": "8",
                      "content": "",
                      "pnum": "1",
                      "visible": true,
@@ -82,6 +82,36 @@
                      "nums": "3",
                      "content": "",
                      "pnum": "5",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2237",
+                     "score": 15.0,
+                     "quType": "判断题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "3",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2237",
+                     "score": 15.0,
+                     "quType": "判断题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "3",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2237",
+                     "score": 15.0,
+                     "quType": "判断题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "3",
                      "visible": true,
                      "rIndex": "1-1-1"
                   }

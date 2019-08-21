@@ -10,8 +10,8 @@
       box-sizing: border-box;
       padding: 7px 0 7.5px 0;
       float: left;
-      &:not(:first-child) {
-        border-left: 1px solid #000;
+      &:not(:last-child) {
+        border-right: 1px solid #000;
       }
       .sel-group-row {
         box-sizing: border-box;

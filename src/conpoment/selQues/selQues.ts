@@ -4,6 +4,7 @@ export default class SelQues {
    data: any = null
    selQuesBox: JQuery<HTMLElement> = null;
    option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
+   judge = '✓✗';
    constructor(data: any) {
       this.data = { ...data };
       this.selQuesBox = $(`
@@ -15,20 +16,9 @@ export default class SelQues {
       if (!this.checkoutdata()) return;
       let obj = this.splitQues()
       let newData = this.splitQuesTocolum(obj)
+      return newData;
       // this.observeSelBox();
-      this.renderColum(newData)
-      // return this.selQuesBox
-   }
-
-   observeSelBox() {
-      let config = { attributes: true, childList: true, subtree: true };
-      let observer = new MutationObserver((e: any) => {
-         e.map((mutation: MutationRecord) => {
-            console.log($(mutation.target).parent().height());
-            // console.log(this.selQuesBox.css('height'))
-         })
-      })
-      observer.observe(this.selQuesBox.get(0), config)
+      // this.renderColum(newData)
    }
 
    renderColum(arg: any) {
@@ -41,7 +31,7 @@ export default class SelQues {
                let i = 0;
                while (true) {
                   if (i >= parseInt(value.nums)) break;
-                  opt.append($(`<div class="opt-item">[${this.option[i]}]</div>`))
+                  opt.append($(`<div class="opt-item">[${value.quType !== '判断题' ? this.option[i] : this.judge[i]}]</div>`))
                   i++
                }
                let selGroupRow: JQuery<HTMLElement> = $(`<div class="sel-group-row" rowIndex="${index + 1}-${box + 1}-${row + 1}">
