@@ -1,0 +1,164 @@
+{
+   "schoolId": null,
+   "id": "86",
+   "subjectId": "1871",
+   "paperSize": "A3",
+   "layoutType": "2",
+   "sourceType": "2",
+   "prohibitType": "1",
+   "noMode": "2",
+   "noCount": "9",
+   "noBoth": "0",
+   "qrCode": "gF",
+   "alias": "测试作文 高一 语文",
+   "cardJson": null,
+   "cardHtml": null,
+   "attention": null,
+   "pageCnt": "2",
+   "subjectName": null,
+   "pageQus": [
+      {
+         "sort": "1",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1",
+         "pros": [
+            {
+               "proId": "1303",
+               "score": 15.0,
+               "pureObjective": "1",
+               "content": "",
+               "sort": "1",
+               "pnum": "",
+               "group": "0",
+               "titleType": "判断题",
+               "qus": [
+                  {
+                     "quId": "2237",
+                     "score": 15.0,
+                     "quType": "判断题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "3",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "2",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@2-1@3-2@1-2@2",
+         "pros": [
+            {
+               "proId": "1231",
+               "score": 15.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "1",
+               "pnum": "",
+               "group": "0",
+               "titleType": "材料作文",
+               "qus": [
+                  {
+                     "quId": "2153",
+                     "score": 15.0,
+                     "quType": "作文题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "NaN",
+                     "visible": true,
+                     "rIndex": "1@2-1@3-2@1-2@2"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "3",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "2@3",
+         "pros": [
+            {
+               "proId": "906",
+               "score": 15.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "2",
+               "pnum": "",
+               "group": "0",
+               "titleType": "默写题",
+               "qus": [
+                  {
+                     "quId": "1482",
+                     "score": 15.0,
+                     "quType": "填空题",
+                     "nums": "1",
+                     "content": "",
+                     "pnum": "2",
+                     "visible": true,
+                     "rIndex": "2@3"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "4",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "2@4",
+         "pros": [
+            {
+               "proId": "1570",
+               "score": 30.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "4",
+               "pnum": "",
+               "group": "0",
+               "titleType": "现代文阅读",
+               "qus": [
+                  {
+                     "quId": "2786",
+                     "score": 15.0,
+                     "quType": "填空题",
+                     "nums": "3",
+                     "content": "",
+                     "pnum": "4",
+                     "visible": true,
+                     "rIndex": "2@4"
+                  },
+                  {
+                     "quId": "2787",
+                     "score": 15.0,
+                     "quType": "填空题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "5",
+                     "visible": true,
+                     "rIndex": "2@4"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "checkMsg": null,
+   "paperId": 1577,
+   "paperVid": 1,
+   "versionId": 10001,
+   "versionMsg": null
+}
