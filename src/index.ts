@@ -1,7 +1,5 @@
-import './test.scss'
 // import data from './data.json'
 import GlobalData from './conpoment/global'
-import './test'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
 const dataJSON = require('./data.json')
@@ -63,4 +61,4 @@ class answerCard {
 
 export default answerCard
 
-new answerCard(dataJSON, true)
+// new answerCard(dataJSON, true)

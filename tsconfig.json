@@ -6,6 +6,21 @@
       "target": "es5",
       "jsx": "react",
       "allowJs": true,
-      "sourceMap": true,
-   }
+      "sourceMap": false,
+      "typeRoots": [
+         "./src"
+      ],
+      "types": [
+         "jquery",
+         "node"
+      ]
+   },
+   "exclude": [
+      "node_modules",
+      "dist",
+      "webpack.config.js"
+   ],
+   "include": [
+      "src/**/*",
+   ]
 }

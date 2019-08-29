@@ -1,11 +1,12 @@
 {
   "name": "answer-card",
-  "version": "1.0.0",
+  "version": "1.0.56",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "tsc": "tsc",
     "start": "webpack-dev-server --open"
   },
   "keywords": [],
@@ -29,6 +30,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@types/jquery": "^3.3.30",
+    "axios": "^0.19.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",

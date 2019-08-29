@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
    entry: './src/index.ts',
    output: {
-      filename: '[name].bundle.js',
+      filename: 'index.js',
       path: path.resolve(__dirname, 'dist')
    },
    plugins: [
@@ -23,7 +23,7 @@ module.exports = {
          "window.jQuery": "jquery"
       })
    ],
-   devtool: 'inline-source-map',
+   // devtool: 'inline-source-map',
    devServer: {
       contentBase: './dist',
       hot: true,
