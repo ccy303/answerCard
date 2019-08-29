@@ -1,13 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {
+   CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 module.exports = {
    entry: './src/index.ts',
    output: {
       filename: 'index.js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
+      libraryExport: "default",
+      library: "Test",
+      libraryTarget: "umd"
    },
    plugins: [
       new CleanWebpackPlugin(),
@@ -30,8 +35,7 @@ module.exports = {
       port: 2048
    },
    module: {
-      rules: [
-         {
+      rules: [{
             test: /\.css$/,
             use: ['style-loader', 'css-loader']
          },

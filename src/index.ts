@@ -61,4 +61,4 @@ class answerCard {
 
 export default answerCard
 
-// new answerCard(dataJSON, true)
+new answerCard(dataJSON, true)
