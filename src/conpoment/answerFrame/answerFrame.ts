@@ -1,13 +1,14 @@
 import './answerFrame.scss'
 import GlobalData from '../global'
 import SelQues from '../selQues/selQues';
-const dataJSON = require('../../data.json')
 export default class AnswerFrame {
    _answerFrame: JQuery<HTMLElement> = null;
-   selDom: any = null;
+   _selDom: any = null;
    number: number = 0;
    width: number = 0;
-   constructor() {
+   data: any;
+   constructor(data: any) {
+      this.data = data;
    }
    public initAnswerFrame(bIndex: number, insertChild: boolean, type = "editor", number?: number) {
       // boxIndex 编辑当前框
@@ -21,8 +22,8 @@ export default class AnswerFrame {
          dom = this.renderEditor(bIndex, insertChild, hash)
       } else if (type === 'write') {//作文题
          dom = this.renderWrite(bIndex, hash)
-      } else if (type === 'select') {
-         dom = this.renderSelect(bIndex, insertChild, hash)
+      } else if (type === 'select') {//客观题
+         dom = this.renderSelect({ bIndex, insertChild, hash })
       }
       this.answerFrame = dom
       return this
@@ -32,6 +33,12 @@ export default class AnswerFrame {
    }
    set answerFrame(val: JQuery<HTMLElement>) {
       this._answerFrame = val;
+   }
+   get selDom() {
+      return this._selDom;
+   }
+   set selDom(val) {
+      this._selDom = val
    }
    private writeAddRow(dom: JQuery<HTMLElement>, hash: string) {
       let row = $(`<div class="row" hash="${hash}"></div>`);
@@ -43,8 +50,11 @@ export default class AnswerFrame {
       }
       dom.append(row)
    }
-   renderWrite(bIndex: number, hash: string) {
+   private renderWrite(bIndex: number, hash: string) {
       let dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="false"></div>`);
+      if (Object.keys(this.data).length) {
+         dom.attr("targetid", `${this.data.pros[0].proId}`)
+      }
       let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
       let i = 0
       while (true) {
@@ -54,59 +64,75 @@ export default class AnswerFrame {
       }
       return dom
    }
-
-   renderEditor(bIndex: number, insertChild: boolean, hash: string) {
+   private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
+      const flg = ['判断题', '单选题', '多选题'];
+      const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
+      const judge = '✓✗';
       let dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
-      let i = 0;
-      while (true && insertChild) {
-         if (i > 5) break;
-         dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
-         i++
+      if (Object.keys(this.data).length) {
+         dom.attr("targetid", `${this.data.pros[0].proId}`)
+         this.data.pros[0].qus.map((val: any) => {
+            let pnum = $(`<div class="row" hash="${hash}">${val.pnum}：(${val.score}分)</div>`)
+            if (flg.indexOf(val.quType) !== -1 && val.visible) {
+               let j = 0;
+               let opt = $(`<div class="opts"  style="margin-left:15px"></div>`)
+               while (true) {
+                  if (j > val.nums - 1) break
+                  opt.append($(`<div class="opt-item">[${val.quType === '判断题' ? judge[j] : option[j]}]</div>`))
+                  j++;
+               }
+               pnum.append(opt)
+            }
+            dom.append(pnum)
+            let i = 0;
+            while (true && insertChild && flg.indexOf(val.quType) === -1) {
+               if (i > 6) break;
+               dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
+               i++
+            }
+         })
       }
-      // this.observeEditorBox(dom)
       dom.on('keydown', this.keyDowm)
       dom.on('paste', this.paste.bind(this))
       dom.on('click', () => { GlobalData.currentImage = null; })
       return dom
    }
-
-   renderSelect(bIndex: number, insertChild: boolean, hash: string) {
+   private renderSelect({ bIndex, insertChild, hash }: { bIndex: number; insertChild: boolean; hash: string }) {
       const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
       const judge = '✓✗';
       let dom: JQuery<HTMLElement> = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
-      const arg = new SelQues(dataJSON.pageQus[0]).initSelQues();
+      const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
       insertChild && arg.map((arr: any, index: number) => {
          let length = arr.length;
-         let arrItemLen = arr[0].length;
+         let arrItemLen = arr[0].data.length;
          let i = 0
          while (true) {
             if (i > arrItemLen) break;
             let row = $(`<div class="row" hash="${hash}"></div>`);
             let j = 0;
             while (true) {
-               if (j > length - 1 || !arr[j][i]) break;
-               const optLen = parseInt(arr[j][i].nums);
+               if (j > length - 1 || !arr[j].data[i]) break;
+               const optLen = parseInt(arr[j].data[i].nums);
                //渲染选项
                let k = 0
                let opt = $(`<div class="opts"></div>`)
-               while (true) {
-                  if (k > optLen - 1) break
-                  opt.append(`<div class="opt-item">[${arr[j][i].quType === '判断题' ? judge[k] : option[k]}]</div>`)
+               while (true) {//选项
+                  if (k > optLen - 1 || isNaN(optLen)) break
+                  opt.append(`<div class="opt-item">[${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}]</div>`)
                   k++
                }
-               let selItem = $(`<div class="sel-item" style="width:${100 / length}%"></div>`);
-               selItem.append($(`<div class="pnum">${arr[j][i].pnum}</div>`));
+               let selItem = $(`<div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${100 / length}%"></div>`);
+               selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
                selItem.append(opt)
                row.append(selItem)
                dom.append(row)
-               j++
+               j++;
             }
             i++
          }
       })
       return dom
    }
-
    public getLastRow() {
       return this.answerFrame.find('.row:last-child')
    }
@@ -175,12 +201,13 @@ export default class AnswerFrame {
          })
       })
    }
-   private postImageToOss(img: any) {
-
-   }
    private keyDowm(event: any) {
       if (event.keyCode === 8) {
          //剩下最后一行时禁用删除
+         if (GlobalData.currentImage) {
+            event.preventDefault();
+            $(GlobalData.currentImage).parent().remove()
+         }
          $(event.target).children().length === 1 && event.preventDefault();
       }
    }

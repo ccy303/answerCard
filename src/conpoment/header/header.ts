@@ -1,12 +1,12 @@
 import './header.scss';
+import GlobalData from '../global';
 export default class Header {
    private data: any
    public header: JQuery<HTMLElement>;
    constructor(data?: any) {
-      // this.data = data
       this.data = {
-         studentNumLength: 5,
-         examCountType: 0, //0填图，1条形码
+         studentNumLength: GlobalData.dataJSON.noCount,
+         examCountType: Number(GlobalData.dataJSON.noMode), //2填图，1条形码
          type: data.type,
          colum: data.colum
       }
@@ -26,9 +26,9 @@ export default class Header {
          div.append(this.renderBarCode())
          div.append(this.renderStudentInfo());
          box.append(div);
-      } else if (examCountType === 0) {
+      } else if (examCountType === 2) {
          let style = {
-            width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '50%' : '100%',
+            width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '50%' : '100%',
             float: studentNumLength <= 9 ? 'left' : 'unset'
          }
          div.attr('style', `width:${style.width};float:${style.float}`)
@@ -43,7 +43,7 @@ export default class Header {
    private renderStudentNum(): JQuery<HTMLElement> {
       let { studentNumLength, type, colum } = this.data
       let style = {
-         width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '50%' : '100%'
+         width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '50%' : '100%'
       }
       let box: JQuery<HTMLElement> = $('<div class="student-num"></div>');
       box.attr('style', `width:${style.width}`)
@@ -71,12 +71,12 @@ export default class Header {
    private renderStudentInfo(): JQuery<HTMLElement> {
       let { examCountType, studentNumLength, type, colum } = this.data
       let style = {
-         borderTop: examCountType === 0 ? 'none' : '1px solid #000',
-         borderBot: examCountType === 0 ? '1px solid #000' : 'none',
-         width: examCountType === 1 ? '50%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '100%' : '50%',
+         borderTop: examCountType === 2 ? 'none' : '1px solid #000',
+         borderBot: examCountType === 2 ? '1px solid #000' : 'none',
+         width: examCountType === 1 ? '50%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '100%' : '50%',
          height: ''
       }
-      if (type === 'A3' && colum === 3) {
+      if (type === 'A3' && colum == 3) {
          style.height = '191px';
       }
       let box = $(`
@@ -97,13 +97,13 @@ export default class Header {
       let { examCountType, studentNumLength, type, colum } = this.data
       let style = {
          height: '',
-         width: examCountType === 1 ? '100%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '100%' : '50%',
-         borderBot: examCountType === 0 ? studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '' : '1px solid #000' : 'none',
-         borderRight: examCountType === 0 && studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum !== 3) ? '1px solid #000' : '',
+         width: examCountType === 1 ? '100%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '100%' : '50%',
+         borderBot: examCountType === 2 ? studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '' : '1px solid #000' : 'none',
+         borderRight: examCountType === 2 && studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '1px solid #000' : '',
       }
-      if (type === 'A4' || type === 'A3' && colum !== 3) {
-         style.height = examCountType === 0 ? "136px" : 'auto';
-      } else if (type === 'A3' && colum === 3) {
+      if (type === 'A4' || (type === 'A3' && colum != 3)) {
+         style.height = examCountType === 2 ? "136px" : 'auto';
+      } else if (type === 'A3' && colum == 3) {
          style.height = 'auto'
       }
       return $(`<div 

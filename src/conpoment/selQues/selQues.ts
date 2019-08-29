@@ -17,8 +17,6 @@ export default class SelQues {
       let obj = this.splitQues()
       let newData = this.splitQuesTocolum(obj)
       return newData;
-      // this.observeSelBox();
-      // this.renderColum(newData)
    }
 
    renderColum(arg: any) {
@@ -46,28 +44,42 @@ export default class SelQues {
       })
    }
 
-   checkoutdata(): boolean {//检查data是否为客观题
+   checkoutdata(): boolean {//检查data是否仅为客观题
       return !Boolean(this.data.pros.find((val: any) => {
          return val.pureObjective !== '1'
       }))
    }
 
    //返回客观题选项最大长度，整合后的全部客观题
-   splitQues(): { totalQues: Array<any>, max: number } {
-      let obj: { totalQues: Array<any>, max: number } = {
+   splitQues(): { totalQues: any, max: number } {
+      let obj: { totalQues: any, max: number } = {
          totalQues: [],
          max: 0
       }
       let ques: Array<any> = []
       this.data.pros.map((val: any) => {
          val.qus.map((qus: any) => {
-            obj.max = qus.nums > obj.max ? qus.nums : obj.max;
-            ques.push(qus)
+            obj.max = Number(qus.nums) > obj.max ? Number(qus.nums) : obj.max;
+            qus.visible && ques.push(qus)
          })
       })
       for (let i = 0; i < ques.length; null) {//客观题分为每五个一组
-         obj.totalQues.push(ques.splice(i * 5, 5))
+         let _obj: any = {
+            data: [],
+            frame: 0,
+         };
+         _obj.data = ques.splice(i * 5, 5);
+         _obj.frame = obj.totalQues.length + 1
+         obj.totalQues.push(_obj)
+         // obj.totalQues.push(ques.splice(i * 5, 5))
       }
+      obj.totalQues.map((val: any) => {
+         let length = val.data.length
+         while (length < 5) {
+            val.data.push({})
+            length++
+         }
+      })
       return obj
    }
 
@@ -82,14 +94,18 @@ export default class SelQues {
    splitQuesTocolum(data: any) {
       let newArr: Array<any> = [];
       if (GlobalData.pageType === 'A4' || GlobalData.pageType === 'A3' && GlobalData.pageColum === 2) {
-         if (data.max <= 4) {
+         if (data.max <= 4) { //3栏选择题
+            for (let i = 0; i < data.totalQues.length; null) {
+               newArr.push(data.totalQues.splice(i * 3, 3))
+            }
+         } else if (data.max <= 9) {//2栏选择题
             for (let i = 0; i < data.totalQues.length; null) {
                newArr.push(data.totalQues.splice(i * 2, 2))
             }
-         } else {
+         } else if (data.max > 9) {//一栏2栏混排选择题
             for (let i = 0; i < data.totalQues.length; i = i + 2) {
                let arr: Array<any> = [];
-               if (this.findMaxOptLength(data.totalQues[i]) <= 9 && this.findMaxOptLength(data.totalQues[i + 1]) <= 9) {
+               if (this.findMaxOptLength(data.totalQues[i].data) <= 9 && this.findMaxOptLength(data.totalQues[i + 1].data) <= 9) {
                   arr.push(data.totalQues[i], data.totalQues[i + 1]);
                   newArr.push(arr)
                } else {
@@ -97,8 +113,22 @@ export default class SelQues {
                }
             }
          }
-      } else {
-
+      } else { //A3 3栏
+         if (data.max <= 5) {
+            for (let i = 0; i < data.totalQues.length; null) {
+               newArr.push(data.totalQues.splice(i * 2, 2))
+            }
+         } else if (data.max > 5) {
+            for (let i = 0; i < data.totalQues.length; i = i + 2) {
+               let arr: Array<any> = [];
+               if (this.findMaxOptLength(data.totalQues[i].data) <= 5 && this.findMaxOptLength(data.totalQues[i + 1].data) <= 5) {
+                  arr.push(data.totalQues[i], data.totalQues[i + 1]);
+                  newArr.push(arr)
+               } else {
+                  newArr.push([data.totalQues[i]], [data.totalQues[i + 1]]);
+               }
+            }
+         }
       }
       return [...newArr]
    }

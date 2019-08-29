@@ -4,6 +4,10 @@ export default class GlobalData {
    static pageType: string = '';
    static pageColum: number = 0
    static timer: any = null;
+   static dataJSON: any = null;
+   static config: any = {
+
+   }
    static set currentImage(val) {
       val !== this._currentImage && $(this._currentImage).parent().removeClass('active')
       val !== this._currentImage && $(this._currentImage).parent().children('span').remove()
