@@ -48,7 +48,7 @@ export default class Page {
    }
    public async pageInit(addRow: boolean = true, renderHeader: boolean = true) {
       this.page.addClass(this.type);
-      $('#answerCard').append(this.page);
+      GlobalData.dom.append(this.page);
       this.page.attr('id', `${$('#answerCard .page').length}p`)
       //渲染列
       let _colum = this.colum - 1;

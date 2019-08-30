@@ -7,6 +7,9 @@
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
+  * {
+    vertical-align: unset;
+  }
   div {
     white-space: nowrap;
   }

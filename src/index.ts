@@ -4,22 +4,22 @@ import Page from './conpoment/page/page';
 import Tool from './tool/tool'
 const dataJSON = require('./data.json')
 
-class answerCard {
+class AnswerCard {
    pages: Array<Page> = [];
    dataJson: any
    both: boolean //是否双面
-   constructor(dataJson: any, both: boolean = false) {
-      this.dataJson = dataJson;
-      this.both = both
-      GlobalData.dataJSON = dataJson
+   constructor(obj: any) {
+      this.dataJson = obj.dataJSON;
+      this.both = obj.both
+      GlobalData.dataJSON = obj.dataJSON;
+      GlobalData.config = obj.config;
       GlobalData.pageType = dataJSON.paperSize;
+      GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
+      GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
       GlobalData.pageColum = parseInt(dataJSON.layoutType);
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages.push(page)
-      // setTimeout(() => {
-      //    console.log(this.htmlToJson())
-      // }, 1000);
    }
    private addPage() {
       let page = new Page(this.addPage.bind(this));
@@ -39,7 +39,6 @@ class answerCard {
          arr.push(pages[i].outerHTML)
       }
       return JSON.stringify(arr)
-      // return JSON.stringify($('#answerCard').get(0).outerHTML)
    }
    public getLayoutData() {//获取新的json
       this.dataJson.pageQus.map((pros: any) => {
@@ -59,6 +58,6 @@ class answerCard {
 }
 
 
-export default answerCard
+export default AnswerCard
 
-new answerCard(dataJSON, true)
+new AnswerCard({ dataJSON: dataJSON, both: true, config: {}, dom: null })

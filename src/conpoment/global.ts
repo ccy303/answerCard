@@ -5,6 +5,7 @@ export default class GlobalData {
    static pageColum: number = 0
    static timer: any = null;
    static dataJSON: any = null;
+   static dom: JQuery<HTMLElement> = null;
    static config: any = {
 
    }
