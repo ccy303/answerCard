@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 module.exports = (env) => {
-   console.log(env)
    return {
       mode: env,
       entry: './src/index.ts',
