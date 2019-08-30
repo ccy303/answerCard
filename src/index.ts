@@ -57,7 +57,6 @@ class AnswerCard {
    }
 }
 
-
 export default AnswerCard
 
-new AnswerCard({ dataJSON: dataJSON, both: true, config: {}, dom: null })
+process.env.NODE_ENV == 'development' && new AnswerCard({ dataJSON: dataJSON, both: true, config: {}, dom: null })

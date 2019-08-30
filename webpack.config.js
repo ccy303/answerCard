@@ -1,41 +1,42 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-   CleanWebpackPlugin
-} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
-module.exports = {
-   entry: './src/index.ts',
-   output: {
-      filename: 'index.js',
-      path: path.resolve(__dirname, 'dist'),
-      libraryExport: "default",
-      library: "Test",
-      libraryTarget: "umd"
-   },
-   plugins: [
-      new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
-         title: 'answerCard',
-         template: './src/index.html'
-      }),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
-      new webpack.ProvidePlugin({
-         $: 'jquery',
-         jQuery: "jquery",
-         "window.jQuery": "jquery"
-      })
-   ],
-   // devtool: 'inline-source-map',
-   devServer: {
-      contentBase: './dist',
-      hot: true,
-      port: 2048
-   },
-   module: {
-      rules: [{
+module.exports = (env) => {
+   console.log(env)
+   return {
+      mode: env,
+      entry: './src/index.ts',
+      output: {
+         filename: 'index.js',
+         path: path.resolve(__dirname, 'dist'),
+         libraryExport: "default",
+         library: "Test",
+         libraryTarget: "umd"
+      },
+      plugins: [
+         new CleanWebpackPlugin(),
+         new HtmlWebpackPlugin({
+            title: 'answerCard',
+            template: './src/index.html'
+         }),
+         new webpack.HotModuleReplacementPlugin(),
+         new webpack.NamedModulesPlugin(),
+         new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+         })
+      ],
+      devtool: 'inline-source-map',
+      devServer: {
+         contentBase: './dist',
+         hot: true,
+         port: 2048
+      },
+      module: {
+         rules: [{
             test: /\.css$/,
             use: ['style-loader', 'css-loader']
          },
@@ -62,9 +63,10 @@ module.exports = {
             use: 'ts-loader',
             exclude: /node_modules/
          }
-      ]
-   },
-   resolve: {
-      extensions: ['.tsx', '.ts', '.js']
-   },
+         ]
+      },
+      resolve: {
+         extensions: ['.tsx', '.ts', '.js']
+      }
+   }
 };
