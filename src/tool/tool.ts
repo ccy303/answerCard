@@ -1,5 +1,5 @@
 class Tool {
-   selectProRIndex(dom: JQuery<HTMLElement>) {
+   selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
       let pageDom = null;
       for (let i = 0; i < $('#answerCard>.page').length; i++) { //查找页数
@@ -23,7 +23,7 @@ class Tool {
       return `${page}-${bigFrame}-${frame}`
    }
 
-   subjectiveQuestionsPindex(dom: JQuery<HTMLElement>) {
+   subjectiveQuestionsPindex(dom: JQuery<HTMLElement>) {//主观题pindex
       let pIndex = [];
       let pages = $('#answerCard>.page');
       for (let i = 0; i < dom.length; i++) {
@@ -32,7 +32,7 @@ class Tool {
          for (let j = 0; j < pages.length; j++) {
             if ($(pages[j]).find(dom[i]).get(0)) {
                p = j + 1;
-               let frame = $(pages[j]).find('.colum').children();
+               let frame = $(pages[j]).find('.colum').children(); //全部框
                for (let k = 0; k < frame.length; k++) {
                   if (frame[k] === dom[i]) {
                      f = k + 1;
@@ -45,6 +45,22 @@ class Tool {
       }
       return pIndex.join('-')
    }
+
+   selPIndex() {//选择器Pindex
+      let page = $('#answerCard>.page');
+      let pIndex = [];
+      for (let i = 0; i < page.length; i++) {
+         let len = $(page[i]).find('[type="select"]').length
+         let j = 1;
+         while (true) {
+            if (j > len) break;
+            pIndex.push(`${i + 1}@${j}`)
+            j++
+         }
+      }
+      return pIndex.join('-')
+   }
+
 }
 
 export default new Tool() as Tool   

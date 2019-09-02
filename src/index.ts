@@ -2,7 +2,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json')
+const dataJSON = require('./data.json');
 
 class AnswerCard {
    pages: Array<Page> = [];
@@ -44,6 +44,7 @@ class AnswerCard {
       this.dataJson.pageQus.map((pros: any) => {
          pros.pros.map((qus: any) => {
             if (qus.pureObjective === '1') {//客观题
+               pros.pIndex = Tool.selPIndex()               
                qus.qus.map((_ques: any) => {
                   let rIndex = Tool.selectProRIndex($(`[targetID='${_ques.quId}${_ques.pnum}']`))
                   _ques.rIndex = rIndex
