@@ -15,7 +15,8 @@ export default class AnswerFrame {
       // boxRow 编辑当前此行属于哪个框
       this.number = number;
       this.width = GlobalData.pageType === 'A4' ? 672 :
-         GlobalData.pageType === 'A3' && GlobalData.pageColum === 2 ? 704 : 448;
+         GlobalData.pageType === 'A3' && GlobalData.pageColum === 2 ?
+            704 : 448;
       let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
       let dom: JQuery<HTMLElement> = null;
       if (type === 'editor') { //主观题

@@ -57,7 +57,7 @@ export default class Page {
          let defaultColum: JQuery<HTMLElement> = null
          if (_colum === this.colum - 1) {
             defaultColum = $(`<div class="colum ${this.type}-${this.colum}">
-            ${renderHeader ? `<div contenteditable="true" class="exam-title">${this.data.alias}</div>` : ''}
+            ${renderHeader ? `<div contenteditable="true" class="exam-title" hash="examTitle">${this.data.alias}</div>` : ''}
             </div>`)
          } else {
             defaultColum = $(`<div class="colum ${this.type}-${this.colum}"></div>`)
@@ -79,14 +79,7 @@ export default class Page {
       if (addRow) { //增加空白行
          this.whatRender(this.data, addRow)
       } else { }
-
-      // $('.exam-title').on('keydown', (e) => {
-      //    e.keyCode === 13 && e.preventDefault()
-      // })
-
-      // return this;
    }
-
    private whatRender(data: any, addRow: boolean) {
       data.pageQus.map((pro: any, index: number) => {
          // console.log(pro)
@@ -101,13 +94,12 @@ export default class Page {
          }
       })
    }
-
    private square(): Array<JQuery<HTMLElement>> {
       let arr: Array<JQuery<HTMLElement>> = [];
-      arr.push($('<div class="square left-top"></div>'));
-      arr.push($('<div class="square left-bottom"></div>'));
-      arr.push($('<div class="square right-top"></div>'));
-      arr.push($('<div class="square right-bottom"></div>'));
+      arr.push($('<div style="width:20px;height:20px" class="square left-top"></div>'));
+      arr.push($('<div style="width:20px;height:20px" class="square left-bottom"></div>'));
+      arr.push($('<div style="width:20px;height:20px" class="square right-top"></div>'));
+      arr.push($('<div style="width:20px;height:20px" class="square right-bottom"></div>'));
       return arr
    }
    private rectangle(pageNum: boolean = false) {
@@ -122,7 +114,7 @@ export default class Page {
             if (i > 2) break;
             let top = 0;
             top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).height() + $(this.page.find('div.left-top')).position().top - 12.5;
-            this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:32px" class="rectangle"></div>`)
+            this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:25px" class="rectangle"></div>`)
             i++;
          }
       } else {//顶部页数方块
@@ -145,7 +137,6 @@ export default class Page {
       // $('#answerCard').find('.select-box').last().parent().append(answerFrame.answerFrame)
       $(page.find('.colum').get(0)).append(answerFrame.answerFrame)
    }
-
    //监听每一列的dom改变 重要的话说3次：整个app的精华都在这里；整个app的精华都在这里；整个app的精华都在这里
    private observeColum(dom: JQuery<HTMLElement>) {
       let config: any = { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] };
@@ -154,7 +145,7 @@ export default class Page {
             if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
             let innerHeight = dom.height();
             let pageHeight = this.page.height()
-            if (pageHeight < innerHeight) {//回车和初始化布局
+            if (pageHeight < innerHeight) {//回车和初始化布局 
                // 此列中最后一个editorBox
                let lastEditorBox = dom.find('div.editor-box').last().get(0);
                if (lastEditorBox) {
@@ -184,9 +175,12 @@ export default class Page {
                   !obj.answerFrame.children().length && obj.answerFrame.remove()
                }
             } else if (pageHeight > innerHeight) {//删除
-               if (!$(mutation.removedNodes[0]).attr('hash') || mutation.removedNodes[0] && mutation.removedNodes[0].nodeName === 'BR') { return }
+               if (!$(mutation.target).hasClass('exam-title') && !$(mutation.removedNodes[0]).attr('hash')) { return }
                let hash = $(mutation.target).attr('hash');
-               let editorBox = this.page.find(`div.editor-box[hash=${hash}]`) //触发删除事件的EditotBox
+               let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}]`)//触发删除事件的EditotBox
+               if (!editorBox.get(0)) { //如果触发删除事件的editorBox被删除，则找被被移到上一个框的row的根元素colum的下一个colum中的任意一个editorBox
+                  editorBox = $(mutation.removedNodes[0]).parent().parent().next('.colum').find('div.editor-box:first-child')
+               }
                let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
                if (!nextEditorBox) {
                   this.moveNextEditorBoxToThisColum(editorBox.parent()); return
@@ -281,6 +275,7 @@ export default class Page {
       answerFrame.answerFrame.append(row)
       row.attr('hash', answerFrame.answerFrame.attr('hash'))
    }
+
    private setFrameIdx(dom: JQuery<HTMLElement>) {
       let colums = $('#answerCard').find('.colum');
       for (let i = 0; i < colums.length; i++) {

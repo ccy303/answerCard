@@ -2,6 +2,7 @@
   border: 1px solid #000;
   box-sizing: border-box;
   width: 100%;
+  font-family: simhei,宋体;
   .header-contnet {
     &::after {
       display: table;
@@ -73,7 +74,7 @@
     min-height: 136px;
     border-top: 1px solid #000;
     text-align: center;
-  }
+  } 
   &::after {
     display: table;
     content: "";
