@@ -1,48 +1,54 @@
 .header-box {
-  border: 1px solid #000;
   box-sizing: border-box;
   width: 100%;
-  font-family: simhei,宋体;
+  font-family: simhei, 宋体;
+  text-align: center;
   .header-contnet {
+    float: left;
+    width: 45%;
+    text-align: left;
     &::after {
       display: table;
       content: "";
       clear: both;
     }
-  }
-  .tip-box {
-    padding: 5px 0;
-    box-sizing: border-box;
-    float: left;
-    p {
-      font-size: 12px;
-      margin: 0;
-      line-height: 20px;
-      padding: 0 10px;
+    .tip-box {
+      padding: 5px;
+      box-sizing: border-box;
+      border: 2px dashed #999;
+      width: 100%;
+      display: inline-block;
+      p {
+        font-size: 12px;
+        margin: 0;
+        line-height: 20px;
+      }
     }
-  }
-  .student-info {
-    padding: 15px;
-    border-right: 1px solid #000;
-    float: left;
-    box-sizing: border-box;
-    div {
-      margin-bottom: 10px;
-      line-height: 25px;
-      font-size: 14px;
-      .name {
-        margin-right: 15px;
-        height: 25px;
-        display: inline-block;
+    .student-info {
+      padding: 15px 0 0;
+      width: 100%;
+      float: left;
+      box-sizing: border-box;
+      div {
+        margin-bottom: 5px;
+        line-height: 25px;
+        font-size: 13px;
+        float: left;
+        margin-right: 10px;
+        .name {
+          margin-right: 5px;
+          height: 25px;
+          display: inline-block;
+        }
       }
     }
   }
   .student-num {
     box-sizing: border-box;
     height: auto;
-    float: left;
-    padding: 5px 15px;
+    padding: 5px 0;
     text-align: center;
+    display: inline-block;
     .title {
       text-align: center;
       font-size: 14px;
@@ -68,13 +74,14 @@
     }
   }
   .bar-code {
+    margin-top: 50px;
     width: 50%;
     box-sizing: border-box;
     float: right;
     min-height: 136px;
-    border-top: 1px solid #000;
+    border: 2px dashed #999;
     text-align: center;
-  } 
+  }
   &::after {
     display: table;
     content: "";

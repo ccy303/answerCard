@@ -15,23 +15,19 @@ export default class Header {
    public initHeader(): JQuery<HTMLElement> {
       let { examCountType, studentNumLength, alias, type, colum } = this.data
       let box = $('<div class="header-box"></div>')
-      let div = $(`
-         <div
-            class="header-contnet" 
-         >
-         </div>
-      `)
+      let div = $(`<div class="header-contnet"></div>`)
       if (examCountType === 1) {
-         box.append(this.renderTip())
-         div.append(this.renderBarCode())
          div.append(this.renderStudentInfo());
+         div.append(this.renderTip())
          box.append(div);
+         box.append(this.renderBarCode())
       } else if (examCountType === 2) {
          let style = {
-            width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '50%' : '100%',
-            float: studentNumLength <= 9 ? 'left' : 'unset'
+            width: studentNumLength <= 11 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
+            float: studentNumLength <= 11 ? 'left' : 'unset',
+            marginTop: (type === 'A4' || type === 'A3' && colum != 3) ? '30px' : '0',
          }
-         div.attr('style', `width:${style.width};float:${style.float}`)
+         div.css('margin-top', style.marginTop).css('width', style.width)
          div.append(this.renderStudentInfo())
          div.append(this.renderTip())
          box.append(div)
@@ -41,12 +37,8 @@ export default class Header {
       return this.header
    }
    private renderStudentNum(): JQuery<HTMLElement> {
-      let { studentNumLength, type, colum } = this.data
-      let style = {
-         width: studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '50%' : '100%'
-      }
+      let { studentNumLength } = this.data
       let box: JQuery<HTMLElement> = $('<div class="student-num"></div>');
-      box.attr('style', `width:${style.width}`)
       let header = $(`<p class="title">学号</p>`)
       box.append(header)
       let num = $(`<div class="num"></div>`);
@@ -69,51 +61,30 @@ export default class Header {
       return box;
    }
    private renderStudentInfo(): JQuery<HTMLElement> {
-      let { examCountType, studentNumLength, type, colum } = this.data
-      let style = {
-         borderTop: examCountType === 2 ? 'none' : '1px solid #000',
-         borderBot: examCountType === 2 ? '1px solid #000' : 'none',
-         width: examCountType === 1 ? '50%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '100%' : '50%',
-         height: ''
-      }
-      if (type === 'A3' && colum == 3) {
-         style.height = '191px';
-      }
       let box = $(`
          <div
             class="student-info"
-            style="border-top:${style.borderTop};border-bottom:${style.borderBot};width:${style.width};height:${style.height}"
          ></div>
       `);
       let info = ['学校', '姓名', '班级'];
       let dom: Array<JQuery<HTMLElement>> = []
       info.map(val => {
-         dom.push($(`<div><span class="name">${val}:</span>_______________________</div>`))
+         dom.push($(`<div><span class="name"><b>${val}:</span>_______________</b></div>`))
       })
       box.append(dom)
       return box
    }
    private renderTip(): JQuery<HTMLElement> {
-      let { examCountType, studentNumLength, type, colum } = this.data
-      let style = {
-         height: '',
-         width: examCountType === 1 ? '100%' : studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '100%' : '50%',
-         borderBot: examCountType === 2 ? studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '' : '1px solid #000' : 'none',
-         borderRight: examCountType === 2 && studentNumLength <= 9 && (type === 'A4' || type === 'A3' && colum != 3) ? '1px solid #000' : '',
-      }
-      if (type === 'A4' || (type === 'A3' && colum != 3)) {
-         style.height = examCountType === 2 ? "136px" : 'auto';
-      } else if (type === 'A3' && colum == 3) {
-         style.height = 'auto'
-      }
+      let {type, colum } = this.data
+      let disNone = type == 'A3' && colum == 3 ? "display:none" : "display:block"
       return $(`<div 
          class="tip-box"
-         style="width:${style.width};height:${style.height};border-bottom:${style.borderBot};border-right:${style.borderRight}"
-      >
-         <p>1、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p>
-         <p>2、选择题作答必须用2B铅笔填涂，非选择题作答必须用黑色中性笔或黑色墨迹钢笔填写。</p>
-         <p>3、必须在指定区域答题，且不得超出黑色答题框。</p>
-         <p>4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p>
+      >  
+         <h5 style="margin:0;">注意事项</h5>
+         <p>1、选择题作答必须用2B铅笔填涂</p>
+         <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
+         <p style=${disNone}>3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p>
+         <p style=${disNone}>4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p>
       </div>`)
    }
    private renderBarCode(): JQuery<HTMLElement> {

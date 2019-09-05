@@ -1,3 +1,4 @@
+import GlobalData from '../conpoment/global'
 class Tool {
    selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
@@ -22,7 +23,6 @@ class Tool {
       let frame = dom.attr('frame');
       return `${page}-${bigFrame}-${frame}`
    }
-
    subjectiveQuestionsPindex(dom: JQuery<HTMLElement>) {//主观题pindex
       let pIndex = [];
       let pages = $('#answerCard>.page');
@@ -45,7 +45,6 @@ class Tool {
       }
       return pIndex.join('-')
    }
-
    selPIndex() {//选择器Pindex
       let page = $('#answerCard>.page');
       let pIndex = [];
@@ -60,7 +59,59 @@ class Tool {
       }
       return pIndex.join('-')
    }
-
+   checkBoxIsSplit(dom: JQuery<HTMLElement>) {
+      let attr = dom.attr('boxindex');
+      let editorBoxs = $('#answerCard').find(`[boxindex=${attr}]`);
+      return !(dom.get(0) === editorBoxs[0])
+   }
+   insertGrid() {
+      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
+         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
+            <p style="">插入方格数</p>
+            <input id="count" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
+            <div style="margin:15px 0;text-align:center">
+               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
+               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+            </div>
+         </div>
+      </div>`)
+      $('body').append(dialog)
+      $('#no').on('click', () => { $('#dialog').remove() })
+      $('#yes').on('click', () => {
+         let val = $('#count').val();
+         if (!val) return
+         GlobalData.contentTextTarget.targetObj.addGrid(val);
+         $('#dialog').remove()
+      })
+   }
+   changeLineHeight() {
+      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
+         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
+            <p style="">修改行高</p>
+            <select value="25" id="lineHeight" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" >
+               <option value="18">18px</option>
+               <option value="20">20px</option>
+               <option selected="selected" value="25">25px</option>
+               <option value="30">30px</option>
+               <option value="38">38px</option>
+               <option value="44">44px</option>
+               <option value="50">50px</option>
+            <select>
+            <div style="margin:15px 0;text-align:center">
+               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
+               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+            </div>
+         </div>
+      </div>`)
+      $('body').append(dialog)
+      $('#no').on('click', () => { $('#dialog').remove() })
+      $('#yes').on('click', () => {
+         let val = $('#lineHeight').val();
+         if (!val) return
+         GlobalData.contentTextTarget.targetObj.changeLineHeight(val);
+         $('#dialog').remove()
+      })
+   }
 }
 
 export default new Tool() as Tool   

@@ -151,10 +151,12 @@ export default class Page {
                if (lastEditorBox) {
                   const type = $(lastEditorBox).attr('type')
                   //获取生成此editorBox的对象实例
-                  let obj = GlobalData.AnswerFrameObj.filter((val: any) => {
-                     return val.answerFrame.get(0) === lastEditorBox;
-                  })[0];
-                  let lastRow = obj.getLastRow()
+                  let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox; })[0];
+                  let lastRow = null;
+                  obj && (lastRow = obj.getLastRow())
+                  if (!obj && $(lastEditorBox).attr('proTitle')) {
+                     lastRow = $(lastEditorBox).find('.row:last-child')
+                  }
                   let nextBox = this.checkoutEditorBox(dom.find('div.editor-box:last-child'), dom);
                   if (nextBox && nextBox.get(0)) {
                      lastRow.attr('hash', nextBox.attr('hash'))
@@ -163,23 +165,23 @@ export default class Page {
                      let boxIndex = lastRow.parent().attr('boxIndex')
                      let box: JQuery<HTMLElement>
                      if (dom.next('.colum').get(0)) {//本页最后一栏
-                        box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type).answerFrame;
+                        box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type, $(lastEditorBox).attr('proTitle'));
                      } else {
-                        box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type).answerFrame
+                        box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type, $(lastEditorBox).attr('proTitle'))
                      }
                      box.attr('targetid', lastRow.parent().attr('targetid'))
                      let boxFirstChild = box.children(':first-child');
                      lastRow.attr('hash', box.attr('hash'))
                      boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
                   }
-                  !obj.answerFrame.children().length && obj.answerFrame.remove()
+                  obj && !obj.answerFrame.children().length && obj.answerFrame.remove()
+                  !obj && !$(lastEditorBox).find('.row').length && $(lastEditorBox).remove()
                }
             } else if (pageHeight > innerHeight) {//删除
-               if (!$(mutation.target).hasClass('exam-title') && !$(mutation.removedNodes[0]).attr('hash')) { return }
                let hash = $(mutation.target).attr('hash');
                let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}]`)//触发删除事件的EditotBox
-               if (!editorBox.get(0)) { //如果触发删除事件的editorBox被删除，则找被被移到上一个框的row的根元素colum的下一个colum中的任意一个editorBox
-                  editorBox = $(mutation.removedNodes[0]).parent().parent().next('.colum').find('div.editor-box:first-child')
+               if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
+                  editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
                }
                let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
                if (!nextEditorBox) {
@@ -192,7 +194,10 @@ export default class Page {
                      this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
                   }
                }
-               nextEditorBox && !nextEditorBox.children().length && nextEditorBox.remove();
+               if (nextEditorBox && !nextEditorBox.children().length) {
+                  GlobalData.haveRemoveDomParent = nextEditorBox.parent()
+                  nextEditorBox.remove();
+               }
             }
          })
          if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
@@ -210,21 +215,37 @@ export default class Page {
       })
       observer.observe(dom.get(0), config)
    }
-
-   private createEditorBoxInNextCol(colum: JQuery<HTMLElement>, bIndex: number, type: string): AnswerFrame {//在下一列中创建EditorBox
-      let answerFrame = new AnswerFrame({}).initAnswerFrame(bIndex, false, type);
-      GlobalData.AnswerFrameObj.push(answerFrame)
-      //判断是否带头
-      if (colum.children('div.header-box').get(0)) {
-         colum.children('div.editor-box').get(0) ?
-            colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
-            colum.append(answerFrame.answerFrame)
+   private createEditorBoxInNextCol(colum: JQuery<HTMLElement>, bIndex: number, type: string, proTitle: string): JQuery<HTMLElement> {//在下一列中创建EditorBox
+      if (!proTitle) {
+         let answerFrame = new AnswerFrame({}).initAnswerFrame(bIndex, false, type);
+         GlobalData.AnswerFrameObj.push(answerFrame)
+         //判断是否带头
+         if (colum.children('div.header-box').get(0)) {
+            colum.children('div.editor-box').get(0) ?
+               colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
+               colum.append(answerFrame.answerFrame)
+         } else {
+            colum.children('div.editor-box').get(0) ?
+               colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
+               colum.append(answerFrame.answerFrame)
+         }
+         return answerFrame.answerFrame;
       } else {
-         colum.children('div.editor-box').get(0) ?
-            colum.children('div.editor-box').first().before(answerFrame.answerFrame) :
-            colum.append(answerFrame.answerFrame)
+         let answerFrame = new AnswerFrame({}).initAnswerFrame(bIndex, false, type);
+         let proTitle = answerFrame.addContent(false, bIndex)
+         //判断是否带头
+         if (colum.children('div.header-box').get(0)) {
+            colum.children('div.editor-box').get(0) ?
+               colum.children('div.editor-box').first().before(proTitle) :
+               colum.append(proTitle)
+         } else {
+            colum.children('div.editor-box').get(0) ?
+               colum.children('div.editor-box').first().before(proTitle) :
+               colum.append(proTitle)
+         }
+         return proTitle
       }
-      return answerFrame;
+
    }
 
    private checkoutEditorBox(dom: any, colum: JQuery<HTMLElement>) {//查找下一列是否存在由此dom(editorBox)拆分出的editorBox

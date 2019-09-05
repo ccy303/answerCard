@@ -2,6 +2,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
+import ContentText from './conpoment/contentText/content';
 const dataJSON = require('./data.json');
 
 class AnswerCard {
@@ -20,7 +21,11 @@ class AnswerCard {
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages.push(page)
+      GlobalData.dom.on('click', () => {
+         $('#contentText').remove()
+      })
    }
+
    private addPage() {
       let page = new Page(this.addPage.bind(this));
       if (this.both) { //双面打印
@@ -44,7 +49,7 @@ class AnswerCard {
       this.dataJson.pageQus.map((pros: any) => {
          pros.pros.map((qus: any) => {
             if (qus.pureObjective === '1') {//客观题
-               pros.pIndex = Tool.selPIndex()               
+               pros.pIndex = Tool.selPIndex()
                qus.qus.map((_ques: any) => {
                   let rIndex = Tool.selectProRIndex($(`[targetID='${_ques.quId}${_ques.pnum}']`))
                   _ques.rIndex = rIndex

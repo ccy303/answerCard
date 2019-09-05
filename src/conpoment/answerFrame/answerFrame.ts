@@ -1,6 +1,8 @@
 import './answerFrame.scss'
 import GlobalData from '../global'
 import SelQues from '../selQues/selQues';
+import tool from '../../tool/tool';
+import ContentText from '../contentText/content';
 export default class AnswerFrame {
    _answerFrame: JQuery<HTMLElement> = null;
    _selDom: any = null;
@@ -27,7 +29,15 @@ export default class AnswerFrame {
          dom = this.renderSelect({ bIndex, insertChild, hash })
       }
       this.answerFrame = dom
+      this.answerFrame.on('contextmenu', this.contextmenu.bind(this))
       return this
+   }
+   private contextmenu(e: any) {//右键菜单
+      e.preventDefault();
+      GlobalData.contentTextTarget = { targetObj: this, targetDom: $(e.currentTarget), targetRow: $(e.target) };
+      let contentText = new ContentText().init()
+      GlobalData.dom.append(contentText);
+      $('#contentText').css('display', 'block').css('top', e.pageY).css('left', e.pageX)
    }
    get answerFrame(): JQuery<HTMLElement> {
       return this._answerFrame;
@@ -93,8 +103,8 @@ export default class AnswerFrame {
             }
          })
       }
-      dom.on('keydown', this.keyDowm)
-      dom.on('paste', this.paste.bind(this))
+      dom.on('keydown', this.keyDowm.bind(this, false))
+      dom.on('paste', this.paste.bind(this, true))
       dom.on('click', () => { GlobalData.currentImage = null; })
       return dom
    }
@@ -137,10 +147,10 @@ export default class AnswerFrame {
    public getLastRow() {
       return this.answerFrame.find('.row:last-child')
    }
-   private paste(e: any) {
+   private paste(canPasteImg: boolean = true, e: any) {
       e.preventDefault();
       let file = e.originalEvent.clipboardData.files[0]
-      if (file && file.type == 'image/png') {
+      if (file && file.type == 'image/png' && canPasteImg) {
          let reader = new FileReader();
          reader.onload = () => {
             $(e.currentTarget).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
@@ -202,14 +212,65 @@ export default class AnswerFrame {
          })
       })
    }
-   private keyDowm(event: any) {
+   private keyDowm(contentText: boolean, event: any) { //contentText：来自右键菜单
       if (event.keyCode === 8) {
          //剩下最后一行时禁用删除
          if (GlobalData.currentImage) {
             event.preventDefault();
             $(GlobalData.currentImage).parent().remove()
          }
-         $(event.target).children().length === 1 && event.preventDefault();
+         $(event.target).children('.row').length === 1 && $(event.target).children('.row').get(0).innerHTML.indexOf('<b') != -1 && event.preventDefault();
       }
+   }
+   /**
+    * @param  addrow  是否给新创建的标题栏添加一行
+    * @param  bIndex  由上一个标题栏跨栏产生的标题栏创建时需要传递的发生跨列的标题栏的boxIndex，空则表示不是跨列调用
+    */
+   public addContent(addrow: boolean = true, bIndex?: any) {
+      let proTitle = GlobalData.contentTextTarget.targetDom.prev().attr('proTitle');
+      let isSplit = tool.checkBoxIsSplit(GlobalData.contentTextTarget.targetDom);
+      if (!bIndex && (proTitle || isSplit)) { return }
+      let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
+      !bIndex && (bIndex = (new Date().getTime() + Math.random() * 1000000000000).toFixed(0))
+      let dom = $(`<div boxIndex=${bIndex} hash="${hash}" proTitle="true" contenteditable="true" type="editor" class="editor-box"></div>`)
+      let row = $(`<div class="row" hash="${hash}">1</div>`)
+      let del = $(`<span class="del" contenteditable="false">×</span>`)
+      dom.append(del)
+      addrow && dom.append(row);
+      dom.on('keydown', this.keyDowm.bind(this, true))
+      dom.on('paste', this.paste.bind(this, false))
+      del.on('click', () => {
+         GlobalData.haveRemoveDomParent = $(`div[proTitle="true"][boxIndex=${bIndex}]`).parent();
+         $(`div[proTitle="true"][boxIndex=${bIndex}]`).remove()
+      })
+      GlobalData.contentTextTarget.targetDom.before(dom)
+      return dom
+   }
+   public addGrid(count: number) {
+      if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'editor') {
+         return
+      }
+      if (GlobalData.contentTextTarget.targetRow.get(0).innerHTML === '<br>') {
+         GlobalData.contentTextTarget.targetRow.get(0).innerHTML = ''
+      }
+      let _count = count;
+      let i = 0;
+      while (true) {
+         if (i > _count - 1) break;
+         let grid = $(`<div 
+            contenteditable="false"
+            style="height:32px;width:32px;box-sizing:border-box;border:1px solid #000;display:inline-block;margin-right:2px"
+         ></div>`)
+         i == 0 && grid.css('border-left', '1px solid #000')
+         GlobalData.contentTextTarget.targetRow.append(grid)
+         i++
+      }
+   }
+   public changeLineHeight(height: number) {
+      if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'editor') {
+         return
+      }
+      let attr = GlobalData.contentTextTarget.targetDom.attr('boxindex');
+      $(`div[boxindex=${attr}]`).find('.row').css('line-height', height + 'px')
    }
 }
