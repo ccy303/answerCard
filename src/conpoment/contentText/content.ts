@@ -74,8 +74,8 @@ export default class ContentText {
    }
 
    private fileChange(e: any) {
-      console.log(e)
       let file = e.target.files[0];
+      tool.uploadFile(file, true)
    }
 
 }

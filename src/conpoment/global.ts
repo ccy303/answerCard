@@ -8,8 +8,7 @@ export default class GlobalData {
    static dom: JQuery<HTMLElement> = null;
    static contentTextTarget: any = {};
    static haveRemoveDomParent: JQuery<HTMLElement> = null; //保存已经删掉的元素所在的列
-   static config: any = {
-
+   static config: any = {     
    }
    static set currentImage(val) {
       val !== this._currentImage && $(this._currentImage).parent().removeClass('active')

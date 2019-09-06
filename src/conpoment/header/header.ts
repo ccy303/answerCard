@@ -66,7 +66,7 @@ export default class Header {
             class="student-info"
          ></div>
       `);
-      let info = ['学校', '姓名', '班级'];
+      let info = ['姓名', '班级', '考场号/座位号',];
       let dom: Array<JQuery<HTMLElement>> = []
       info.map(val => {
          dom.push($(`<div><span class="name"><b>${val}:</span>_______________</b></div>`))
@@ -75,7 +75,7 @@ export default class Header {
       return box
    }
    private renderTip(): JQuery<HTMLElement> {
-      let {type, colum } = this.data
+      let { type, colum } = this.data
       let disNone = type == 'A3' && colum == 3 ? "display:none" : "display:block"
       return $(`<div 
          class="tip-box"

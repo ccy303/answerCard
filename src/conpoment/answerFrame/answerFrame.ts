@@ -147,16 +147,21 @@ export default class AnswerFrame {
    public getLastRow() {
       return this.answerFrame.find('.row:last-child')
    }
+   public addImage(url: any) {
+      $(this.answerFrame).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
+         <img src=${url}  class="image-file" draggable ="false">
+      </div>`))
+      this.dealImage()
+   }
    private paste(canPasteImg: boolean = true, e: any) {
       e.preventDefault();
       let file = e.originalEvent.clipboardData.files[0]
       if (file && file.type == 'image/png' && canPasteImg) {
          let reader = new FileReader();
          reader.onload = () => {
-            $(e.currentTarget).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
-               <img src=${reader.result}  class="image-file" draggable ="false">
-            </div>`))
-            this.dealImage()
+            tool.uploadFile(reader.result, true, () => {
+               this.addImage(reader.result)
+            })
          }
          reader.readAsDataURL(file)
       } else {

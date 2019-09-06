@@ -2,7 +2,6 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-import ContentText from './conpoment/contentText/content';
 const dataJSON = require('./data.json');
 
 class AnswerCard {
@@ -65,4 +64,12 @@ class AnswerCard {
 
 export default AnswerCard
 
-process.env.NODE_ENV == 'development' && new AnswerCard({ dataJSON: dataJSON, both: true, config: {}, dom: null })
+process.env.NODE_ENV == 'development' && new AnswerCard({
+   dataJSON: dataJSON, both: true, config: {
+      uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
+      queryData: {
+         Token: '4b3d81716803b73a2fe924e1d4feff389dd2bf7f',
+         inType: 41,
+      }
+   }, dom: null
+})

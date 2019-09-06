@@ -1,5 +1,15 @@
 import GlobalData from '../conpoment/global'
 class Tool {
+   getCookie(name: any) {
+      let arr;
+      let reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+      if (arr = document.cookie.match(reg)) {
+         return unescape(arr[2]);
+      } else {
+         return null;
+      }
+      console.log(arr)
+   }
    selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
       let pageDom = null;
@@ -110,6 +120,34 @@ class Tool {
          if (!val) return
          GlobalData.contentTextTarget.targetObj.changeLineHeight(val);
          $('#dialog').remove()
+      })
+   }
+   uploadFile(file: any, type: boolean, callback?: any) {
+      let config = GlobalData.config;
+      let queryData = type ? Object.assign({}, config.queryData, { inFiletype: 'png' }) : config.queryData;
+      $.post(`${config.uploadUrl}`, queryData, (res) => {
+         if (res.result === '00') {
+            let { data } = res;
+            let fromData = new FormData();
+            !type && fromData.append('key', data.dir + data.filename + (file.name.substring((file.name.lastIndexOf(".")))));
+            type && fromData.append('key', data.dir + data.filename);
+            fromData.append('policy', data.policy);
+            fromData.append('OSSAccessKeyId', data.accessid);
+            fromData.append('success_action_status', '200');
+            fromData.append('signature', data.signature);
+            fromData.append('file', file);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", data.host, true);
+            xhr.onreadystatechange = function () {
+               if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                     !callback && GlobalData.contentTextTarget.targetObj.addImage(data.url)
+                     typeof (callback) == 'function' && callback()
+                  }
+               }
+            }
+            xhr.send(fromData);
+         }
       })
    }
 }
