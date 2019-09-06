@@ -1,12 +1,14 @@
 import GlobalData from '../global';
 import tool from '../../tool/tool';
+import charudati from './../../icons/charudati_icono.png';
 export default class ContentText {
-   constructor() {
-   }
    public init() {
       let contentText = $(`<div id="contentText">
          <ul id="firstList">
-            <li onselectstart="return false" id="right-addContent">插入文本框</li>
+            <li onselectstart="return false" id="right-addContent">
+               <img src="../../icons/charudati_icono.png"/>
+               插入文本框
+            </li>
             <li onselectstart="return false" id="right-lineHeight">修改行高</li>
             <li onselectstart="return false" id="right-addGrid">插入方格</li>
             <li onselectstart="return false" id="right-style-change">样式修改</li>

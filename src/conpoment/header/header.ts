@@ -25,7 +25,7 @@ export default class Header {
          let style = {
             width: studentNumLength <= 11 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
             float: studentNumLength <= 11 ? 'left' : 'unset',
-            marginTop: (type === 'A4' || type === 'A3' && colum != 3) ? '30px' : '0',
+            marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
          }
          div.css('margin-top', style.marginTop).css('width', style.width)
          div.append(this.renderStudentInfo())

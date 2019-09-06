@@ -35,33 +35,44 @@ module.exports = (env) => {
          port: 2048
       },
       module: {
-         rules: [{
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-         },
-         {
-            test: /\.scss$/,
-            use: [
-               "style-loader",
-               "css-loader",
-               "sass-loader"
-            ]
-         },
-         {
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-               loader: 'babel-loader',
-               options: {
-                  presets: ['@babel/preset-env']
+         rules: [
+            {
+               test: /\.css$/,
+               use: ['style-loader', 'css-loader']
+            },
+            {
+               test: /\.scss$/,
+               use: [
+                  "style-loader",
+                  "css-loader",
+                  "sass-loader"
+               ]
+            },
+            {
+               test: /\.js$/,
+               exclude: /(node_modules|bower_components)/,
+               use: {
+                  loader: 'babel-loader',
+                  options: {
+                     presets: ['@babel/preset-env']
+                  }
+               }
+            },
+            {
+               test: /\.tsx?$/,
+               use: 'ts-loader',
+               exclude: /node_modules/
+            },
+            {
+               test: /\.(png|svg|jpg|gif)$/,
+               use: {
+                  loader: 'file-loader',
+                  options: {
+                     // name: 'dirname/[hash].[ext]'
+                     // publicPath: 'assets/'
+                  }
                }
             }
-         },
-         {
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/
-         }
          ]
       },
       resolve: {
