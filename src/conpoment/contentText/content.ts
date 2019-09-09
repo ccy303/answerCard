@@ -1,33 +1,82 @@
 import GlobalData from '../global';
 import tool from '../../tool/tool';
-import charudati from './../../icons/charudati_icono.png';
+import icon1 from './../../../assets/icons/charudati_icono.png';
+import icon2 from './../../../assets/icons/hanggao-icon.png';
+import icon3 from './../../../assets/icons/kongge-icon.png';
+import icon4 from './../../../assets/icons/yanghsixiugai-icon.png';
+import icon5 from './../../../assets/icons/more-icon.png';
+import icon6 from './../../../assets/icons/tupian-icon.png';
+import icon7 from './../../../assets/icons/qingchu-icon.png';
+import icon8 from './../../../assets/icons/jiachu-icon.png';
+import icon9 from './../../../assets/icons/xiahuaxian-icon.png';
+import icon10 from './../../../assets/icons/zuoduiqi-icon.png';
+import icon11 from './../../../assets/icons/zuoduiqi-icon.png';
+import icon12 from './../../../assets/icons/juzhong-icon.png';
+import icon13 from './../../../assets/icons/youduiqi-icon.png';
+
 export default class ContentText {
    public init() {
+      // <img src="../../icons/charudati_icono.png" />
       let contentText = $(`<div id="contentText">
          <ul id="firstList">
             <li onselectstart="return false" id="right-addContent">
-               <img src="../../icons/charudati_icono.png"/>
+               <img src="${icon1}" />
                插入文本框
             </li>
-            <li onselectstart="return false" id="right-lineHeight">修改行高</li>
-            <li onselectstart="return false" id="right-addGrid">插入方格</li>
-            <li onselectstart="return false" id="right-style-change">样式修改</li>
-            <li onselectstart="return false" id="insert-img">插入图片</li>
-            <li onselectstart="return false" id="clear-style">清除样式</li>
+            <li onselectstart="return false" id="right-lineHeight">
+               <img src="${icon2}" />
+               修改行高
+            </li>
+            <li onselectstart="return false" id="right-addGrid">
+               <img src="${icon3}" />
+               插入方格
+            </li>
+            <li onselectstart="return false" id="right-style-change">
+               <img src="${icon4}" />
+               样式修改
+               <img style="margin: 0 0 0 30px" src="${icon5}" />
+            </li>
+            <li onselectstart="return false" id="insert-img">
+               <img src="${icon6}" />
+               插入图片
+            </li>
+            <li onselectstart="return false" id="clear-style">
+               <img src="${icon7}" />
+               清除样式
+            </li>
          </ul>
       </div>`)
       let secondList = $(`<div class="secondList">
          <ul id="secondList">
-            <li onselectstart="return false" id="blod">加粗</li>
-            <li onselectstart="return false" id="under-line">下划线</li>
-            <li onselectstart="return false" id="align">对齐方式</li>
+            <li onselectstart="return false" id="blod">
+               <img src="${icon8}" />
+               加粗
+            </li>
+            <li onselectstart="return false" id="under-line">
+               <img src="${icon9}" />
+               下划线
+            </li>
+            <li onselectstart="return false" id="align">
+               <img src="${icon10}" />
+               对齐方式
+               <img style="margin: 0 0 0 20px" src="${icon5}" />
+            </li>
          </ul>
       </div>`)
       let threeList = $(`<div class="threeList">
          <ul>
-            <li onselectstart="return false" id="left">左对齐</li>
-            <li onselectstart="return false" id="center">居中</li>
-            <li onselectstart="return false" id="right">右对齐</li>
+            <li onselectstart="return false" id="left">
+               <img src="${icon11}" />
+               左对齐
+            </li>
+            <li onselectstart="return false" id="center">
+               <img src="${icon12}" />
+               居中
+            </li>
+            <li onselectstart="return false" id="right">
+               <img src="${icon13}" />
+               右对齐
+            </li>
          </ul>
       </div>`)
       contentText.append(secondList)

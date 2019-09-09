@@ -1,6 +1,6 @@
 {
   "name": "answer-card",
-  "version": "1.0.70",
+  "version": "1.0.79",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"

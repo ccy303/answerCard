@@ -2,7 +2,7 @@ import './header.scss';
 import GlobalData from '../global';
 export default class Header {
    private data: any
-   public header: JQuery<HTMLElement>;
+   public _header: JQuery<HTMLElement> = null;
    constructor(data?: any) {
       this.data = {
          studentNumLength: GlobalData.dataJSON.noCount,
@@ -11,10 +11,21 @@ export default class Header {
          colum: data.colum
       }
    }
-
-   public initHeader(): JQuery<HTMLElement> {
-      let { examCountType, studentNumLength, alias, type, colum } = this.data
-      let box = $('<div class="header-box"></div>')
+   set header(val: JQuery<HTMLElement>) {
+      if (!this._header) {
+         this._header = val;
+      } else {
+         $(this._header).html(val.html())
+      }
+   }
+   get header() {
+      return this._header;
+   }
+   public initHeader(count?: number): JQuery<HTMLElement> {
+      let { examCountType, type, colum } = this.data
+      let studentNumLength = count ? count : this.data.studentNumLength;
+      let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
+      let box = $(`<div class="header-box" hash="${hash}"></div>`)
       let div = $(`<div class="header-contnet"></div>`)
       if (examCountType === 1) {
          div.append(this.renderStudentInfo());
@@ -31,13 +42,13 @@ export default class Header {
          div.append(this.renderStudentInfo())
          div.append(this.renderTip())
          box.append(div)
-         box.append(this.renderStudentNum())
+         box.append(this.renderStudentNum(count))
       }
       this.header = box;
       return this.header
    }
-   private renderStudentNum(): JQuery<HTMLElement> {
-      let { studentNumLength } = this.data
+   private renderStudentNum(count?: number): JQuery<HTMLElement> {
+      let studentNumLength = count ? count : this.data.studentNumLength
       let box: JQuery<HTMLElement> = $('<div class="student-num"></div>');
       let header = $(`<p class="title">学号</p>`)
       box.append(header)
@@ -94,5 +105,9 @@ export default class Header {
             <p style="font-size: 12px">（正面朝上，切勿贴出框外）</p>
          </div>
       `)
+   }
+   public reRenderHeader(count: number) {
+      GlobalData.dataJSON.noCount = count;
+      this.initHeader(count)
    }
 }

@@ -247,11 +247,12 @@
         display: inline-block;
         .frame {
           width: 32px;
-          height: 21px;
+          height: 18px;
           line-height: 21px;
           font-size: 12px;
           text-align: center;
           letter-spacing: 2px;
+          text-indent: 2px;
         }
       }
     }
@@ -350,7 +351,6 @@ body {
     }
   }
 }
-
 .page {
   margin: 0 auto;
   background: #fff;

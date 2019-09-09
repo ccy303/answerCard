@@ -1,6 +1,6 @@
 import Header from '../header/header';
 import AnswerFrame from '../answerFrame/answerFrame';
-import GlobalData from '../global'
+import GlobalData from '../global';
 import './page.scss';
 
 export default class Page {
@@ -36,7 +36,7 @@ export default class Page {
    constructor(callback: any) {
       this.type = GlobalData.dataJSON.paperSize;
       this.colum = GlobalData.dataJSON.layoutType;
-      this.page = $('<div class="page"></div>')
+      this.page = $('<div class="page boxShadow"></div>')
       this.data = GlobalData.dataJSON
       this.callback = callback;
    }
@@ -74,6 +74,7 @@ export default class Page {
             type: this.type,
             colum: this.colum
          })
+         GlobalData.headerObj.push(header);
          $(this.page).find('div.colum:first-child').append(header.initHeader());
       }
       if (addRow) { //增加空白行
@@ -107,25 +108,25 @@ export default class Page {
       let width = pageNum ? '25px' : '8px';
       if (!pageNum) {//右边方块
          let innerHeight: number = 0;
-         innerHeight = $(this.page.find('div.left-bottom')).position().top - $(this.page.find('div.left-top')).position().top - $(this.page.find('div.left-top')).height();
+         innerHeight = $(this.page.find('div.left-bottom')).position().top - $(this.page.find('div.left-top')).position().top + $(this.page.find('div.left-top')).height();
          innerHeight = innerHeight / 4;
          let i = 0;
          while (true) {
             if (i > 2) break;
             let top = 0;
-            top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).height() + $(this.page.find('div.left-top')).position().top - 12.5;
+            top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).position().top
             this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:25px" class="rectangle"></div>`)
             i++;
          }
       } else {//顶部页数方块
          let innerWidth: number = 0;
-         innerWidth = $(this.page.find('div.right-top')).position().left - $(this.page.find('div.left-top')).position().left - $(this.page.find('div.left-top')).width()
+         innerWidth = $(this.page.find('div.right-top')).position().left - $(this.page.find('div.left-top')).position().left + $(this.page.find('div.right-top')).width();
          innerWidth = this.type === 'A4' ? innerWidth / 5 : innerWidth / 2 / 5;
          let pageIndex = parseInt(this.page.attr('id'));
          this.pageNum[pageIndex - 1].map((val: any) => {
             let left = 0;
-            left = innerWidth * val + $(this.page.find('div.left-top')).width();
-            this.page.append(`<div style="height:${height};width:${width};top:${45}px;left:${left}px" class="rectangle"></div>`)
+            left = innerWidth * val + $(this.page.find('div.left-top')).position().left
+            this.page.append(`<div style="height:${height};width:${width};top:${40}px;left:${left}px" class="rectangle"></div>`)
          })
 
       }
@@ -179,7 +180,7 @@ export default class Page {
                }
             } else if (pageHeight > innerHeight) {//删除
                let hash = $(mutation.target).attr('hash');
-               let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}]`)//触发删除事件的EditotBox
+               let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
                if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
                   editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
                }
@@ -202,6 +203,8 @@ export default class Page {
          })
          if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
             dom.parent().remove()
+            $('[type=totalPage]').html(`共${$('.colum').length}页`)
+            GlobalData.pageObjectPop(this);
          }
          if (!dom.find('div.select-box').children().last().children().first().children().get(0)) {
             dom.find('div.select-box').children().last().remove()
@@ -215,6 +218,7 @@ export default class Page {
       })
       observer.observe(dom.get(0), config)
    }
+
    private createEditorBoxInNextCol(colum: JQuery<HTMLElement>, bIndex: number, type: string, proTitle: string): JQuery<HTMLElement> {//在下一列中创建EditorBox
       if (!proTitle) {
          let answerFrame = new AnswerFrame({}).initAnswerFrame(bIndex, false, type);

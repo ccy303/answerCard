@@ -5,9 +5,14 @@ import Tool from './tool/tool'
 const dataJSON = require('./data.json');
 
 class AnswerCard {
-   pages: Array<Page> = [];
    dataJson: any
    both: boolean //是否双面
+   set pages(val: any) {
+      GlobalData.pageObject = val;
+   }
+   get pages() {
+      return GlobalData.pageObject
+   }
    constructor(obj: any) {
       this.dataJson = obj.dataJSON;
       this.both = obj.both
@@ -19,12 +24,14 @@ class AnswerCard {
       GlobalData.pageColum = parseInt(dataJSON.layoutType);
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
-      this.pages.push(page)
+      this.pages = page
       GlobalData.dom.on('click', () => {
          $('#contentText').remove()
       })
+      // setTimeout(() => {
+      //    this.reRenderHeader(10);
+      // }, 2000)
    }
-
    private addPage() {
       let page = new Page(this.addPage.bind(this));
       if (this.both) { //双面打印
@@ -34,10 +41,11 @@ class AnswerCard {
       } else {
          page.pageInit(false, true)
       }
-      this.pages.push(page)
+      this.pages = page
    }
    public htmlToJson(): string {//把html 转化成json返回
       let pages = $('#answerCard').children('.page');
+      pages.removeClass('boxShadow')
       let arr = [];
       for (let i = 0; i < pages.length; i++) {
          arr.push(pages[i].outerHTML)
@@ -59,6 +67,16 @@ class AnswerCard {
             }
          })
       })
+   }
+   //重新绘制答题卡头: 参数count学号位数
+   public reRenderHeader(count: number) {
+      let length = GlobalData.headerObj.length;
+      let i = 0;
+      while (true) {
+         if (i > length - 1) break
+         GlobalData.headerObj[i].reRenderHeader(count)
+         i++
+      }
    }
 }
 

@@ -34,6 +34,7 @@ export default class AnswerFrame {
    }
    private contextmenu(e: any) {//右键菜单
       e.preventDefault();
+      $('#contentText').get(0) && $('#contentText').remove()
       GlobalData.contentTextTarget = { targetObj: this, targetDom: $(e.currentTarget), targetRow: $(e.target) };
       let contentText = new ContentText().init()
       GlobalData.dom.append(contentText);
