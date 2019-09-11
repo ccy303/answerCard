@@ -1,15 +1,5 @@
 import GlobalData from '../conpoment/global'
 class Tool {
-   getCookie(name: any) {
-      let arr;
-      let reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-      if (arr = document.cookie.match(reg)) {
-         return unescape(arr[2]);
-      } else {
-         return null;
-      }
-      console.log(arr)
-   }
    selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
       let pageDom = null;
@@ -148,6 +138,43 @@ class Tool {
             }
             xhr.send(fromData);
          }
+      })
+   }
+   findPageObj(dom: JQuery<HTMLElement>) {
+      let i = 0;
+      let obj = null;
+      while (true) {
+         if (i > GlobalData.pageObject.length - 1) break;
+         if (GlobalData.pageObject[i].page[0] == dom[0]) {
+            obj = GlobalData.pageObject[i];
+         }
+         i++
+      }
+      return obj
+   }
+   changeFontNum() {
+      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
+         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
+            <p style="">修改作文字数</p>
+            <input value="800" id="fontNum" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
+            <div style="margin:15px 0;text-align:center">
+               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
+               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+            </div>
+         </div>
+      </div>`)
+      $('body').append(dialog)
+      $('#no').on('click', () => { $('#dialog').remove() })
+      $('#yes').on('click', () => {
+         let val = $('#fontNum').val();
+         let page = GlobalData.contentTextTarget.targetObj.answerFrame.parent().parent();
+         let boxindex = GlobalData.contentTextTarget.targetObj.answerFrame.attr('boxindex')
+         if (!val) return
+         let pageObj = this.findPageObj(page);
+         let writeFrame = $('#answerCard').find('[type=write]');
+         writeFrame.remove()
+         pageObj.renderDeafultAnswerFrame(boxindex, true, 'write', {}, val)
+         $('#dialog').remove()
       })
    }
 }

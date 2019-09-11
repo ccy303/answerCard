@@ -23,7 +23,6 @@ export default class GlobalData {
    static get currentImage() {
       return this._currentImage;
    }
-
    static set pageObject(val: any) {
       this._pageObject.push(val);
       let length = this._pageObject.length;
@@ -33,20 +32,32 @@ export default class GlobalData {
       val.page.append(pageNum);
       $('[type=totalPage]').html(`共${length}页`)
    }
-
    static get pageObject() {
       return this._pageObject
    }
-
    static pageObjectPop(val: any) {
-      let arr = [...this._pageObject];
+      let arr = [...this.pageObject];
       this._pageObject = [];
       let i = 0;
       while (true) {
          if (i > arr.length - 1) break;
-         arr[i] !== val && this._pageObject.push(val);
+         arr[i] !== val && (this.pageObject = arr[i])
          i++;
       }
+   }
+   static clearProps() {
+      this.AnswerFrameObj = []
+      this._currentImage = null
+      this.pageType = ''
+      this.pageColum = 0
+      this.timer = null
+      this.dataJSON = null
+      this.dom = null
+      this.contentTextTarget = {}
+      this.haveRemoveDomParent = null
+      this.config = {}
+      this.headerObj = []
+      this._pageObject = []
    }
 
 }

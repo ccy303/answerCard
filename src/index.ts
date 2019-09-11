@@ -3,7 +3,6 @@ import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
 const dataJSON = require('./data.json');
-
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -14,6 +13,7 @@ class AnswerCard {
       return GlobalData.pageObject
    }
    constructor(obj: any) {
+      GlobalData.clearProps();
       this.dataJson = obj.dataJSON;
       this.both = obj.both
       GlobalData.dataJSON = obj.dataJSON;
@@ -28,9 +28,6 @@ class AnswerCard {
       GlobalData.dom.on('click', () => {
          $('#contentText').remove()
       })
-      // setTimeout(() => {
-      //    this.reRenderHeader(10);
-      // }, 2000)
    }
    private addPage() {
       let page = new Page(this.addPage.bind(this));
@@ -86,7 +83,7 @@ process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON, both: true, config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
-         Token: '4b3d81716803b73a2fe924e1d4feff389dd2bf7f',
+         Token: '0bdf19113bf90f61bdc8d204127724c04e5fb09e',
          inType: 41,
       }
    }, dom: null

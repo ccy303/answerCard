@@ -28,7 +28,7 @@
       font-size: 12px;
       padding: 1.5px;
       &:hover {
-        background: #aaa
+        background: #aaa;
       }
     }
     &:focus {
@@ -124,34 +124,36 @@
 .editor-box[type="select"] {
   padding: 0;
   .row {
-    line-height: 20px;
+    line-height: unset;
     .sel-item {
+      line-height: 18px;
       display: inline-block;
+      box-sizing: content-box;
+      border-right: 1px solid #000;
+      font-size: 1px;
       .pnum {
-        line-height: 21px;
+        line-height: 18px;
         font-size: 12px;
         display: inline-block;
-        width: 60px;
+        width: 47px;
         text-align: right;
       }
       .opts {
         box-sizing: border-box;
         display: inline-block;
+        font-size: 1px;
         .opt-item {
+          color: #888;
           display: inline-block;
           text-align: center;
-          width: 32px;
+          width: 28px;
           font-size: 12px;
-          height: 21px;
-          letter-spacing: 2px;
+          height: 18px;
+          letter-spacing: 1px;
           &:first-child {
-            margin-left: 5px;
+            margin-left: 2px;
           }
         }
-      }
-      &:not(:last-child),
-      &:only-child {
-        border-right: 1px solid #000;
       }
     }
     &:nth-child(5n + 5):not(:last-child) {
@@ -160,13 +162,11 @@
         padding-bottom: 7.5px;
       }
     }
-
     &:last-child {
       .sel-item {
         padding-bottom: 7.5px;
       }
     }
-
     &:nth-child(5n-4) {
       .sel-item {
         padding-top: 7px;

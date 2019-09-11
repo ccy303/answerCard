@@ -2,12 +2,12 @@
    "schoolId": null,
    "id": "102",
    "subjectId": "2810",
-   "paperSize": "A4",
-   "layoutType": "1",
+   "paperSize": "A3",
+   "layoutType": "2",
    "sourceType": "2",
    "prohibitType": "1",
    "noMode": "2",
-   "noCount": "18",
+   "noCount": "5",
    "noBoth": "0",
    "qrCode": "uW",
    "alias": "____xx_____学校 xxx年度xxxx考试 高一 物理",
@@ -866,6 +866,38 @@
                      "pnum": "26",
                      "visible": true,
                      "rIndex": "1@7"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "2",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@2-1@3-2@1-2@2",
+         "pros": [
+            {
+               "proId": "1231",
+               "score": 15.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "1",
+               "pnum": "",
+               "group": "0",
+               "titleType": "材料作文",
+               "qus": [
+                  {
+                     "quId": "2153",
+                     "score": 15.0,
+                     "quType": "作文题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "NaN",
+                     "visible": true,
+                     "rIndex": "1@2-1@3-2@1-2@2"
                   }
                ]
             }

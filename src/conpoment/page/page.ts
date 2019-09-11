@@ -83,7 +83,6 @@ export default class Page {
    }
    private whatRender(data: any, addRow: boolean) {
       data.pageQus.map((pro: any, index: number) => {
-         // console.log(pro)
          if (!pro.pros.find((val: any) => { return val.pureObjective !== '1' })) {//选择题
             this.renderDeafultAnswerFrame(index, addRow, 'select', pro)
          } else {
@@ -135,90 +134,8 @@ export default class Page {
       let answerFrame = new AnswerFrame(data).initAnswerFrame(bIndex, addRow, type, number);
       GlobalData.AnswerFrameObj.push(answerFrame)
       let page = $(this.page);
-      // $('#answerCard').find('.select-box').last().parent().append(answerFrame.answerFrame)
       $(page.find('.colum').get(0)).append(answerFrame.answerFrame)
    }
-   //监听每一列的dom改变 重要的话说3次：整个app的精华都在这里；整个app的精华都在这里；整个app的精华都在这里
-   private observeColum(dom: JQuery<HTMLElement>) {
-      let config: any = { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] };
-      let observer = new MutationObserver((e: any) => {
-         e.map(async (mutation: MutationRecord) => {
-            if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
-            let innerHeight = dom.height();
-            let pageHeight = this.page.height()
-            if (pageHeight < innerHeight) {//回车和初始化布局 
-               // 此列中最后一个editorBox
-               let lastEditorBox = dom.find('div.editor-box').last().get(0);
-               if (lastEditorBox) {
-                  const type = $(lastEditorBox).attr('type')
-                  //获取生成此editorBox的对象实例
-                  let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox; })[0];
-                  let lastRow = null;
-                  obj && (lastRow = obj.getLastRow())
-                  if (!obj && $(lastEditorBox).attr('proTitle')) {
-                     lastRow = $(lastEditorBox).find('.row:last-child')
-                  }
-                  let nextBox = this.checkoutEditorBox(dom.find('div.editor-box:last-child'), dom);
-                  if (nextBox && nextBox.get(0)) {
-                     lastRow.attr('hash', nextBox.attr('hash'))
-                     nextBox.children(':first-child').before(lastRow);
-                  } else {
-                     let boxIndex = lastRow.parent().attr('boxIndex')
-                     let box: JQuery<HTMLElement>
-                     if (dom.next('.colum').get(0)) {//本页最后一栏
-                        box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type, $(lastEditorBox).attr('proTitle'));
-                     } else {
-                        box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type, $(lastEditorBox).attr('proTitle'))
-                     }
-                     box.attr('targetid', lastRow.parent().attr('targetid'))
-                     let boxFirstChild = box.children(':first-child');
-                     lastRow.attr('hash', box.attr('hash'))
-                     boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
-                  }
-                  obj && !obj.answerFrame.children().length && obj.answerFrame.remove()
-                  !obj && !$(lastEditorBox).find('.row').length && $(lastEditorBox).remove()
-               }
-            } else if (pageHeight > innerHeight) {//删除
-               let hash = $(mutation.target).attr('hash');
-               let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
-               if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
-                  editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
-               }
-               let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
-               if (!nextEditorBox) {
-                  this.moveNextEditorBoxToThisColum(editorBox.parent()); return
-               }
-               let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
-               nextEditorBox.attr('type') === 'write' && (nextBoxFirstChild += 8)
-               if (pageHeight - innerHeight > nextBoxFirstChild) {
-                  if (nextEditorBox) {
-                     this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
-                  }
-               }
-               if (nextEditorBox && !nextEditorBox.children().length) {
-                  GlobalData.haveRemoveDomParent = nextEditorBox.parent()
-                  nextEditorBox.remove();
-               }
-            }
-         })
-         if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
-            dom.parent().remove()
-            $('[type=totalPage]').html(`共${$('.colum').length}页`)
-            GlobalData.pageObjectPop(this);
-         }
-         if (!dom.find('div.select-box').children().last().children().first().children().get(0)) {
-            dom.find('div.select-box').children().last().remove()
-         }
-         GlobalData.timer && clearTimeout(GlobalData.timer);
-         GlobalData.timer = setTimeout(() => {
-            this.setFrameIdx(dom)
-            clearTimeout(GlobalData.timer);
-            GlobalData.timer = null;
-         }, 300)
-      })
-      observer.observe(dom.get(0), config)
-   }
-
    private createEditorBoxInNextCol(colum: JQuery<HTMLElement>, bIndex: number, type: string, proTitle: string): JQuery<HTMLElement> {//在下一列中创建EditorBox
       if (!proTitle) {
          let answerFrame = new AnswerFrame({}).initAnswerFrame(bIndex, false, type);
@@ -251,7 +168,6 @@ export default class Page {
       }
 
    }
-
    private checkoutEditorBox(dom: any, colum: JQuery<HTMLElement>) {//查找下一列是否存在由此dom(editorBox)拆分出的editorBox
       let boxIndex = dom.attr('boxIndex');
       if (colum.next('.colum').get(0)) {
@@ -264,7 +180,6 @@ export default class Page {
          }
       }
    }
-
    private findNextEditorBox(dom: JQuery<HTMLElement>): JQuery<HTMLElement> | null {//查找由dom（此editorbox拆分出的editorBox）
       let editorBoxs = $('#answerCard').find(`div.editor-box[boxIndex=${dom.attr('boxIndex')}]`)
       let nextEditorBox: JQuery<HTMLElement> = null;
@@ -275,13 +190,11 @@ export default class Page {
       }
       return nextEditorBox
    }
-
    private moveRowToPrevEditorBox(targetEditorBox: JQuery<HTMLElement>, prevEditorBox: JQuery<HTMLElement>) {
       let row = targetEditorBox.find('div.row:first-child');
       prevEditorBox.append(row)
       row.attr('hash', prevEditorBox.attr('hash'))
    }
-
    private moveNextEditorBoxToThisColum(thisColum: JQuery<HTMLElement>) {//删除后将下一个框移到上一列
       let colums = $('#answerCard').find('.colum');
       let nextColum: JQuery<HTMLElement> = null;
@@ -300,7 +213,6 @@ export default class Page {
       answerFrame.answerFrame.append(row)
       row.attr('hash', answerFrame.answerFrame.attr('hash'))
    }
-
    private setFrameIdx(dom: JQuery<HTMLElement>) {
       let colums = $('#answerCard').find('.colum');
       for (let i = 0; i < colums.length; i++) {
@@ -319,5 +231,112 @@ export default class Page {
             }
          }
       }
+   }
+   private insertHeight(dom: JQuery<HTMLElement>) {// Add an element to make the colums height equal
+      let heightdiff = this.page.height() - dom.height();
+      let lineHeight = dom.children('[type="editor"]:last-child,[type="write"]:last-child').children('.row').css('line-height')
+      let lastFrame = dom.children('[type="editor"]:last-child,[type="write"]:last-child');
+      if (heightdiff > 0 && heightdiff < parseInt(lineHeight) && lastFrame.get(0)) {
+         let height = this.page.height() - dom.height()
+         dom.children('[type="editor"]:last-child,[type="write"]:last-child').append(`<div style="height:${height}px" contenteditable="false" swapHeight="true">
+         </div>`)
+      }
+   }
+   //Observe change of every colums dom. It is must important of this Project ! So I want to say three times, but I not 
+   private observeColum(dom: JQuery<HTMLElement>) {
+      let config: any = { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] };
+      let observer = new MutationObserver((e: any) => {
+         e.map(async (mutation: MutationRecord) => {
+            if ($(mutation.target).hasClass('write-item')) return
+            if ($(mutation.removedNodes[0]).attr('swapheight') == 'true') return
+            if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
+            let innerHeight = dom.height();
+            let pageHeight = this.page.height()
+            if (pageHeight < innerHeight) {//回车和初始化布局 
+               // 此列中最后一个editorBox
+               let lastEditorBox = dom.find('div.editor-box').last().get(0);
+               if (!lastEditorBox) { return }
+               dom.find('[swapheight=true]').remove()
+               const type = $(lastEditorBox).attr('type')
+               //获取生成此editorBox的对象实例
+               let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox; })[0];
+               let lastRow = null;
+               obj && (lastRow = obj.getLastRow())
+               if (!obj && $(lastEditorBox).attr('proTitle')) {
+                  lastRow = $(lastEditorBox).find('.row:last-child')
+               }
+               let nextBox = this.checkoutEditorBox(dom.find('div.editor-box:last-child'), dom);
+               if (nextBox && nextBox.get(0)) {
+                  lastRow.attr('hash', nextBox.attr('hash'))
+                  nextBox.children(':first-child').before(lastRow);
+               } else {
+                  let boxIndex = lastRow.parent().attr('boxIndex')
+                  let box: JQuery<HTMLElement>
+                  if (dom.next('.colum').get(0)) {//本页最后一栏
+                     box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type, $(lastEditorBox).attr('proTitle'));
+                  } else {
+                     box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type, $(lastEditorBox).attr('proTitle'))
+                  }
+                  box.attr('targetid', lastRow.parent().attr('targetid'))
+                  let boxFirstChild = box.children(':first-child');
+                  lastRow.attr('hash', box.attr('hash'))
+                  boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
+               }
+               obj && !obj.answerFrame.children('.row').length && obj.answerFrame.remove()
+               !obj && !$(lastEditorBox).find('.row').length && $(lastEditorBox).remove()
+            } else if (pageHeight > innerHeight) {//删除
+               let hash = $(mutation.target).attr('hash');
+               let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
+               dom.find('[swapheight=true]').remove()
+               if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
+                  editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
+               }
+               let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
+               //57一个editor只有一行所需最小距离
+               if (!nextEditorBox) {
+                  pageHeight - innerHeight >= 57 && this.moveNextEditorBoxToThisColum(editorBox.parent());
+                  return;
+               }
+               let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
+               nextEditorBox.attr('type') === 'write' && (nextBoxFirstChild += 8)
+               if (pageHeight - innerHeight > nextBoxFirstChild) {
+                  if (nextEditorBox) {
+                     this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
+                  }
+               }
+               if (nextEditorBox && !nextEditorBox.children().length) {
+                  GlobalData.haveRemoveDomParent = nextEditorBox.parent()
+                  nextEditorBox.remove();
+               }
+            }
+         })
+         //渲染页数
+         if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {
+            dom.parent().remove()
+            GlobalData.pageObjectPop(this);
+            $('[type=totalPage]').html(`共${$('.colum').length}页`)
+         }
+         this.insertHeight(dom)
+         GlobalData.timer && clearTimeout(GlobalData.timer);
+         GlobalData.timer = setTimeout(() => {
+            this.setFrameIdx(dom)
+            clearTimeout(GlobalData.timer);
+            GlobalData.timer = null;
+            let t = parseInt(String($('div.write-item').length / 400));
+            let i = 1;
+            while (true) {
+               if (i > t) break;
+               let d = $($('div.write-item')[i * 400])
+               d.css('position', 'relative')
+               if (!d.children().length) {
+                  d.append(`<div style="position:absolute;top:31.5px;height:10px;width:30px;line-height:6px">\
+                     <span style="font-size:10px;color:#888">${i * 400}</span>
+                  </div>`)
+               }
+               i++
+            }
+         }, 300)
+      })
+      observer.observe(dom.get(0), config)
    }
 }

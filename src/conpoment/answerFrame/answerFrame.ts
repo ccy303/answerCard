@@ -111,10 +111,10 @@ export default class AnswerFrame {
    }
    private renderSelect({ bIndex, insertChild, hash }: { bIndex: number; insertChild: boolean; hash: string }) {
       const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
-      const judge = '✓✗';
+      const judge = '✓x';
       let dom: JQuery<HTMLElement> = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
       const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
-      insertChild && arg.map((arr: any, index: number) => {
+      insertChild && arg.arr.map((arr: any, index: number) => {
          let length = arr.length;
          let arrItemLen = arr[0].data.length;
          let i = 0
@@ -130,10 +130,14 @@ export default class AnswerFrame {
                let opt = $(`<div class="opts"></div>`)
                while (true) {//选项
                   if (k > optLen - 1 || isNaN(optLen)) break
-                  opt.append(`<div class="opt-item">[${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}]</div>`)
+                  opt.append(`<div class="opt-item">
+                     [<span style="${arr[j].data[i].quType === '判断题' && k == 0 ? 'font-size:8px;' : ''}">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</span>]
+                  </div>`)
                   k++
                }
-               let selItem = $(`<div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${100 / length}%"></div>`);
+               let selItem = $(`
+                  <div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${100 / arg.colum}%"></div>
+               `);
                selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
                selItem.append(opt)
                row.append(selItem)
@@ -143,10 +147,24 @@ export default class AnswerFrame {
             i++
          }
       })
+      setTimeout(() => {
+         let row = dom.find('.row')
+         let i = 0;
+         while (true) {
+            if (i > row.length - 1) break;
+            let html = $(row[i]).children('.sel-item:first-child').children('.pnum').html();
+            let prev = $(row[i - 1]).children('.sel-item:first-child').children('.pnum').html()
+            if (!html) {
+               $(row[i]).css('height', '0');
+               prev && !parseInt($(row[i - 1]).css('padding-bottom')) && $(row[i - 1]).children('.sel-item').css('padding-bottom', '7px')
+            }
+            i++
+         }
+      }, 0)
       return dom
    }
    public getLastRow() {
-      return this.answerFrame.find('.row:last-child')
+      return this.answerFrame.find('.row').last();
    }
    public addImage(url: any) {
       $(this.answerFrame).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
@@ -236,10 +254,15 @@ export default class AnswerFrame {
       let proTitle = GlobalData.contentTextTarget.targetDom.prev().attr('proTitle');
       let isSplit = tool.checkBoxIsSplit(GlobalData.contentTextTarget.targetDom);
       if (!bIndex && (proTitle || isSplit)) { return }
+      let dom = this.content(addrow, bIndex)
+      GlobalData.contentTextTarget.targetDom.before(dom)
+      return dom
+   }
+   private content(addrow: boolean, bIndex?: any) {
       let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
       !bIndex && (bIndex = (new Date().getTime() + Math.random() * 1000000000000).toFixed(0))
       let dom = $(`<div boxIndex=${bIndex} hash="${hash}" proTitle="true" contenteditable="true" type="editor" class="editor-box"></div>`)
-      let row = $(`<div class="row" hash="${hash}">1</div>`)
+      let row = $(`<div class="row" style="height:25px;font-weight:bold;" hash="${hash}"></div>`)
       let del = $(`<span class="del" contenteditable="false">×</span>`)
       dom.append(del)
       addrow && dom.append(row);
@@ -249,7 +272,6 @@ export default class AnswerFrame {
          GlobalData.haveRemoveDomParent = $(`div[proTitle="true"][boxIndex=${bIndex}]`).parent();
          $(`div[proTitle="true"][boxIndex=${bIndex}]`).remove()
       })
-      GlobalData.contentTextTarget.targetDom.before(dom)
       return dom
    }
    public addGrid(count: number) {

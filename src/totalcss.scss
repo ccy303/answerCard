@@ -124,14 +124,16 @@
 .editor-box[type="select"] {
   padding: 0;
   .row {
-    line-height: 20px;
+    line-height: 18px;
     .sel-item {
       display: inline-block;
+      box-sizing: content-box;
+      border-right: 1px solid #000;
       .pnum {
-        line-height: 21px;
+        line-height: 18px;
         font-size: 12px;
         display: inline-block;
-        width: 60px;
+        width: 49px;
         text-align: right;
       }
       .opts {
@@ -140,18 +142,14 @@
         .opt-item {
           display: inline-block;
           text-align: center;
-          width: 32px;
+          width: 28px;
           font-size: 12px;
-          height: 21px;
+          height: 18px;
           letter-spacing: 2px;
           &:first-child {
             margin-left: 5px;
           }
         }
-      }
-      &:not(:last-child),
-      &:only-child {
-        border-right: 1px solid #000;
       }
     }
     &:nth-child(5n + 5):not(:last-child) {
@@ -160,13 +158,11 @@
         padding-bottom: 7.5px;
       }
     }
-
     &:last-child {
       .sel-item {
         padding-bottom: 7.5px;
       }
     }
-
     &:nth-child(5n-4) {
       .sel-item {
         padding-top: 7px;
@@ -180,6 +176,7 @@
     margin-bottom: 15px;
   }
 }
+
 
 .header-box {
   box-sizing: border-box;
@@ -201,7 +198,7 @@
       border: 2px dashed #999;
       width: 100%;
       display: inline-block;
-      p {
+      p { 
         font-size: 12px;
         margin: 0;
         line-height: 20px;
@@ -273,6 +270,7 @@
   }
 }
 
+
 body {
   margin: 0;
 }
@@ -282,71 +280,98 @@ body {
   left: 0;
   z-index: 999;
   background: #fff;
-  border: 1px solid #a1a1a1;
+  border: 1px solid #e1e1e1;
   display: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   width: max-content;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     li {
-      padding: 3px 10px;
+      width: 130px;
+      height: 25px;
+      line-height: 25px;
+      padding: 3px 10px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
+      img {
+        margin: 0 9px;
+      }
       &:not(:last-child) {
-        border-bottom: 1px solid #a1a1a1;
+        border-bottom: 1px solid #eee;
       }
       &:hover {
-        background: #e1e1e1;
+        background: #eee;
       }
     }
   }
 }
 .secondList {
   position: absolute;
-  left: 90px;
-  top: 77px;
-  border: 1px solid #a1a1a1;
+  left: 132px;
+  top: 74px;
   display: none;
   width: max-content;
-  font-size: 14px;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     li {
-      padding: 3px 10px;
+      width: 120px !important;
+      height: 25px;
+      padding: 3px 10px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
       &:not(:last-child) {
-        border-bottom: 1px solid #a1a1a1;
+        border-bottom: 1px solid #eee;
       }
       &:hover {
-        background: #e1e1e1;
+        background: #eee;
       }
     }
   }
 }
 .threeList {
   position: absolute;
-  left: 167px;
-  top: 129px;
-  border: 1px solid #a1a1a1;
+  left: 255px;
+  top: 125px;
+  border: 1px solid #e1e1e1;
   display: none;
+  background: #fff;
   width: max-content;
-  font-size: 14px;
+  font-size: 12px;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
     li {
-      padding: 3px 10px;
+      width: 110px !important;
+      height: 25px;
+      padding: 3px 10px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
       &:not(:last-child) {
-        border-bottom: 1px solid #a1a1a1;
+        border-bottom: 1px solid #eee;
       }
       &:hover {
-        background: #e1e1e1;
+        background: #eee;
       }
     }
   }
@@ -365,12 +390,9 @@ body {
       max-height: 100px;
       font-weight: 600;
       line-height: 25px;
-      padding: 5px 0;
-      margin-top: 5px;
       overflow: hidden;
       text-align: center;
       font-size: 18px;
-      // white-space: nowrap;
     }
   }
   .square {
@@ -399,6 +421,15 @@ body {
     background: #000;
     position: absolute;
   }
+  .pageNum {
+    position: absolute;
+    bottom: 0;
+    font-size: 12px;
+    margin: 0 auto 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }
 .A4 {
   width: 793px;
@@ -417,6 +448,10 @@ body {
 .A3-3 {
   width: 33.33%;
 }
+.boxShadow {
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+}
+ 
 
 .select-box {
   width: 100%;
@@ -474,7 +509,8 @@ body {
   &:first-child {
     margin-top: 0;
   }
-}
+}  
+
 
 .write-box {
   width: 100%;
@@ -502,5 +538,5 @@ body {
   }
   &:not(:first-child) {
     margin-top: 20px;
-  }
-}
+  } 
+} 

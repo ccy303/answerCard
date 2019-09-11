@@ -13,6 +13,7 @@ import icon10 from './../../../assets/icons/zuoduiqi-icon.png';
 import icon11 from './../../../assets/icons/zuoduiqi-icon.png';
 import icon12 from './../../../assets/icons/juzhong-icon.png';
 import icon13 from './../../../assets/icons/youduiqi-icon.png';
+import icon14 from './../../../assets/icons/zishu-icon.png';
 
 export default class ContentText {
    public init() {
@@ -43,6 +44,10 @@ export default class ContentText {
             <li onselectstart="return false" id="clear-style">
                <img src="${icon7}" />
                清除样式
+            </li>
+            <li onselectstart="return false" id="change-font-num">
+               <img src="${icon14}" />
+               修改字数
             </li>
          </ul>
       </div>`)
@@ -120,6 +125,9 @@ export default class ContentText {
          document.body.appendChild(inputObj);
          inputObj.click();
          inputObj.onchange = this.fileChange
+      }
+      if (id === 'change-font-num') {
+         tool.changeFontNum()
       }
       $('#contentText').remove()
    }
