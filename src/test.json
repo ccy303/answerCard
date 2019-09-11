@@ -1,0 +1,142 @@
+{
+   "schoolId": null,
+   "id": "123",
+   "subjectId": "2883",
+   "paperSize": "A3",
+   "layoutType": "2",
+   "sourceType": "2",
+   "prohibitType": "1",
+   "noMode": "2",
+   "noCount": "9",
+   "noBoth": "1",
+   "qrCode": "w3",
+   "alias": "一个选项 高一 数学",
+   "cardJson": null,
+   "cardHtml": "[\"<div class=\\\"page A3\\\" id=\\\"1p\\\"><div class=\\\"colum A3-2\\\">\\n            <div contenteditable=\\\"true\\\" class=\\\"exam-title\\\" hash=\\\"examTitle\\\">一个选项 高一 数学</div>\\n            <div class=\\\"header-box\\\" hash=\\\"id2245179872865\\\"><div class=\\\"header-contnet\\\" style=\\\"margin-top: 0px; width: 45%;\\\"><div class=\\\"student-info\\\"><div><span class=\\\"name\\\"><b>姓名:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>班级:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>考场号/座位号:</b></span><b>_______________</b></div></div><div class=\\\"tip-box\\\">  \\n         <h5 style=\\\"margin:0;\\\">注意事项</h5>\\n         <p>1、选择题作答必须用2B铅笔填涂</p>\\n         <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>\\n         <p style=\\\"display:block\\\">3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p>\\n         <p style=\\\"display:block\\\">4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p>\\n      </div></div><div class=\\\"student-num\\\"><p class=\\\"title\\\">学号</p><div class=\\\"num\\\"><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div></div></div></div><div boxindex=\\\"0\\\" hash=\\\"id2515281237449\\\" type=\\\"select\\\" class=\\\"editor-box\\\" contenteditable=\\\"false\\\"><div class=\\\"row\\\" hash=\\\"id2515281237449\\\" style=\\\"padding-bottom: 7px;\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"1017041\\\" style=\\\"width:100%\\\"><div class=\\\"pnum\\\">1</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[A]</div><div class=\\\"opt-item\\\">[B]</div><div class=\\\"opt-item\\\">[C]</div></div></div></div><div class=\\\"row\\\" hash=\\\"id2515281237449\\\" style=\\\"height: 0px;\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:100%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id2515281237449\\\" style=\\\"height: 0px;\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:100%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id2515281237449\\\" style=\\\"height: 0px;\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:100%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id2515281237449\\\" style=\\\"height: 0px;\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:100%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div></div></div><div class=\\\"colum A3-2\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div><div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:8px;width:25px;top:40px;left:170.7px\\\" class=\\\"rectangle\\\"></div><p class=\\\"pageNum\\\">\\n         <span>第1页</span> / <span type=\\\"totalPage\\\">共1页</span>\\n      </p></div>\"]",
+   "attention": null,
+   "pageCnt": "1",
+   "subjectName": null,
+   "pageQus": [
+      {
+         "sort": "1",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@1",
+         "pros": [
+            {
+               "proId": "101704",
+               "score": 12.0,
+               "pureObjective": "1",
+               "content": "",
+               "sort": "1",
+               "pnum": "",
+               "group": "0",
+               "titleType": "选择题",
+               "qus": [
+                  {
+                     "quId": "101704",
+                     "score": 12.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "1",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "6",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@7",
+         "pros": [
+            {
+               "proId": "1734919",
+               "score": 10.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "7",
+               "pnum": "",
+               "group": "0",
+               "titleType": "填空题",
+               "qus": [
+                  {
+                     "quId": "1734929",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "3",
+                     "content": "",
+                     "pnum": "25",
+                     "visible": true,
+                     "rIndex": "1@7"
+                  },
+                  {
+                     "quId": "1734930",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "3",
+                     "content": "",
+                     "pnum": "26",
+                     "visible": true,
+                     "rIndex": "1@7"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "6",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@7",
+         "pros": [
+            {
+               "proId": "1734919",
+               "score": 10.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "7",
+               "pnum": "",
+               "group": "0",
+               "titleType": "填空题",
+               "qus": [
+                  {
+                     "quId": "1734929",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "3",
+                     "content": "",
+                     "pnum": "25",
+                     "visible": true,
+                     "rIndex": "1@7"
+                  },
+                  {
+                     "quId": "1734930",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "3",
+                     "content": "",
+                     "pnum": "26",
+                     "visible": true,
+                     "rIndex": "1@7"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "checkMsg": null,
+   "paperId": 1913,
+   "paperVid": 2,
+   "versionId": 10001,
+   "versionMsg": null
+}
