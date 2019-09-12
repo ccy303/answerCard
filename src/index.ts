@@ -2,7 +2,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./test.json');
+const dataJSON = require('./data.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -22,18 +22,6 @@ class AnswerCard {
       GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
       GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
-      let html = this.dataJson.cardHtml
-      // if (html) {
-      //    let i = 0;
-      //    while (true) {
-      //       if (i > html.length - 1) break;
-      //       let page = new Page(this.addPage.bind(this), html[i])
-      //       page.pageInit()
-      //       this.pages = page
-      //       i++
-      //    }
-      //    return
-      // }
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page

@@ -81,7 +81,7 @@ export default class Page {
             $(this.page).find('div.colum:first-child').append(header.initHeader());
          }
          addRow && this.whatRender(this.data, addRow) //增加空白行
-      } else{
+      } else {
 
       }
 
@@ -252,6 +252,7 @@ export default class Page {
       let config: any = { attributes: true, childList: true, subtree: true, attributeFilter: ['style'] };
       let observer = new MutationObserver((e: any) => {
          e.map(async (mutation: MutationRecord) => {
+            console.log(mutation)
             if ($(mutation.target).hasClass('write-item')) return
             if ($(mutation.removedNodes[0]).attr('swapheight') == 'true') return
             if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
@@ -290,29 +291,37 @@ export default class Page {
                obj && !obj.answerFrame.children('.row').length && obj.answerFrame.remove()
                !obj && !$(lastEditorBox).find('.row').length && $(lastEditorBox).remove()
             } else if (pageHeight > innerHeight) {//删除
+
+
+               //bug找到了就在这里
+
                let hash = $(mutation.target).attr('hash');
                let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
                dom.find('[swapheight=true]').remove()
                if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
                   editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
                }
-               let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last());
+               let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last()); // 由此框分割出的框
                //57一个editor只有一行所需最小距离
                if (!nextEditorBox) {
+                  console.log(1)
                   pageHeight - innerHeight >= 57 && this.moveNextEditorBoxToThisColum(editorBox.parent());
                   return;
-               }
-               let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
-               nextEditorBox.attr('type') === 'write' && (nextBoxFirstChild += 8)
-               if (pageHeight - innerHeight > nextBoxFirstChild) {
-                  if (nextEditorBox) {
-                     this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
+               } else {
+                  console.log(2)
+                  let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
+                  nextEditorBox.attr('type') === 'write' && (nextBoxFirstChild += 8)
+                  if (pageHeight - innerHeight > nextBoxFirstChild) {
+                     nextEditorBox && this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());
+                  }
+                  if (nextEditorBox && !nextEditorBox.children().length) {
+                     GlobalData.haveRemoveDomParent = nextEditorBox.parent()
+                     nextEditorBox.remove();
                   }
                }
-               if (nextEditorBox && !nextEditorBox.children().length) {
-                  GlobalData.haveRemoveDomParent = nextEditorBox.parent()
-                  nextEditorBox.remove();
-               }
+            } else {
+               console.log('equal')
+               return
             }
          })
          //渲染页数
@@ -327,6 +336,7 @@ export default class Page {
             this.setFrameIdx(dom)
             clearTimeout(GlobalData.timer);
             GlobalData.timer = null;
+            //font number
             let t = parseInt(String($('div.write-item').length / 400));
             let i = 1;
             while (true) {
