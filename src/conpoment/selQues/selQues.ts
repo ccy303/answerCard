@@ -67,7 +67,7 @@ export default class SelQues {
    splitQuesTocolum(data: any) {
       let obj: any = {}
       let newArr: Array<any> = [];
-      if (GlobalData.pageType === 'A4' || GlobalData.pageType === 'A3' && GlobalData.pageColum === 2) {
+      if (GlobalData.pageType === 'A4' || (GlobalData.pageType === 'A3' && GlobalData.pageColum === 2)) {
          if (data.max <= 4) { //3栏选择题
             for (let i = 0; i < data.totalQues.length; null) {
                let a = data.totalQues.splice(i * 4, 4);

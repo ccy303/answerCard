@@ -1,6 +1,6 @@
 {
   "name": "answer-card",
-  "version": "1.0.85",
+  "version": "1.0.875",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

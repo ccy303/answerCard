@@ -59,5 +59,4 @@ export default class GlobalData {
       this.headerObj = []
       this._pageObject = []
    }
-
 }

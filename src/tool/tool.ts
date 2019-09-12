@@ -153,6 +153,7 @@ class Tool {
       return obj
    }
    changeFontNum() {
+      if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'write') return
       let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
          <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
             <p style="">修改作文字数</p>
@@ -167,8 +168,8 @@ class Tool {
       $('#no').on('click', () => { $('#dialog').remove() })
       $('#yes').on('click', () => {
          let val = $('#fontNum').val();
-         let page = GlobalData.contentTextTarget.targetObj.answerFrame.parent().parent();
-         let boxindex = GlobalData.contentTextTarget.targetObj.answerFrame.attr('boxindex')
+         let page = $(`[type=write]`).first().parent().parent();
+         let boxindex = $(`[type=write]`).first().attr('boxindex')
          if (!val) return
          let pageObj = this.findPageObj(page);
          let writeFrame = $('#answerCard').find('[type=write]');

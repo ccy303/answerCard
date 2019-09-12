@@ -2,7 +2,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json');
+const dataJSON = require('./test.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -18,10 +18,22 @@ class AnswerCard {
       this.both = obj.both
       GlobalData.dataJSON = obj.dataJSON;
       GlobalData.config = obj.config;
-      GlobalData.pageType = dataJSON.paperSize;
+      GlobalData.pageType = obj.dataJSON.paperSize;
       GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
-      GlobalData.pageColum = parseInt(dataJSON.layoutType);
+      GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
+      // let html = JSON.parse(this.dataJson.cardHtml)
+      // if (html) {
+      //    let i = 0;
+      //    while (true) {
+      //       if (i > html.length - 1) break;
+      //       let page = new Page(this.addPage.bind(this), html[i])
+      //       page.pageInit()
+      //       this.pages = page
+      //       i++
+      //    }
+      //    return
+      // }
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
@@ -80,11 +92,14 @@ class AnswerCard {
 export default AnswerCard
 
 process.env.NODE_ENV == 'development' && new AnswerCard({
-   dataJSON: dataJSON, both: true, config: {
+   dataJSON: dataJSON,
+   both: true,
+   config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
          Token: '0bdf19113bf90f61bdc8d204127724c04e5fb09e',
          inType: 41,
       }
-   }, dom: null
+   },
+   dom: null
 })
