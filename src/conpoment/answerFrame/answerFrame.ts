@@ -9,8 +9,10 @@ export default class AnswerFrame {
    number: number = 0;
    width: number = 0;
    data: any;
-   constructor(data: any) {
+   html: any;
+   constructor(data: any, html?: any) {
       this.data = data;
+      this.html = html;
    }
    public initAnswerFrame(bIndex: number, insertChild: boolean, type = "editor", number?: number) {
       // boxIndex 编辑当前框
@@ -26,7 +28,7 @@ export default class AnswerFrame {
       } else if (type === 'write') {//作文题
          dom = this.renderWrite(bIndex, hash)
       } else if (type === 'select') {//客观题
-         dom = this.renderSelect({ bIndex, insertChild, hash })
+         dom = this.renderSelect(bIndex, insertChild, hash)
       }
       this.answerFrame = dom
       this.answerFrame.on('contextmenu', this.contextmenu.bind(this))
@@ -109,58 +111,64 @@ export default class AnswerFrame {
       dom.on('click', () => { GlobalData.currentImage = null; })
       return dom
    }
-   private renderSelect({ bIndex, insertChild, hash }: { bIndex: number; insertChild: boolean; hash: string }) {
-      const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
-      const judge = '✓x';
-      let dom: JQuery<HTMLElement> = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
-      const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
-      insertChild && arg.arr.map((arr: any, index: number) => {
-         let length = arr.length;
-         let arrItemLen = arr[0].data.length;
-         let i = 0
-         while (true) {
-            if (i > arrItemLen) break;
-            let row = $(`<div class="row" hash="${hash}"></div>`);
-            let j = 0;
+   private renderSelect(bIndex: number, insertChild: boolean, hash: string) {
+      let dom: JQuery<HTMLElement> = null;
+      if (!this.html) {
+         const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
+         const judge = '✓x';
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
+         const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
+         insertChild && arg.arr.map((arr: any, index: number) => {
+            let length = arr.length;
+            let arrItemLen = arr[0].data.length;
+            let i = 0
             while (true) {
-               if (j > length - 1 || !arr[j].data[i]) break;
-               const optLen = parseInt(arr[j].data[i].nums);
-               //渲染选项
-               let k = 0
-               let opt = $(`<div class="opts"></div>`)
-               while (true) {//选项
-                  if (k > optLen - 1 || isNaN(optLen)) break
-                  opt.append(`<div class="opt-item">
+               if (i > arrItemLen) break;
+               let row = $(`<div class="row" hash="${hash}"></div>`);
+               let j = 0;
+               while (true) {
+                  if (j > length - 1 || !arr[j].data[i]) break;
+                  const optLen = parseInt(arr[j].data[i].nums);
+                  //渲染选项
+                  let k = 0
+                  let opt = $(`<div class="opts"></div>`)
+                  while (true) {//选项
+                     if (k > optLen - 1 || isNaN(optLen)) break
+                     opt.append(`<div class="opt-item">
                      [<span style="${arr[j].data[i].quType === '判断题' && k == 0 ? 'font-size:8px;' : ''}">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</span>]
                   </div>`)
-                  k++
-               }
-               let selItem = $(`
+                     k++
+                  }
+                  let selItem = $(`
                   <div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${100 / arg.colum}%"></div>
                `);
-               selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
-               selItem.append(opt)
-               row.append(selItem)
-               dom.append(row)
-               j++;
+                  selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
+                  selItem.append(opt)
+                  row.append(selItem)
+                  dom.append(row)
+                  j++;
+               }
+               i++
             }
-            i++
-         }
-      })
-      setTimeout(() => {
-         let row = dom.find('.row')
-         let i = 0;
-         while (true) {
-            if (i > row.length - 1) break;
-            let html = $(row[i]).children('.sel-item:first-child').children('.pnum').html();
-            let prev = $(row[i - 1]).children('.sel-item:first-child').children('.pnum').html()
-            if (!html) {
-               $(row[i]).css('height', '0');
-               prev && !parseInt($(row[i - 1]).css('padding-bottom')) && $(row[i - 1]).children('.sel-item').css('padding-bottom', '7px')
+         })
+         setTimeout(() => {
+            let row = dom.find('.row')
+            let i = 0;
+            while (true) {
+               if (i > row.length - 1) break;
+               let html = $(row[i]).children('.sel-item:first-child').children('.pnum').html();
+               let prev = $(row[i - 1]).children('.sel-item:first-child').children('.pnum').html()
+               if (!html) {
+                  $(row[i]).css('height', '0');
+                  prev && !parseInt($(row[i - 1]).css('padding-bottom')) && $(row[i - 1]).children('.sel-item').css('padding-bottom', '7px')
+               }
+               i++
             }
-            i++
-         }
-      }, 0)
+         }, 0)
+      } else {
+         dom = $(this.html)
+      }
+
       return dom
    }
    public getLastRow() {

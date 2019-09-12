@@ -80,14 +80,40 @@ export default class Page {
             GlobalData.headerObj.push(header);
             $(this.page).find('div.colum:first-child').append(header.initHeader());
          }
-         addRow && this.whatRender(this.data, addRow) //增加空白行
-      } else{
-
+         addRow && this.whatRender(addRow) //增加空白行
+      } else {
+         let colums = $(this.html).children('.colum')
+         let colLen = colums.length;
+         let i = 0;
+         while (true) {
+            if (i > colLen - 1) break
+            let _colum = $(colums[i]).clone();
+            _colum.children().remove();
+            let columChildren = $(colums[i]).children() //element of colum
+            let j = 0;
+            while (true) {
+               if (j > columChildren.length - 1) break;
+               let item = columChildren[j];
+               if ($(item).hasClass('editor-box') && !$(item).attr('proTitle')) {
+                  if ($(item).attr('type') === 'select') {
+                     let index = $(item).attr('boxindex');
+                     let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'select');
+                     GlobalData.AnswerFrameObj.push(answerFrame)
+                     _colum.append(answerFrame.answerFrame)
+                  }
+               } else {
+                  _colum.append(item)
+               }
+               j++
+            }
+            this.page.append(_colum);
+            this.observeColum(_colum);
+            i++
+         }
       }
-
    }
-   private whatRender(data: any, addRow: boolean) {
-      data.pageQus.map((pro: any, index: number) => {
+   private whatRender(addRow: boolean) {
+      this.data.pageQus.map((pro: any, index: number) => {
          if (!pro.pros.find((val: any) => { return val.pureObjective !== '1' })) {//选择题
             this.renderDeafultAnswerFrame(index, addRow, 'select', pro)
          } else {

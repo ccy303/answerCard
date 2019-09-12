@@ -1,18 +1,18 @@
 {
    "schoolId": null,
-   "id": "55",
-   "subjectId": "2884",
+   "id": "26",
+   "subjectId": "2887",
    "paperSize": "A3",
-   "layoutType": "2",
+   "layoutType": "3",
    "sourceType": "2",
    "prohibitType": "1",
-   "noMode": "2",
+   "noMode": "1",
    "noCount": "9",
    "noBoth": "1",
-   "qrCode": "w4",
-   "alias": "答题卡 - 第二次迭代 - 条码和方框对齐 高一 语文",
+   "qrCode": "w7",
+   "alias": "答题卡 - 第二次迭代 - 条码和方框对齐二 高一 英语",
    "cardJson": null,
-   "cardHtml": "[\"<div class=\\\"page A3\\\" id=\\\"1p\\\"><div class=\\\"colum A3-3\\\">\\n            <div contenteditable=\\\"true\\\" class=\\\"exam-title\\\" hash=\\\"examTitle\\\">答题卡 - 第二次迭代 - 条码和方框对齐 高一 语文</div>\\n            <div class=\\\"header-box\\\" hash=\\\"id2165375776555\\\"><div class=\\\"header-contnet\\\" style=\\\"margin-top: 0px; width: 100%;\\\"><div class=\\\"student-info\\\"><div><span class=\\\"name\\\"><b>姓名:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>班级:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>考场号/座位号:</b></span><b>_______________</b></div></div><div class=\\\"tip-box\\\">  \\n         <h5 style=\\\"margin:0;\\\">注意事项</h5>\\n         <p>1、选择题作答必须用2B铅笔填涂</p>\\n         <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>\\n         <p style=\\\"display:none\\\">3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p>\\n         <p style=\\\"display:none\\\">4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p>\\n      </div></div><div class=\\\"student-num\\\"><p class=\\\"title\\\">学号</p><div class=\\\"num\\\"><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div></div></div></div><div boxindex=\\\"0\\\" hash=\\\"id1785815484031\\\" type=\\\"select\\\" class=\\\"editor-box\\\" contenteditable=\\\"false\\\"><div class=\\\"row\\\" hash=\\\"id1785815484031\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"33031\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">1</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550466\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">6</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5505911\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">11</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div></div><div class=\\\"row\\\" hash=\\\"id1785815484031\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550562\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">2</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550447\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">7</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id1785815484031\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550533\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">3</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550408\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">8</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id1785815484031\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550524\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">4</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550359\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">9</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id1785815484031\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550485\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">5</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"5503710\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">10</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">A</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">B</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">C</span>]\\n                  </div><div class=\\\"opt-item\\\">\\n                     [<span style=\\\"\\\">D</span>]\\n                  </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div></div></div><div class=\\\"colum A3-3\\\"></div><div class=\\\"colum A3-3\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div><div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:8px;width:25px;top:40px;left:170.7px\\\" class=\\\"rectangle\\\"></div><p class=\\\"pageNum\\\">\\n         <span>第1页</span> / <span type=\\\"totalPage\\\">共1页</span>\\n      </p></div>\"]",
+   "cardHtml": null,
    "attention": null,
    "pageCnt": "1",
    "subjectName": null,
@@ -26,30 +26,220 @@
          "pIndex": "1@1",
          "pros": [
             {
-               "proId": "1825",
-               "score": 5.0,
+               "proId": "1526",
+               "score": 20.0,
                "pureObjective": "1",
                "content": "",
                "sort": "1",
                "pnum": "",
                "group": "0",
-               "titleType": "现代文阅读",
+               "titleType": "完形填空",
                "qus": [
                   {
-                     "quId": "3303",
-                     "score": 5.0,
+                     "quId": "2693",
+                     "score": 1.0,
                      "quType": "单选题",
-                     "nums": "1",
+                     "nums": "4",
                      "content": "",
                      "pnum": "1",
                      "visible": true,
                      "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2694",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "2",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2695",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "3",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2696",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "4",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2697",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "5",
+                     "visible": true,
+                     "rIndex": "1-1-1"
+                  },
+                  {
+                     "quId": "2698",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "6",
+                     "visible": true,
+                     "rIndex": "1-1-2"
+                  },
+                  {
+                     "quId": "2699",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "7",
+                     "visible": true,
+                     "rIndex": "1-1-2"
+                  },
+                  {
+                     "quId": "2700",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "8",
+                     "visible": true,
+                     "rIndex": "1-1-2"
+                  },
+                  {
+                     "quId": "2701",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "9",
+                     "visible": true,
+                     "rIndex": "1-1-2"
+                  },
+                  {
+                     "quId": "2702",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "10",
+                     "visible": true,
+                     "rIndex": "1-1-2"
+                  },
+                  {
+                     "quId": "2703",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "11",
+                     "visible": true,
+                     "rIndex": "1-1-3"
+                  },
+                  {
+                     "quId": "2704",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "12",
+                     "visible": true,
+                     "rIndex": "1-1-3"
+                  },
+                  {
+                     "quId": "2705",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "13",
+                     "visible": true,
+                     "rIndex": "1-1-3"
+                  },
+                  {
+                     "quId": "2706",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "14",
+                     "visible": true,
+                     "rIndex": "1-1-3"
+                  },
+                  {
+                     "quId": "2707",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "15",
+                     "visible": true,
+                     "rIndex": "1-1-3"
+                  },
+                  {
+                     "quId": "2708",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "16",
+                     "visible": true,
+                     "rIndex": "1-1-4"
+                  },
+                  {
+                     "quId": "2709",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "17",
+                     "visible": true,
+                     "rIndex": "1-1-4"
+                  },
+                  {
+                     "quId": "2710",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "18",
+                     "visible": true,
+                     "rIndex": "1-1-4"
+                  },
+                  {
+                     "quId": "2711",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "19",
+                     "visible": true,
+                     "rIndex": "1-1-4"
+                  },
+                  {
+                     "quId": "2712",
+                     "score": 1.0,
+                     "quType": "单选题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "20",
+                     "visible": true,
+                     "rIndex": "1-1-4"
                   }
                ]
             },
             {
-               "proId": "55056",
-               "score": 5.0,
+               "proId": "102329",
+               "score": 1.0,
                "pureObjective": "1",
                "content": "",
                "sort": "2",
@@ -58,212 +248,56 @@
                "titleType": "选择题",
                "qus": [
                   {
-                     "quId": "55056",
-                     "score": 5.0,
+                     "quId": "102329",
+                     "score": 1.0,
                      "quType": "单选题",
                      "nums": "4",
                      "content": "",
-                     "pnum": "2",
+                     "pnum": "21",
                      "visible": true,
-                     "rIndex": "1-1-1"
+                     "rIndex": "1-1-5"
                   }
                ]
-            },
+            }
+         ]
+      },
+      {
+         "sort": "2",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "1@2",
+         "pros": [
             {
-               "proId": "55053",
-               "score": 5.0,
-               "pureObjective": "1",
+               "proId": "1594",
+               "score": 2.0,
+               "pureObjective": "2",
                "content": "",
                "sort": "3",
                "pnum": "",
                "group": "0",
-               "titleType": "选择题",
+               "titleType": "材料题",
                "qus": [
                   {
-                     "quId": "55053",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
+                     "quId": "2851",
+                     "score": 1.0,
+                     "quType": "解答题",
+                     "nums": null,
                      "content": "",
-                     "pnum": "3",
+                     "pnum": "22",
                      "visible": true,
-                     "rIndex": "1-1-1"
-                  }
-               ]
-            },
-            {
-               "proId": "55052",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "4",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
+                     "rIndex": "0"
+                  },
                   {
-                     "quId": "55052",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
+                     "quId": "2852",
+                     "score": 1.0,
+                     "quType": "解答题",
+                     "nums": null,
                      "content": "",
-                     "pnum": "4",
+                     "pnum": "23",
                      "visible": true,
-                     "rIndex": "1-1-1"
-                  }
-               ]
-            },
-            {
-               "proId": "55048",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "5",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55048",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "5",
-                     "visible": true,
-                     "rIndex": "1-1-1"
-                  }
-               ]
-            },
-            {
-               "proId": "55046",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "6",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55046",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "6",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55044",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "7",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55044",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "7",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55040",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "8",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55040",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "8",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55035",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "9",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55035",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "9",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55038",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "10",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55037",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "10",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55059",
-               "score": 5.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "11",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55059",
-                     "score": 5.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "11",
-                     "visible": true,
-                     "rIndex": "1-1-3"
+                     "rIndex": "0"
                   }
                ]
             }
@@ -271,8 +305,8 @@
       }
    ],
    "checkMsg": null,
-   "paperId": 1894,
-   "paperVid": 2,
+   "paperId": 1804,
+   "paperVid": 1,
    "versionId": 10004,
    "versionMsg": null
 }
