@@ -10,6 +10,7 @@ export default class Page {
    private data: any;
    // private answerFrame: any = []; //本页面中所有的answerFrame对象
    private callback: any; //用于判断是否要添加新一页
+   private html: any;
    //1->1,2->2,3->4,4->8
    private pageNum: Array<any> = [
       [1], //1
@@ -33,12 +34,13 @@ export default class Page {
     * @param callback 函数，用于判断是否要添加新一页
     * @param colum 列数 1栏、2栏、3栏
     */
-   constructor(callback: any) {
+   constructor(callback: any, html?: string) {
       this.type = GlobalData.dataJSON.paperSize;
       this.colum = GlobalData.dataJSON.layoutType;
       this.page = $('<div class="page boxShadow"></div>')
       this.data = GlobalData.dataJSON
       this.callback = callback;
+      this.html = html;
    }
    public get page(): JQuery<HTMLElement> {
       return this._page
@@ -46,40 +48,43 @@ export default class Page {
    public set page(val: JQuery<HTMLElement>) {
       this._page = val;
    }
-   public async pageInit(addRow: boolean = true, renderHeader: boolean = true) {
+   public pageInit(addRow: boolean = true, renderHeader: boolean = true) {
       this.page.addClass(this.type);
       GlobalData.dom.append(this.page);
       this.page.attr('id', `${$('#answerCard .page').length}p`)
-      //渲染列
-      let _colum = this.colum - 1;
-      while (true) {
-         if (_colum < 0) break;
-         let defaultColum: JQuery<HTMLElement> = null
-         if (_colum === this.colum - 1) {
-            defaultColum = $(`<div class="colum ${this.type}-${this.colum}">
+      if (!this.html) {
+         //渲染列
+         let _colum = this.colum - 1;
+         while (true) {
+            if (_colum < 0) break;
+            let defaultColum: JQuery<HTMLElement> = null
+            if (_colum === this.colum - 1) {
+               defaultColum = $(`<div class="colum ${this.type}-${this.colum}">
             ${renderHeader ? `<div contenteditable="true" class="exam-title" hash="examTitle">${this.data.alias}</div>` : ''}
             </div>`)
-         } else {
-            defaultColum = $(`<div class="colum ${this.type}-${this.colum}"></div>`)
+            } else {
+               defaultColum = $(`<div class="colum ${this.type}-${this.colum}"></div>`)
+            }
+            this.observeColum(defaultColum);
+            this.page.append(defaultColum)
+            _colum--;
          }
-         this.observeColum(defaultColum);
-         this.page.append(defaultColum)
-         _colum--;
+         this.page.append(this.square());
+         this.rectangle();
+         this.rectangle(true);
+         if (renderHeader) {//绘制答题卡头}
+            let header = new Header({
+               type: this.type,
+               colum: this.colum
+            })
+            GlobalData.headerObj.push(header);
+            $(this.page).find('div.colum:first-child').append(header.initHeader());
+         }
+         addRow && this.whatRender(this.data, addRow) //增加空白行
+      } else{
+
       }
-      this.page.append(this.square());
-      this.rectangle();
-      this.rectangle(true);
-      if (renderHeader) {//绘制答题卡头}
-         let header = new Header({
-            type: this.type,
-            colum: this.colum
-         })
-         GlobalData.headerObj.push(header);
-         $(this.page).find('div.colum:first-child').append(header.initHeader());
-      }
-      if (addRow) { //增加空白行
-         this.whatRender(this.data, addRow)
-      } else { }
+
    }
    private whatRender(data: any, addRow: boolean) {
       data.pageQus.map((pro: any, index: number) => {

@@ -124,7 +124,7 @@
 .editor-box[type="select"] {
   padding: 0;
   .row {
-    line-height: unset;
+    line-height: normal;
     .sel-item {
       line-height: 18px;
       display: inline-block;
@@ -171,6 +171,11 @@
       .sel-item {
         padding-top: 7px;
       }
+    }
+  }
+  & {
+    * {
+      vertical-align: top;
     }
   }
   &:not(:first-child) {
