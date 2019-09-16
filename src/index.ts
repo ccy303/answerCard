@@ -22,6 +22,19 @@ class AnswerCard {
       GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
       GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
+      let html = this.dataJson.cardHtml
+      if (html) {
+         html = JSON.parse(html)
+         let i = 0;
+         while (true) {
+            if (i > html.length - 1) break;
+            let page = new Page(this.addPage.bind(this), html[i])
+            page.pageInit()
+            this.pages = page
+            i++
+         }
+         return
+      }
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
