@@ -100,6 +100,16 @@ export default class Page {
                      let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'select');
                      GlobalData.AnswerFrameObj.push(answerFrame)
                      _colum.append(answerFrame.answerFrame)
+                  } else if ($(item).attr('type') === 'editor') {
+                     let index = $(item).attr('boxindex');
+                     let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'editor');
+                     GlobalData.AnswerFrameObj.push(answerFrame)
+                     _colum.append(answerFrame.answerFrame)
+                  } else if ($(item).attr('type') === 'write') {
+                     let index = $(item).attr('boxindex');
+                     let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'write');
+                     GlobalData.AnswerFrameObj.push(answerFrame)
+                     _colum.append(answerFrame.answerFrame)
                   }
                } else {
                   _colum.append(item)

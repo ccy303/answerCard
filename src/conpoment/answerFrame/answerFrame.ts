@@ -65,46 +65,56 @@ export default class AnswerFrame {
       dom.append(row)
    }
    private renderWrite(bIndex: number, hash: string) {
-      let dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="false"></div>`);
-      if (Object.keys(this.data).length) {
-         dom.attr("targetid", `${this.data.pros[0].proId}`)
-      }
-      let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
-      let i = 0
-      while (true) {
-         if (i > totlaCount) break;
-         this.writeAddRow(dom, hash)
-         i++;
+      let dom: JQuery<HTMLElement> = null;
+      if (!this.html) {
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="false"></div>`);
+         if (Object.keys(this.data).length) {
+            dom.attr("targetid", `${this.data.pros[0].proId}`)
+         }
+         let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
+         let i = 0
+         while (true) {
+            if (i > totlaCount) break;
+            this.writeAddRow(dom, hash)
+            i++;
+         }
+      } else {
+         dom = $(this.html)
       }
       return dom
    }
    private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
-      const flg = ['判断题', '单选题', '多选题'];
-      const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
-      const judge = '✓✗';
-      let dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
-      if (Object.keys(this.data).length) {
-         dom.attr("targetid", `${this.data.pros[0].proId}`)
-         this.data.pros[0].qus.map((val: any) => {
-            let pnum = $(`<div class="row" hash="${hash}">${val.pnum}：(${val.score}分)</div>`)
-            if (flg.indexOf(val.quType) !== -1 && val.visible) {
-               let j = 0;
-               let opt = $(`<div class="opts"  style="margin-left:15px"></div>`)
-               while (true) {
-                  if (j > val.nums - 1) break
-                  opt.append($(`<div class="opt-item">[${val.quType === '判断题' ? judge[j] : option[j]}]</div>`))
-                  j++;
+      let dom: JQuery<HTMLElement> = null;
+      if (!this.html) {
+         const flg = ['判断题', '单选题', '多选题'];
+         const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
+         const judge = '✓✗';
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
+         if (Object.keys(this.data).length) {
+            dom.attr("targetid", `${this.data.pros[0].proId}`)
+            this.data.pros[0].qus.map((val: any) => {
+               let pnum = $(`<div class="row" hash="${hash}">${val.pnum}：(${val.score}分)</div>`)
+               if (flg.indexOf(val.quType) !== -1 && val.visible) {
+                  let j = 0;
+                  let opt = $(`<div class="opts"  style="margin-left:15px"></div>`)
+                  while (true) {
+                     if (j > val.nums - 1) break
+                     opt.append($(`<div class="opt-item">[${val.quType === '判断题' ? judge[j] : option[j]}]</div>`))
+                     j++;
+                  }
+                  pnum.append(opt)
                }
-               pnum.append(opt)
-            }
-            dom.append(pnum)
-            let i = 0;
-            while (true && insertChild && flg.indexOf(val.quType) === -1) {
-               if (i > 6) break;
-               dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
-               i++
-            }
-         })
+               dom.append(pnum)
+               let i = 0;
+               while (true && insertChild && flg.indexOf(val.quType) === -1) {
+                  if (i > 6) break;
+                  dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
+                  i++
+               }
+            })
+         }
+      } else {
+         dom = $(this.html)
       }
       dom.on('keydown', this.keyDowm.bind(this, false))
       dom.on('paste', this.paste.bind(this, true))
@@ -168,7 +178,6 @@ export default class AnswerFrame {
       } else {
          dom = $(this.html)
       }
-
       return dom
    }
    public getLastRow() {
