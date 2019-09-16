@@ -178,6 +178,14 @@ class Tool {
          $('#dialog').remove()
       })
    }
+   resetRange(startContainer: any, startOffset: any, endContainer: any, endOffset: any) {//重新设置焦点
+      let selection = window.getSelection();
+      selection.removeAllRanges();
+      let range = document.createRange();
+      range.setStart(startContainer, startOffset);
+      range.setEnd(endContainer, endOffset);
+      selection.addRange(range);
+   }
 }
 
 export default new Tool() as Tool   

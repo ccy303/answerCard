@@ -186,7 +186,6 @@
   }
 }
 
-
 .header-box {
   box-sizing: border-box;
   width: 100%;
@@ -253,12 +252,12 @@
         display: inline-block;
         .frame {
           color: #888;
-          width: 32px;
+          width: 28px;
           height: 18px;
           line-height: 21px;
           font-size: 12px;
           text-align: center;
-          letter-spacing: 2px;
+          letter-spacing: 1px;
           text-indent: 2px;
         }
       }
@@ -279,7 +278,6 @@
     clear: both;
   }
 }
-
 
 body {
   margin: 0;
@@ -461,4 +459,3 @@ body {
 .boxShadow {
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
 }
- 

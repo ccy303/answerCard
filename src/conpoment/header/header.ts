@@ -34,8 +34,8 @@ export default class Header {
          box.append(this.renderBarCode())
       } else if (examCountType === 2) {
          let style = {
-            width: studentNumLength <= 11 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
-            float: studentNumLength <= 11 ? 'left' : 'unset',
+            width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
+            float: studentNumLength <= 12 ? 'left' : 'unset',
             marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
          }
          div.css('margin-top', style.marginTop).css('width', style.width)

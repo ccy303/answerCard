@@ -118,8 +118,8 @@ export default class SelQues {
                   newArr.push([data.totalQues[i]], [data.totalQues[i + 1]]);
                }
             }
+            obj.colum = null
             obj.arr = newArr;
-            obj.colum = null //随机分列
          }
       }
       return obj

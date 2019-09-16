@@ -98,7 +98,7 @@ export default class AnswerFrame {
             dom.append(pnum)
             let i = 0;
             while (true && insertChild && flg.indexOf(val.quType) === -1) {
-               if (i > 1) break;
+               if (i > 6) break;
                dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
                i++
             }
@@ -135,8 +135,10 @@ export default class AnswerFrame {
                   </div>`)
                   k++
                }
+               let width = arg.colum ? 100 / arg.colum : 100 / arr.length;
+               // let width = 100 / arg.colum;
                let selItem = $(`
-                  <div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${100 / arg.colum}%"></div>
+                  <div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${width}%"></div>
                `);
                selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
                selItem.append(opt)
