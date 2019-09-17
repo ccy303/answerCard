@@ -74,7 +74,7 @@ class Tool {
    insertGrid() {
       let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
          <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="">插入方格数</p>
+            <p style="margin:15px 0">插入方格数</p>
             <input id="count" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
             <div style="margin:15px 0;text-align:center">
                <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
@@ -94,7 +94,7 @@ class Tool {
    changeLineHeight() {
       let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
          <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="">修改行高</p>
+            <p style="margin:15px 0">修改行高</p>
             <select value="25" id="lineHeight" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" >
                <option value="18">18px</option>
                <option value="20">20px</option>
@@ -163,7 +163,7 @@ class Tool {
       if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'write') return
       let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
          <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="">修改作文字数</p>
+            <p style="margin:15px 0">修改作文字数</p>
             <input value="800" id="fontNum" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
             <div style="margin:15px 0;text-align:center">
                <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
