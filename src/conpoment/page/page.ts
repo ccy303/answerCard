@@ -262,6 +262,7 @@ export default class Page {
          let row = nextColumFirstEditor.children().first();
          let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(nextColumFirstEditor.attr('boxIndex')), false, nextColumFirstEditor.attr('type'));
          GlobalData.AnswerFrameObj.push(answerFrame)
+         answerFrame.answerFrame.attr('targetid', nextColumFirstEditor.attr('targetid'))
          thisColum.append(answerFrame.answerFrame);
          answerFrame.answerFrame.append(row)
          row.attr('hash', answerFrame.answerFrame.attr('hash'))

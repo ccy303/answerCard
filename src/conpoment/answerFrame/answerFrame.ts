@@ -109,7 +109,7 @@ export default class AnswerFrame {
                dom.append(pnum)
                let i = 0;
                while (true && insertChild && flg.indexOf(val.quType) === -1) {
-                  if (i > 28) break;
+                  if (i > 5) break;
                   dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
                   i++
                }

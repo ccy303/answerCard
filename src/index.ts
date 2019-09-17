@@ -25,6 +25,10 @@ class AnswerCard {
       GlobalData.dom.on('click', () => {
          $('#contentText').remove()
       })
+      GlobalData.dom.on('dblclick', () => {
+         this.getLayoutData();
+         console.log(this.dataJson)
+      })
       let html = this.dataJson.cardHtml
       if (html) {
          html = JSON.parse(html)
