@@ -1,6 +1,7 @@
 import Header from '../header/header';
 import AnswerFrame from '../answerFrame/answerFrame';
 import GlobalData from '../global';
+import Tool from '../../tool/tool';
 import './page.scss';
 
 export default class Page {
@@ -82,6 +83,9 @@ export default class Page {
          }
          addRow && this.whatRender(addRow) //增加空白行
       } else {
+         this.page.append(this.square());
+         this.rectangle();
+         this.rectangle(true);
          let colums = $(this.html).children('.colum')
          let colLen = colums.length;
          let i = 0;
@@ -112,6 +116,13 @@ export default class Page {
                      _colum.append(answerFrame.answerFrame)
                   }
                } else {
+                  if ($(item).attr('protitle')) {
+                     let bindex = $(item).attr('boxindex');
+                     $(item).find('.del').on('click', () => {
+                        GlobalData.haveRemoveDomParent = $(`div[proTitle="true"][boxIndex=${bindex}]`).parent().first();
+                        Tool.removeBox($(`div[proTitle="true"][boxIndex=${bindex}]`))
+                     })
+                  }
                   _colum.append(item)
                }
                j++
@@ -232,7 +243,7 @@ export default class Page {
       return nextEditorBox
    }
    private moveRowToPrevEditorBox(targetEditorBox: JQuery<HTMLElement>, prevEditorBox: JQuery<HTMLElement>) {
-      let row = targetEditorBox.find('div.row:first-child');
+      let row = targetEditorBox.find('div.row:nth(0)');
       prevEditorBox.append(row)
       row.attr('hash', prevEditorBox.attr('hash'))
    }
@@ -247,12 +258,21 @@ export default class Page {
       if (!nextColum || !nextColum.get(0)) return;
       let nextColumFirstEditor = $(nextColum.children('div.editor-box').get(0))
       if (!nextColumFirstEditor.get(0)) return;
-      let row = nextColumFirstEditor.children().first();
-      let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(nextColumFirstEditor.attr('boxIndex')), false, nextColumFirstEditor.attr('type'));
-      GlobalData.AnswerFrameObj.push(answerFrame)
-      thisColum.append(answerFrame.answerFrame);
-      answerFrame.answerFrame.append(row)
-      row.attr('hash', answerFrame.answerFrame.attr('hash'))
+      if (!nextColumFirstEditor.attr('protitle')) {
+         let row = nextColumFirstEditor.children().first();
+         let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(nextColumFirstEditor.attr('boxIndex')), false, nextColumFirstEditor.attr('type'));
+         GlobalData.AnswerFrameObj.push(answerFrame)
+         thisColum.append(answerFrame.answerFrame);
+         answerFrame.answerFrame.append(row)
+         row.attr('hash', answerFrame.answerFrame.attr('hash'))
+      } else {
+         let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(nextColumFirstEditor.attr('boxIndex')), false, nextColumFirstEditor.attr('type'));
+         let proTitle = answerFrame.addContent(false, Number(nextColumFirstEditor.attr('boxIndex')));
+         let row = nextColumFirstEditor.children('.row').first()
+         thisColum.append(proTitle)
+         proTitle.append(row)
+         row.attr('hash', proTitle.attr('hash'))
+      }
    }
    private setFrameIdx(dom: JQuery<HTMLElement>) {
       let colums = $('#answerCard').find('.colum');
@@ -279,7 +299,7 @@ export default class Page {
       let lastFrame = dom.children('[type="editor"]:last-child,[type="write"]:last-child');
       if (heightdiff > 0 && heightdiff < parseInt(lineHeight) && lastFrame.get(0)) {
          let height = this.page.height() - dom.height()
-         let div = $(`<div style="height:${height}px;background:#000" contenteditable="false" swapHeight="true"></div>`)
+         let div = $(`<div style="height:${height}px" contenteditable="false" swapHeight="true"></div>`)
          observe.disconnect() // insertHeight should be stop to observe colum change
          dom.children('[type="editor"]:last-child,[type="write"]:last-child').append(div)
       }
@@ -295,7 +315,7 @@ export default class Page {
       e.map((mutation: MutationRecord) => {
          if ($(mutation.removedNodes[0]).attr('swapHeight') == 'true') return
          if ($(mutation.addedNodes[0]).attr('swapHeight') == 'true') return
-         if ($(mutation.target).hasClass('write-item')) return
+         // if ($(mutation.target).hasClass('write-item')) return
          if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
          let innerHeight = dom.height();
          let pageHeight = this.page.height()
@@ -306,11 +326,11 @@ export default class Page {
             dom.find('[swapheight=true]').remove()
             const type = $(lastEditorBox).attr('type')
             //获取生成此editorBox的对象实例
-            let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox; })[0];
+            let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox })[0];
             let lastRow = null;
             obj && (lastRow = obj.getLastRow())
             if (!obj && $(lastEditorBox).attr('proTitle')) {
-               lastRow = $(lastEditorBox).find('.row:last-child')
+               lastRow = $(lastEditorBox).find('.row').last();
             }
             let nextBox = this.checkoutEditorBox(dom.find('div.editor-box:last-child'), dom);
             if (nextBox && nextBox.get(0)) {
@@ -329,7 +349,7 @@ export default class Page {
                lastRow.attr('hash', box.attr('hash'))
                boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
             }
-            if (GlobalData.selectionLastRow) {
+            if (GlobalData.selectionLastRow) {//将光标移到上一行
                lastRow.focus();
                let range = new Range();
                range.selectNodeContents(lastRow.get(0));
@@ -352,6 +372,7 @@ export default class Page {
             //57一个editor只有一行所需最小距离
             if (!nextEditorBox) {
                pageHeight - innerHeight >= 57 && this.moveNextEditorBoxToThisColum(editorBox.parent());
+               !editorBox.children('.row').get(0) && editorBox.remove();
                return;
             } else {
                let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
@@ -364,6 +385,7 @@ export default class Page {
                   nextEditorBox.remove();
                }
             }
+            !editorBox.children('.row').get(0) && editorBox.remove();
          }
       })
       if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count

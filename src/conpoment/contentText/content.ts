@@ -16,8 +16,11 @@ import icon13 from './../../../assets/icons/youduiqi-icon.png';
 import icon14 from './../../../assets/icons/zishu-icon.png';
 
 export default class ContentText {
+   dom: JQuery<HTMLElement> = null;
+   constructor(dom?: any) {
+      this.dom = dom;
+   }
    public init() {
-      // <img src="../../icons/charudati_icono.png" />
       let contentText = $(`<div id="contentText">
          <ul id="firstList">
             <li onselectstart="return false" id="right-addContent">
@@ -101,7 +104,6 @@ export default class ContentText {
       contentText.find('li').on('click', this.contentTextClick.bind(this))
       return contentText
    }
-
    private contentTextClick(e: any) {
       e.preventDefault()
       e.stopPropagation()
@@ -131,7 +133,6 @@ export default class ContentText {
       }
       $('#contentText').remove()
    }
-
    private fileChange(e: any) {
       let file = e.target.files[0];
       tool.uploadFile(file, true)

@@ -39,8 +39,10 @@ export default class AnswerFrame {
       $('#contentText').get(0) && $('#contentText').remove()
       GlobalData.contentTextTarget = { targetObj: this, targetDom: $(e.currentTarget), targetRow: $(e.target) };
       let contentText = new ContentText().init()
-      GlobalData.dom.append(contentText);
-      $('#contentText').css('display', 'block').css('top', e.pageY).css('left', e.pageX)
+      $(e.currentTarget).parent().append(contentText)
+      let top = e.offsetY + e.target.offsetTop + e.currentTarget.offsetTop + 5;
+      let left = e.offsetX + e.target.offsetLeft + e.currentTarget.offsetLeft + 5;
+      $('#contentText').css('display', 'block').css('top', top).css('left', left)
    }
    get answerFrame(): JQuery<HTMLElement> {
       return this._answerFrame;
@@ -107,7 +109,7 @@ export default class AnswerFrame {
                dom.append(pnum)
                let i = 0;
                while (true && insertChild && flg.indexOf(val.quType) === -1) {
-                  if (i > 6) break;
+                  if (i > 28) break;
                   dom.append($(`<div class="row" hash="${hash}"><br /></div>`))
                   i++
                }
@@ -270,11 +272,12 @@ export default class AnswerFrame {
     * @param  bIndex  由上一个标题栏跨栏产生的标题栏创建时需要传递的发生跨列的标题栏的boxIndex，空则表示不是跨列调用
     */
    public addContent(addrow: boolean = true, bIndex?: any) {
-      let proTitle = GlobalData.contentTextTarget.targetDom.prev().attr('proTitle');
+      let prev = GlobalData.contentTextTarget.targetDom ? GlobalData.contentTextTarget.targetDom.prev() : null
+      let proTitle = prev ? prev.attr('proTitle') : undefined;
       let isSplit = tool.checkBoxIsSplit(GlobalData.contentTextTarget.targetDom);
       if (!bIndex && (proTitle || isSplit)) { return }
       let dom = this.content(addrow, bIndex)
-      GlobalData.contentTextTarget.targetDom.before(dom)
+      addrow && GlobalData.contentTextTarget.targetDom.before(dom)
       return dom
    }
    private content(addrow: boolean, bIndex?: any) {
@@ -288,8 +291,8 @@ export default class AnswerFrame {
       dom.on('keydown', this.keyDowm.bind(this, true))
       dom.on('paste', this.paste.bind(this, false))
       del.on('click', () => {
-         GlobalData.haveRemoveDomParent = $(`div[proTitle="true"][boxIndex=${bIndex}]`).parent();
-         $(`div[proTitle="true"][boxIndex=${bIndex}]`).remove()
+         GlobalData.haveRemoveDomParent = $(`div[proTitle="true"][boxIndex=${bIndex}]`).parent().first();
+         tool.removeBox($(`div[proTitle="true"][boxIndex=${bIndex}]`))
       })
       return dom
    }

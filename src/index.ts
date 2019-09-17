@@ -22,6 +22,9 @@ class AnswerCard {
       GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
       GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
+      GlobalData.dom.on('click', () => {
+         $('#contentText').remove()
+      })
       let html = this.dataJson.cardHtml
       if (html) {
          html = JSON.parse(html)
@@ -38,9 +41,6 @@ class AnswerCard {
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
-      GlobalData.dom.on('click', () => {
-         $('#contentText').remove()
-      })
    }
    private addPage() {
       let page = new Page(this.addPage.bind(this));
@@ -89,9 +89,7 @@ class AnswerCard {
       }
    }
 }
-
 export default AnswerCard
-
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
    both: true,

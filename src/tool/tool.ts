@@ -17,6 +17,9 @@ class Tool {
             if (pageDom.find('.colum').children('.header-box').get(0)) {
                bigFrame -= 2;
             }
+            if (pageDom.find('.colum').children(`[type=select]`).prev().attr('protitle') == "true") {
+               bigFrame -= 1;
+            }
          }
       }
       if (!bigFrame) return null
@@ -33,10 +36,13 @@ class Tool {
             if ($(pages[j]).find(dom[i]).get(0)) {
                p = j + 1;
                let frame = $(pages[j]).find('.colum').children(); //全部框
+               let titleLen: number = 0;
                for (let k = 0; k < frame.length; k++) {
+                  $(frame[k]).attr('protitle') && titleLen++
                   if (frame[k] === dom[i]) {
                      f = k + 1;
                      $(pages[j]).find('.colum').children('.header-box').get(0) && (f -= 2);
+                     f -= titleLen
                   }
                }
             }
@@ -60,6 +66,7 @@ class Tool {
       return pIndex.join('-')
    }
    checkBoxIsSplit(dom: JQuery<HTMLElement>) {
+      if (!dom) return
       let attr = dom.attr('boxindex');
       let editorBoxs = $('#answerCard').find(`[boxindex=${attr}]`);
       return !(dom.get(0) === editorBoxs[0])
@@ -173,7 +180,7 @@ class Tool {
          if (!val) return
          let pageObj = this.findPageObj(page);
          let writeFrame = $('#answerCard').find('[type=write]');
-         writeFrame.remove()
+         this.removeBox(writeFrame)
          pageObj.renderDeafultAnswerFrame(boxindex, true, 'write', {}, val)
          $('#dialog').remove()
       })
@@ -185,6 +192,22 @@ class Tool {
       range.setStart(startContainer, startOffset);
       range.setEnd(endContainer, endOffset);
       selection.addRange(range);
+   }
+   removeBox(box: JQuery<HTMLElement>) {//when remove a box,we should remove row by row
+      let i = 0;
+      while (true) {
+         if (i > box.length - 1) break;
+         let children = $(box[i]).children('.row');
+         let j = 0;
+         setTimeout(() => {//async problem
+            while (true) {
+               if (j > children.length - 1) break
+               $(children[j]).remove();
+               j++
+            }
+         }, 0);
+         i++
+      }
    }
 }
 
