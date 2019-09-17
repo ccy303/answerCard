@@ -2,7 +2,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json');
+const dataJSON = require('./test.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
