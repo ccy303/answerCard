@@ -32,7 +32,7 @@ export default class Header {
          div.append(this.renderTip())
          box.append(div);
          let code = this.renderBarCode();
-         type === 'A3' && colum == 3 && code.css('width', '40%')
+         // type === 'A3' && colum == 3 && code.css('width', '40%')
          box.append(code)
       } else if (examCountType === 2) {
          let style = {
