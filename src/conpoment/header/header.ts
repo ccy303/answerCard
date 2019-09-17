@@ -31,9 +31,10 @@ export default class Header {
          div.append(this.renderStudentInfo());
          div.append(this.renderTip())
          box.append(div);
+         let con = $(`<div style="float:right;width:50%;padding-top:25px;"></div>`)
          let code = this.renderBarCode();
-         // type === 'A3' && colum == 3 && code.css('width', '40%')
-         box.append(code)
+         con.append(code)
+         box.append(con)
       } else if (examCountType === 2) {
          let style = {
             width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
@@ -103,8 +104,8 @@ export default class Header {
    private renderBarCode(): JQuery<HTMLElement> {
       return $(`
          <div class="bar-code">
-            <p style="margin-top:40px">条形码粘贴处</p>
-            <p style="font-size: 12px">（正面朝上，切勿贴出框外）</p>
+            <p style="line-height: normal;margin-top: 30px;">条形码粘贴处</p>
+            <p style="line-height: normal;font-size: 12px">（正面朝上，切勿贴出框外）</p>
          </div>
       `)
    }

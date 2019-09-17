@@ -5,7 +5,7 @@
   text-align: center;
   .header-contnet {
     float: left;
-    width: 45%;
+    width: 50%;
     text-align: left;
     &::after {
       display: table;
@@ -76,11 +76,12 @@
     }
   }
   .bar-code {
-    margin-top: 25px;
-    width: 40%;
+    line-height: 120px;
+    width: 180px;
+    margin-right: 5%;
+    margin: 0 auto;
     box-sizing: border-box;
-    float: right;
-    min-height: 136px;
+    height: 120px;
     border: 2px dashed #999;
     text-align: center;
   }
