@@ -99,7 +99,7 @@ process.env.NODE_ENV == 'development' && new AnswerCard({
    config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
-         Token: '0bdf19113bf90f61bdc8d204127724c04e5fb09e',
+         Token: '9a06366922a4135da0f2f1d2f714ea12bde1bde2',
          inType: 41,
       }
    },

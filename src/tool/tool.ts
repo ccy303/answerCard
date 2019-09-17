@@ -121,7 +121,7 @@ class Tool {
    }
    uploadFile(file: any, type: boolean, callback?: any) {
       let config = GlobalData.config;
-      let queryData = type ? Object.assign({}, config.queryData, { inFiletype: 'png' }) : config.queryData;
+      let queryData = type ? Object.assign({}, config.queryData, { inFiletype: '' }) : config.queryData;
       $.post(`${config.uploadUrl}`, queryData, (res) => {
          if (res.result === '00') {
             let { data } = res;
@@ -210,5 +210,4 @@ class Tool {
       }
    }
 }
-
 export default new Tool() as Tool   
