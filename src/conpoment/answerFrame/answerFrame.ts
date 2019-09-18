@@ -265,6 +265,8 @@ export default class AnswerFrame {
             $(GlobalData.currentImage).parent().remove()
          }
          $(event.target).children('.row').length === 1 && $(event.target).children('.row').get(0).innerHTML.indexOf('<b') != -1 && event.preventDefault();
+      } else {
+         $(window.getSelection().anchorNode).hasClass('editor-box') && event.preventDefault();
       }
    }
    /**

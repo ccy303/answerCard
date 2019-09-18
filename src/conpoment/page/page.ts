@@ -350,16 +350,6 @@ export default class Page {
                lastRow.attr('hash', box.attr('hash'))
                boxFirstChild.get(0) ? boxFirstChild.before(lastRow) : box.append(lastRow)
             }
-            if (GlobalData.selectionLastRow) {//将光标移到上一行
-               lastRow.focus();
-               let range = new Range();
-               range.selectNodeContents(lastRow.get(0));
-               range.collapse(false);
-               let sel = window.getSelection();
-               sel.removeAllRanges();
-               sel.addRange(range);
-               GlobalData.selectionLastRow = false;
-            }
             obj && !obj.answerFrame.children('.row').length && obj.answerFrame.remove()
             !obj && !$(lastEditorBox).find('.row').length && $(lastEditorBox).remove()
          } else if (pageHeight > innerHeight) {//删除
@@ -392,7 +382,7 @@ export default class Page {
       if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count
          dom.parent().remove()
          GlobalData.pageObjectPop(this);
-         $('[type=totalPage]').html(`共${$('.colum').length}页`)
+         $('[type=totalPage]').html(`共${$('.page').length}页`)
       }
       GlobalData.timer && clearTimeout(GlobalData.timer);
       GlobalData.timer = setTimeout(() => {
@@ -417,9 +407,15 @@ export default class Page {
       this.insertHeight(dom, observe, () => {
          observe.observe(dom.get(0), config)
       })
-      let selection = window.getSelection();
-      if ($(selection.focusNode).next().attr('swapheight')) {
-         GlobalData.selectionLastRow = true;
+      if ($(window.getSelection().anchorNode).hasClass('editor-box')) {
+         let last = $(window.getSelection().anchorNode).children('.row').last();
+         last.focus();
+         let range = new Range();
+         range.selectNodeContents(last.get(0));
+         range.collapse(false);
+         let sel = window.getSelection();
+         sel.removeAllRanges();
+         sel.addRange(range);
       }
    }
 }
