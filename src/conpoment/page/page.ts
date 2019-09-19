@@ -132,6 +132,9 @@ export default class Page {
             i++
          }
       }
+      // $('.exam-title').on('paste', (e) => {
+      //    e.preventDefault();
+      // })
    }
    private whatRender(addRow: boolean) {
       this.data.pageQus.map((pro: any, index: number) => {
@@ -313,13 +316,14 @@ export default class Page {
       observer.observe(dom.get(0), config)
    }
    private observeColumFun(dom: any, config: any, e: any, observe: any) {
+      Tool.showLoading()
       e.map((mutation: MutationRecord) => {
          if ($(mutation.removedNodes[0]).attr('swapHeight') == 'true') return
          if ($(mutation.addedNodes[0]).attr('swapHeight') == 'true') return
          // if ($(mutation.target).hasClass('write-item')) return
          if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
          let innerHeight = dom.height();
-         let pageHeight = this.page.height()
+         let pageHeight = this.page.height();
          if (pageHeight < innerHeight) {//回车和初始化布局 
             // 此列中最后一个editorBox
             let lastEditorBox = dom.find('div.editor-box').last().get(0);
@@ -376,7 +380,7 @@ export default class Page {
                   nextEditorBox.remove();
                }
             }
-            !editorBox.children('.row').get(0) && editorBox.remove();
+            !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
          }
       })
       if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count
@@ -417,5 +421,6 @@ export default class Page {
          sel.removeAllRanges();
          sel.addRange(range);
       }
+      Tool.hideLoading()
    }
 }

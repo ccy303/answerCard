@@ -95,7 +95,7 @@ class AnswerCard {
 export default AnswerCard
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
-   both: true,
+   both: false,
    config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {

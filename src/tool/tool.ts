@@ -1,4 +1,6 @@
 import GlobalData from '../conpoment/global'
+import AnswerFrame from '../conpoment/answerFrame/answerFrame';
+import loading from './../../assets/img/loading.gif';
 class Tool {
    selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
@@ -173,16 +175,30 @@ class Tool {
       </div>`)
       $('body').append(dialog)
       $('#no').on('click', () => { $('#dialog').remove() })
+      $('#fontNum').keyup(() => {
+         let val = Number($('#fontNum').val());
+         if (isNaN(val)) {
+            return
+         } else {
+            val > 5000 && $('#fontNum').val(5000)
+         }
+      })
       $('#yes').on('click', () => {
+         this.showLoading()
          let val = $('#fontNum').val();
          let page = $(`[type=write]`).first().parent().parent();
          let boxindex = $(`[type=write]`).first().attr('boxindex')
+         let prevEditor = $(`[type=write]`).first().prev('.editor-box');
          if (!val) return
-         let pageObj = this.findPageObj(page);
          let writeFrame = $('#answerCard').find('[type=write]');
-         this.removeBox(writeFrame)
-         pageObj.renderDeafultAnswerFrame(boxindex, true, 'write', {}, val)
-         $('#dialog').remove()
+         this.removeBox(writeFrame, () => {
+            $('#dialog').remove()
+            let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(boxindex), true, 'write', Number(val));
+            GlobalData.AnswerFrameObj.push(answerFrame)
+            page = $(page);
+            prevEditor.after(answerFrame.answerFrame)
+            this.hideLoading()
+         })
       })
    }
    resetRange(startContainer: any, startOffset: any, endContainer: any, endOffset: any) {//重新设置焦点
@@ -193,21 +209,34 @@ class Tool {
       range.setEnd(endContainer, endOffset);
       selection.addRange(range);
    }
-   removeBox(box: JQuery<HTMLElement>) {//when remove a box,we should remove row by row
+   removeBox(box: JQuery<HTMLElement>, callback?: any) {//when remove a box,we should remove row by row
       let i = 0;
-      while (true) {
-         if (i > box.length - 1) break;
-         let children = $(box[i]).children('.row');
-         let j = 0;
-         setTimeout(() => {//async problem
+      setTimeout(() => {//async problem
+         while (true) {
+            if (i > box.length - 1) break;
+            let children = $(box[i]).children('.row');
+            let j = 0;
             while (true) {
                if (j > children.length - 1) break
                $(children[j]).remove();
                j++
             }
-         }, 0);
-         i++
-      }
+            !$(box[i]).children('.row').get(0) && $(box[i]).remove();
+            i++
+         }
+         typeof callback == 'function' && callback();
+      }, 0);
+   }
+   showLoading() {
+      let dialog = $(`<div id="loading" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
+         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
+            <img src='${loading}' width="50px">
+         </div>
+      </div>`)
+      $('body').append(dialog)
+   }
+   hideLoading() {
+      $('#loading').remove();
    }
 }
 export default new Tool() as Tool   

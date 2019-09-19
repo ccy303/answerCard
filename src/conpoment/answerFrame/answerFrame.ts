@@ -67,13 +67,14 @@ export default class AnswerFrame {
       dom.append(row)
    }
    private renderWrite(bIndex: number, hash: string) {
+      tool.showLoading()
       let dom: JQuery<HTMLElement> = null;
       if (!this.html) {
+         let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="false"></div>`);
          if (Object.keys(this.data).length) {
             dom.attr("targetid", `${this.data.pros[0].proId}`)
          }
-         let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
          let i = 0
          while (true) {
             if (i > totlaCount) break;
@@ -83,6 +84,7 @@ export default class AnswerFrame {
       } else {
          dom = $(this.html)
       }
+      tool.hideLoading()
       return dom
    }
    private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
@@ -95,7 +97,7 @@ export default class AnswerFrame {
          if (Object.keys(this.data).length) {
             dom.attr("targetid", `${this.data.pros[0].proId}`)
             this.data.pros[0].qus.map((val: any) => {
-               let pnum = $(`<div class="row" hash="${hash}">${val.pnum}：(${val.score}分)</div>`)
+               let pnum = $(`<div class="row" hash="${hash}">${val.pnum}.(${val.score}分)</div>`)
                if (flg.indexOf(val.quType) !== -1 && val.visible) {
                   let j = 0;
                   let opt = $(`<div class="opts"  style="margin-left:15px"></div>`)
