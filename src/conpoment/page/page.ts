@@ -61,7 +61,10 @@ export default class Page {
             let defaultColum: JQuery<HTMLElement> = null
             if (_colum === this.colum - 1) {
                defaultColum = $(`<div class="colum ${this.type}-${this.colum}">
-            ${renderHeader ? `<div contenteditable="true" class="exam-title" hash="examTitle">${this.data.alias}</div>` : ''}
+            ${renderHeader ? `<div contenteditable="true" class="exam-title" hash="examTitle">
+                  ${this.data.alias}
+               </div>
+            ` : ''}
             </div>`)
             } else {
                defaultColum = $(`<div class="colum ${this.type}-${this.colum}"></div>`)
@@ -132,9 +135,6 @@ export default class Page {
             i++
          }
       }
-      // $('.exam-title').on('paste', (e) => {
-      //    e.preventDefault();
-      // })
    }
    private whatRender(addRow: boolean) {
       this.data.pageQus.map((pro: any, index: number) => {
@@ -367,7 +367,7 @@ export default class Page {
             //57一个editor只有一行所需最小距离
             if (!nextEditorBox) {
                pageHeight - innerHeight >= 57 && this.moveNextEditorBoxToThisColum(editorBox.parent());
-               !editorBox.children('.row').get(0) && editorBox.remove();
+               !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
                return;
             } else {
                let nextBoxFirstChild = nextEditorBox.children(':first-child').height();

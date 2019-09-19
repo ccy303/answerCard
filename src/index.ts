@@ -1,7 +1,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./test.json');
+const dataJSON = require('./data.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -25,8 +25,7 @@ class AnswerCard {
          $('#contentText').remove()
       })
       // GlobalData.dom.on('dblclick', () => {
-      //    this.getLayoutData();
-      //    console.log(this.dataJson)
+      //    this.getTitle()
       // })
       let html = this.dataJson.cardHtml
       if (html) {
@@ -91,6 +90,10 @@ class AnswerCard {
          i++
       }
    }
+   // public getTitle() {
+   //    console.log(GlobalData.dom.find('.exam-title').first().get(0).innerText)
+   //    // return
+   // }
 }
 export default AnswerCard
 process.env.NODE_ENV == 'development' && new AnswerCard({

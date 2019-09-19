@@ -1,20 +1,20 @@
 {
    "schoolId": null,
-   "id": "132",
-   "subjectId": "2897",
+   "id": "152",
+   "subjectId": null,
    "paperSize": "A3",
    "layoutType": "2",
    "sourceType": "2",
    "prohibitType": "1",
    "noMode": "2",
-   "noCount": "9",
+   "noCount": "8",
    "noBoth": "1",
-   "qrCode": "wH",
-   "alias": "20190917  答题卡填涂位数8改9测试 高一 语文",
+   "qrCode": null,
+   "alias": "_________学校 __________年1度 _________________考试",
    "cardJson": null,
-   "cardHtml": "[\"<div class=\\\"page A3\\\" id=\\\"1p\\\"> <div class=\\\"colum A3-2\\\"> <div contenteditable=\\\"true\\\" class=\\\"exam-title\\\" hash=\\\"examTitle\\\">null</div> <div class=\\\"header-box\\\" hash=\\\"id1569360763394\\\"><div class=\\\"header-contnet\\\" style=\\\"margin-top: 0px; width: 45%;\\\"><div class=\\\"student-info\\\"><div><span class=\\\"name\\\"><b>姓名:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>班级:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>考场号/座位号:</b></span><b>_______________</b></div></div><div class=\\\"tip-box\\\"> <h5 style=\\\"margin:0;\\\">注意事项</h5> <p>1、选择题作答必须用2B铅笔填涂</p> <p>2、必须在指定区域答题，且不得超出黑色答题框。</p> <p style=\\\"display:block\\\">3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p> <p style=\\\"display:block\\\">4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p> </div></div><div class=\\\"student-num\\\"><p class=\\\"title\\\">学号</p><div class=\\\"num\\\"><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div></div></div></div><div boxindex=\\\"0\\\" hash=\\\"id1735659852075\\\" type=\\\"select\\\" class=\\\"editor-box\\\" contenteditable=\\\"false\\\"><div class=\\\"row\\\" hash=\\\"id1735659852075\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550591\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">1</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550446\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">6</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5502911\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">11</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"4\\\" targetid=\\\"5501316\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">16</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div></div><div class=\\\"row\\\" hash=\\\"id1735659852075\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550562\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">2</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550407\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">7</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5502612\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">12</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"4\\\" targetid=\\\"327817\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">17</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"font-size:8px;\\\">✓</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">x</span>] </div></div></div></div><div class=\\\"row\\\" hash=\\\"id1735659852075\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550533\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">3</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550378\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">8</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5502213\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">13</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"4\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id1735659852075\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550524\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">4</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"550359\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">9</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5502014\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">14</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"4\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div><div class=\\\"row\\\" hash=\\\"id1735659852075\\\"><div class=\\\"sel-item\\\" frame=\\\"1\\\" targetid=\\\"550465\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">5</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"2\\\" targetid=\\\"5503210\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">10</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"3\\\" targetid=\\\"5501715\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\">15</div><div class=\\\"opts\\\"><div class=\\\"opt-item\\\">[<span style=\\\"\\\">A</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">B</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">C</span>] </div><div class=\\\"opt-item\\\">[<span style=\\\"\\\">D</span>] </div></div></div><div class=\\\"sel-item\\\" frame=\\\"4\\\" targetid=\\\"undefinedundefined\\\" style=\\\"width:25%\\\"><div class=\\\"pnum\\\"></div><div class=\\\"opts\\\"></div></div></div></div><div boxindex=\\\"1\\\" hash=\\\"id2251542158061\\\" contenteditable=\\\"true\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" targetid=\\\"1243\\\"><div class=\\\"row\\\" hash=\\\"id2251542158061\\\">18：(2分)</div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\">19：(2分)</div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2251542158061\\\"><br></div></div><div boxindex=\\\"2\\\" hash=\\\"id1646173076032\\\" class=\\\"editor-box\\\" type=\\\"write\\\" contenteditable=\\\"false\\\" targetid=\\\"1734948\\\"><div class=\\\"row\\\" hash=\\\"id1646173076032\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1646173076032\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1646173076032\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1646173076032\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div style=\\\"height:16px\\\" contenteditable=\\\"false\\\" swapheight=\\\"true\\\"></div></div> </div> <div class=\\\"colum A3-2\\\"><div boxindex=\\\"2\\\" hash=\\\"id2244640005284\\\" class=\\\"editor-box\\\" type=\\\"write\\\" contenteditable=\\\"false\\\" targetid=\\\"1734948\\\"><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\" style=\\\"position: relative;\\\"><div style=\\\"position:absolute;top:31.5px;height:10px;width:30px;line-height:6px\\\"> <span style=\\\"font-size:10px;color:#888\\\">400</span> </div></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id2244640005284\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div></div> </div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div> <div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:8px;width:25px;top:40px;left:170.7px\\\" class=\\\"rectangle\\\"></div> <p class=\\\"pageNum\\\"> <span>第1页</span> / <span type=\\\"totalPage\\\">共2页</span> </p></div>\",\"<div class=\\\"page A3\\\" id=\\\"2p\\\"> <div class=\\\"colum A3-2\\\"> <div contenteditable=\\\"true\\\" class=\\\"exam-title\\\" hash=\\\"examTitle\\\">null</div> <div class=\\\"header-box\\\" hash=\\\"id2074411427068\\\"><div class=\\\"header-contnet\\\" style=\\\"margin-top: 0px; width: 45%;\\\"><div class=\\\"student-info\\\"><div><span class=\\\"name\\\"><b>姓名:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>班级:</b></span><b>_______________</b></div><div><span class=\\\"name\\\"><b>考场号/座位号:</b></span><b>_______________</b></div></div><div class=\\\"tip-box\\\"> <h5 style=\\\"margin:0;\\\">注意事项</h5> <p>1、选择题作答必须用2B铅笔填涂</p> <p>2、必须在指定区域答题，且不得超出黑色答题框。</p> <p style=\\\"display:block\\\">3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p> <p style=\\\"display:block\\\">4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p> </div></div><div class=\\\"student-num\\\"><p class=\\\"title\\\">学号</p><div class=\\\"num\\\"><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div></div></div></div><div boxindex=\\\"2\\\" hash=\\\"id1773591892437\\\" class=\\\"editor-box\\\" type=\\\"write\\\" contenteditable=\\\"false\\\" targetid=\\\"1734948\\\"><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\" style=\\\"position: relative;\\\"><div style=\\\"position:absolute;top:31.5px;height:10px;width:30px;line-height:6px\\\"> <span style=\\\"font-size:10px;color:#888\\\">800</span> </div></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div><div class=\\\"row\\\" hash=\\\"id1773591892437\\\"><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div><div class=\\\"write-item\\\"></div></div></div> </div> <div class=\\\"colum A3-2\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div> <div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div> <div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div> <div style=\\\"height:8px;width:25px;top:40px;left:326.4px\\\" class=\\\"rectangle\\\"></div> <p class=\\\"pageNum\\\"> <span>第2页</span> / <span type=\\\"totalPage\\\">共2页</span> </p></div>\"]",
+   "cardHtml": "",
    "attention": null,
-   "pageCnt": "2",
+   "pageCnt": "8",
    "subjectName": null,
    "pageQus": [
       {
@@ -23,11 +23,11 @@
          "content": null,
          "annexable": "1",
          "group": "0",
-         "pIndex": "1@1",
+         "pIndex": "",
          "pros": [
             {
-               "proId": "55059",
-               "score": 2.0,
+               "proId": "101704",
+               "score": 5.0,
                "pureObjective": "1",
                "content": "",
                "sort": "1",
@@ -36,20 +36,20 @@
                "titleType": "选择题",
                "qus": [
                   {
-                     "quId": "55059",
-                     "score": 2.0,
+                     "quId": "101704",
+                     "score": 5.0,
                      "quType": "单选题",
-                     "nums": "4",
+                     "nums": "3",
                      "content": "",
-                     "pnum": "1",
+                     "pnum": "3",
                      "visible": true,
-                     "rIndex": "1-1-1"
+                     "rIndex": "0"
                   }
                ]
             },
             {
-               "proId": "55056",
-               "score": 2.0,
+               "proId": "101706",
+               "score": 5.0,
                "pureObjective": "1",
                "content": "",
                "sort": "2",
@@ -58,344 +58,58 @@
                "titleType": "选择题",
                "qus": [
                   {
-                     "quId": "55056",
-                     "score": 2.0,
+                     "quId": "101706",
+                     "score": 5.0,
                      "quType": "单选题",
-                     "nums": "4",
+                     "nums": "3",
                      "content": "",
-                     "pnum": "2",
+                     "pnum": "4",
                      "visible": true,
-                     "rIndex": "1-1-1"
+                     "rIndex": "0"
                   }
                ]
             },
             {
-               "proId": "55053",
-               "score": 2.0,
+               "proId": "781716",
+               "score": 5.0,
                "pureObjective": "1",
                "content": "",
                "sort": "3",
                "pnum": "",
                "group": "0",
-               "titleType": "选择题",
+               "titleType": "多选题",
                "qus": [
                   {
-                     "quId": "55053",
-                     "score": 2.0,
-                     "quType": "单选题",
+                     "quId": "781716",
+                     "score": 5.0,
+                     "quType": "多选题",
                      "nums": "4",
                      "content": "",
-                     "pnum": "3",
+                     "pnum": "5",
                      "visible": true,
-                     "rIndex": "1-1-1"
+                     "rIndex": "0"
                   }
                ]
             },
             {
-               "proId": "55052",
-               "score": 2.0,
+               "proId": "782236",
+               "score": 5.0,
                "pureObjective": "1",
                "content": "",
                "sort": "4",
                "pnum": "",
                "group": "0",
-               "titleType": "选择题",
+               "titleType": "单选题",
                "qus": [
                   {
-                     "quId": "55052",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "4",
-                     "visible": true,
-                     "rIndex": "1-1-1"
-                  }
-               ]
-            },
-            {
-               "proId": "55046",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "5",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55046",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "5",
-                     "visible": true,
-                     "rIndex": "1-1-1"
-                  }
-               ]
-            },
-            {
-               "proId": "55044",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "6",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55044",
-                     "score": 2.0,
+                     "quId": "782236",
+                     "score": 5.0,
                      "quType": "单选题",
                      "nums": "4",
                      "content": "",
                      "pnum": "6",
                      "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55040",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "7",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55040",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "7",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55038",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "8",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55037",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "8",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55035",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "9",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55035",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "9",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55032",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "10",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55032",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "10",
-                     "visible": true,
-                     "rIndex": "1-1-2"
-                  }
-               ]
-            },
-            {
-               "proId": "55029",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "11",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55029",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "11",
-                     "visible": true,
-                     "rIndex": "1-1-3"
-                  }
-               ]
-            },
-            {
-               "proId": "55026",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "12",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55026",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "12",
-                     "visible": true,
-                     "rIndex": "1-1-3"
-                  }
-               ]
-            },
-            {
-               "proId": "55022",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "13",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55022",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "13",
-                     "visible": true,
-                     "rIndex": "1-1-3"
-                  }
-               ]
-            },
-            {
-               "proId": "55020",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "14",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55020",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "14",
-                     "visible": true,
-                     "rIndex": "1-1-3"
-                  }
-               ]
-            },
-            {
-               "proId": "55017",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "15",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55017",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "15",
-                     "visible": true,
-                     "rIndex": "1-1-3"
-                  }
-               ]
-            },
-            {
-               "proId": "55014",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "16",
-               "pnum": "",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "55013",
-                     "score": 2.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "16",
-                     "visible": true,
-                     "rIndex": "1-1-4"
-                  }
-               ]
-            },
-            {
-               "proId": "1809",
-               "score": 2.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "17",
-               "pnum": "",
-               "group": "0",
-               "titleType": "古文诗词",
-               "qus": [
-                  {
-                     "quId": "3278",
-                     "score": 2.0,
-                     "quType": "判断题",
-                     "nums": "2",
-                     "content": "",
-                     "pnum": "17",
-                     "visible": true,
-                     "rIndex": "1-1-4"
+                     "rIndex": "0"
                   }
                ]
             }
@@ -407,99 +121,35 @@
          "content": null,
          "annexable": "1",
          "group": "0",
-         "pIndex": "1@2",
+         "pIndex": "",
          "pros": [
             {
-               "proId": "1243",
-               "score": 4.0,
+               "proId": "1594",
+               "score": 10.0,
                "pureObjective": "2",
                "content": "",
-               "sort": "18",
+               "sort": "1",
                "pnum": "",
                "group": "0",
-               "titleType": "语言表达",
+               "titleType": "材料题",
                "qus": [
                   {
-                     "quId": "2167",
-                     "score": 2.0,
+                     "quId": "2851",
+                     "score": 5.0,
                      "quType": "解答题",
                      "nums": null,
                      "content": "",
-                     "pnum": "18",
+                     "pnum": "1",
                      "visible": true,
                      "rIndex": "0"
                   },
                   {
-                     "quId": "2168",
-                     "score": 2.0,
+                     "quId": "2852",
+                     "score": 5.0,
                      "quType": "解答题",
                      "nums": null,
                      "content": "",
-                     "pnum": "19",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "3",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "1",
-         "pIndex": "1@3-1@4-2@1",
-         "pros": [
-            {
-               "proId": "1734948",
-               "score": 2.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "19",
-               "pnum": "",
-               "group": "1",
-               "titleType": "作文",
-               "qus": [
-                  {
-                     "quId": "1735042",
-                     "score": 2.0,
-                     "quType": "作文题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "20",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1811",
-               "score": 2.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "20",
-               "pnum": "",
-               "group": "1",
-               "titleType": "现代文阅读",
-               "qus": [
-                  {
-                     "quId": "3280",
-                     "score": 1.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "21",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "3281",
-                     "score": 1.0,
-                     "quType": "单选题",
-                     "nums": "1",
-                     "content": "",
-                     "pnum": "22",
+                     "pnum": "2",
                      "visible": true,
                      "rIndex": "0"
                   }
@@ -509,8 +159,8 @@
       }
    ],
    "checkMsg": null,
-   "paperId": 1918,
+   "paperId": 1911,
    "paperVid": 1,
-   "versionId": 10003,
-   "versionMsg": "8-9"
+   "versionId": 10000,
+   "versionMsg": null
 }
