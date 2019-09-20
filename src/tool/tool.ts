@@ -74,16 +74,19 @@ class Tool {
       return !(dom.get(0) === editorBoxs[0])
    }
    insertGrid() {
-      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
-         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="margin:15px 0">插入方格数</p>
-            <input id="count" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
-            <div style="margin:15px 0;text-align:center">
-               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
-               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+      let dialog = $(`<div id="dialog">
+            <div class="content">
+               <p class="title">插入方格</p>
+               <div class='form'>
+                  <label for="count">设置方格数量:</label>
+                  <input value="" id="count" autocomplete="off" placeholder="请输入方格数量" />
+               </div>
+               <div class="bottom-box">
+                  <div class="botton" id="yes">确定</div>
+                  <div class="botton" id="no">取消</div>
+               </div>
             </div>
-         </div>
-      </div>`)
+         </div>`);
       $('body').append(dialog)
       $('#no').on('click', () => { $('#dialog').remove() })
       $('#yes').on('click', () => {
@@ -94,24 +97,27 @@ class Tool {
       })
    }
    changeLineHeight() {
-      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
-         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="margin:15px 0">修改行高</p>
-            <select value="25" id="lineHeight" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" >
-               <option value="18">18px</option>
-               <option value="20">20px</option>
-               <option selected="selected" value="25">25px</option>
-               <option value="30">30px</option>
-               <option value="38">38px</option>
-               <option value="44">44px</option>
-               <option value="50">50px</option>
-            <select>
-            <div style="margin:15px 0;text-align:center">
-               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
-               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+      let dialog = $(`<div id="dialog">
+            <div class="content">
+               <p class="title">插入方格</p>
+               <div class='form'>
+                  <label for="lineHeight">设置方格数量:</label>
+                   <select value="25" id="lineHeight" autocomplete="off" placeholder="行高" >
+                     <option value="18">18px</option>
+                     <option value="20">20px</option>
+                     <option selected="selected" value="25">25px</option>
+                     <option value="30">30px</option>
+                     <option value="38">38px</option>
+                     <option value="44">44px</option>
+                     <option value="50">50px</option>
+                  <select>
+               </div>
+               <div class="bottom-box">
+                  <div class="botton" id="yes">确定</div>
+                  <div class="botton" id="no">取消</div>
+               </div>
             </div>
-         </div>
-      </div>`)
+         </div>`);
       $('body').append(dialog)
       $('#no').on('click', () => { $('#dialog').remove() })
       $('#yes').on('click', () => {
@@ -163,16 +169,19 @@ class Tool {
    }
    changeFontNum() {
       if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'write') return
-      let dialog = $(`<div id="dialog" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
-         <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
-            <p style="margin:15px 0">修改作文字数</p>
-            <input value="800" id="fontNum" style="width:200px;height:30px;line-height:30px;border-radius:5px;border:1px solid #e1e1e1;" autocomplete="off" placeholder="数量" />
-            <div style="margin:15px 0;text-align:center">
-               <div id="yes" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#32CD32;color:#fff;border:none;border-radius:5px">确定</div>
-               <div id="no" style="cursor: pointer;margin:0 auto;display:inline-block;line-height:30px;text-align:center;height:30px;width:100px;background:#DAA520;color:#fff;border:none;border-radius:5px">取消</div>
+      let dialog = $(`<div id="dialog">
+            <div class="content">
+               <p class="title">修改作文字数</p>
+               <div class='form'>
+                  <label for="fontNum">设置字数:</label>
+                  <input value="800" id="fontNum" autocomplete="off" placeholder="请输入字数" />
+               </div>
+               <div class="bottom-box">
+                  <div class="botton" id="yes">确定</div>
+                  <div class="botton" id="no">取消</div>
+               </div>
             </div>
-         </div>
-      </div>`)
+         </div>`);
       $('body').append(dialog)
       $('#no').on('click', () => { $('#dialog').remove() })
       $('#fontNum').keyup(() => {
