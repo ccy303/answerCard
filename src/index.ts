@@ -1,7 +1,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json');
+const dataJSON = require('./test.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -92,10 +92,10 @@ class AnswerCard {
    }
    // public getTitle() {
    //    console.log(GlobalData.dom.find('.exam-title').first().get(0).innerText)
-   //    // return
    // }
 }
 export default AnswerCard
+// new AnswerCard({
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
    both: false,

@@ -188,7 +188,8 @@ class Tool {
          let val = $('#fontNum').val();
          let page = $(`[type=write]`).first().parent().parent();
          let boxindex = $(`[type=write]`).first().attr('boxindex')
-         let prevEditor = $(`[type=write]`).first().prev('.editor-box');
+         let prevEditor = $(`[boxindex=${Number(boxindex) - 1}]`).last();
+         !prevEditor.get(0) && (prevEditor = $('.header-box'))
          if (!val) return
          let writeFrame = $('#answerCard').find('[type=write]');
          this.removeBox(writeFrame, () => {

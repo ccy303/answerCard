@@ -11,8 +11,9 @@ module.exports = (env) => {
          filename: 'index.js',
          path: path.resolve(__dirname, 'dist'),
          libraryExport: "default",
-         library: "Test",
-         libraryTarget: "umd"
+         library: "AnswerCard",
+         libraryTarget: "umd",
+         publicPath: '/'
       },
       plugins: [
          new CleanWebpackPlugin(),
@@ -68,10 +69,11 @@ module.exports = (env) => {
                use: {
                   loader: 'url-loader',
                   options: {
-                     limit: 10000
-                  }
+                     limit: 100000,
+                     outputPath: 'assets/'
+                  },
                }
-            }
+            },
          ]
       },
       resolve: {
