@@ -37,7 +37,7 @@ export default class Header {
          box.append(con)
       } else if (examCountType === 2) {
          let style = {
-            width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '45%' : '100%',
+            width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '47%' : '100%',
             float: studentNumLength <= 12 ? 'left' : 'unset',
             marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
          }
@@ -53,7 +53,7 @@ export default class Header {
    private renderStudentNum(count?: number): JQuery<HTMLElement> {
       let studentNumLength = count ? count : this.data.studentNumLength
       let box: JQuery<HTMLElement> = $('<div class="student-num"></div>');
-      let header = $(`<p class="title">学号</p>`)
+      let header = $(`<p class="title">考号填涂区</p>`)
       box.append(header)
       let num = $(`<div class="num"></div>`);
       let i = 0;
@@ -78,14 +78,34 @@ export default class Header {
       let box = $(`
          <div
             class="student-info"
+            contenteditable=true
          ></div>
       `);
-      let info = ['姓名', '班级', '考场号/座位号',];
-      let dom: Array<JQuery<HTMLElement>> = []
-      info.map(val => {
-         dom.push($(`<div><span class="name"><b>${val}:</span>_______________</b></div>`))
-      })
-      box.append(dom)
+      let info = ['姓名', '班级', '考号',];
+      if (this.data.type != 'A3' || this.data.colum != '3') {
+         if (this.data.studentNumLength < 13) {
+            let dom: Array<JQuery<HTMLElement>> = []
+            info.map(val => {
+               dom.push($(`<div>${val}:_______________</div>`))
+            })
+            box.append(dom)
+            box.css('margin-bottom', '11px').css('max-height', '90px')
+         } else {
+            let dom: JQuery<HTMLElement> = $('<div></div>');
+            info.map(val => {
+               dom.get(0).innerHTML += `${val}:_______________   `;
+            })
+            box.append(dom)
+            box.css('max-height', '60px')
+         }
+      } else if (this.data.type == 'A3' && this.data.colum == '3') {
+         let dom: JQuery<HTMLElement> = $('<div></div>');
+         info.map(val => {
+            dom.get(0).innerHTML += `${val}:_______________   `;
+         })
+         box.append(dom)
+         box.css('max-height', '60px')
+      }
       return box
    }
    private renderTip(): JQuery<HTMLElement> {

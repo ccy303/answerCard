@@ -57,11 +57,11 @@ export default class AnswerFrame {
       this._selDom = val
    }
    private writeAddRow(dom: JQuery<HTMLElement>, hash: string) {
-      let row = $(`<div class="row" hash="${hash}"></div>`);
+      let row = $(`<div contenteditable=false class="row" hash="${hash}"></div>`);
       let i = 0;
       while (true) {
          if (i > Math.round(this.width / 32) - 1) break
-         row.append(`<div class="write-item"></div>`)
+         row.append(`<div contenteditable=false class="write-item"></div>`)
          i++
       }
       dom.append(row)
@@ -71,9 +71,13 @@ export default class AnswerFrame {
       let dom: JQuery<HTMLElement> = null;
       if (!this.html) {
          let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
-         dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="false"></div>`);
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="true"></div>`);
          if (Object.keys(this.data).length) {
+            let row = $(`<div class="row" hash="${hash}"></div>`);
+            row.css('text-align', 'left').css('margin', '0 15px').css('padding', '0')
             dom.attr("targetid", `${this.data.pros[0].proId}`)
+            row.append(`${this.data.pros[0].qus[0].pnum}.(${this.data.pros[0].qus[0].score}分)`)
+            dom.append(row)
          }
          let i = 0
          while (true) {

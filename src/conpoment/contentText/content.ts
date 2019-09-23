@@ -25,32 +25,34 @@ export default class ContentText {
          <ul id="firstList">
             <li onselectstart="return false" id="right-addContent">
                <img src="${icon1}" />
-               插入文本框
+               <div>插入文本框</div>
             </li>
             <li onselectstart="return false" id="right-lineHeight">
                <img src="${icon2}" />
-               修改行高
+               <div>修改行高</div>
             </li>
             <li onselectstart="return false" id="right-addGrid">
                <img src="${icon3}" />
-               插入方格
+               <div>插入方格</div>
             </li>
             <li onselectstart="return false" id="right-style-change">
                <img src="${icon4}" />
-               样式修改
-               <img style="margin: 0 0 0 30px" src="${icon5}" />
+               <div>
+                  样式修改
+                  <img style="margin: 0 0 0 30px" src="${icon5}" />
+               </div>
             </li>
             <li onselectstart="return false" id="insert-img">
                <img src="${icon6}" />
-               插入图片
+               <div>插入图片</div>
             </li>
             <li onselectstart="return false" id="clear-style">
                <img src="${icon7}" />
-               清除样式
+               <div>清除样式</div>
             </li>
             <li onselectstart="return false" id="change-font-num">
                <img src="${icon14}" />
-               修改字数
+               <div>修改字数</div>
             </li>
          </ul>
       </div>`)
@@ -58,16 +60,18 @@ export default class ContentText {
          <ul id="secondList">
             <li onselectstart="return false" id="blod">
                <img src="${icon8}" />
-               加粗
+               <div>加粗</div>
             </li>
             <li onselectstart="return false" id="under-line">
                <img src="${icon9}" />
-               下划线
+               <div>下划线</div>
             </li>
             <li onselectstart="return false" id="align">
                <img src="${icon10}" />
-               对齐方式
-               <img style="margin: 0 0 0 20px" src="${icon5}" />
+               <div>
+                  对齐方式
+                  <img style="margin: 0 0 0 20px" src="${icon5}" />
+               </div>
             </li>
          </ul>
       </div>`)
@@ -75,15 +79,15 @@ export default class ContentText {
          <ul>
             <li onselectstart="return false" id="left">
                <img src="${icon11}" />
-               左对齐
+               <div>左对齐</div>
             </li>
             <li onselectstart="return false" id="center">
                <img src="${icon12}" />
-               居中
+               <div>居中</div>
             </li>
             <li onselectstart="return false" id="right">
                <img src="${icon13}" />
-               右对齐
+               <div>右对齐</div>
             </li>
          </ul>
       </div>`)
@@ -109,7 +113,15 @@ export default class ContentText {
       e.stopPropagation()
       let id = $(e.currentTarget).attr('id')
       if (id === 'right-addContent') {
-         GlobalData.contentTextTarget.targetObj.addContent();
+         let dom = GlobalData.contentTextTarget.targetObj.addContent();
+         console.log(dom)
+         dom.focus();
+         let range = new Range();
+         range.selectNodeContents(dom.children('.row').get(0));
+         range.collapse(false);
+         let sel = window.getSelection();
+         sel.removeAllRanges();
+         sel.addRange(range);
       }
       if (id === 'right-lineHeight') { tool.changeLineHeight() }
       if (id === 'right-addGrid') { tool.insertGrid() }

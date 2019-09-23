@@ -7,7 +7,7 @@ class Tool {
       let pageDom = null;
       for (let i = 0; i < $('#answerCard>.page').length; i++) { //查找页数
          if ($($('#answerCard>.page').get(i)).find(dom).get(0)) {
-            page = i + 1;
+            page = i + 1; 
             pageDom = $($('#answerCard>.page').get(i));
          }
       }
@@ -101,7 +101,7 @@ class Tool {
             <div class="content">
                <p class="title">插入方格</p>
                <div class='form'>
-                  <label for="lineHeight">设置方格数量:</label>
+                  <label for="lineHeight">设置行高:</label>
                    <select value="25" id="lineHeight" autocomplete="off" placeholder="行高" >
                      <option value="18">18px</option>
                      <option value="20">20px</option>

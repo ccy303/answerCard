@@ -12,6 +12,7 @@
   }
   &[proTitle="true"] {
     position: relative;
+    box-sizing: border-box;
     .row {
       overflow: hidden;
     }
@@ -33,6 +34,7 @@
     }
     &:focus {
       background: #eaf0f8;
+      border: 2px dashed #999;
       .del {
         display: block;
       }
