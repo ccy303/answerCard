@@ -90,12 +90,8 @@ class AnswerCard {
          i++
       }
    }
-   // public getTitle() {
-   //    console.log(GlobalData.dom.find('.exam-title').first().get(0).innerText)
-   // }
 }
 export default AnswerCard
-// new AnswerCard({
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
    both: false,

@@ -14,6 +14,18 @@ export default class AnswerFrame {
       this.data = data;
       this.html = html;
    }
+   get answerFrame(): JQuery<HTMLElement> {
+      return this._answerFrame;
+   }
+   set answerFrame(val: JQuery<HTMLElement>) {
+      this._answerFrame = val;
+   }
+   get selDom() {
+      return this._selDom;
+   }
+   set selDom(val) {
+      this._selDom = val
+   }
    public initAnswerFrame(bIndex: number, insertChild: boolean, type = "editor", number?: number) {
       // boxIndex 编辑当前框
       // boxRow 编辑当前此行属于哪个框
@@ -43,18 +55,6 @@ export default class AnswerFrame {
       let top = e.offsetY + e.target.offsetTop + e.currentTarget.offsetTop + 5;
       let left = e.offsetX + e.target.offsetLeft + e.currentTarget.offsetLeft + 5;
       $('#contentText').css('display', 'block').css('top', top).css('left', left)
-   }
-   get answerFrame(): JQuery<HTMLElement> {
-      return this._answerFrame;
-   }
-   set answerFrame(val: JQuery<HTMLElement>) {
-      this._answerFrame = val;
-   }
-   get selDom() {
-      return this._selDom;
-   }
-   set selDom(val) {
-      this._selDom = val
    }
    private writeAddRow(dom: JQuery<HTMLElement>, hash: string) {
       let row = $(`<div contenteditable=false class="row" hash="${hash}"></div>`);

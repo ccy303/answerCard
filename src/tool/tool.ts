@@ -189,7 +189,7 @@ class Tool {
          if (isNaN(val)) {
             return
          } else {
-            val > 5000 && $('#fontNum').val(5000)
+            val > 10000 && $('#fontNum').val(10000)
          }
       })
       $('#yes').on('click', () => {

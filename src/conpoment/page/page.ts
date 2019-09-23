@@ -250,7 +250,7 @@ export default class Page {
       prevEditorBox.append(row)
       row.attr('hash', prevEditorBox.attr('hash'))
    }
-   private moveNextEditorBoxToThisColum(thisColum: JQuery<HTMLElement>) {//删除后将下一个框移到上一列
+   private moveNextEditorBoxToThisColum(thisColum: JQuery<HTMLElement>) {//move next editorBox to prev colum after del
       let colums = $('#answerCard').find('.colum');
       let nextColum: JQuery<HTMLElement> = null;
       for (let i = 0; i < colums.length; i++) {
@@ -320,17 +320,16 @@ export default class Page {
       e.map((mutation: MutationRecord) => {
          if ($(mutation.removedNodes[0]).attr('swapHeight') == 'true') return
          if ($(mutation.addedNodes[0]).attr('swapHeight') == 'true') return
-         // if ($(mutation.target).hasClass('write-item')) return
          if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
          let innerHeight = dom.height();
          let pageHeight = this.page.height();
-         if (pageHeight < innerHeight) {//回车和初始化布局 
-            // 此列中最后一个editorBox
+         if (pageHeight < innerHeight) {//Clcick Enter maded paheHeight < innerHeight and init layout 
+            //lastest editorBox of this colum 
             let lastEditorBox = dom.find('div.editor-box').last().get(0);
             if (!lastEditorBox) { return }
             dom.find('[swapheight=true]').remove()
             const type = $(lastEditorBox).attr('type')
-            //获取生成此editorBox的对象实例
+            //get the example of object whitch include lastEditorBox
             let obj = GlobalData.AnswerFrameObj.filter((val: any) => { return val.answerFrame.get(0) === lastEditorBox })[0];
             let lastRow = null;
             obj && (lastRow = obj.getLastRow())
@@ -344,7 +343,7 @@ export default class Page {
             } else {
                let boxIndex = lastRow.parent().attr('boxIndex')
                let box: JQuery<HTMLElement>
-               if (dom.next('.colum').get(0)) {//本页最后一栏
+               if (dom.next('.colum').get(0)) {//dom.next('.colum').get(0) lastest colum of this page
                   box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type, $(lastEditorBox).attr('proTitle'));
                } else {
                   box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type, $(lastEditorBox).attr('proTitle'))
@@ -411,7 +410,7 @@ export default class Page {
       this.insertHeight(dom, observe, () => {
          observe.observe(dom.get(0), config)
       })
-      if ($(window.getSelection().anchorNode).hasClass('editor-box')) {
+      if ($(window.getSelection().anchorNode).hasClass('editor-box')) {// select mouse focus 
          let last = $(window.getSelection().anchorNode).children('.row').last();
          last.focus();
          let range = new Range();
