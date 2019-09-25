@@ -12,6 +12,10 @@ class AnswerCard {
       return GlobalData.pageObject
    }
    constructor(obj: any) {
+      if (obj.dataJSON) return
+      if (obj.both) return
+      if (obj.config) return
+      if (obj.dataJSON.paperSize) return
       GlobalData.clearProps();
       this.dataJson = obj.dataJSON;
       this.both = obj.both

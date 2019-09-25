@@ -57,7 +57,7 @@ export default class AnswerFrame {
       $('#contentText').css('display', 'block').css('top', top).css('left', left)
    }
    private writeAddRow(dom: JQuery<HTMLElement>, hash: string) {
-      let row = $(`<div contenteditable=false class="row" hash="${hash}"></div>`);
+      let row = $(`<div writeRow="true" contenteditable=false class="row" hash="${hash}"></div>`);
       let i = 0;
       while (true) {
          if (i > Math.round(this.width / 32) - 1) break

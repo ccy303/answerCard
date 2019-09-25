@@ -7,7 +7,7 @@ class Tool {
       let pageDom = null;
       for (let i = 0; i < $('#answerCard>.page').length; i++) { //查找页数
          if ($($('#answerCard>.page').get(i)).find(dom).get(0)) {
-            page = i + 1; 
+            page = i + 1;
             pageDom = $($('#answerCard>.page').get(i));
          }
       }
@@ -197,16 +197,15 @@ class Tool {
          let val = $('#fontNum').val();
          let page = $(`[type=write]`).first().parent().parent();
          let boxindex = $(`[type=write]`).first().attr('boxindex')
-         let prevEditor = $(`[boxindex=${Number(boxindex) - 1}]`).last();
-         !prevEditor.get(0) && (prevEditor = $('.header-box'))
          if (!val) return
          let writeFrame = $('#answerCard').find('[type=write]');
          this.removeBox(writeFrame, () => {
             $('#dialog').remove()
             let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(boxindex), true, 'write', Number(val));
-            GlobalData.AnswerFrameObj.push(answerFrame)
+            GlobalData.AnswerFrameObj.push(answerFrame);
             page = $(page);
-            prevEditor.after(answerFrame.answerFrame)
+            let targetBox = $(`[type=write]`).first();
+            targetBox.children('.row').last().after(answerFrame.answerFrame.children())
             this.hideLoading()
          })
       })
@@ -224,7 +223,7 @@ class Tool {
       setTimeout(() => {//async problem
          while (true) {
             if (i > box.length - 1) break;
-            let children = $(box[i]).children('.row');
+            let children = $(box[i]).children('.row[writeRow=true]');
             let j = 0;
             while (true) {
                if (j > children.length - 1) break
