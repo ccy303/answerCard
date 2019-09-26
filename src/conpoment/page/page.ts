@@ -221,7 +221,6 @@ export default class Page {
          }
          return proTitle
       }
-
    }
    private checkoutEditorBox(dom: any, colum: JQuery<HTMLElement>) {//查找下一列是否存在由此dom(editorBox)拆分出的editorBox
       let boxIndex = dom.attr('boxIndex');
@@ -229,7 +228,7 @@ export default class Page {
          return colum.next('.colum').find(`div[boxIndex=${boxIndex}]`)
       } else {
          if (this.page.next('.page').get(0)) {//存在下一页
-            return this.page.next('.page').find('.colum:first-child').find(`div[boxIndex=${boxIndex}]`)
+            return $(this.page.next('.page').find('.colum').get(0)).find(`div[boxIndex=${boxIndex}]`)
          } else { //没有下一页
             this.callback()
          }
@@ -346,7 +345,7 @@ export default class Page {
                if (dom.next('.colum').get(0)) {//dom.next('.colum').get(0) lastest colum of this page
                   box = this.createEditorBoxInNextCol(dom.next('.colum'), boxIndex, type, $(lastEditorBox).attr('proTitle'));
                } else {
-                  box = this.createEditorBoxInNextCol(this.page.next().find('.colum:first-child'), boxIndex, type, $(lastEditorBox).attr('proTitle'))
+                  box = this.createEditorBoxInNextCol($(this.page.next().find('.colum').get(0)), boxIndex, type, $(lastEditorBox).attr('proTitle'))
                }
                box.attr('targetid', lastRow.parent().attr('targetid'))
                let boxFirstChild = box.children(':first-child');
