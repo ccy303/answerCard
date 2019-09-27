@@ -18,6 +18,7 @@ class AnswerCard {
       GlobalData.dataJSON = obj.dataJSON;
       GlobalData.config = obj.config;
       GlobalData.pageType = obj.dataJSON.paperSize;
+      GlobalData.subjectId = obj.dataJSON.subjectId;
       GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
       GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
@@ -98,7 +99,7 @@ process.env.NODE_ENV == 'development' && new AnswerCard({
    config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
-         Token: '9a06366922a4135da0f2f1d2f714ea12bde1bde2',
+         Token: '208c48b687b76657338e3b4062f4ed6dfbdc1805',
          inType: 41,
       }
    },

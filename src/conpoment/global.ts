@@ -15,6 +15,7 @@ export default class GlobalData {
    static headerObj: Array<Header> = [];
    static _pageObject: Array<Page> = [];
    static selectionLastRow: boolean = false;
+   static subjectId = '';
    static set currentImage(val) {
       val !== this._currentImage && $(this._currentImage).parent().removeClass('active')
       val !== this._currentImage && $(this._currentImage).parent().children('span').remove()
@@ -59,5 +60,6 @@ export default class GlobalData {
       this.headerObj = []
       this._pageObject = []
       this.selectionLastRow = false;
+      this.subjectId = '';
    }
 }

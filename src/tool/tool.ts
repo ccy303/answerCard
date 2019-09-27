@@ -129,7 +129,7 @@ class Tool {
    }
    uploadFile(file: any, type: boolean, callback?: any) {
       let config = GlobalData.config;
-      let queryData = type ? Object.assign({}, config.queryData, { inFiletype: '' }) : config.queryData;
+      let queryData = type ? Object.assign({}, config.queryData, { inFiletype: '', inexamSubjectId: GlobalData.subjectId, inexamId: "0" }) : config.queryData;
       $.post(`${config.uploadUrl}`, queryData, (res) => {
          if (res.result === '00') {
             let { data } = res;
