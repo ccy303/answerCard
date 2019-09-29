@@ -134,6 +134,7 @@ export default class Page {
             this.observeColum(_colum);
             i++
          }
+         Tool.dealImage();
       }
    }
    private whatRender(addRow: boolean) {

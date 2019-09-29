@@ -5,7 +5,7 @@ import tool from '../../tool/tool';
 import ContentText from '../contentText/content';
 export default class AnswerFrame {
    _answerFrame: JQuery<HTMLElement> = null;
-   _selDom: any = null;
+   // _selDom: any = null;
    number: number = 0;
    width: number = 0;
    data: any;
@@ -19,12 +19,6 @@ export default class AnswerFrame {
    }
    set answerFrame(val: JQuery<HTMLElement>) {
       this._answerFrame = val;
-   }
-   get selDom() {
-      return this._selDom;
-   }
-   set selDom(val) {
-      this._selDom = val
    }
    public initAnswerFrame(bIndex: number, insertChild: boolean, type = "editor", number?: number) {
       // boxIndex 编辑当前框
@@ -197,7 +191,7 @@ export default class AnswerFrame {
       $(this.answerFrame).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
          <img src=${url}  class="image-file" draggable ="false">
       </div>`))
-      this.dealImage()
+      tool.dealImage()
    }
    private paste(canPasteImg: boolean = true, e: any) {
       e.preventDefault();
@@ -216,52 +210,6 @@ export default class AnswerFrame {
          document.execCommand('insertText', false, html)
          return false
       }
-   }
-   private dealImage(dom?: any) {
-      $('div.image-file-box').on('click', (imageEvent) => {
-         imageEvent.stopPropagation()
-         $(imageEvent.target).parent().addClass('active')
-         !$(imageEvent.target).parent().children('span').get(0) && $(imageEvent.target).parent().append(`
-            <span contenteditable="false" draggable ="false" class="bottom-right drag"></span>
-         `)
-         $(`span`).on('mousedown', (e) => {
-            e.stopPropagation();
-            e.preventDefault()
-            this.selDom = e.target;
-         })
-         GlobalData.currentImage = imageEvent.target
-         let obj: any = {};
-         $(imageEvent.target).parent().on('mousedown', (mouseDownEvent) => {//包裹图片的div
-            mouseDownEvent.stopPropagation()
-            this.selDom = mouseDownEvent.target;
-            obj.x0 = mouseDownEvent.offsetX;
-            obj.y0 = mouseDownEvent.offsetY;
-         })
-         $(imageEvent.target).parent().parent().on('mousemove', (mouseMoveEvent) => {//editorBox
-            if (!this.selDom) return
-            if (mouseMoveEvent.target === this.selDom) {
-               let e = mouseMoveEvent
-               e.stopPropagation()
-               $(e.target).parent()
-                  .css('top', e.pageY - $(e.target).parent().parent().offset().top - obj.y0)
-                  .css('left', e.pageX - $(e.target).parent().parent().offset().left - obj.x0)
-            } else if ($(this.selDom).hasClass('drag')) {
-               let imageSize = {
-                  height: parseInt($(this.selDom).parent().children('.image-file').css('height')),
-                  width: parseInt($(this.selDom).parent().children('.image-file').css('width')),
-               }
-               $(this.selDom).parent().children('.image-file')
-                  .css('height', imageSize.height + mouseMoveEvent.pageY - $(this.selDom).offset().top)
-            }
-         })
-         $(imageEvent.target).on('mouseup', (e) => {
-            e.stopPropagation()
-            $(imageEvent.target).parent().off('mousedown');
-            $(imageEvent.target).parent().parent().off('mousemove')
-            this.selDom = null;
-            obj = {};
-         })
-      })
    }
    private keyDowm(contentText: boolean, event: any) { //contentText：来自右键菜单
       if (event.keyCode === 8) {

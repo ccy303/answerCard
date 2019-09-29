@@ -94,6 +94,7 @@
   }
   .active {
     border: 1px dashed #000;
+    z-index: 9999;
   }
 }
 

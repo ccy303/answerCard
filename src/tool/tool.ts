@@ -2,6 +2,13 @@ import GlobalData from '../conpoment/global'
 import AnswerFrame from '../conpoment/answerFrame/answerFrame';
 import loading from './../../assets/img/loading.gif';
 class Tool {
+   _selDom: any = null;
+   get selDom() {
+      return this._selDom;
+   }
+   set selDom(val) {
+      this._selDom = val
+   }
    selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
       let pageDom = null;
@@ -246,6 +253,52 @@ class Tool {
    }
    hideLoading() {
       $('#loading').remove();
+   }
+   dealImage(dom?: any) {
+      $('div.image-file-box').on('click', (imageEvent) => {
+         imageEvent.stopPropagation()
+         $(imageEvent.target).parent().addClass('active')
+         !$(imageEvent.target).parent().children('span').get(0) && $(imageEvent.target).parent().append(`
+            <span contenteditable="false" draggable ="false" class="bottom-right drag"></span>
+         `)
+         $(`span`).on('mousedown', (e) => {
+            e.stopPropagation();
+            e.preventDefault()
+            this.selDom = e.target;
+         })
+         GlobalData.currentImage = imageEvent.target
+         let obj: any = {};
+         $(imageEvent.target).parent().on('mousedown', (mouseDownEvent) => {//包裹图片的div
+            mouseDownEvent.stopPropagation()
+            this.selDom = mouseDownEvent.target;
+            obj.x0 = mouseDownEvent.offsetX;
+            obj.y0 = mouseDownEvent.offsetY;
+         })
+         $(imageEvent.target).parent().parent().on('mousemove', (mouseMoveEvent) => {//editorBox
+            if (!this.selDom) return
+            if (mouseMoveEvent.target === this.selDom) {
+               let e = mouseMoveEvent
+               e.stopPropagation()
+               $(e.target).parent()
+                  .css('top', e.pageY - $(e.target).parent().parent().offset().top - obj.y0)
+                  .css('left', e.pageX - $(e.target).parent().parent().offset().left - obj.x0)
+            } else if ($(this.selDom).hasClass('drag')) {
+               let imageSize = {
+                  height: parseInt($(this.selDom).parent().children('.image-file').css('height')),
+                  width: parseInt($(this.selDom).parent().children('.image-file').css('width')),
+               }
+               $(this.selDom).parent().children('.image-file')
+                  .css('height', imageSize.height + mouseMoveEvent.pageY - $(this.selDom).offset().top)
+            }
+         })
+         $(imageEvent.target).on('mouseup', (e) => {
+            e.stopPropagation()
+            $(imageEvent.target).parent().off('mousedown');
+            $(imageEvent.target).parent().parent().off('mousemove')
+            this.selDom = null;
+            obj = {};
+         })
+      })
    }
 }
 export default new Tool() as Tool   
