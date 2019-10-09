@@ -119,6 +119,15 @@ export default class Page {
                      _colum.append(answerFrame.answerFrame)
                   }
                } else {
+                  let headerDom = null;
+                  if ($(item).hasClass('header-box')) {
+                     let header = new Header({
+                        type: this.type,
+                        colum: this.colum
+                     }, item)
+                     GlobalData.headerObj.push(header);
+                     headerDom = header.initHeader()
+                  }
                   if ($(item).attr('protitle')) {
                      let bindex = $(item).attr('boxindex');
                      $(item).find('.del').on('click', () => {
@@ -126,7 +135,7 @@ export default class Page {
                         Tool.removeBox($(`div[proTitle="true"][boxIndex=${bindex}]`))
                      })
                   }
-                  _colum.append(item)
+                  $(item).hasClass('header-box') ? _colum.append(headerDom) : _colum.append(item)
                }
                j++
             }

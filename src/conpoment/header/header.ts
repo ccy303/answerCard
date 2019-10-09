@@ -3,51 +3,57 @@ import GlobalData from '../global';
 export default class Header {
    private data: any
    public _header: JQuery<HTMLElement> = null;
-   constructor(data?: any) {
+   constructor(data?: any, html?: string) {
       this.data = {
          studentNumLength: GlobalData.dataJSON.noCount,
          examCountType: Number(GlobalData.dataJSON.noMode), //2填图，1条形码
          type: data.type,
-         colum: data.colum
+         colum: data.colum,
+         html: html
       }
    }
    set header(val: JQuery<HTMLElement>) {
       if (!this._header) {
          this._header = val;
       } else {
-         $(this._header).html(val.html())
+         $(this._header).html(val.html()) //修改学号位数时,重新渲染头部
       }
    }
    get header() {
       return this._header;
    }
    public initHeader(count?: number): JQuery<HTMLElement> {
-      let { examCountType, type, colum } = this.data
-      let studentNumLength = count ? count : this.data.studentNumLength;
-      let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
-      let box = $(`<div class="header-box" hash="${hash}"></div>`)
-      let div = $(`<div class="header-contnet"></div>`)
-      if (examCountType === 1) {
-         div.append(this.renderStudentInfo());
-         div.append(this.renderTip())
-         box.append(div);
-         let con = $(`<div style="float:right;width:50%;padding-top:25px;"></div>`)
-         let code = this.renderBarCode();
-         con.append(code)
-         box.append(con)
-      } else if (examCountType === 2) {
-         let style = {
-            width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '47%' : '100%',
-            float: studentNumLength <= 12 ? 'left' : 'unset',
-            marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
+      count && (this.data.studentNumLength = count)
+      if (!this.data.html || count) {
+         let { examCountType, type, colum } = this.data
+         let studentNumLength = count ? count : this.data.studentNumLength;
+         let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
+         let box = $(`<div class="header-box" hash="${hash}"></div>`)
+         let div = $(`<div class="header-contnet"></div>`)
+         if (examCountType === 1) {
+            div.append(this.renderStudentInfo());
+            div.append(this.renderTip())
+            box.append(div);
+            let con = $(`<div style="float:right;width:50%;padding-top:25px;"></div>`)
+            let code = this.renderBarCode();
+            con.append(code)
+            box.append(con)
+         } else if (examCountType === 2) {
+            let style = {
+               width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '47%' : '100%',
+               float: studentNumLength <= 12 ? 'left' : 'unset',
+               marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
+            }
+            div.css('margin-top', style.marginTop).css('width', style.width)
+            div.append(this.renderStudentInfo())
+            div.append(this.renderTip())
+            box.append(div)
+            box.append(this.renderStudentNum(count))
          }
-         div.css('margin-top', style.marginTop).css('width', style.width)
-         div.append(this.renderStudentInfo())
-         div.append(this.renderTip())
-         box.append(div)
-         box.append(this.renderStudentNum(count))
+         this.header = box;
+      } else {
+         this.header = this.data.html
       }
-      this.header = box;
       return this.header
    }
    private renderStudentNum(count?: number): JQuery<HTMLElement> {

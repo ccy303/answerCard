@@ -9,7 +9,7 @@ class Tool {
    set selDom(val) {
       this._selDom = val
    }
-   selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
+   public selectProRIndex(dom: JQuery<HTMLElement>) { //客观题pIndex
       let page = null
       let pageDom = null;
       for (let i = 0; i < $('#answerCard>.page').length; i++) { //查找页数
@@ -35,7 +35,7 @@ class Tool {
       let frame = dom.attr('frame');
       return `${page}-${bigFrame}-${frame}`
    }
-   subjectiveQuestionsPindex(dom: JQuery<HTMLElement>) {//主观题pindex
+   public subjectiveQuestionsPindex(dom: JQuery<HTMLElement>) {//主观题pindex
       let pIndex = [];
       let pages = $('#answerCard>.page');
       for (let i = 0; i < dom.length; i++) {
@@ -60,7 +60,7 @@ class Tool {
       }
       return pIndex.join('-')
    }
-   selPIndex() {//选择器Pindex
+   public selPIndex() {//选择器Pindex
       let page = $('#answerCard>.page');
       let pIndex = [];
       for (let i = 0; i < page.length; i++) {
@@ -74,13 +74,13 @@ class Tool {
       }
       return pIndex.join('-')
    }
-   checkBoxIsSplit(dom: JQuery<HTMLElement>) {
+   public checkBoxIsSplit(dom: JQuery<HTMLElement>) {
       if (!dom) return
       let attr = dom.attr('boxindex');
       let editorBoxs = $('#answerCard').find(`[boxindex=${attr}]`);
       return !(dom.get(0) === editorBoxs[0])
    }
-   insertGrid() {
+   public insertGrid() {
       let dialog = $(`<div id="dialog">
             <div class="content">
                <p class="title">插入方格</p>
@@ -103,7 +103,7 @@ class Tool {
          $('#dialog').remove()
       })
    }
-   changeLineHeight() {
+   public changeLineHeight() {
       let dialog = $(`<div id="dialog">
             <div class="content">
                <p class="title">插入方格</p>
@@ -134,7 +134,7 @@ class Tool {
          $('#dialog').remove()
       })
    }
-   uploadFile(file: any, type: boolean, callback?: any) {
+   public uploadFile(file: any, type: boolean, callback?: any) {
       let config = GlobalData.config;
       let queryData = type ? Object.assign({}, config.queryData, { inFiletype: '', inexamSubjectId: GlobalData.subjectId, inexamId: "0" }) : config.queryData;
       $.post(`${config.uploadUrl}`, queryData, (res) => {
@@ -162,7 +162,7 @@ class Tool {
          }
       })
    }
-   findPageObj(dom: JQuery<HTMLElement>) {
+   public findPageObj(dom: JQuery<HTMLElement>) {
       let i = 0;
       let obj = null;
       while (true) {
@@ -174,7 +174,7 @@ class Tool {
       }
       return obj
    }
-   changeFontNum() {
+   public changeFontNum() {
       if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'write') return
       let dialog = $(`<div id="dialog">
             <div class="content">
@@ -217,7 +217,7 @@ class Tool {
          })
       })
    }
-   resetRange(startContainer: any, startOffset: any, endContainer: any, endOffset: any) {//重新设置焦点
+   public resetRange(startContainer: any, startOffset: any, endContainer: any, endOffset: any) {//重新设置焦点
       let selection = window.getSelection();
       selection.removeAllRanges();
       let range = document.createRange();
@@ -225,7 +225,7 @@ class Tool {
       range.setEnd(endContainer, endOffset);
       selection.addRange(range);
    }
-   removeBox(box: JQuery<HTMLElement>, callback?: any) {//when remove a box,we should remove row by row
+   public removeBox(box: JQuery<HTMLElement>, callback?: any) {//when remove a box,we should remove row by row
       let i = 0;
       setTimeout(() => {//async problem
          while (true) {
@@ -243,7 +243,7 @@ class Tool {
          typeof callback == 'function' && callback();
       }, 0);
    }
-   showLoading() {
+   public showLoading() {
       let dialog = $(`<div id="loading" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
          <div style="height:auto;background:#fff;border-radius:10px;margin:0 auto;padding:20px;">
             <img src='${loading}' width="50px">
@@ -251,10 +251,10 @@ class Tool {
       </div>`)
       $('body').append(dialog)
    }
-   hideLoading() {
+   public hideLoading() {
       $('#loading').remove();
    }
-   dealImage(dom?: any) {
+   public dealImage(dom?: any) {
       $('div.image-file-box').on('click', (imageEvent) => {
          imageEvent.stopPropagation()
          $(imageEvent.target).parent().addClass('active')
@@ -299,6 +299,16 @@ class Tool {
             obj = {};
          })
       })
+   }
+   public strCheckStr(pStr: string, cStr: string): { start: number, end: number, prevStr: string, nextStr: string } {//find cStr in pStr
+      let startIndex = pStr.indexOf(cStr);
+      let endIndex = startIndex + cStr.length - 1;
+      return {
+         start: startIndex,
+         end: endIndex,
+         prevStr: pStr.substr(0, startIndex),
+         nextStr: pStr.substr(endIndex + 1)
+      }
    }
 }
 export default new Tool() as Tool   

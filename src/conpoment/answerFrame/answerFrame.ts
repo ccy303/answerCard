@@ -38,6 +38,7 @@ export default class AnswerFrame {
       }
       this.answerFrame = dom
       this.answerFrame.on('contextmenu', this.contextmenu.bind(this))
+      this.observeRow();
       return this
    }
    private contextmenu(e: any) {//右键菜单
@@ -95,10 +96,10 @@ export default class AnswerFrame {
          if (Object.keys(this.data).length) {
             dom.attr("targetid", `${this.data.pros[0].proId}`)
             this.data.pros[0].qus.map((val: any) => {
-               let pnum = $(`<div class="row" hash="${hash}">${val.pnum}.(${val.score}分)</div>`)
+               let pnum = $(`<div class="row" hash="${hash}">${this.data.pros[0].pnum}${val.pnum}.(${val.score}分)</div>`)
                if (flg.indexOf(val.quType) !== -1 && val.visible) {
                   let j = 0;
-                  let opt = $(`<div class="opts"  style="margin-left:15px"></div>`)
+                  let opt = $(`<div class="opts" style="margin-left:15px"></div>`)
                   while (true) {
                      if (j > val.nums - 1) break
                      opt.append($(`<div class="opt-item">[${val.quType === '判断题' ? judge[j] : option[j]}]</div>`))
@@ -205,7 +206,7 @@ export default class AnswerFrame {
          }
          reader.readAsDataURL(file)
       } else {
-         let html = e.originalEvent.clipboardData.getData('text/plain')
+         let html = e.originalEvent.clipboardData.getData('text/plain');
          html = html.replace(/\r|\n|\s/g, '')
          document.execCommand('insertText', false, html)
          return false
@@ -278,5 +279,111 @@ export default class AnswerFrame {
       }
       let attr = GlobalData.contentTextTarget.targetDom.attr('boxindex');
       $(`div[boxindex=${attr}]`).find('.row').css('line-height', height + 'px')
+   }
+   private observeRow() {
+      const config: any = { attributes: true, childList: true, subtree: true, characterData: true };
+      let observer = new MutationObserver(this.observeColumFun.bind(this, config))
+      observer.observe(this.answerFrame.get(0), config)
+   }
+   private observeColumFun(config: any, e: any) {
+      e.map(async (mutation: MutationRecord) => {
+         if (mutation.type !== 'characterData') {
+            if (!mutation.addedNodes[0]) {
+               return
+            } else if (mutation.addedNodes[0].nodeType !== 3) {
+               return
+            }
+         }
+         const { anchorOffset } = window.getSelection()
+         let rowWidth = this.answerFrame.find('.row').width();
+         $('.fit-content').remove();
+         let textDom = $(`<div class="fit-content"></div>`)
+         textDom.css('font-size', this.answerFrame.find('.row').css('font-size'))
+         const text = mutation.target.textContent;
+         $('body').append(textDom)
+         let targetDom = null;
+         if (mutation.type == 'characterData') {
+            if (!$(mutation.target).parent().get(0)) { return }
+            textDom.html(mutation.target.textContent)
+            targetDom = mutation.target;
+         } else {
+            textDom.html(mutation.target.textContent)
+            targetDom = mutation.addedNodes[0];
+         }
+         if (textDom.width() > rowWidth) {
+            this.observeTextWidth(textDom, text)
+            let _strObj = tool.strCheckStr(text, textDom.html())
+            let targetRow = $(targetDom).parent()
+            targetRow.html('<br/>')
+            document.execCommand('insertText', false, textDom.html())
+            this.addTextToNextRow(targetRow, _strObj)
+            if (anchorOffset < textDom.html().length) {//光标i保留在原来位置
+               let textNode = targetRow.get(0).childNodes[0]
+               tool.resetRange(textNode, anchorOffset, textNode, anchorOffset)
+            } else {//把光标移到下一行
+               let nextRow = this.getNextRow(targetRow).get(0)
+               tool.resetRange(nextRow.childNodes[0], _strObj.nextStr.length, nextRow.childNodes[0], _strObj.nextStr.length)
+            }
+         }
+      })
+   }
+   private addTextToNextRow(targetDom: JQuery<Node>, textObj: { start: number, end: number, prevStr: string, nextStr: string }, movePoint?: boolean) {
+      let nextRow = this.getNextRow(targetDom)
+      if (nextRow && nextRow.get(0)) {
+         let html = nextRow.html() == '<br>' ? '' : nextRow.html();
+         nextRow.html(textObj.nextStr + html)
+      } else {
+         let row = $(`<div class="row" hash="${targetDom.attr('hash')}"></div>`)
+         row.html(textObj.nextStr)
+         targetDom.after(row)
+      }
+   }
+   private subStr(str: string) {
+      if (!str.length) return
+      let href = Math.round(str.length / 2)
+      let arr = [];
+      arr.push(str.substr(0, href), str.substr(href))
+      return arr
+   }
+   private observeTextWidth(dom: any, text: any): any {
+      const strObj = tool.strCheckStr(text, dom[0].innerText)
+      if (!strObj.nextStr && dom.width() <= this.answerFrame.find('.row').width()) { return }
+      if (dom.width() >= this.answerFrame.find('.row').width()) {
+         if (dom.width() - this.answerFrame.find('.row').width() <= this.answerFrame.find('.row').width() / 2) {
+            while (true) {
+               if (dom.width() < this.answerFrame.find('.row').width()) break;
+               let html = dom.html();
+               html = html.substr(0, html.length - 1);
+               dom.html(html)
+            }
+         } else {
+            const strArr = this.subStr(dom[0].innerText);
+            dom.html(strArr[0])
+            this.observeTextWidth(dom, text);
+         }
+      } else {
+         const strArr = this.subStr(strObj.nextStr)
+         const html = dom.html() + strArr[0];
+         dom.html(html)
+         this.observeTextWidth(dom, text);
+      }
+   }
+   private getNextRow(target: JQuery<Node>) {
+      if (target.next('.row').get(0)) {
+         return target.next('.row')
+      } else {
+         let editorBox = $(`[boxindex=${this.answerFrame.attr('boxindex')}]`);
+         let nextEditorBox = null;
+         let i = 0;
+         while (i <= editorBox.length - 1) {
+            if (editorBox[i] == this.answerFrame.get(0)) {
+               nextEditorBox = editorBox[i + 1] ? $(editorBox[i + 1]) : null
+               break
+            }
+            i++;
+         }
+         return nextEditorBox ? nextEditorBox.children('.row:first-child') : null
+      }
+
    }
 }

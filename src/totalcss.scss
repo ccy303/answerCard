@@ -1,5 +1,13 @@
 body {
   margin: 0;
+  .fit-content {
+    width: fit-content;
+    height: 0;
+    opacity: 0;
+    white-space: nowrap;
+    vertical-align: unset;
+    font-family: simhei, 宋体;
+  }
 }
 #contentText {
   position: absolute;
@@ -269,6 +277,9 @@ body {
   }
 }
 
+
+
+
 .header-box {
   box-sizing: border-box;
   width: 100%;
@@ -363,6 +374,7 @@ body {
     clear: both;
   }
 }
+
 
 .editor-box {
   box-sizing: border-box;
@@ -460,6 +472,7 @@ body {
   }
   .active {
     border: 1px dashed #000;
+    z-index: 9999;
   }
 }
 

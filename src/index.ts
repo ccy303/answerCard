@@ -1,7 +1,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./test.json');
+const dataJSON = require('./data.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -25,9 +25,6 @@ class AnswerCard {
       GlobalData.dom.on('click', () => {
          $('#contentText').remove()
       })
-      // GlobalData.dom.on('dblclick', () => {
-      //    this.getTitle()
-      // })
       let html = this.dataJson.cardHtml
       if (html) {
          html = JSON.parse(html)
@@ -81,8 +78,7 @@ class AnswerCard {
          })
       })
    }
-   //重新绘制答题卡头: 参数count学号位数
-   public reRenderHeader(count: number) {
+   public reRenderHeader(count: number) {//重新绘制答题卡头: 参数count学号位数
       let length = GlobalData.headerObj.length;
       let i = 0;
       while (true) {
