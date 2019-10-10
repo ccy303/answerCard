@@ -38,6 +38,7 @@ export default class AnswerFrame {
       }
       this.answerFrame = dom
       this.answerFrame.on('contextmenu', this.contextmenu.bind(this))
+      this.answerFrame.on('click', this.checkSelection.bind(this))
       this.observeRow();
       return this
    }
@@ -84,6 +85,9 @@ export default class AnswerFrame {
          dom = $(this.html)
       }
       tool.hideLoading()
+      dom.on('keydown', this.keyDowm.bind(this, false))
+      dom.on('paste', this.paste.bind(this, true))
+      dom.on('click', () => { GlobalData.currentImage = null; })
       return dom
    }
    private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
@@ -294,20 +298,20 @@ export default class AnswerFrame {
                return
             }
          }
-         const { anchorOffset } = window.getSelection()
-         let rowWidth = this.answerFrame.find('.row').width();
          $('.fit-content').remove();
+         const { anchorOffset, anchorNode } = window.getSelection()
+         const selectionPonit = $(anchorNode).parent() //当前光标所在行
+         let rowWidth = this.answerFrame.find('.row').width();
          let textDom = $(`<div class="fit-content"></div>`)
          textDom.css('font-size', this.answerFrame.find('.row').css('font-size'))
          const text = mutation.target.textContent;
          $('body').append(textDom)
          let targetDom = null;
+         textDom.html(mutation.target.textContent)
          if (mutation.type == 'characterData') {
             if (!$(mutation.target).parent().get(0)) { return }
-            textDom.html(mutation.target.textContent)
             targetDom = mutation.target;
          } else {
-            textDom.html(mutation.target.textContent)
             targetDom = mutation.addedNodes[0];
          }
          if (textDom.width() > rowWidth) {
@@ -315,15 +319,20 @@ export default class AnswerFrame {
             let _strObj = tool.strCheckStr(text, textDom.html())
             let targetRow = $(targetDom).parent()
             targetRow.html('<br/>')
-            document.execCommand('insertText', false, textDom.html())
+            targetRow.html(textDom.html())
             this.addTextToNextRow(targetRow, _strObj)
-            if (anchorOffset < textDom.html().length) {//光标i保留在原来位置
-               let textNode = targetRow.get(0).childNodes[0]
-               tool.resetRange(textNode, anchorOffset, textNode, anchorOffset)
-            } else {//把光标移到下一行
-               let nextRow = this.getNextRow(targetRow).get(0)
-               tool.resetRange(nextRow.childNodes[0], _strObj.nextStr.length, nextRow.childNodes[0], _strObj.nextStr.length)
+            if (selectionPonit.get(0) == targetRow.get(0)) {
+               if (anchorOffset <= textDom.html().length) {//光标保留在原来位置
+                  let textNode = targetRow.get(0).childNodes[0]
+                  tool.resetRange(textNode, anchorOffset, textNode, anchorOffset)
+               } else {//把光标移到下一行
+                  let nextRow = this.getNextRow(targetRow).get(0)
+                  setTimeout(() => {
+                     tool.resetRange(nextRow.childNodes[0], _strObj.nextStr.length, nextRow.childNodes[0], _strObj.nextStr.length)
+                  }, 0)
+               }
             }
+         } else {
          }
       })
    }
@@ -334,8 +343,8 @@ export default class AnswerFrame {
          nextRow.html(textObj.nextStr + html)
       } else {
          let row = $(`<div class="row" hash="${targetDom.attr('hash')}"></div>`)
-         row.html(textObj.nextStr)
          targetDom.after(row)
+         row.html(textObj.nextStr)
       }
    }
    private subStr(str: string) {
@@ -369,21 +378,41 @@ export default class AnswerFrame {
       }
    }
    private getNextRow(target: JQuery<Node>) {
-      if (target.next('.row').get(0)) {
-         return target.next('.row')
+      if (target.next('.row:not([writerow=true])').get(0)) {
+         return target.next('.row:not([writerow=true])')
       } else {
-         let editorBox = $(`[boxindex=${this.answerFrame.attr('boxindex')}]`);
-         let nextEditorBox = null;
-         let i = 0;
-         while (i <= editorBox.length - 1) {
-            if (editorBox[i] == this.answerFrame.get(0)) {
-               nextEditorBox = editorBox[i + 1] ? $(editorBox[i + 1]) : null
-               break
+         if (target.next('.row[writerow=true]').get(0)) {
+            return null
+         } else {
+            let editorBox = $(`[boxindex=${this.answerFrame.attr('boxindex')}]`);
+            let nextEditorBox = null;
+            let i = 0;
+            while (i <= editorBox.length - 1) {
+               if (editorBox[i] == this.answerFrame.get(0)) {
+                  nextEditorBox = editorBox[i + 1] ? $(editorBox[i + 1]) : null
+                  break
+               }
+               i++;
             }
-            i++;
+            return nextEditorBox ?
+               nextEditorBox.children('.row:not([writerow=true])').get(0) ?
+                  nextEditorBox.children('.row:not([writerow = true])').first() :
+                  null :
+               null
          }
-         return nextEditorBox ? nextEditorBox.children('.row:first-child') : null
       }
 
+   }
+   private checkSelection() { //检查光标
+      const { anchorNode } = window.getSelection();
+      if ($(anchorNode).hasClass('editor-box')) {
+         let target = $(anchorNode).children('.row:not([writerow=true])').last();
+         if (target.children().get(0) && target.children().get(0).nodeName == 'BR') {
+            tool.resetRange(target.get(0), '', target.get(0), '')
+         } else {
+            target.html().length
+            tool.resetRange(target.get(0).childNodes[0], target.html().length, target.get(0).childNodes[0], target.html().length)
+         }
+      }
    }
 }
