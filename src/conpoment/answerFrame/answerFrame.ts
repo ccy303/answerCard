@@ -3,6 +3,7 @@ import GlobalData from '../global'
 import SelQues from '../selQues/selQues';
 import tool from '../../tool/tool';
 import ContentText from '../contentText/content';
+
 export default class AnswerFrame {
    _answerFrame: JQuery<HTMLElement> = null;
    // _selDom: any = null;
@@ -149,10 +150,17 @@ export default class AnswerFrame {
                   //渲染选项
                   let k = 0
                   let opt = $(`<div class="opts"></div>`)
+                  // while (true) {//选项
+                  //    if (k > optLen - 1 || isNaN(optLen)) break
+                  //    opt.append(`<div class="opt-item">
+                  //       [<span style="${arr[j].data[i].quType === '判断题' && k == 0 ? 'font-size:8px;' : ''}">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</span>]
+                  //    </div>`)
+                  //    k++
+                  // }
                   while (true) {//选项
                      if (k > optLen - 1 || isNaN(optLen)) break
                      opt.append(`<div class="opt-item">
-                        [<span style="${arr[j].data[i].quType === '判断题' && k == 0 ? 'font-size:8px;' : ''}">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</span>]
+                        <img style="width:20px;height:13px;vertical-align:sub;" src="${arr[j].data[i].quType === '判断题' ? judge[k] : require(`./../../../assets/img/${option[k]}.png`)}" />
                      </div>`)
                      k++
                   }
