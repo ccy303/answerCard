@@ -114,7 +114,6 @@ export default class ContentText {
       let id = $(e.currentTarget).attr('id')
       if (id === 'right-addContent') {
          let dom = GlobalData.contentTextTarget.targetObj.addContent();
-         console.log(dom)
          dom.focus();
          let range = new Range();
          range.selectNodeContents(dom.children('.row').get(0));
