@@ -133,7 +133,7 @@ export default class AnswerFrame {
       let dom: JQuery<HTMLElement> = null;
       if (!this.html) {
          const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
-         const judge = '✓x';
+         const judge = 'dX';
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
          const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
          insertChild && arg.arr.map((arr: any, index: number) => {
@@ -150,17 +150,10 @@ export default class AnswerFrame {
                   //渲染选项
                   let k = 0
                   let opt = $(`<div class="opts"></div>`)
-                  // while (true) {//选项
-                  //    if (k > optLen - 1 || isNaN(optLen)) break
-                  //    opt.append(`<div class="opt-item">
-                  //       [<span style="${arr[j].data[i].quType === '判断题' && k == 0 ? 'font-size:8px;' : ''}">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</span>]
-                  //    </div>`)
-                  //    k++
-                  // }
                   while (true) {//选项
                      if (k > optLen - 1 || isNaN(optLen)) break
                      opt.append(`<div class="opt-item">
-                        <img style="width:20px;height:13px;vertical-align:sub;" src="${arr[j].data[i].quType === '判断题' ? judge[k] : require(`./../../../assets/img/${option[k]}.png`)}" />
+                        <i class="iconfont icon-${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}"></i>
                      </div>`)
                      k++
                   }
