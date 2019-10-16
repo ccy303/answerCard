@@ -137,6 +137,7 @@ export default class AnswerFrame {
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
          const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
          insertChild && arg.arr.map((arr: any, index: number) => {
+            if (!arr[0]) { return }
             let length = arr.length;
             let arrItemLen = arr[0].data.length;
             let i = 0
