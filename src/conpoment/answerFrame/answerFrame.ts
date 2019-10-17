@@ -100,8 +100,22 @@ export default class AnswerFrame {
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
          if (Object.keys(this.data).length) {
             dom.attr("targetid", `${this.data.pros[0].proId}`)
+            if (this.data.group) {
+               let chooseQues = $(`<div class="row" hash="${hash}">
+                  选做题组${this.data.group}.(${this.data.pros[0].score}分)
+               </div>`)
+               let i = 0;
+               while (true) {
+                  if (i > this.data.pros.length - 1) break
+                  chooseQues.append($(`<span style="margin-left:10px">[${this.data.pros[i].pnum}]</span>`))
+                  i++
+               }
+               dom.append(chooseQues)
+            }
             this.data.pros[0].qus.map((val: any) => {
-               let pnum = $(`<div class="row" hash="${hash}">${this.data.pros[0].pnum}${val.pnum}.(${val.score}分)</div>`)
+               let pnum = $(`<div class="row" hash="${hash}">
+                  ${this.data.group ? `` : `${this.data.pros[0].pnum}${val.pnum}.(${val.score}分)`}
+               </div>`)
                if (flg.indexOf(val.quType) !== -1 && val.visible) {
                   let j = 0;
                   let opt = $(`<div class="opts" style="margin-left:15px"></div>`)

@@ -1,6 +1,6 @@
 {
    "schoolId": null,
-   "id": "2000078",
+   "id": "238",
    "subjectId": null,
    "paperSize": "A4",
    "layoutType": "1",
@@ -10,752 +10,44 @@
    "noCount": "8",
    "noBoth": "2",
    "qrCode": null,
-   "alias": "理综试卷",
+   "alias": "20190123  理综试卷（物化生）   （副本）",
    "cardJson": null,
-   "cardHtml": "",
+   "cardHtml": null,
    "attention": null,
-   "pageCnt": "100",
+   "pageCnt": "105",
    "subjectName": null,
    "pageQus": [
-      {
-         "sort": "1",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "842001",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "1",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "842001",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "1",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735180",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "2",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735354",
-                     "score": 8.0,
-                     "quType": "判断题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "2",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735181",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "3",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735355",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "3",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735182",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "4",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735356",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "4",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735183",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "5",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735357",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "5",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735184",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "6",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735358",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "6",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735185",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "7",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735359",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "7",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735186",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "8",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735360",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "8",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735187",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "9",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735361",
-                     "score": 8.0,
-                     "quType": "多选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "9",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735188",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "10",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735362",
-                     "score": 8.0,
-                     "quType": "多选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "10",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735189",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "11",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735363",
-                     "score": 8.0,
-                     "quType": "多选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "11",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735190",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "12",
-               "pnum": "",
-               "group": "0",
-               "titleType": "多选题",
-               "qus": [
-                  {
-                     "quId": "1735364",
-                     "score": 8.0,
-                     "quType": "多选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "12",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735054",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "13",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735183",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "13",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735055",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "14",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735184",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "14",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735056",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "15",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735185",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "15",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735057",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "16",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735186",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "16",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735058",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "17",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735187",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "17",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735059",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "18",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735188",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "18",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735060",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "19",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735189",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "19",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735061",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "20",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735190",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "20",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735062",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "21",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735191",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "21",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735063",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "22",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735192",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "22",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735064",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "23",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735193",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "23",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735065",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "24",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735194",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "24",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735066",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "25",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735195",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "25",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1735067",
-               "score": 8.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "26",
-               "pnum": "",
-               "group": "0",
-               "titleType": "单选题",
-               "qus": [
-                  {
-                     "quId": "1735196",
-                     "score": 8.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "26",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "2",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1735194",
-               "score": 16.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "27",
-               "pnum": "",
-               "group": "0",
-               "titleType": "解答题",
-               "qus": [
-                  {
-                     "quId": "1735371",
-                     "score": 16.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "27",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "3",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1735196",
-               "score": 22.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "28",
-               "pnum": "28",
-               "group": "0",
-               "titleType": "解答题",
-               "qus": [
-                  {
-                     "quId": "1735375",
-                     "score": 6.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "(1)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "1735376",
-                     "score": 8.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "(2)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "1735377",
-                     "score": 8.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "(3)",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "4",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1735068",
-               "score": 16.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "29",
-               "pnum": "29",
-               "group": "0",
-               "titleType": "填空题",
-               "qus": [
-                  {
-                     "quId": "1735197",
-                     "score": 8.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "(1)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "1735198",
-                     "score": 8.0,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "(2)",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
       {
          "sort": "5",
          "attribute": null,
          "content": null,
          "annexable": "1",
-         "group": "0",
-         "pIndex": "",
+         "group": "1",
+         "pIndex": "2@3-3@1",
          "pros": [
             {
-               "proId": "1735069",
-               "score": 24.0,
+               "proId": "1661",
+               "score": 15.0,
                "pureObjective": "2",
                "content": "",
-               "sort": "30",
-               "pnum": "30",
-               "group": "0",
-               "titleType": "填空题",
+               "sort": "11",
+               "pnum": "11",
+               "group": "1",
+               "titleType": "计算题",
                "qus": [
                   {
-                     "quId": "1735199",
-                     "score": 6.0,
-                     "quType": "填空题",
-                     "nums": "3",
+                     "quId": "3020",
+                     "score": 5.0,
+                     "quType": "解答题",
+                     "nums": null,
                      "content": "",
                      "pnum": "(1)",
                      "visible": true,
                      "rIndex": "0"
                   },
                   {
-                     "quId": "1735200",
-                     "score": 6.0,
+                     "quId": "3021",
+                     "score": 5.0,
                      "quType": "解答题",
                      "nums": null,
                      "content": "",
@@ -764,22 +56,54 @@
                      "rIndex": "0"
                   },
                   {
-                     "quId": "1735201",
-                     "score": 6.0,
-                     "quType": "填空题",
-                     "nums": "2",
+                     "quId": "3022",
+                     "score": 5.0,
+                     "quType": "解答题",
+                     "nums": null,
                      "content": "",
                      "pnum": "(3)",
                      "visible": true,
                      "rIndex": "0"
+                  }
+               ]
+            },
+            {
+               "proId": "1662",
+               "score": 15.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "12",
+               "pnum": "12",
+               "group": "1",
+               "titleType": "计算题",
+               "qus": [
+                  {
+                     "quId": "3023",
+                     "score": 5.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(1)",
+                     "visible": true,
+                     "rIndex": "0"
                   },
                   {
-                     "quId": "1735202",
-                     "score": 6.0,
-                     "quType": "填空题",
-                     "nums": "2",
+                     "quId": "3024",
+                     "score": 5.0,
+                     "quType": "解答题",
+                     "nums": null,
                      "content": "",
-                     "pnum": "(4)",
+                     "pnum": "(2)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "3025",
+                     "score": 5.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(3)",
                      "visible": true,
                      "rIndex": "0"
                   }
@@ -792,22 +116,22 @@
          "attribute": null,
          "content": null,
          "annexable": "1",
-         "group": "0",
-         "pIndex": "",
+         "group": "2",
+         "pIndex": "3@2-4@1",
          "pros": [
             {
-               "proId": "1735070",
-               "score": 14.0,
+               "proId": "1638",
+               "score": 12.0,
                "pureObjective": "2",
                "content": "",
-               "sort": "31",
-               "pnum": "31",
-               "group": "0",
-               "titleType": "填空题",
+               "sort": "13",
+               "pnum": "13",
+               "group": "2",
+               "titleType": "解答题",
                "qus": [
                   {
-                     "quId": "1735203",
-                     "score": 6.0,
+                     "quId": "2988",
+                     "score": 4.0,
                      "quType": "解答题",
                      "nums": null,
                      "content": "",
@@ -816,12 +140,74 @@
                      "rIndex": "0"
                   },
                   {
-                     "quId": "1735204",
-                     "score": 8.0,
+                     "quId": "2989",
+                     "score": 4.0,
                      "quType": "解答题",
                      "nums": null,
                      "content": "",
                      "pnum": "(2)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "2990",
+                     "score": 4.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(3)",
+                     "visible": true,
+                     "rIndex": "0"
+                  }
+               ]
+            },
+            {
+               "proId": "1637",
+               "score": 12.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "14",
+               "pnum": "14",
+               "group": "2",
+               "titleType": "填空题",
+               "qus": [
+                  {
+                     "quId": "2984",
+                     "score": 3.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(1)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "2985",
+                     "score": 3.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(2)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "2986",
+                     "score": 3.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(3)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "2987",
+                     "score": 3.0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(4)",
                      "visible": true,
                      "rIndex": "0"
                   }
@@ -831,8 +217,8 @@
       }
    ],
    "checkMsg": null,
-   "paperId": 133,
-   "paperVid": 5,
+   "paperId": 1897,
+   "paperVid": 3,
    "versionId": 10000,
    "versionMsg": null
 }
