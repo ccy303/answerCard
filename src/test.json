@@ -1,20 +1,20 @@
 {
    "schoolId": null,
-   "id": "209",
-   "subjectId": null,
+   "id": "327",
+   "subjectId": "2902",
    "paperSize": "A3",
    "layoutType": "2",
    "sourceType": "2",
    "prohibitType": "1",
    "noMode": "2",
-   "noCount": "8",
-   "noBoth": "2",
-   "qrCode": null,
-   "alias": "_________学校 __________年度 _________________考试",
+   "noCount": "9",
+   "noBoth": "0",
+   "qrCode": "w9",
+   "alias": "20190826  作文题目测试1 高一 语文",
    "cardJson": null,
-   "cardHtml": "",
+   "cardHtml": null,
    "attention": null,
-   "pageCnt": "100",
+   "pageCnt": "101",
    "subjectName": null,
    "pageQus": [
       {
@@ -23,25 +23,35 @@
          "content": null,
          "annexable": "1",
          "group": "0",
-         "pIndex": "",
+         "pIndex": "1@1-1@2",
          "pros": [
             {
-               "proId": "1734970",
-               "score": 0.0,
-               "pureObjective": "1",
+               "proId": "1734964",
+               "score": 4.0,
+               "pureObjective": "2",
                "content": "",
                "sort": "1",
                "pnum": "",
                "group": "0",
-               "titleType": "选择题",
+               "titleType": "作文",
                "qus": [
                   {
-                     "quId": "1735077",
-                     "score": 0.0,
-                     "quType": "单选题",
-                     "nums": "26",
+                     "quId": "1735068",
+                     "score": 2.0,
+                     "quType": "作文题",
+                     "nums": null,
                      "content": "",
                      "pnum": "1",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "1735069",
+                     "score": 2.0,
+                     "quType": "作文题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "2",
                      "visible": true,
                      "rIndex": "0"
                   }
@@ -51,8 +61,9 @@
       }
    ],
    "checkMsg": null,
-   "paperId": 1935,
+   "paperId": 1902,
    "paperVid": 1,
-   "versionId": 10000,
-   "versionMsg": null
+   "versionId": 10001,
+   "versionMsg": null,
+   "recgParams": null
 }

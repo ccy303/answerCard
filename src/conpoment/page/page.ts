@@ -332,7 +332,7 @@ export default class Page {
          if (mutation.addedNodes[0] && mutation.addedNodes[0].nodeName === 'BR') return
          let innerHeight = dom.height();
          let pageHeight = this.page.height();
-         if (pageHeight < innerHeight) {//Clcick Enter maded paheHeight < innerHeight and init layout 
+         if (pageHeight < innerHeight) {//Clcick Enter and paheHeight < innerHeight and init layout 
             //lastest editorBox of this colum 
             let lastEditorBox = dom.find('div.editor-box').last().get(0);
             if (!lastEditorBox) { return }
@@ -369,7 +369,9 @@ export default class Page {
             let hash = $(mutation.target).attr('hash');
             let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
             if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
-               editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
+               //修改过
+               // editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
+               editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box').first();
             }
             let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last()); // 由此框分割出的框
             //57一个editor只有一行所需最小距离

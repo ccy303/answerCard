@@ -230,7 +230,7 @@ class Tool {
       setTimeout(() => {//async problem
          while (true) {
             if (i > box.length - 1) break;
-            let children = $(box[i]).children('.row[writeRow=true]');
+            let children = $(box.get(i)).attr('protitle') == 'true' ? $(box[i]).children('.row') : $(box[i]).children('.row[writeRow=true]')
             let j = 0;
             while (true) {
                if (j > children.length - 1) break

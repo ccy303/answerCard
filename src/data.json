@@ -2,8 +2,8 @@
    "schoolId": null,
    "id": "238",
    "subjectId": null,
-   "paperSize": "A4",
-   "layoutType": "1",
+   "paperSize": "A3",
+   "layoutType": "2",
    "sourceType": "2",
    "prohibitType": "1",
    "noMode": "2",
@@ -17,6 +17,48 @@
    "pageCnt": "105",
    "subjectName": null,
    "pageQus": [
+      {
+         "sort": "4",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "2@2",
+         "pros": [
+            {
+               "proId": "1797",
+               "score": 10.0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "10",
+               "pnum": "10",
+               "group": "0",
+               "titleType": "填空题",
+               "qus": [
+                  {
+                     "quId": "3255",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "(1)",
+                     "visible": true,
+                     "rIndex": "0"
+                  },
+                  {
+                     "quId": "3256",
+                     "score": 5.0,
+                     "quType": "填空题",
+                     "nums": "4",
+                     "content": "",
+                     "pnum": "(2)",
+                     "visible": true,
+                     "rIndex": "0"
+                  }
+               ]
+            }
+         ]
+      },
       {
          "sort": "5",
          "attribute": null,

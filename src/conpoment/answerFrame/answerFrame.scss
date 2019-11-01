@@ -97,7 +97,6 @@
     z-index: 9999;
   }
 }
-
 .editor-box[type="write"] {
   padding: 10px 0px;
   text-align: center;
@@ -123,7 +122,6 @@
     }
   }
 }
-
 .editor-box[type="select"] {
   padding: 0;
   .row {
@@ -188,13 +186,11 @@
     margin-bottom: 15px;
   }
 }
-
 @font-face {
   font-family: "iconfont"; /* project id 1454973 */
-  src: url("http://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.ttf") format("truetype"),
-    url("http://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.svg#iconfont") format("svg");
+  src: url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.ttf") format("truetype"),
+    url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.svg#iconfont") format("svg");
 }
-
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 10px;

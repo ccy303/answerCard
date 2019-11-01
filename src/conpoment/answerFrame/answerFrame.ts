@@ -100,7 +100,7 @@ export default class AnswerFrame {
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
          if (Object.keys(this.data).length) {
             dom.attr("targetid", `${this.data.pros[0].proId}`)
-            if (this.data.group) {
+            if (this.data.group != 0) {
                let chooseQues = $(`<div class="row" hash="${hash}">
                   选做题组${this.data.group}.(${this.data.pros[0].score}分)
                </div>`)
@@ -114,7 +114,7 @@ export default class AnswerFrame {
             }
             this.data.pros[0].qus.map((val: any) => {
                let pnum = $(`<div class="row" hash="${hash}">
-                  ${this.data.group ? `` : `${this.data.pros[0].pnum}${val.pnum}.(${val.score}分)`}
+                  ${this.data.group != 0 ? `` : `${this.data.pros[0].pnum}${val.pnum}.(${val.score}分)`}
                </div>`)
                if (flg.indexOf(val.quType) !== -1 && val.visible) {
                   let j = 0;
