@@ -369,8 +369,6 @@ export default class Page {
             let hash = $(mutation.target).attr('hash');
             let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],.header-box[hash=${hash}]`)//触发删除事件的EditotBox
             if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
-               //修改过
-               // editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box:first-child');
                editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box').first();
             }
             let nextEditorBox = this.findNextEditorBox(editorBox.parent().children().last()); // 由此框分割出的框
@@ -404,18 +402,41 @@ export default class Page {
          clearTimeout(GlobalData.timer);
          GlobalData.timer = null;
          //font number
-         let t = parseInt(String($('div.write-item').length / 400));
-         let i = 1;
-         while (true) {
-            if (i > t) break;
-            let d = $($('div.write-item')[i * 400])
-            d.css('position', 'relative')
-            if (!d.children().length) {
-               d.append(`<div style="position:absolute;top:31.5px;height:10px;width:30px;line-height:6px">\
+         let writeBox = $('div[type=write]')
+         let _obj: any = {}
+         for (let i = 0; i < writeBox.length; i++) {
+            let t_num = 0 //方格数
+            t_num = $(writeBox[i]).find('div.write-item').length;
+            let grid = $(writeBox[i]).find('div.write-item');
+            let len = 0;
+            if (!_obj.hasOwnProperty($(writeBox[i]).attr('boxindex'))) {
+               _obj[$(writeBox[i]).attr('boxindex')] = new Array();
+               while (len < grid.length) {
+                  _obj[$(writeBox[i]).attr('boxindex')].push(grid[len])
+                  len++
+               }
+            } else {
+               while (len < grid.length) {
+                  _obj[$(writeBox[i]).attr('boxindex')].push(grid[len])
+                  len++
+               }
+            }
+         }
+         for (let key in _obj) {
+            let t = parseInt(String(_obj[key].length / 400));
+            let i = 1;
+            while (true) {
+               if (i > t) break;
+               let d = _obj[key][i * 400];
+               d = $(d)
+               d.css('position', 'relative')
+               if (!d.children().length) {
+                  d.append(`<div style="position:absolute;top:31.5px;height:10px;width:30px;line-height:6px">
                      <span style="font-size:10px;color:#888">${i * 400}</span>
                   </div>`)
+               }
+               i++
             }
-            i++
          }
       }, 0)
       this.insertHeight(dom, observe, () => {

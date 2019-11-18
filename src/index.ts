@@ -1,7 +1,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./test.json');
+const dataJSON = require('./data.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -88,6 +88,10 @@ class AnswerCard {
       }
    }
 }
+
+
+
+
 export default AnswerCard
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
@@ -95,7 +99,7 @@ process.env.NODE_ENV == 'development' && new AnswerCard({
    config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
-         Token: '208c48b687b76657338e3b4062f4ed6dfbdc1805',
+         Token: '7427d4af53299c3db15390da577aa362a726669b',
          inType: 41,
       }
    },

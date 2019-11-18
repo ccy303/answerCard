@@ -176,6 +176,7 @@ class Tool {
    }
    public changeFontNum() {
       if (GlobalData.contentTextTarget.targetDom.attr('type') !== 'write') return
+      let boxIndex = GlobalData.contentTextTarget.targetDom.attr('boxindex')
       let dialog = $(`<div id="dialog">
             <div class="content">
                <p class="title">修改作文字数</p>
@@ -200,18 +201,18 @@ class Tool {
          }
       })
       $('#yes').on('click', () => {
-         this.showLoading()
+         // this.showLoading()
          let val = $('#fontNum').val();
-         let page = $(`[type=write]`).first().parent().parent();
-         let boxindex = $(`[type=write]`).first().attr('boxindex')
+         let page = $(`[type=write][boxindex=${boxIndex}]`).first().parent().parent();
+         let boxindex = $(`[type=write][boxindex=${boxIndex}]`).first().attr('boxindex')
          if (!val) return
-         let writeFrame = $('#answerCard').find('[type=write]');
+         let writeFrame = $('#answerCard').find(`[type=write][boxindex=${boxIndex}]`);
          this.removeBox(writeFrame, () => {
             $('#dialog').remove()
             let answerFrame = new AnswerFrame({}).initAnswerFrame(Number(boxindex), true, 'write', Number(val));
             GlobalData.AnswerFrameObj.push(answerFrame);
             page = $(page);
-            let targetBox = $(`[type=write]`).first();
+            let targetBox = $(`[type=write][boxindex=${boxIndex}]`).first();
             targetBox.children('.row').last().after(answerFrame.answerFrame.children())
             this.hideLoading()
          })
@@ -226,22 +227,56 @@ class Tool {
       selection.addRange(range);
    }
    public removeBox(box: JQuery<HTMLElement>, callback?: any) {//when remove a box,we should remove row by row
-      let i = 0;
-      setTimeout(() => {//async problem
+      let i = box.length - 1;
+      let fun = function () {
+         let _box = box[i]
+         GlobalData.haveRemoveDomParent = $(_box).parent().first();
+         let children = $(_box).attr('protitle') == 'true' ? $(_box).children('.row') : $(_box).children('.row[writeRow=true]')
+         let j = children.length - 1
          while (true) {
-            if (i > box.length - 1) break;
-            let children = $(box.get(i)).attr('protitle') == 'true' ? $(box[i]).children('.row') : $(box[i]).children('.row[writeRow=true]')
-            let j = 0;
-            while (true) {
-               if (j > children.length - 1) break
-               $(children[j]).remove();
-               j++
-            }
-            !$(box[i]).children('.row').get(0) && $(box[i]).remove();
-            i++
+            if (j < 0) break
+            $(children[j]).remove();
+            j--
          }
-         typeof callback == 'function' && callback();
-      }, 0);
+         if (!$(_box).children('.row').get(0)) {
+            setTimeout(() => {
+               $(_box).remove();
+            }, 0)
+            i--
+            if (i >= 0) {
+               setTimeout(() => {
+                  fun()
+               }, 0);
+            }
+         } else {
+            typeof callback == 'function' && callback();
+         }
+      }
+      fun()
+
+      //修改过一个版本
+      // console.log(box)
+      // let i = box.length - 1;
+      // setTimeout(() => {//async problem
+      //    while (true) {
+      //       if (i < 0) break;
+      //       let children = $(box.get(i)).attr('protitle') == 'true' ? $(box[i]).children('.row') : $(box[i]).children('.row[writeRow=true]')
+      //       let j = children.length - 1
+      //       while (true) {
+      //          if (j < 0) break
+      //          $(children[j]).remove();
+      //          j--
+      //       }
+      //       if (!$(box[i]).children('.row').get(0)) {
+      //          GlobalData.haveRemoveDomParent = $(box[i]).parent().first();
+      //          setTimeout(() => {
+      //             $(box[i]).remove();
+      //          }, 0);
+      //       }
+      //       i--
+      //    }
+      //    typeof callback == 'function' && callback();
+      // }, 0);
    }
    public showLoading() {
       let dialog = $(`<div id="loading" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,.3);display:flex;align-items:center;">
@@ -255,30 +290,30 @@ class Tool {
       $('#loading').remove();
    }
    public dealImage(dom?: any) {
-      $('div.image-file-box').on('click', (imageEvent) => {
+      $('.image-file').on('click', (imageEvent) => {
          imageEvent.stopPropagation()
-         $(imageEvent.target).parent().addClass('active')
+         $(imageEvent.target).parent().addClass('active') //image-file-box
          !$(imageEvent.target).parent().children('span').get(0) && $(imageEvent.target).parent().append(`
             <span contenteditable="false" draggable ="false" class="bottom-right drag"></span>
          `)
-         $(`span`).on('mousedown', (e) => {
+         GlobalData.currentImage = imageEvent.target
+         $(`span`).on('mousedown', (e) => { //拖拽区域
             e.stopPropagation();
             e.preventDefault()
             this.selDom = e.target;
          })
-         GlobalData.currentImage = imageEvent.target
          let obj: any = {};
-         $(imageEvent.target).parent().on('mousedown', (mouseDownEvent) => {//包裹图片的div
+         $(imageEvent.target).parent().on('mousedown', (mouseDownEvent) => {//包裹图片的div image-file-box
             mouseDownEvent.stopPropagation()
             this.selDom = mouseDownEvent.target;
             obj.x0 = mouseDownEvent.offsetX;
             obj.y0 = mouseDownEvent.offsetY;
          })
          $(imageEvent.target).parent().parent().on('mousemove', (mouseMoveEvent) => {//editorBox
+            mouseMoveEvent.stopPropagation()
             if (!this.selDom) return
             if (mouseMoveEvent.target === this.selDom) {
                let e = mouseMoveEvent
-               e.stopPropagation()
                $(e.target).parent()
                   .css('top', e.pageY - $(e.target).parent().parent().offset().top - obj.y0)
                   .css('left', e.pageX - $(e.target).parent().parent().offset().left - obj.x0)

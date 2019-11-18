@@ -107,7 +107,19 @@ export default class AnswerFrame {
                let i = 0;
                while (true) {
                   if (i > this.data.pros.length - 1) break
-                  chooseQues.append($(`<span style="margin-left:10px">[${this.data.pros[i].pnum}]</span>`))
+                  if (this.data.pros[i].pnum) {
+                     chooseQues.append($(`<span style="margin-left:10px">[${this.data.pros[i].pnum}]</span>`))
+                  } else {
+                     let j = 0
+                     let text = ''
+                     while (true) {
+                        if (j > this.data.pros[i].qus.length - 1) { break }
+                        !text ? text += this.data.pros[i].qus[j].pnum : text += `、${this.data.pros[i].qus[j].pnum}`
+                        j++
+                     }
+                     text = text.replace(/\、.*\、/, '-')
+                     chooseQues.append($(`<span style="margin-left:10px">[${text}]</span>`))
+                  }
                   i++
                }
                dom.append(chooseQues)
@@ -282,15 +294,67 @@ export default class AnswerFrame {
       }
       let _count = count;
       let i = 0;
-      while (true) {
-         if (i > _count - 1) break;
-         let grid = $(`<div 
-            contenteditable="false"
-            style="height:32px;width:32px;box-sizing:border-box;border:1px solid #000;display:inline-block;margin-right:2px"
-         ></div>`)
-         i == 0 && grid.css('border-left', '1px solid #000')
-         GlobalData.contentTextTarget.targetRow.append(grid)
-         i++
+      let rowWidth = parseFloat(GlobalData.contentTextTarget.targetRow.css('width'));
+      let maxGridNum = parseInt(String(rowWidth / 34))
+      if (count < maxGridNum) {
+         while (true) {
+            if (i > _count - 1) break;
+            let grid = $(`<div 
+               grid="grid"
+               contenteditable="false"
+               style="height:32px;width:32px;box-sizing:border-box;border:1px solid #000;display:inline-block;margin-right:2px"
+            ></div>`)
+            i == 0 && grid.css('border-left', '1px solid #000')
+            GlobalData.contentTextTarget.targetRow.append(grid)
+            i++
+         }
+      } else {
+         let rowCount = Math.ceil(count / maxGridNum)
+         let _count = count % maxGridNum //剩余count
+         let i = 0;
+         while (i < rowCount) {
+            if (i == 0) { //第一行
+               // console.log(GlobalData.contentTextTarget.targetRow.clone())
+               let j = 0;
+               while (j < maxGridNum) {
+                  let grid = $(`<div 
+                     grid="grid"
+                     contenteditable="false"
+                     style="height:32px;width:32px;box-sizing:border-box;border:1px solid #000;display:inline-block;margin-right:2px"
+                  ></div>`)
+                  j == 0 && grid.css('border-left', '1px solid #000')
+                  GlobalData.contentTextTarget.targetRow.append(grid)
+                  j++
+               }
+               i++;
+               continue;
+            }
+            if (i != rowCount - 1 && i != 0) {
+               let newRow = GlobalData.contentTextTarget.targetRow.clone()
+               GlobalData.contentTextTarget.targetRow.before(newRow)
+               i++;
+               continue
+            }
+            if (i == rowCount - 1) { // 最后一行
+               let j = 0;
+               let row = GlobalData.contentTextTarget.targetRow.clone()
+               row.empty();
+               while (j < _count) {
+                  let grid = $(`<div 
+                     grid="grid"
+                     contenteditable="false"
+                     style="height:32px;width:32px;box-sizing:border-box;border:1px solid #000;display:inline-block;margin-right:2px"
+                  ></div>`)
+                  j == 0 && grid.css('border-left', '1px solid #000')
+                  row.append(grid)
+                  j++
+               }
+               GlobalData.contentTextTarget.targetRow.after(row)
+               i++
+               continue
+            }
+            i++
+         }
       }
    }
    public changeLineHeight(height: number) {
@@ -305,14 +369,32 @@ export default class AnswerFrame {
       let observer = new MutationObserver(this.observeColumFun.bind(this, config))
       observer.observe(this.answerFrame.get(0), config)
    }
+   private dealGridChangeRow(mutation: any) {
+      let nextSiblings = $(mutation.addedNodes[0]).nextAll();
+      $(mutation.addedNodes[0]).remove()
+      let newRow = $(mutation.target).clone();
+      newRow.empty();
+      newRow.append(nextSiblings);
+      $(mutation.target).after(newRow)
+   }
    private observeColumFun(config: any, e: any) {
       e.map(async (mutation: MutationRecord) => {
+         if (!mutation.addedNodes[0]) {
+            return
+         }
+         if (mutation.addedNodes[0].nodeName == 'BR' && ($(mutation.nextSibling).attr('grid') == 'grid' || $(mutation.previousSibling).attr('grid') == 'grid')) { // 处理在插入方格处换行
+            this.dealGridChangeRow(mutation)
+            return
+         }
          if (mutation.type !== 'characterData') {
             if (!mutation.addedNodes[0]) {
                return
             } else if (mutation.addedNodes[0].nodeType !== 3) {
                return
             }
+         }
+         if ($(mutation.target).hasClass('image-file-box')) {
+            return
          }
          $('.fit-content').remove();
          const { anchorOffset, anchorNode } = window.getSelection()
