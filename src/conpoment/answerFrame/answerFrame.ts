@@ -245,7 +245,7 @@ export default class AnswerFrame {
       }
    }
    private keyDowm(contentText: boolean, event: any) { //contentText：来自右键菜单
-      if (event.keyCode === 8) {
+      if (event.keyCode === 8 || event.keyCode === 46) {
          //剩下最后一行时禁用删除
          if (GlobalData.currentImage) {
             event.preventDefault();
