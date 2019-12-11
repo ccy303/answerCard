@@ -1,7 +1,7 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json');
+const dataJSON = require('./test.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -41,6 +41,10 @@ class AnswerCard {
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
+      // $('#btn').on('click', () => {
+      //    console.log(123)
+      //    this.reRenderHeader(9)
+      // })
    }
    private addPage() {
       let page = new Page(this.addPage.bind(this));
@@ -89,8 +93,7 @@ class AnswerCard {
    }
 }
 
-
-
+// $('body').append('<button id="btn">点击<button>')
 
 export default AnswerCard
 process.env.NODE_ENV == 'development' && new AnswerCard({

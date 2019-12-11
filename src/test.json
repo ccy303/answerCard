@@ -132,6 +132,38 @@
          "pIndex": "",
          "pros": [
             {
+               "proId": "1712",
+               "score": 10,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "15",
+               "pnum": "",
+               "group": "0",
+               "titleType": "文言文阅读",
+               "qus": [
+                  {
+                     "quId": "3112",
+                     "score": 10,
+                     "quType": "填空题",
+                     "nums": "2",
+                     "content": "",
+                     "pnum": "15",
+                     "visible": true,
+                     "rIndex": "0"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "2",
+         "attribute": null,
+         "content": null,
+         "annexable": "1",
+         "group": "0",
+         "pIndex": "",
+         "pros": [
+            {
                "proId": "1734964",
                "score": 2.0,
                "pureObjective": "2",
