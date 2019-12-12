@@ -42,8 +42,7 @@ class AnswerCard {
       page.pageInit()
       this.pages = page
       // $('#btn').on('click', () => {
-      //    console.log(123)
-      //    this.reRenderHeader(9)
+      //    this.htmlToJson()
       // })
    }
    private addPage() {
@@ -58,6 +57,7 @@ class AnswerCard {
       this.pages = page
    }
    public htmlToJson(): string {//把html 转化成json返回
+      GlobalData.currentImage = null // 保存是取消图片选中时的boder样式
       let pages = $('#answerCard').children('.page');
       pages.removeClass('boxShadow')
       let arr = [];
@@ -102,7 +102,7 @@ process.env.NODE_ENV == 'development' && new AnswerCard({
    config: {
       uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
       queryData: {
-         Token: 'a48326cea3e28bd91043d929a56a5d58491ba1d5',
+         Token: '51b1542bdc0de745076c2a65b33a14fce896483f',
          inType: 41,
       }
    },
