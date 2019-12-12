@@ -367,7 +367,7 @@ export default class Page {
          } else if (pageHeight > innerHeight) {//删除
             dom.find('[swapheight=true]').remove()
             let hash = $(mutation.target).attr('hash');
-            let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}]`)//触发删除事件的EditotBox
+            let editorBox: any = this.page.find(`div.editor-box[hash=${hash}],div.exam-title[hash=${hash}],div.header-box[hash=${hash}]`)//触发删除事件的EditotBox
             if (!editorBox.get(0) && GlobalData.haveRemoveDomParent) {
                editorBox = GlobalData.haveRemoveDomParent.find('div.editor-box').first();
             }
@@ -388,7 +388,7 @@ export default class Page {
                   nextEditorBox.remove();
                }
             }
-            !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
+            !editorBox.hasClass('header-box') && !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
          }
       })
       if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count

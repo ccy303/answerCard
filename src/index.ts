@@ -42,7 +42,8 @@ class AnswerCard {
       page.pageInit()
       this.pages = page
       // $('#btn').on('click', () => {
-      //    this.htmlToJson()
+      //    let res = window.prompt();
+      //    this.reRenderHeader(Number(res))
       // })
    }
    private addPage() {
@@ -92,9 +93,7 @@ class AnswerCard {
       }
    }
 }
-
-// $('body').append('<button id="btn">点击<button>')
-
+// $('body').before('<button id="btn">点击<button>')
 export default AnswerCard
 process.env.NODE_ENV == 'development' && new AnswerCard({
    dataJSON: dataJSON,
