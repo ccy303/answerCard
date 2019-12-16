@@ -2,7 +2,11 @@ import GlobalData from '../global';
 export default class SelQues {
    data: any = null
    constructor(data: any) {
-      this.data = { ...data };
+      let _data = data
+      _data.pros = _data.pros.filter((val: any) => {
+         return val.qus[0].visible
+      })
+      this.data = { ..._data };
    }
    initSelQues() {
       if (!this.checkoutdata()) return;
