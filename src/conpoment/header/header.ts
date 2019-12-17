@@ -92,14 +92,14 @@ export default class Header {
          if (this.data.studentNumLength < 13) {
             let dom: Array<JQuery<HTMLElement>> = []
             info.map(val => {
-               dom.push($(`<div>${val}:_______________</div>`))
+               dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
             })
             box.append(dom)
             box.css('margin-bottom', '11px').css('max-height', '90px')
          } else {
             let dom: JQuery<HTMLElement> = $('<div></div>');
             info.map(val => {
-               dom.get(0).innerHTML += `${val}:_______________   `;
+               dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
             })
             box.append(dom)
             box.css('max-height', '60px')
@@ -107,7 +107,7 @@ export default class Header {
       } else if (this.data.type == 'A3' && this.data.colum == '3') {
          let dom: JQuery<HTMLElement> = $('<div></div>');
          info.map(val => {
-            dom.get(0).innerHTML += `${val}:_______________   `;
+            dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
          })
          box.append(dom)
          box.css('max-height', '60px')
