@@ -379,12 +379,15 @@ export default class AnswerFrame {
    }
    private observeColumFun(config: any, e: any) {
       e.map(async (mutation: MutationRecord) => {
-         if (!mutation.addedNodes[0]) {
+         //target.nodeType 文本改变
+         if (!mutation.addedNodes[0] && mutation.target.nodeType !== 3) {
             return
          }
-         if (mutation.addedNodes[0].nodeName == 'BR' && ($(mutation.nextSibling).attr('grid') == 'grid' || $(mutation.previousSibling).attr('grid') == 'grid')) { // 处理在插入方格处换行
-            this.dealGridChangeRow(mutation)
-            return
+         if (mutation.addedNodes[0]) {
+            if (mutation.addedNodes[0].nodeName == 'BR' && ($(mutation.nextSibling).attr('grid') == 'grid' || $(mutation.previousSibling).attr('grid') == 'grid')) { // 处理在插入方格处换行
+               this.dealGridChangeRow(mutation)
+               return
+            }
          }
          if (mutation.type !== 'characterData') {
             if (!mutation.addedNodes[0]) {
