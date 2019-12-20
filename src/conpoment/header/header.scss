@@ -25,10 +25,12 @@
       }
       .good-print {
         box-sizing: content-box;
-        height: 22px;
-        margin: 7px 0 0 0;
+        width: max-content;
+        height: 23px;
+        margin: 5px 0 0 0;
+        padding-right: 10px;
         border: 1px solid #000;
-        line-height: 22px;
+        line-height: 23px;
         font-size: 12px;
         .opt-item {
           display: inline-block;
