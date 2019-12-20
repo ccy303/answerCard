@@ -89,42 +89,65 @@ export default class Header {
       `);
       let info = ['姓名', '班级', '考号',];
       if (this.data.type != 'A3' || this.data.colum != '3') {
-         if (this.data.studentNumLength < 13) {
+         if (this.data.studentNumLength < 13 || this.data.examCountType === 1) {
             let dom: Array<JQuery<HTMLElement>> = []
             info.map(val => {
                dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
             })
             box.append(dom)
-            box.css('margin-bottom', '11px').css('max-height', '90px')
-         } else {
+            box.css('max-height', '90px')
+            return box
+         }
+         if (this.data.studentNumLength >= 13) {
             let dom: JQuery<HTMLElement> = $('<div></div>');
             info.map(val => {
                dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
             })
             box.append(dom)
             box.css('max-height', '60px')
+            return box
          }
       } else if (this.data.type == 'A3' && this.data.colum == '3') {
-         let dom: JQuery<HTMLElement> = $('<div></div>');
-         info.map(val => {
-            dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
-         })
-         box.append(dom)
-         box.css('max-height', '60px')
+         if (this.data.examCountType === 2) { //填涂
+            let dom: JQuery<HTMLElement> = $('<div></div>');
+            info.map(val => {
+               dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
+            })
+            box.append(dom)
+            box.css('max-height', '60px')
+         } else { //条码
+            let dom: Array<JQuery<HTMLElement>> = []
+            info.map(val => {
+               dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
+            })
+            box.append(dom)
+            box.css('max-height', '90px')
+         }
       }
-      return box
    }
    private renderTip(): JQuery<HTMLElement> {
       let { type, colum } = this.data
-      let disNone = type == 'A3' && colum == 3 ? "display:none" : "display:block"
       return $(`<div 
          class="tip-box"
       >  
          <h5 style="margin:0;">注意事项</h5>
          <p>1、选择题作答必须用2B铅笔填涂</p>
          <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
-         <p style=${disNone}>3、学号、姓名、班级三项信息必须用黑色签字笔填清楚。</p>
-         <p style=${disNone}>4、请保持答题卡卡面清洁，不要折叠或弄破答题卡。</p>
+         <div class="good-print">
+            <span style="margin-right:5%">正确填涂示例</span>
+            <div class="opt-item">
+               <i class="iconfont icon-A" style="background:#000"></i>
+            </div>
+            <div class="opt-item">
+               <i class="iconfont icon-B"></i>
+            </div>
+            <div class="opt-item">
+               <i class="iconfont icon-C"></i>
+            </div>
+            <div class="opt-item">
+               <i class="iconfont icon-D"></i>
+            </div>
+         </div>
       </div>`)
    }
    private renderBarCode(): JQuery<HTMLElement> {
