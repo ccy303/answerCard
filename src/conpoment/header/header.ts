@@ -136,17 +136,14 @@ export default class Header {
          <p>1、选择题作答必须用2B铅笔填涂</p>
          <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
          <div class="good-print">
-            <span style="margin-right:5%">正确填涂示例</span>
+            <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span>
             <div class="opt-item">
                <i class="iconfont icon-A" style="background:#000"></i>
-            </div>
-            <div class="opt-item">
+            </div><div class="opt-item">
                <i class="iconfont icon-B"></i>
-            </div>
-            <div class="opt-item">
+            </div><div class="opt-item">
                <i class="iconfont icon-C"></i>
-            </div>
-            <div class="opt-item">
+            </div><div class="opt-item">
                <i class="iconfont icon-D"></i>
             </div>
          </div>

@@ -1,106 +1,10 @@
-.header-box {
-  box-sizing: border-box;
-  width: 100%;
-  font-family: simhei, 宋体;
-  text-align: center;
-  .header-contnet {
-    float: left;
-    width: 50%;
-    text-align: left;
-    padding: 5px 0;
-    &::after {
-      display: table;
-      content: "";
-      clear: both;
-    }
-    .tip-box {
-      padding: 5px;
-      box-sizing: border-box;
-      border: 2px dashed #999;
-      width: 100%;
-      display: inline-block;
-      p {
-        font-size: 12px;
-        margin: 0;
-        line-height: 20px;
-      }
-    }
-    .student-info {
-      margin-top: 15px;
-      width: 100%;
-      float: left;
-      box-sizing: border-box;
-      margin-bottom: 5px;
-      overflow: hidden;
-      &:focus {
-        background: #eaf0f8;
-        border: 2px dashed #999;
-      }
-      div {
-        margin-bottom: 5px;
-        line-height: 25px;
-        font-size: 13px;
-        margin-right: 10px;
-      }
-    }
-  }
-  .student-num {
-    box-sizing: border-box;
-    height: auto;
-    padding: 5px 0;
-    text-align: center;
-    display: inline-block;
-    .title {
-      text-align: center;
-      font-size: 14px;
-      height: 24px;
-      line-height: 23px;
-      margin: 0;
-    }
-    .num {
-      border: 1px solid #000;
-      padding: 7px 4.5px;
-      margin: 5px;
-      .num-colum {
-        display: inline-block;
-        .frame {
-          color: #888;
-          width: 28px;
-          height: 18px;
-          line-height: 21px;
-          font-size: 12px;
-          text-align: center;
-          letter-spacing: 1px;
-          text-indent: 2px;
-        }
-      }
-    }
-  }
-  .bar-code {
-    line-height: 120px;
-    width: 180px;
-    margin-right: 5%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    height: 120px;
-    border: 2px dashed #999;
-    text-align: center;
-  }
-  &::after {
-    display: table;
-    content: "";
-    clear: both;
-  }
-}
-
 body {
   margin: 0;
   .fit-content {
-    width: fit-content;
+    width: max-content;
     height: 0;
     opacity: 0;
     white-space: nowrap;
-    vertical-align: unset;
     font-family: simhei, 宋体;
   }
 }
@@ -218,6 +122,7 @@ body {
   padding: 70px 40px;
   box-sizing: border-box;
   position: relative;
+  vertical-align: unset !important;
   .colum {
     padding: 0 15px;
     box-sizing: border-box;
@@ -372,6 +277,123 @@ body {
   }
 }
 
+
+.header-box {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: simhei, 宋体;
+  text-align: center;
+  .header-contnet {
+    float: left;
+    width: 50%;
+    text-align: left;
+    padding: 5px 0;
+    &::after {
+      display: table;
+      content: "";
+      clear: both;
+    }
+    .tip-box {
+      box-sizing: border-box;
+      width: 100%;
+      display: inline-block;
+      vertical-align: unset !important;
+      p {
+        font-size: 12px;
+        margin: 0;
+        line-height: 20px;
+      }
+      .good-print {
+        box-sizing: content-box;
+        height: 22px;
+        margin: 7px 0 0 0;
+        border: 1px solid #000;
+        line-height: 22px;
+        font-size: 12px;
+        .opt-item {
+          display: inline-block;
+          vertical-align: unset !important;
+          text-align: center;
+          width: 28px;
+          font-size: 12px;
+          height: 18px;
+          letter-spacing: 1px;
+          line-height: 18px;
+          color: rgb(160, 151, 136);
+          i {
+            vertical-align: top !important;
+          }
+        }
+      }
+    }
+    .student-info {
+      margin-top: 15px;
+      width: 100%;
+      float: left;
+      box-sizing: border-box;
+      overflow: hidden;
+      &:focus {
+        background: #eaf0f8;
+        border: 2px dashed #999;
+      }
+      div {
+        margin-bottom: 5px;
+        line-height: 25px;
+        font-size: 13px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .student-num {
+    box-sizing: border-box;
+    height: auto;
+    padding: 5px 0;
+    text-align: center;
+    display: inline-block;
+    .title {
+      text-align: center;
+      font-size: 14px;
+      height: 24px;
+      line-height: 23px;
+      margin: 0;
+    }
+    .num {
+      border: 1px solid #000;
+      padding: 7px 4.5px;
+      margin: 5px;
+      .num-colum {
+        display: inline-block;
+        .frame {
+          color: #888;
+          width: 28px;
+          height: 18px;
+          line-height: 21px;
+          font-size: 12px;
+          text-align: center;
+          letter-spacing: 1px;
+          text-indent: 2px;
+        }
+      }
+    }
+  }
+  .bar-code {
+    line-height: 120px;
+    width: 180px;
+    margin-right: 5%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 120px;
+    border: 2px dashed #999;
+    text-align: center;
+  }
+  &::after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}
+
+
 .editor-box {
   box-sizing: border-box;
   width: 100%;
@@ -471,7 +493,6 @@ body {
     z-index: 9999;
   }
 }
-
 .editor-box[type="write"] {
   padding: 10px 0px;
   text-align: center;
@@ -497,7 +518,6 @@ body {
     }
   }
 }
-
 .editor-box[type="select"] {
   padding: 0;
   .row {
@@ -562,3 +582,125 @@ body {
     margin-bottom: 15px;
   }
 }
+@font-face {
+  font-family: "iconfont"; /* project id 1454973 */
+  src: url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.ttf") format("truetype"),
+    url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.svg#iconfont") format("svg");
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 10px;
+  font-style: normal;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-A:before {
+  content: "\e699";
+}
+
+.icon-B:before {
+  content: "\e69c";
+}
+
+.icon-C:before {
+  content: "\e69d";
+}
+
+.icon-D:before {
+  content: "\e69e";
+}
+
+.icon-E:before {
+  content: "\e69f";
+}
+
+.icon-J:before {
+  content: "\e6a0";
+}
+
+.icon-I:before {
+  content: "\e6a1";
+}
+
+.icon-L:before {
+  content: "\e6a2";
+}
+
+.icon-H:before {
+  content: "\e6a3";
+}
+
+.icon-M:before {
+  content: "\e6a4";
+}
+
+.icon-F:before {
+  content: "\e6a5";
+}
+
+.icon-P:before {
+  content: "\e6a6";
+}
+
+.icon-S:before {
+  content: "\e6a8";
+}
+
+.icon-Q:before {
+  content: "\e6a9";
+}
+
+.icon-O:before {
+  content: "\e6aa";
+}
+
+.icon-V:before {
+  content: "\e6ab";
+}
+
+.icon-N:before {
+  content: "\e6ac";
+}
+
+.icon-R:before {
+  content: "\e6ad";
+}
+
+.icon-T:before {
+  content: "\e6ae";
+}
+
+.icon-W:before {
+  content: "\e6af";
+}
+
+.icon-Y:before {
+  content: "\e6b0";
+}
+
+.icon-d:before {
+  content: "\e6b1";
+}
+
+.icon-Z:before {
+  content: "\e6b2";
+}
+
+.icon-U:before {
+  content: "\e6b3";
+}
+
+.icon-K:before {
+  content: "\e6b5";
+}
+
+.icon-G:before {
+  content: "\e6a7";
+}
+
+.icon-X:before {
+  content: "\e6b4";
+}
+
