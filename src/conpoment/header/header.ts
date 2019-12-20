@@ -115,6 +115,7 @@ export default class Header {
             })
             box.append(dom)
             box.css('max-height', '60px')
+            return box
          } else { //条码
             let dom: Array<JQuery<HTMLElement>> = []
             info.map(val => {
@@ -122,6 +123,7 @@ export default class Header {
             })
             box.append(dom)
             box.css('max-height', '90px')
+            return box
          }
       }
    }
