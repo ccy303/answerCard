@@ -277,7 +277,6 @@ body {
   }
 }
 
-
 .header-box {
   box-sizing: border-box;
   width: 100%;
@@ -305,10 +304,12 @@ body {
       }
       .good-print {
         box-sizing: content-box;
-        height: 22px;
-        margin: 7px 0 0 0;
+        width: max-content;
+        height: 23px;
+        margin: 5px 0 0 0;
+        padding-right: 10px;
         border: 1px solid #000;
-        line-height: 22px;
+        line-height: 23px;
         font-size: 12px;
         .opt-item {
           display: inline-block;
@@ -364,7 +365,7 @@ body {
       .num-colum {
         display: inline-block;
         .frame {
-          color: #888;
+          color: #000;
           width: 28px;
           height: 18px;
           line-height: 21px;
@@ -392,7 +393,6 @@ body {
     clear: both;
   }
 }
-
 
 .editor-box {
   box-sizing: border-box;
@@ -584,8 +584,8 @@ body {
 }
 @font-face {
   font-family: "iconfont"; /* project id 1454973 */
-  src: url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.ttf") format("truetype"),
-    url("https://at.alicdn.com/t/font_1454973_ys1gxb4hj9r.svg#iconfont") format("svg");
+  src: url("https://at.alicdn.com/t/font_1454973_jvrbq55cauo.ttf") format("truetype"),
+    url("https://at.alicdn.com/t/font_1454973_jvrbq55cauo.svg#iconfont") format("svg");
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -597,110 +597,109 @@ body {
 }
 
 .icon-A:before {
-  content: "\e699";
-}
-
-.icon-B:before {
-  content: "\e69c";
+  content: "\e6b7";
 }
 
 .icon-C:before {
-  content: "\e69d";
+  content: "\e6b6";
+}
+
+.icon-B:before {
+  content: "\e6b8";
 }
 
 .icon-D:before {
-  content: "\e69e";
-}
-
-.icon-E:before {
-  content: "\e69f";
-}
-
-.icon-J:before {
-  content: "\e6a0";
-}
-
-.icon-I:before {
-  content: "\e6a1";
-}
-
-.icon-L:before {
-  content: "\e6a2";
-}
-
-.icon-H:before {
-  content: "\e6a3";
-}
-
-.icon-M:before {
-  content: "\e6a4";
-}
-
-.icon-F:before {
-  content: "\e6a5";
-}
-
-.icon-P:before {
-  content: "\e6a6";
-}
-
-.icon-S:before {
-  content: "\e6a8";
-}
-
-.icon-Q:before {
-  content: "\e6a9";
-}
-
-.icon-O:before {
-  content: "\e6aa";
-}
-
-.icon-V:before {
-  content: "\e6ab";
-}
-
-.icon-N:before {
-  content: "\e6ac";
-}
-
-.icon-R:before {
-  content: "\e6ad";
-}
-
-.icon-T:before {
-  content: "\e6ae";
-}
-
-.icon-W:before {
-  content: "\e6af";
-}
-
-.icon-Y:before {
-  content: "\e6b0";
-}
-
-.icon-d:before {
-  content: "\e6b1";
-}
-
-.icon-Z:before {
-  content: "\e6b2";
-}
-
-.icon-U:before {
-  content: "\e6b3";
-}
-
-.icon-K:before {
-  content: "\e6b5";
+  content: "\e6b9";
 }
 
 .icon-G:before {
-  content: "\e6a7";
+  content: "\e6b2";
 }
 
-.icon-X:before {
+.icon-J:before {
+  content: "\e6b3";
+}
+
+.icon-I:before {
   content: "\e6b4";
 }
 
+.icon-H:before {
+  content: "\e6b5";
+}
+
+.icon-M:before {
+  content: "\e6ba";
+}
+
+.icon-K:before {
+  content: "\e6bb";
+}
+
+.icon-L:before {
+  content: "\e6bc";
+}
+
+.icon-F:before {
+  content: "\e6bd";
+}
+
+.icon-E:before {
+  content: "\e6be";
+}
+
+.icon-P:before {
+  content: "\e6bf";
+}
+
+.icon-N:before {
+  content: "\e6c0";
+}
+
+.icon-O:before {
+  content: "\e6c1";
+}
+
+.icon-T:before {
+  content: "\e6c2";
+}
+
+.icon-S:before {
+  content: "\e6c3";
+}
+
+.icon-Q:before {
+  content: "\e6c4";
+}
+
+.icon-V:before {
+  content: "\e6c5";
+}
+
+.icon-R:before {
+  content: "\e6c6";
+}
+
+.icon-U:before {
+  content: "\e6c7";
+}
+
+.icon-W:before {
+  content: "\e6c8";
+}
+
+.icon-X:before {
+  content: "\e6c9";
+}
+
+.icon-Y:before {
+  content: "\e6ca";
+}
+
+.icon-Z:before {
+  content: "\e6cb";
+}
+
+.icon-dui:before {
+  content: "\e6cc";
+}
