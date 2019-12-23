@@ -180,9 +180,9 @@ export default class Page {
             let top = 0;
             top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).position().top
             this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:25px" class="rectangle"></div>`)
-            i == 0 && this.page.append(`<div style="top:${top / 2}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,-50%);">
-               缺考标识
-               <div style="height:${height};width:${width};" class="noAnswer"></div>
+            i == 0 && this.page.append(`<div style="top:${top / 2}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,0);">
+               <span style="position:absolute;top:-75px">缺考标识</span>
+               <div style="height:${height};width:${width};margin-top:0" class="noAnswer"></div>
             </div>`)
             i++;
          }
