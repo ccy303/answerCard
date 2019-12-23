@@ -163,6 +163,12 @@ body {
     background: #000;
     position: absolute;
   }
+  .noAnswer {
+    background: #fff;
+    border: 1px solid #000;
+    margin: 10px auto 0;
+    box-sizing: border-box;
+  }
   .pageNum {
     position: absolute;
     bottom: 0;

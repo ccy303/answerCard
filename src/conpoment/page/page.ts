@@ -180,8 +180,13 @@ export default class Page {
             let top = 0;
             top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).position().top
             this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:25px" class="rectangle"></div>`)
+            i == 0 && this.page.append(`<div style="top:${top / 2}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,-50%);">
+               缺考标识
+               <div style="height:${height};width:${width};" class="noAnswer"></div>
+            </div>`)
             i++;
          }
+
       } else {//顶部页数方块
          let innerWidth: number = 0;
          innerWidth = $(this.page.find('div.right-top')).position().left - $(this.page.find('div.left-top')).position().left + $(this.page.find('div.right-top')).width();
@@ -378,7 +383,8 @@ export default class Page {
                !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
                return;
             } else {
-               let nextBoxFirstChild = nextEditorBox.children(':first-child').height();
+               let nextBoxFirstChild = nextEditorBox.children(':first-child').height(); // 要移动的行的高度
+               $(nextEditorBox.children()[0]).attr('type') === 'sel' && (nextBoxFirstChild += 10)
                nextEditorBox.attr('type') === 'write' && (nextBoxFirstChild += 8)
                if (pageHeight - innerHeight > nextBoxFirstChild) {
                   nextEditorBox && this.moveRowToPrevEditorBox(nextEditorBox, editorBox.parent().children().last());

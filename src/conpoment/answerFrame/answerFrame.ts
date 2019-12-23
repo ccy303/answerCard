@@ -169,7 +169,7 @@ export default class AnswerFrame {
             let i = 0
             while (true) {
                if (i > arrItemLen) break;
-               let row = $(`<div class="row" hash="${hash}"></div>`);
+               let row = $(`<div class="row" type="sel" hash="${hash}"></div>`);
                let j = 0;
                while (true) {
                   if (j > length - 1 || !arr[j].data[i]) break;
@@ -377,6 +377,8 @@ export default class AnswerFrame {
       newRow.append(nextSiblings);
       $(mutation.target).after(newRow)
    }
+   private nextStr = '' //移到下一行的内容
+   private prevSelection: any = 0 // 上次焦点所在位置距离结束位置
    private observeColumFun(config: any, e: any) {
       e.map(async (mutation: MutationRecord) => {
          //target.nodeType 文本改变
@@ -415,32 +417,49 @@ export default class AnswerFrame {
          } else {
             targetDom = mutation.addedNodes[0];
          }
-         if (textDom.width() > rowWidth) {
-            this.observeTextWidth(textDom, text)
-            let _strObj = tool.strCheckStr(text, textDom.html())
-            let targetRow = $(targetDom).parent()
-            targetRow.html('<br/>')
-            targetRow.html(textDom.html())
-            this.addTextToNextRow(targetRow, _strObj)
-            if (selectionPonit.get(0) == targetRow.get(0)) {
-               if (anchorOffset <= textDom.html().length) {//光标保留在原来位置
-                  let textNode = targetRow.get(0).childNodes[0]
-                  tool.resetRange(textNode, anchorOffset, textNode, anchorOffset)
-               } else {//把光标移到下一行
-                  let nextRow = this.getNextRow(targetRow).get(0)
-                  setTimeout(() => {
-                     tool.resetRange(nextRow.childNodes[0], _strObj.nextStr.length, nextRow.childNodes[0], _strObj.nextStr.length)
-                  }, 0)
+         if ($(mutation.target).hasClass('row')) {
+            let child: any = $(mutation.target.childNodes);
+            for (let i = 0; i < child.length; i++) {
+               if (child[i].tagName === 'BR') {
+                  $(child[i]).remove();
                }
             }
+         }
+         //@ts-ignore
+         if (targetDom.length - anchorOffset > 0) {
+            //@ts-ignore
+            this.prevSelection = targetDom.length - anchorOffset
+         }
+         if (textDom.width() > rowWidth) {
+            let targetRow = $(targetDom).parent()
+            this.observeTextWidth(textDom, text)
+            let _strObj = tool.strCheckStr(text, textDom[0].innerText)
+            this.nextStr = _strObj.nextStr || ''
+            targetRow.html('<br/>')
+            targetRow.html(textDom[0].innerText)
+            this.addTextToNextRow(targetRow, _strObj)
+            if (selectionPonit.get(0) == targetRow.get(0)) {
+               let textNode: any = targetRow.get(0).childNodes[0]
+               let target = anchorOffset > textNode.length ? textNode.length : anchorOffset
+               tool.resetRange(textNode, target, textNode, target)
+            }
          } else {
+            let targetRow: any = $(targetDom).parent()
+            let textNode: any = targetRow.get(0).childNodes[0]
+            //@ts-ignore
+            if (anchorNode.length == anchorOffset && textNode != anchorNode && this.nextStr) {
+               let target = this.nextStr.length - this.prevSelection
+               tool.resetRange(textNode, target, textNode, target)
+               this.nextStr = null;
+               this.prevSelection = 0
+            }
          }
       })
    }
    private addTextToNextRow(targetDom: JQuery<Node>, textObj: { start: number, end: number, prevStr: string, nextStr: string }, movePoint?: boolean) {
       let nextRow = this.getNextRow(targetDom)
       if (nextRow && nextRow.get(0)) {
-         let html = nextRow.html() == '<br>' ? '' : nextRow.html();
+         let html = nextRow.html() == '<br>' ? '' : nextRow.get(0).innerText;
          nextRow.html(textObj.nextStr + html)
       } else {
          let row = $(`<div class="row" hash="${targetDom.attr('hash')}"></div>`)
@@ -462,7 +481,7 @@ export default class AnswerFrame {
          if (dom.width() - this.answerFrame.find('.row').width() <= this.answerFrame.find('.row').width() / 2) {
             while (true) {
                if (dom.width() < this.answerFrame.find('.row').width()) break;
-               let html = dom.html();
+               let html = dom[0].innerText;
                html = html.substr(0, html.length - 1);
                dom.html(html)
             }
@@ -473,12 +492,12 @@ export default class AnswerFrame {
          }
       } else {
          const strArr = this.subStr(strObj.nextStr)
-         const html = dom.html() + strArr[0];
+         const html = dom[0].innerText + strArr[0];
          dom.html(html)
          this.observeTextWidth(dom, text);
       }
    }
-   private getNextRow(target: JQuery<Node>) {
+   private getNextRow(target: JQuery<Node>): any {
       if (target.next('.row:not([writerow=true])').get(0)) {
          return target.next('.row:not([writerow=true])')
       } else {
@@ -507,12 +526,12 @@ export default class AnswerFrame {
    private checkSelection() { //检查光标
       const { anchorNode } = window.getSelection();
       if ($(anchorNode).hasClass('editor-box')) {
-         let target = $(anchorNode).children('.row:not([writerow=true])').last();
+         let target: any = $(anchorNode).children('.row:not([writerow=true])').last();
          if (target.children().get(0) && target.children().get(0).nodeName == 'BR') {
             tool.resetRange(target.get(0), '', target.get(0), '')
          } else {
-            target.html().length
-            tool.resetRange(target.get(0).childNodes[0], target.html().length, target.get(0).childNodes[0], target.html().length)
+            target[0].innerText.length
+            tool.resetRange(target.get(0).childNodes[0], target[0].innerText.length, target.get(0).childNodes[0], target[0].innerText.length)
          }
       }
    }

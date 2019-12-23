@@ -336,6 +336,7 @@ class Tool {
       })
    }
    public strCheckStr(pStr: string, cStr: string): { start: number, end: number, prevStr: string, nextStr: string } {//find cStr in pStr
+      // debugger
       let startIndex = pStr.indexOf(cStr);
       let endIndex = startIndex + cStr.length - 1;
       return {

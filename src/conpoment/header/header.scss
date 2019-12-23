@@ -1,7 +1,7 @@
 .header-box {
   box-sizing: border-box;
   width: 100%;
-  font-family: simhei, 宋体;
+  font-family: simsun, 宋体;
   text-align: center;
   .header-contnet {
     float: left;
@@ -26,11 +26,11 @@
       .good-print {
         box-sizing: content-box;
         width: max-content;
-        height: 23px;
+        height: 24px;
         margin: 5px 0 0 0;
         padding-right: 10px;
         border: 1px solid #000;
-        line-height: 23px;
+        line-height: 24px;
         font-size: 12px;
         .opt-item {
           display: inline-block;
