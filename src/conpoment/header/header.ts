@@ -158,7 +158,7 @@ export default class Header {
       }
    }
    private renderTip(): JQuery<HTMLElement> {
-      let { type, colum } = this.data
+      let { type, colum, examCountType } = this.data
       let style = ''
       // if (type == 'A3' && colum == 3) {
       //    style = "top:40px;right:-240px;margin-top:10px;"
@@ -184,11 +184,11 @@ export default class Header {
             </div>
          </div>
       </div>`)
-      if (type == 'A3' && colum == 3) {
+      if (type == 'A3' && colum == 3 && examCountType === 1) {
          console.log(tip.children().first())
          let qrcode = this.renderQrCode({});
          qrcode.css('display', 'inline-block').css('position', 'unset').css('margin-left', '2px')
-         tip.children().first().css('display', 'inline-block').css('width', 'calc(100% - 75px)')
+         tip.children().first().css('display', 'inline-block').css('width', '160px')
          qrcode.insertBefore(tip.children().last())
       }
       return tip
