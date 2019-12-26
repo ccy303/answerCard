@@ -27,11 +27,11 @@ export default class GlobalData {
    static set pageObject(val: any) {
       this._pageObject.push(val);
       let length = this._pageObject.length;
-      let pageNum = $(`<p class="pageNum">
+      let pageNum = $(`<p class="pageNum" style="margin: 0 auto 15px; width:100px; ">
          <span>第${length}页</span> / <span type="totalPage"></span>
       </p>`)
       val.page.append(pageNum);
-      $('[type=totalPage]').html(`共${length}页`)
+      $('[type=totalPage]').html(`共${length}页`)  
    }
    static get pageObject() {
       return this._pageObject

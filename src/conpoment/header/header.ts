@@ -30,12 +30,19 @@ export default class Header {
          let hash = `id${(new Date().getTime() + Math.random() * 1000000000000).toFixed(0)}`;
          let box = $(`<div class="header-box" hash="${hash}"></div>`)
          let div = $(`<div class="header-contnet"></div>`)
+         div.css('position', 'relative');
          if (examCountType === 1) {
             div.append(this.renderStudentInfo());
             div.append(this.renderTip())
             box.append(div);
-            let con = $(`<div style="float:right;width:50%;padding-top:25px;"></div>`)
+            let con = $(`<div style="float:right;width:50%"></div>`)
+            con.css("padding-top", '25px')
             let code = this.renderBarCode();
+            // if (colum == 3 && type == 'A3') {
+            //    con.css('padding-top', '15px')
+            //    box.css('position', 'relative')
+            //    box.append(this.renderQrCode({ right: '80px', bottom: 0 }))
+            // }
             con.append(code)
             box.append(con)
          } else if (examCountType === 2) {
@@ -80,6 +87,20 @@ export default class Header {
       box.append(num)
       return box;
    }
+   private renderQrCode(position: any) {
+      let qrcode = $(`<div style="
+         position:absolute;
+         top:${position.top};
+         right:${position.right};
+         bottom:${position.bottom};
+         margin:0;
+         font-size: 0;
+         line-height: inherit;
+      ">
+         <img width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
+      </div>`)
+      return qrcode
+   }
    private renderStudentInfo(): JQuery<HTMLElement> {
       let box = $(`
          <div
@@ -87,7 +108,7 @@ export default class Header {
             contenteditable=true
          ></div>
       `);
-      let info = ['姓名', '班级', '考号',];
+      let info = ['姓名', '班级', '考号'];
       if (this.data.type != 'A3' || this.data.colum != '3') {
          if (this.data.studentNumLength < 13 || this.data.examCountType === 1) {
             let dom: Array<JQuery<HTMLElement>> = []
@@ -95,7 +116,10 @@ export default class Header {
                dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
             })
             box.append(dom)
-            box.css('max-height', '90px')
+            box.css('max-height', '90px').css('width', '55%')
+            box.append(this.renderQrCode({
+               top: '35px', right: '50px',
+            }))
             return box
          }
          if (this.data.studentNumLength >= 13) {
@@ -105,6 +129,9 @@ export default class Header {
             })
             box.append(dom)
             box.css('max-height', '60px')
+            box.append(this.renderQrCode({
+               top: '60px', right: '70px',
+            }))
             return box
          }
       } else if (this.data.type == 'A3' && this.data.colum == '3') {
@@ -115,6 +142,9 @@ export default class Header {
             })
             box.append(dom)
             box.css('max-height', '60px')
+            box.append(this.renderQrCode({
+               top: '80px', right: '50px',
+            }))
             return box
          } else { //条码
             let dom: Array<JQuery<HTMLElement>> = []
@@ -129,12 +159,19 @@ export default class Header {
    }
    private renderTip(): JQuery<HTMLElement> {
       let { type, colum } = this.data
-      return $(`<div 
+      let style = ''
+      // if (type == 'A3' && colum == 3) {
+      //    style = "top:40px;right:-240px;margin-top:10px;"
+      // }
+      let tip = $(`<div 
          class="tip-box"
+         style="position:relative"
       >  
-         <h5 style="margin:0;">注意事项</h5>
-         <p>1、选择题作答必须用2B铅笔填涂</p>
-         <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
+         <div id="text" style="position:relative;${style}">
+            <h5 style="margin:0;">注意事项</h5>
+            <p>1、选择题作答必须用2B铅笔填涂</p>
+            <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
+         </div>
          <div class="good-print">
             <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span><div class="opt-item">
                <i class="iconfont icon-A" style="background:#000"></i>
@@ -147,6 +184,14 @@ export default class Header {
             </div>
          </div>
       </div>`)
+      if (type == 'A3' && colum == 3) {
+         console.log(tip.children().first())
+         let qrcode = this.renderQrCode({});
+         qrcode.css('display', 'inline-block').css('position', 'unset').css('margin-left', '2px')
+         tip.children().first().css('display', 'inline-block').css('width', 'calc(100% - 75px)')
+         qrcode.insertBefore(tip.children().last())
+      }
+      return tip
    }
    private renderBarCode(): JQuery<HTMLElement> {
       return $(`

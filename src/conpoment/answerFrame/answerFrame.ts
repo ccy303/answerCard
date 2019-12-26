@@ -222,7 +222,7 @@ export default class AnswerFrame {
    }
    public addImage(url: any) {
       $(this.answerFrame).append($(`<div contenteditable="false" class="image-file-box" draggable ="false">
-         <img src=${url}  class="image-file" draggable ="false">
+         <img src=${url} crossorigin="true" class="image-file" draggable ="false">
       </div>`))
       tool.dealImage()
    }
@@ -230,13 +230,21 @@ export default class AnswerFrame {
       e.preventDefault();
       let file = e.originalEvent.clipboardData.files[0]
       if (file && file.type == 'image/png' && canPasteImg) {
-         let reader = new FileReader();
-         reader.onload = () => {
-            tool.uploadFile(reader.result, true, () => {
-               this.addImage(reader.result)
-            })
-         }
-         reader.readAsDataURL(file)
+         tool.uploadFile(file, true, (arg: any) => {
+            this.addImage(arg)
+         })
+         // }
+         // let reader = new FileReader();
+         // reader.onload = () => {
+         //    tool.uploadFile(reader.result, true, (arg: any) => {
+         // this.addImage(reader.result)
+         // console.log(reader.result)
+         //       this.addImage(arg)
+         //    })
+         // }
+         // reader.readAsDataURL(file)
+         // reader.readAsBinaryString(file)
+         // reader.readAsArrayBuffer(file)
       } else {
          let html = e.originalEvent.clipboardData.getData('text/plain');
          html = html.replace(/\r|\n|\s/g, '')

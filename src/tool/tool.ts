@@ -154,7 +154,7 @@ class Tool {
                if (xhr.readyState === 4) {
                   if (xhr.status === 200) {
                      !callback && GlobalData.contentTextTarget.targetObj.addImage(data.url)
-                     typeof (callback) == 'function' && callback()
+                     typeof (callback) == 'function' && callback(data.url)
                   }
                }
             }

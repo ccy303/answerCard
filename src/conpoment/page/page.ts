@@ -183,6 +183,7 @@ export default class Page {
             i == 0 && this.page.append(`<div style="top:${top / 2 + 15}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,0);">
                <span style="position:absolute;top:-75px">缺考标识</span>
                <div style="height:${height};width:${width};margin-top:0" class="noAnswer"></div>
+               <span style="position:absolute;bottom:- 75px">考生禁填</span>
             </div>`)
             i++;
          }
@@ -398,7 +399,6 @@ export default class Page {
          }
       })
       if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count
-
          dom.parent().remove()
          GlobalData.pageObjectPop(this);
          $('[type=totalPage]').html(`共${$('.page').length}页`)
