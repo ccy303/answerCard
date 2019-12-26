@@ -185,9 +185,8 @@ export default class Header {
          </div>
       </div>`)
       if (type == 'A3' && colum == 3 && examCountType === 1) {
-         console.log(tip.children().first())
          let qrcode = this.renderQrCode({});
-         qrcode.css('display', 'inline-block').css('position', 'unset').css('margin-left', '2px')
+         qrcode.css('display', 'inline-block').css('position', 'static').css('margin-left', '2px')
          tip.children().first().css('display', 'inline-block').css('width', '160px')
          qrcode.insertBefore(tip.children().last())
       }
