@@ -1,7 +1,7 @@
 .header-box {
   box-sizing: border-box;
   width: 100%;
-  font-family: simsun, 宋体;
+  font-family: 宋体, SimSun, STSong;
   text-align: center;
   .header-contnet {
     float: left;
@@ -34,7 +34,7 @@
         font-size: 12px;
         .opt-item {
           display: inline-block;
-          vertical-align: unset !important;
+          vertical-align: unset ;
           text-align: center;
           width: 28px;
           font-size: 12px;
@@ -42,9 +42,6 @@
           letter-spacing: 1px;
           line-height: 18px;
           color: rgb(160, 151, 136);
-          i {
-            vertical-align: top !important;
-          }
         }
       }
     }

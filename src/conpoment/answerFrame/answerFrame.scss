@@ -5,7 +5,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
-  font-family: simhei, 宋体;
+  font-family: 宋体, SimSun, STSong;
   &:not([proTitle="true"]) {
     border: 1px solid #000;
     padding: 10px 15px;
@@ -136,7 +136,7 @@
         line-height: 18px;
         font-size: 12px;
         display: inline-block;
-        width: 47px;
+        width: 30px;
         text-align: right;
       }
       .opts {
@@ -307,4 +307,3 @@
 .icon-dui:before {
   content: "\e6cc";
 }
-

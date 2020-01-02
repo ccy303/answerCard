@@ -2,12 +2,12 @@
    "schoolId": null,
    "id": "300",
    "subjectId": "3196",
-   "paperSize": "A3",
-   "layoutType": "2",
+   "paperSize": "A4",
+   "layoutType": "1",
    "sourceType": "2",
    "prohibitType": "1",
-   "noMode": "1",
-   "noCount": "13",
+   "noMode": "2",
+   "noCount": "1",
    "noBoth": "2",
    "qrCode": "NY",
    "alias": "for img 高一 数学",
@@ -2074,26 +2074,6 @@
                      "nums": "2",
                      "content": "",
                      "pnum": "94",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "3311",
-                     "score": 5,
-                     "quType": "填空题",
-                     "nums": "3",
-                     "content": "",
-                     "pnum": "95",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "3312",
-                     "score": 5,
-                     "quType": "解答题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "96",
                      "visible": true,
                      "rIndex": "0"
                   }

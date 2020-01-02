@@ -179,8 +179,11 @@ export default class AnswerFrame {
                   let opt = $(`<div class="opts"></div>`)
                   while (true) {//选项
                      if (k > optLen - 1 || isNaN(optLen)) break
-                     opt.append(`<div class="opt-item">
-                        <i class="iconfont icon-${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}"></i>
+                     // opt.append(`<div class="opt-item">
+                     //    <i class="iconfont icon-${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}"></i>
+                     // </div>`)
+                     opt.append(`<div class="opt-item" style="color:#000">
+                        [<font style="padding:0 1px">${option[k]}</font>]
                      </div>`)
                      k++
                   }
@@ -189,7 +192,7 @@ export default class AnswerFrame {
                   <div class="sel-item" frame="${arr[j].frame}" targetID="${arr[j].data[i].quId}${arr[j].data[i].pnum}" style="width:${width}%"></div>
                      k++
                   }`);
-                  selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ''}</div>`));
+                  selItem.append($(`<div class="pnum">${arr[j].data[i].pnum || ``}</div>`));
                   selItem.append(opt)
                   row.append(selItem)
                   dom.append(row)
