@@ -33,7 +33,8 @@ module.exports = (env) => {
       devServer: {
          contentBase: './dist',
          hot: true,
-         port: 2048
+         port: 2048,
+         host: '192.168.6.94'
       },
       module: {
          rules: [
