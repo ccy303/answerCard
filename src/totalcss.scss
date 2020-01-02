@@ -5,7 +5,7 @@ body {
     height: 0;
     opacity: 0;
     white-space: nowrap;
-    font-family: simhei, 宋体;
+    font-family: 宋体, SimSun, STSong;
   }
 }
 #contentText {
@@ -286,7 +286,7 @@ body {
 .header-box {
   box-sizing: border-box;
   width: 100%;
-  font-family: simsun, 宋体;
+  font-family: 宋体, SimSun, STSong;
   text-align: center;
   .header-contnet {
     float: left;
@@ -310,7 +310,7 @@ body {
       }
       .good-print {
         box-sizing: content-box;
-        width: max-content;
+        display: inline-block;
         height: 24px;
         margin: 5px 0 0 0;
         padding-right: 10px;
@@ -319,7 +319,7 @@ body {
         font-size: 12px;
         .opt-item {
           display: inline-block;
-          vertical-align: unset !important;
+          vertical-align: unset;
           text-align: center;
           width: 28px;
           font-size: 12px;
@@ -327,9 +327,6 @@ body {
           letter-spacing: 1px;
           line-height: 18px;
           color: rgb(160, 151, 136);
-          i {
-            vertical-align: top !important;
-          }
         }
       }
     }
@@ -407,7 +404,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
-  font-family: simhei, 宋体;
+  font-family: 宋体, SimSun, STSong;
   &:not([proTitle="true"]) {
     border: 1px solid #000;
     padding: 10px 15px;
@@ -538,7 +535,7 @@ body {
         line-height: 18px;
         font-size: 12px;
         display: inline-block;
-        width: 47px;
+        width: 41px;
         text-align: right;
       }
       .opts {

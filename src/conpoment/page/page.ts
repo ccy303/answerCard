@@ -187,7 +187,6 @@ export default class Page {
             </div>`)
             i++;
          }
-
       } else {//顶部页数方块
          let innerWidth: number = 0;
          innerWidth = $(this.page.find('div.right-top')).position().left - $(this.page.find('div.left-top')).position().left + $(this.page.find('div.right-top')).width();

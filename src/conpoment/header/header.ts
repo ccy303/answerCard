@@ -174,13 +174,13 @@ export default class Header {
          </div>
          <div class="good-print">
             <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span><div class="opt-item" style="color:#000;vertical-align:middle">
-               <div style="display:inline-block;width:18px;height:12px;background:#000"></div>
+               <div style="display:inline-block;width:18px;height:12px;background:#000;vertical-align:text-top"></div>
             </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000">B</font>]
+               [<font style="color:#000;vertical-align:unset">B</font>]
             </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000">C</font>]
+               [<font style="color:#000;vertical-align:unset">C</font>]
             </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000">D</font>]
+               [<font style="color:#000;vertical-align:unset">D</font>]
             </div>
          </div>
       </div>`)
