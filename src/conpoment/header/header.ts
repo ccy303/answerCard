@@ -207,7 +207,7 @@ export default class Header {
       let style = ''
       let print = $(`<div class="good-print">
             <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span><div class="opt-item" style="color:#000">
-               <div style="display:inline-block;width:16px;height:12px;background:#000;vertical-align:text-top"></div>
+               <div style="display:inline-block;width:16px;height:11px;background:#000;vertical-align:text-top"></div>
             </div><div class="opt-item" style="color:#000;">
                [<font style="color:#000;vertical-align:unset">B</font>]
             </div><div class="opt-item" style="color:#000;">
@@ -226,12 +226,15 @@ export default class Header {
             <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
          </div>
          </div>`)
-      tip.children('#text').after(print)
       if (examCountType === 1) {
+         console.log(13240)
+         tip.children('#text').before(print)
          let width = colum == 3 && type == 'A3' ? '45%' : '60%'
-         tip.children('#text').css('float', 'left').css('border-right', '2px dashed #999').css('width', width)
-         print.css('position', 'absolute').css('top', 'calc(50% - 12px)').css('right', '4%')
+         tip.children('#text').css('float', 'right').css('border-left', '2px dashed #999').css('width', width)
+         let top = colum == 3 && type == 'A3' ? '35%' : '30%'
+         print.css('position', 'absolute').css('top', top).css('left', '4%')
       } else {
+         tip.children('#text').after(print)
          print.css('margin', '0 0 5px 5px')
          tip.css('display', 'inline-block').css('width', 'unset').css('float', 'right')
       }
