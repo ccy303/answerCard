@@ -152,7 +152,7 @@ export default class Header {
             top:-20px;
          ">
             <img style="margin-right:5px;" width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
-            <div style="display:inline-block;position:relative;top:-15px">
+            <div style="display:inline-block;position:relative;top:-20px">
                <p style="margin:0;text-align:left">成绩查询</p>
                <p style="margin:2px 0 0;text-align:left">微信小程序二维码</p>
             </div>
@@ -201,53 +201,6 @@ export default class Header {
             return box
          }
       }
-      // if (this.data.type != 'A3' || this.data.colum != '3') {
-      //    if (this.data.studentNumLength < 13 || this.data.examCountType === 1) {
-      //       let dom: Array<JQuery<HTMLElement>> = []
-      //       info.map(val => {
-      //          dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
-      //       })
-      //       box.append(dom)
-      //       box.css('max-height', '90px').css('width', '55%')
-      //       box.append(this.renderQrCode({
-      //          top: '35px', right: '50px',
-      //       }))
-      //       return box
-      //    }
-      //    if (this.data.studentNumLength >= 13) {
-      //       let dom: JQuery<HTMLElement> = $('<div></div>');
-      //       info.map(val => {
-      //          dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
-      //       })
-      //       box.append(dom)
-      //       box.css('max-height', '60px')
-      //       box.append(this.renderQrCode({
-      //          top: '60px', right: '70px',
-      //       }))
-      //       return box
-      //    }
-      // } else if (this.data.type == 'A3' && this.data.colum == '3') {
-      //    if (this.data.examCountType === 2) { //填涂
-      //       let dom: JQuery<HTMLElement> = $('<div></div>');
-      //       info.map(val => {
-      //          dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
-      //       })
-      //       box.append(dom)
-      //       box.css('max-height', '60px')
-      //       box.append(this.renderQrCode({
-      //          top: '80px', right: '50px',
-      //       }))
-      //       return box
-      //    } else { //条码
-      //       let dom: Array<JQuery<HTMLElement>> = []
-      //       info.map(val => {
-      //          dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
-      //       })
-      //       box.append(dom)
-      //       box.css('max-height', '90px')
-      //       return box
-      //    }
-      // }
    }
    private renderTip(): JQuery<HTMLElement> {
       let { type, colum, examCountType } = this.data

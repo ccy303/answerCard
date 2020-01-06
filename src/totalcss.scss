@@ -283,11 +283,15 @@ body {
   }
 }
 
+
+
+
 .header-box {
   box-sizing: border-box;
   width: 100%;
   font-family: 宋体, SimSun, STSong;
   text-align: center;
+  margin-top: 10px;
   .header-contnet {
     float: left;
     width: 50%;
@@ -298,55 +302,6 @@ body {
       content: "";
       clear: both;
     }
-    .tip-box {
-      box-sizing: border-box;
-      width: 100%;
-      display: inline-block;
-      vertical-align: unset !important;
-      p {
-        font-size: 12px;
-        margin: 0;
-        line-height: 20px;
-      }
-      .good-print {
-        box-sizing: content-box;
-        display: inline-block;
-        height: 24px;
-        margin: 5px 0 0 0;
-        padding-right: 10px;
-        border: 1px solid #000;
-        line-height: 24px;
-        font-size: 12px;
-        .opt-item {
-          display: inline-block;
-          vertical-align: unset;
-          text-align: center;
-          width: 28px;
-          font-size: 12px;
-          height: 18px;
-          letter-spacing: 1px;
-          line-height: 18px;
-          color: rgb(160, 151, 136);
-        }
-      }
-    }
-    .student-info {
-      margin-top: 15px;
-      width: 100%;
-      float: left;
-      box-sizing: border-box;
-      overflow: hidden;
-      &:focus {
-        background: #eaf0f8;
-        border: 2px dashed #999;
-      }
-      div {
-        margin-bottom: 5px;
-        line-height: 25px;
-        font-size: 13px;
-        margin-right: 10px;
-      }
-    }
   }
   .student-num {
     box-sizing: border-box;
@@ -354,17 +309,21 @@ body {
     padding: 5px 0;
     text-align: center;
     display: inline-block;
+    height: 215px;
+    position: relative;
     .title {
       text-align: center;
       font-size: 14px;
-      height: 24px;
-      line-height: 23px;
-      margin: 0;
+      margin: 0 5px 0 0;
+      width: 1em;
+      float: left;
+      padding-top: 55px;
     }
     .num {
       border: 1px solid #000;
       padding: 7px 4.5px;
       margin: 5px;
+      display: inline-block;
       .num-colum {
         display: inline-block;
         .frame {
@@ -389,13 +348,67 @@ body {
     height: 120px;
     border: 2px dashed #999;
     text-align: center;
+    font-size: 14px;
   }
   &::after {
     display: table;
     content: "";
     clear: both;
   }
+  .student-info {
+    margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    &:focus {
+      background: #eaf0f8;
+      border: 2px dashed #999;
+    }
+    div {
+      margin-bottom: 5px;
+      line-height: 25px;
+      font-size: 13px;
+    }
+  }
+  .tip-box {
+    box-sizing: border-box;
+    width: 100%;
+    display: inline-block;
+    vertical-align: unset !important;
+    text-align: left;
+    border: 2px dashed #999;
+    margin-top: 10px;
+    #text {
+      padding: 5px;
+    }
+    p {
+      font-size: 12px;
+      margin: 0;
+      line-height: 20px;
+    }
+    .good-print {
+      box-sizing: content-box;
+      display: inline-block;
+      height: 24px;
+      padding-right: 10px;
+      border: 1px solid #000;
+      line-height: 24px;
+      font-size: 12px;
+      .opt-item {
+        display: inline-block;
+        vertical-align: unset;
+        text-align: center;
+        width: 28px;
+        font-size: 12px;
+        height: 18px;
+        letter-spacing: 1px;
+        line-height: 18px;
+        color: rgb(160, 151, 136);
+      }
+    }
+  }
 }
+
 
 .editor-box {
   box-sizing: border-box;
@@ -535,7 +548,7 @@ body {
         line-height: 18px;
         font-size: 12px;
         display: inline-block;
-        width: 41px;
+        width: 47px;
         text-align: right;
       }
       .opts {
