@@ -32,30 +32,70 @@ export default class Header {
          let div = $(`<div class="header-contnet"></div>`)
          div.css('position', 'relative');
          if (examCountType === 1) {
-            div.append(this.renderStudentInfo());
-            div.append(this.renderTip())
-            box.append(div);
-            let con = $(`<div style="float:right;width:50%"></div>`)
-            con.css("padding-top", '25px')
-            let code = this.renderBarCode();
-            // if (colum == 3 && type == 'A3') {
-            //    con.css('padding-top', '15px')
-            //    box.css('position', 'relative')
-            //    box.append(this.renderQrCode({ right: '80px', bottom: 0 }))
-            // }
-            con.append(code)
-            box.append(con)
+            let stuInfo = this.renderStudentInfo();
+            let row_1 = $('<div></div>');
+            stuInfo.dom.css('width', '35%').css('float', 'left')
+            row_1.append(stuInfo.dom)
+            let code = this.renderBarCode()
+            code.css('display', 'inline-block')
+            row_1.append(code)
+            let qrCode = this.renderQrCode({});
+            qrCode.css('float', 'right')
+            row_1.append(qrCode)
+            box.append(row_1)
+            let tip = this.renderTip();
+            box.append(tip)
          } else if (examCountType === 2) {
-            let style = {
-               width: studentNumLength <= 12 && (type === 'A4' || type === 'A3' && colum != 3) ? '47%' : '100%',
-               float: studentNumLength <= 12 ? 'left' : 'unset',
-               marginTop: type === 'A4' || (type === 'A3' && colum != 3) ? '0px' : '0',
+            if (this.data.studentNumLength >= 13 && !(this.data.type == 'A3' && this.data.colum == '3')) {
+               let stuInfo = this.renderStudentInfo();
+               let row_1 = $('<div style="text-align:left"></div>');
+               row_1.append(stuInfo)
+               stuInfo.css('display', 'inline-block').css('width', '30%')
+               box.append(row_1)
+               let qrCode = this.renderQrCode({}, 'row');
+               qrCode.css('display', 'inline-block').css('text-align', 'center')
+               row_1.append(qrCode)
+               let tip = this.renderTip();
+               row_1.append(tip)
+               let row_2 = $('<div></div>')
+               let num = this.renderStudentNum();
+               row_2.append(num)
+               box.append(row_2)
+            } else if (!(this.data.type == 'A3' && this.data.colum == '3')) {
+               let stuInfo = this.renderStudentInfo();
+               let row_1 = $('<div style="text-align:left"></div>');
+               row_1.append(stuInfo)
+               box.append(row_1)
+               let row_2 = $('<div style="text-align:left"></div>')
+               let left_box = $('<div style="text-align:left;display:inline-block"></div>');
+               let tip = this.renderTip();
+               tip.css('display', 'block').css('width', '285px').css('float', 'inherit');
+               left_box.append(tip)
+               let qrCode = this.renderQrCode({}, 'row');
+               qrCode.css('display', 'inline-block').css('text-align', 'center').css('position', 'inherit').css('margin-top', '20px')
+               left_box.append(qrCode)
+               row_2.append(left_box)
+               let right_box = $('<div style="float:right"></div>');
+               let num = this.renderStudentNum();
+               right_box.append(num)
+               row_2.append(right_box)
+               box.append(row_2)
+            } else {//A3-3
+               let stuInfo = this.renderStudentInfo();
+               let row_1 = $('<div style="text-align:left"></div>');
+               row_1.append(stuInfo)
+               box.append(row_1)
+               let row_2 = $('<div style="text-align:left"></div>')
+               let tip = this.renderTip();
+               tip.css('display', 'inline-block').css('width', '285px').css('float', 'inherit');
+               row_2.append(tip)
+               let qrCode = this.renderQrCode({}, 'row');
+               qrCode.css('display', 'inline-block').css('text-align', 'center').css('position', 'inherit').css('margin-top', '30px').css('float', 'right')
+               row_2.append(qrCode)
+               box.append(row_2)
+               let num = this.renderStudentNum();
+               box.append(num)
             }
-            div.css('margin-top', style.marginTop).css('width', style.width)
-            div.append(this.renderStudentInfo())
-            div.append(this.renderTip())
-            box.append(div)
-            box.append(this.renderStudentNum(count))
          }
          this.header = box;
       } else {
@@ -87,21 +127,40 @@ export default class Header {
       box.append(num)
       return box;
    }
-   private renderQrCode(position: any) {
-      let qrcode = $(`<div style="
-         position:absolute;
-         top:${position.top};
-         right:${position.right};
-         bottom:${position.bottom};
-         margin:0;
-         font-size: 0;
-         line-height: inherit;
-      ">
-         <img width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
-      </div>`)
+   private renderQrCode(position: any, type = 'colom') {
+      // position: absolute;
+      // top: ${ position.top };
+      // right: ${ position.right };
+      // bottom: ${ position.bottom };
+      let qrcode = null;
+      if (type === 'colum') {
+         qrcode = $(`<div style="
+            margin:0;
+            font-size: 12px;
+            line-height: inherit;
+         ">
+            <img width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
+            <p style="margin:0">成绩查询</p>
+            <p style="margin:5px 0 0">微信小程序二维码</p>
+         </div>`)
+      } else {
+         qrcode = $(`<div style="
+            margin:0;
+            font-size: 12px;
+            line-height: inherit;
+            position:relative;
+            top:-20px;
+         ">
+            <img style="margin-right:5px;" width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
+            <div style="display:inline-block;position:relative;top:-15px">
+               <p style="margin:0;text-align:left">成绩查询</p>
+               <p style="margin:2px 0 0;text-align:left">微信小程序二维码</p>
+            </div>
+         </div>`)
+      }
       return qrcode
    }
-   private renderStudentInfo(): JQuery<HTMLElement> {
+   private renderStudentInfo(): any {
       let box = $(`
          <div
             class="student-info"
@@ -109,60 +168,101 @@ export default class Header {
          ></div>
       `);
       let info = ['姓名', '班级', '考号'];
-      if (this.data.type != 'A3' || this.data.colum != '3') {
-         if (this.data.studentNumLength < 13 || this.data.examCountType === 1) {
+      if (this.data.examCountType === 1) {
+         let dom: Array<JQuery<HTMLElement>> = []
+         info.forEach(val => {
+            let item = $(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`)
+            item.css('text-align', 'left').css('height', '28px').css('line-height', '28px')
+            dom.push(item)
+         })
+         box.append(dom)
+         return box
+      } else {
+         //学号大于13位且不是A3-3栏
+         if (this.data.studentNumLength >= 13 && !(this.data.type == 'A3' && this.data.colum == '3')) {
             let dom: Array<JQuery<HTMLElement>> = []
-            info.map(val => {
-               dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
+            info.forEach(val => {
+               let item = $(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`)
+               item.css('text-align', 'left').css('height', '28px').css('line-height', '28px')
+               dom.push(item)
             })
             box.append(dom)
-            box.css('max-height', '90px').css('width', '55%')
-            box.append(this.renderQrCode({
-               top: '35px', right: '50px',
-            }))
             return box
-         }
-         if (this.data.studentNumLength >= 13) {
-            let dom: JQuery<HTMLElement> = $('<div></div>');
-            info.map(val => {
-               dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
-            })
-            box.append(dom)
-            box.css('max-height', '60px')
-            box.append(this.renderQrCode({
-               top: '60px', right: '70px',
-            }))
-            return box
-         }
-      } else if (this.data.type == 'A3' && this.data.colum == '3') {
-         if (this.data.examCountType === 2) { //填涂
-            let dom: JQuery<HTMLElement> = $('<div></div>');
-            info.map(val => {
-               dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
-            })
-            box.append(dom)
-            box.css('max-height', '60px')
-            box.append(this.renderQrCode({
-               top: '80px', right: '50px',
-            }))
-            return box
-         } else { //条码
+         } else {
             let dom: Array<JQuery<HTMLElement>> = []
-            info.map(val => {
-               dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
+            info.forEach(val => {
+               let item = $(`<div style="display:inline-block;margin-right:5px;">
+                  ${val}:<font style="letter-spacing: -1px;">_____________________</font>
+               </div>`)
+               item.css('text-align', 'left').css('height', '28px').css('line-height', '28px')
+               dom.push(item)
             })
             box.append(dom)
-            box.css('max-height', '90px')
             return box
          }
       }
+      // if (this.data.type != 'A3' || this.data.colum != '3') {
+      //    if (this.data.studentNumLength < 13 || this.data.examCountType === 1) {
+      //       let dom: Array<JQuery<HTMLElement>> = []
+      //       info.map(val => {
+      //          dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
+      //       })
+      //       box.append(dom)
+      //       box.css('max-height', '90px').css('width', '55%')
+      //       box.append(this.renderQrCode({
+      //          top: '35px', right: '50px',
+      //       }))
+      //       return box
+      //    }
+      //    if (this.data.studentNumLength >= 13) {
+      //       let dom: JQuery<HTMLElement> = $('<div></div>');
+      //       info.map(val => {
+      //          dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
+      //       })
+      //       box.append(dom)
+      //       box.css('max-height', '60px')
+      //       box.append(this.renderQrCode({
+      //          top: '60px', right: '70px',
+      //       }))
+      //       return box
+      //    }
+      // } else if (this.data.type == 'A3' && this.data.colum == '3') {
+      //    if (this.data.examCountType === 2) { //填涂
+      //       let dom: JQuery<HTMLElement> = $('<div></div>');
+      //       info.map(val => {
+      //          dom.get(0).innerHTML += `${val}:<font style="letter-spacing: -1px;">_____________________</font>`;
+      //       })
+      //       box.append(dom)
+      //       box.css('max-height', '60px')
+      //       box.append(this.renderQrCode({
+      //          top: '80px', right: '50px',
+      //       }))
+      //       return box
+      //    } else { //条码
+      //       let dom: Array<JQuery<HTMLElement>> = []
+      //       info.map(val => {
+      //          dom.push($(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`))
+      //       })
+      //       box.append(dom)
+      //       box.css('max-height', '90px')
+      //       return box
+      //    }
+      // }
    }
    private renderTip(): JQuery<HTMLElement> {
       let { type, colum, examCountType } = this.data
       let style = ''
-      // if (type == 'A3' && colum == 3) {
-      //    style = "top:40px;right:-240px;margin-top:10px;"
-      // }
+      let print = $(`<div class="good-print">
+            <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span><div class="opt-item" style="color:#000">
+               <div style="display:inline-block;width:16px;height:12px;background:#000;vertical-align:text-top"></div>
+            </div><div class="opt-item" style="color:#000;">
+               [<font style="color:#000;vertical-align:unset">B</font>]
+            </div><div class="opt-item" style="color:#000;">
+               [<font style="color:#000;vertical-align:unset">C</font>]
+            </div><div class="opt-item" style="color:#000;">
+               [<font style="color:#000;vertical-align:unset">D</font>]
+            </div>
+         </div>`)
       let tip = $(`<div 
          class="tip-box"
          style="position:relative"
@@ -172,31 +272,30 @@ export default class Header {
             <p>1、选择题作答必须用2B铅笔填涂</p>
             <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
          </div>
-         <div class="good-print">
-            <span style="display:inline-block;width:84px;text-align:center;vertical-align:initial;">正确填涂示例</span><div class="opt-item" style="color:#000;vertical-align:middle">
-               <div style="display:inline-block;width:18px;height:12px;background:#000;vertical-align:text-top"></div>
-            </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000;vertical-align:unset">B</font>]
-            </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000;vertical-align:unset">C</font>]
-            </div><div class="opt-item" style="color:#000;">
-               [<font style="color:#000;vertical-align:unset">D</font>]
-            </div>
-         </div>
-      </div>`)
-      if (type == 'A3' && colum == 3 && examCountType === 1) {
-         let qrcode = this.renderQrCode({});
-         qrcode.css('display', 'inline-block').css('position', 'static').css('margin-left', '2px')
-         tip.children().first().css('display', 'inline-block').css('width', '160px')
-         qrcode.insertBefore(tip.children().last())
+         </div>`)
+      tip.children('#text').after(print)
+      if (examCountType === 1) {
+         let width = colum == 3 && type == 'A3' ? '45%' : '60%'
+         tip.children('#text').css('float', 'left').css('border-right', '2px dashed #999').css('width', width)
+         print.css('position', 'absolute').css('top', 'calc(50% - 12px)').css('right', '4%')
+      } else {
+         print.css('margin', '0 0 5px 5px')
+         tip.css('display', 'inline-block').css('width', 'unset').css('float', 'right')
+         // tip.children('#text').css('float', 'left').css('border-right', '2px dashed #999')
       }
+      // if (type == 'A3' && colum == 3 && examCountType === 1) {
+      //    let qrcode = this.renderQrCode({});
+      //    qrcode.css('display', 'inline-block').css('position', 'static').css('margin-left', '2px')
+      //    tip.children().first().css('display', 'inline-block').css('width', '160px')
+      //    qrcode.insertBefore(tip.children().last())
+      // }
       return tip
    }
    private renderBarCode(): JQuery<HTMLElement> {
       return $(`
          <div class="bar-code">
-            <p style="line-height: normal;margin-top: 30px;">条形码粘贴处</p>
-            <p style="line-height: normal;font-size: 12px">（正面朝上，切勿贴出框外）</p>
+            <p style="line-height: normal;margin-top: 35px;margin-bottom:0">条形码粘贴处</p>
+            <p style="line-height: normal;font-size: 12px; margin-top:5px">（正面朝上，切勿贴出框外）</p>
          </div>
       `)
    }
