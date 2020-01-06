@@ -34,8 +34,8 @@ export default class Header {
          if (examCountType === 1) {
             let stuInfo = this.renderStudentInfo();
             let row_1 = $('<div></div>');
-            stuInfo.dom.css('width', '35%').css('float', 'left')
-            row_1.append(stuInfo.dom)
+            stuInfo.css('width', '35%').css('float', 'left')
+            row_1.append(stuInfo)
             let code = this.renderBarCode()
             code.css('display', 'inline-block')
             row_1.append(code)
@@ -127,7 +127,7 @@ export default class Header {
       box.append(num)
       return box;
    }
-   private renderQrCode(position: any, type = 'colom') {
+   private renderQrCode(position: any, type = 'colum') {
       // position: absolute;
       // top: ${ position.top };
       // right: ${ position.right };
@@ -234,14 +234,7 @@ export default class Header {
       } else {
          print.css('margin', '0 0 5px 5px')
          tip.css('display', 'inline-block').css('width', 'unset').css('float', 'right')
-         // tip.children('#text').css('float', 'left').css('border-right', '2px dashed #999')
       }
-      // if (type == 'A3' && colum == 3 && examCountType === 1) {
-      //    let qrcode = this.renderQrCode({});
-      //    qrcode.css('display', 'inline-block').css('position', 'static').css('margin-left', '2px')
-      //    tip.children().first().css('display', 'inline-block').css('width', '160px')
-      //    qrcode.insertBefore(tip.children().last())
-      // }
       return tip
    }
    private renderBarCode(): JQuery<HTMLElement> {
