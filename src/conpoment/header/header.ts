@@ -227,7 +227,6 @@ export default class Header {
          </div>
          </div>`)
       if (examCountType === 1) {
-         console.log(13240)
          tip.children('#text').before(print)
          let width = colum == 3 && type == 'A3' ? '45%' : '60%'
          tip.children('#text').css('float', 'right').css('border-left', '2px dashed #999').css('width', width)
@@ -236,7 +235,7 @@ export default class Header {
       } else {
          tip.children('#text').after(print)
          print.css('margin', '0 0 5px 5px')
-         tip.css('display', 'inline-block').css('width', 'unset').css('float', 'right')
+         tip.css('display', 'inline-block').css('width', 'auto').css('float', 'right')
       }
       return tip
    }
