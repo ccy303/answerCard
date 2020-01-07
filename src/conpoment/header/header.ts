@@ -77,6 +77,7 @@ export default class Header {
                row_2.append(left_box)
                let right_box = $('<div style="float:right"></div>');
                let num = this.renderStudentNum();
+               right_box.css('width', '380px').css('text-align', 'center')
                right_box.append(num)
                row_2.append(right_box)
                box.append(row_2)
@@ -90,7 +91,7 @@ export default class Header {
                tip.css('display', 'inline-block').css('width', '285px').css('float', 'inherit');
                row_2.append(tip)
                let qrCode = this.renderQrCode({}, 'row');
-               qrCode.css('display', 'inline-block').css('text-align', 'center').css('position', 'inherit').css('margin-top', '30px').css('float', 'right')
+               qrCode.css('display', 'inline-block').css('text-align', 'center').css('position', 'inherit').css('margin-top', '45px').css('float', 'right')
                row_2.append(qrCode)
                box.append(row_2)
                let num = this.renderStudentNum();
@@ -105,10 +106,10 @@ export default class Header {
    }
    private renderStudentNum(count?: number): JQuery<HTMLElement> {
       let studentNumLength = count ? count : this.data.studentNumLength
-      let box: JQuery<HTMLElement> = $('<div class="student-num"></div>');
-      let header = $(`<p class="title">考号填涂区</p>`)
+      let box: JQuery<HTMLElement> = $('<div class="student-num" style="padding:0;height:200px"></div>');
+      let header = $(`<p class="title" style="font-size:12px;margin-right:5px">考号填涂区</p>`)
       box.append(header)
-      let num = $(`<div class="num"></div>`);
+      let num = $(`<div class="num" style="margin:0"></div>`);
       let i = 0;
       while (true) {
          if (i > studentNumLength - 1) break
@@ -125,6 +126,7 @@ export default class Header {
          i++;
       }
       box.append(num)
+      box.css('margin-top', '10px')
       return box;
    }
    private renderQrCode(position: any, type = 'colum') {
@@ -151,7 +153,7 @@ export default class Header {
             position:relative;
             top:-20px;
          ">
-            <img style="margin-right:5px;" width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
+            <img style="margin-right:10px;" width="65px" height="65px" crossorigin="true" src="https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg" />
             <div style="display:inline-block;position:relative;top:-20px">
                <p style="margin:0;text-align:left">成绩查询</p>
                <p style="margin:2px 0 0;text-align:left">微信小程序二维码</p>
@@ -182,7 +184,7 @@ export default class Header {
          if (this.data.studentNumLength >= 13 && !(this.data.type == 'A3' && this.data.colum == '3')) {
             let dom: Array<JQuery<HTMLElement>> = []
             info.forEach(val => {
-               let item = $(`<div>${val}:<font style="letter-spacing: -1px;">_____________________</font></div>`)
+               let item = $(`<div>${val}:<font style="letter-spacing: -1px;">__________________</font></div>`)
                item.css('text-align', 'left').css('height', '28px').css('line-height', '28px')
                dom.push(item)
             })
@@ -192,7 +194,7 @@ export default class Header {
             let dom: Array<JQuery<HTMLElement>> = []
             info.forEach(val => {
                let item = $(`<div style="display:inline-block;margin-right:5px;">
-                  ${val}:<font style="letter-spacing: -1px;">_____________________</font>
+                  ${val}:<font style="letter-spacing: -1px;">__________________</font>
                </div>`)
                item.css('text-align', 'left').css('height', '28px').css('line-height', '28px')
                dom.push(item)
@@ -220,12 +222,12 @@ export default class Header {
          class="tip-box"
          style="position:relative"
       >  
-         <div id="text" style="position:relative;${style}">
+         <div id="text" style="position:relative;padding:10px">
             <h5 style="margin:0;">注意事项</h5>
             <p>1、选择题作答必须用2B铅笔填涂</p>
             <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>
          </div>
-         </div>`)
+      </div>`)
       if (examCountType === 1) {
          tip.children('#text').before(print)
          let width = colum == 3 && type == 'A3' ? '45%' : '60%'
@@ -234,7 +236,7 @@ export default class Header {
          print.css('position', 'absolute').css('top', top).css('left', '4%')
       } else {
          tip.children('#text').after(print)
-         print.css('margin', '0 0 5px 5px')
+         print.css('margin', '0 0 10px 10px')
          tip.css('display', 'inline-block').css('width', 'auto').css('float', 'right')
       }
       return tip

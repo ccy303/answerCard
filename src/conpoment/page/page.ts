@@ -74,8 +74,8 @@ export default class Page {
             _colum--;
          }
          this.page.append(this.square());
-         this.rectangle();
-         this.rectangle(true);
+         this.rectangle(false, renderHeader);
+         this.rectangle(true, renderHeader);
          if (renderHeader) {//绘制答题卡头}
             let header = new Header({
                type: this.type,
@@ -167,7 +167,7 @@ export default class Page {
       arr.push($('<div style="width:20px;height:20px" class="square right-bottom"></div>'));
       return arr
    }
-   private rectangle(pageNum: boolean = false) {
+   private rectangle(pageNum: boolean = false, renderForbiden: boolean = true) {
       let height = pageNum ? '8px' : '25px';
       let width = pageNum ? '25px' : '8px';
       if (!pageNum) {//右边方块
@@ -180,7 +180,7 @@ export default class Page {
             let top = 0;
             top = innerHeight * (i + 1) + $(this.page.find('div.left-top')).position().top
             this.page.append(`<div style="height:${height};width:${width};top:${top}px;left:25px" class="rectangle"></div>`)
-            i == 0 && this.page.append(`<div style="top:${top / 2 + 15}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,0);">
+            i == 0 && renderForbiden && this.page.append(`<div style="top:${top / 2 + 15}px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,0);">
                <span style="position:absolute;top:-75px">缺考标识</span>
                <div style="height:${height};width:${width};margin-top:0" class="noAnswer"></div>
                <span style="position:absolute;bottom: -75px">考生禁填</span>
