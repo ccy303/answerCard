@@ -96,17 +96,9 @@ class AnswerCard {
       }
    }
 }
-// $('body').before('<button id="btn">点击<button>')
 export default AnswerCard
-process.env.NODE_ENV == 'development' && new AnswerCard({
-   dataJSON: dataJSON,
-   both: true,
-   config: {
-      uploadUrl: 'http://dev.api.teacher.ennnjoy.cn/Api/UploadFile/Policy',
-      queryData: {
-         Token: '692a65c3f6e7a933b9a32a6ce182f82d99fe4bde',
-         inType: 41,
-      }
-   },
-   dom: null
-})
+process.env.NODE_ENV == 'development'
+if (process.env.NODE_ENV == 'development') {
+   let test = require('./test')
+   test(AnswerCard, dataJSON)
+}
