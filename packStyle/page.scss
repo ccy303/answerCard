@@ -1,0 +1,284 @@
+body {
+  margin: 0;
+  .fit-content {
+    width: max-content;
+    height: 0;
+    opacity: 0;
+    white-space: nowrap;
+    font-family: 宋体, SimSun, STSong;
+  }
+}
+#contentText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  display: none;
+  cursor: pointer;
+  font-size: 12px;
+  width: max-content;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li {
+      width: 130px;
+      height: 25px;
+      line-height: 25px;
+      padding: 3px 0px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
+      img {
+        margin: 0 9px;
+      }
+      div {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        text-align: left;
+      }
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
+}
+.secondList {
+  position: absolute;
+  left: 132px;
+  top: 74px;
+  display: none;
+  width: max-content;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li {
+      width: 120px !important;
+      height: 25px;
+      padding: 3px 10px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
+      div {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        text-align: left;
+      }
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
+}
+.threeList {
+  position: absolute;
+  left: 255px;
+  top: 125px;
+  border: 1px solid #e1e1e1;
+  display: none;
+  background: #fff;
+  width: max-content;
+  font-size: 12px;
+  box-shadow: 0px 0px 5px 0px #e1e1e1;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li {
+      width: 110px !important;
+      height: 25px;
+      padding: 3px 10px 3px 0;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: start;
+      div {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        text-align: left;
+      }
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
+}
+.page {
+  margin: 0 auto;
+  background: #fff;
+  padding: 70px 40px;
+  box-sizing: border-box;
+  position: relative;
+  vertical-align: unset !important;
+  .colum {
+    padding: 0 15px;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    .exam-title {
+      max-height: 100px;
+      font-weight: 600;
+      line-height: 25px;
+      overflow: hidden;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+  .square {
+    width: 20px;
+    height: 20px;
+    background: #000;
+    position: absolute;
+  }
+  .left-top {
+    left: 15px;
+    top: 30px;
+  }
+  .left-bottom {
+    left: 15px;
+    bottom: 30px;
+  }
+  .right-top {
+    right: 15px;
+    top: 30px;
+  }
+  .right-bottom {
+    right: 15px;
+    bottom: 30px;
+  }
+  .rectangle {
+    background: #000;
+    position: absolute;
+  }
+  .noAnswer {
+    background: #fff;
+    border: 1px solid #000;
+    margin: 10px auto 0;
+    box-sizing: border-box;
+  }
+  .pageNum {
+    position: absolute;
+    bottom: 0;
+    font-size: 12px;
+    margin: 0 auto 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+.A4 {
+  width: 793px;
+  height: 1122px;
+}
+.A3 {
+  width: 1587px;
+  height: 1122px;
+}
+.A4-1 {
+  width: 100%;
+}
+.A3-2 {
+  width: 50%;
+}
+.A3-3 {
+  width: 33.33%;
+}
+.boxShadow {
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+}
+#dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  .content {
+    width: 540px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 4px;
+    .title {
+      height: 60px;
+      line-height: 60px;
+      padding: 0 30px;
+      margin: 0;
+      border-bottom: 1px solid #e1e1e1;
+    }
+    .form {
+      text-align: center;
+      margin-top: 40px;
+      color: #333;
+      label {
+        margin-right: 10px;
+      }
+      input,
+      select {
+        width: 200px;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 4px;
+        padding-left: 10px;
+        border: 1px solid #ccc;
+        &:hover {
+          border-color: #b2b2b2;
+        }
+        &:focus {
+          border-color: #b2b2b2;
+        }
+      }
+    }
+    .bottom-box {
+      margin: 40px 0 30px;
+      text-align: center;
+      .botton {
+        cursor: pointer;
+        display: inline-block;
+        width: 94px;
+        height: 32px;
+        border: 1px solid #2e75b6;
+        line-height: 32px;
+        border-radius: 4px;
+      }
+      #yes {
+        margin-right: 20px;
+        background: #2e75b6;
+        color: #fff;
+        &:hover {
+          background: #4786bf;
+        }
+      }
+      #no {
+        color: #2e75b6;
+        &:hover {
+          border-color: #6d9fcc;
+          color: #4786bf;
+        }
+      }
+    }
+  }
+  select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url("./../../../assets/icons/xiala-icon.png") no-repeat scroll right center transparent;
+    background-position-x: 180px;
+  }
+}
