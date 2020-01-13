@@ -12,21 +12,28 @@ var exist = fs.existsSync(output + "/index.scss")
 exist && fs.unlinkSync('packStyle/index.scss')
 //读取文件
 var readFile = function (path) {
-  var fd = fs.openSync(path);
-  var fileDetail = fs.readFileSync(fd)
-  writeFile(path, fileDetail)
-}
-
-//写入文件
-var writeFile = function (path, data) {
   var writePath = path.split('/')
   fs.writeFileSync(
     output + '/' + 'index.scss',
     `@import "./${writePath[writePath.length - 1]}";`,
     { flag: 'a' }
   )
-  fs.writeFileSync(output + '/' + writePath[writePath.length - 1], data)
+  fs.copyFileSync(path, output + '/' + writePath[writePath.length - 1])
+  // var fd = fs.openSync(path);
+  // var fileDetail = fs.readFileSync(fd)
+  // writeFile(path, fileDetail)
 }
+
+//写入文件
+// var writeFile = function (path, data) {
+//   var writePath = path.split('/')
+//   fs.writeFileSync(
+//     output + '/' + 'index.scss',
+//     `@import "./${writePath[writePath.length - 1]}";`,
+//     { flag: 'a' }
+//   )
+//   fs.writeFileSync(output + '/' + writePath[writePath.length - 1], data)
+// }
 
 //获取文件信息
 var getFileInfo = function (path) {

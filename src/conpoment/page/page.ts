@@ -397,7 +397,7 @@ export default class Page {
             !editorBox.hasClass('header-box') && !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
          }
       })
-      if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0)) {//render page count
+      if (!dom.parent().find('div.editor-box').get(0) && !dom.parent().find('div.select-box').get(0) && $('.page').length !== 1) {//render page count
          dom.parent().remove()
          GlobalData.pageObjectPop(this);
          $('[type=totalPage]').html(`共${$('.page').length}页`)

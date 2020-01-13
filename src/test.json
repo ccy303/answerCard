@@ -1,6 +1,6 @@
 {
    "schoolId": null,
-   "id": "510",
+   "id": null,
    "subjectId": null,
    "paperSize": "A3",
    "layoutType": "2",
@@ -10,198 +10,17 @@
    "noCount": "8",
    "noBoth": "2",
    "qrCode": null,
-   "alias": "testfaby",
+   "alias": null,
    "cardJson": null,
    "cardHtml": "",
    "attention": null,
    "pageCnt": "100",
    "subjectName": null,
-   "pageQus": [
-      {
-         "sort": "1",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1734949",
-               "score": 1.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "1",
-               "pnum": "",
-               "group": "0",
-               "titleType": "现代文阅读",
-               "qus": [
-                  {
-                     "quId": "1735043",
-                     "score": 1.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "1",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1734947",
-               "score": 3.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "2",
-               "pnum": "2",
-               "group": "0",
-               "titleType": "判断题",
-               "qus": [
-                  {
-                     "quId": "1735041",
-                     "score": 2.0,
-                     "quType": "判断题",
-                     "nums": "2",
-                     "content": "",
-                     "pnum": "(1)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "1735059",
-                     "score": 1.0,
-                     "quType": "单选题",
-                     "nums": "1",
-                     "content": "",
-                     "pnum": "(2)",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            },
-            {
-               "proId": "1819",
-               "score": 0.0,
-               "pureObjective": "1",
-               "content": "",
-               "sort": "3",
-               "pnum": "5",
-               "group": "0",
-               "titleType": "选择题",
-               "qus": [
-                  {
-                     "quId": "3289",
-                     "score": 0.0,
-                     "quType": "单选题",
-                     "nums": "4",
-                     "content": "",
-                     "pnum": "(1)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "3290",
-                     "score": 0.0,
-                     "quType": "单选题",
-                     "nums": "1",
-                     "content": "",
-                     "pnum": "(2)",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "3291",
-                     "score": 0.0,
-                     "quType": "单选题",
-                     "nums": "1",
-                     "content": "",
-                     "pnum": "(3)",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "2",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1712",
-               "score": 10,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "15",
-               "pnum": "",
-               "group": "0",
-               "titleType": "文言文阅读",
-               "qus": [
-                  {
-                     "quId": "3112",
-                     "score": 10,
-                     "quType": "填空题",
-                     "nums": "2",
-                     "content": "",
-                     "pnum": "15",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         "sort": "2",
-         "attribute": null,
-         "content": null,
-         "annexable": "1",
-         "group": "0",
-         "pIndex": "",
-         "pros": [
-            {
-               "proId": "1734964",
-               "score": 2.0,
-               "pureObjective": "2",
-               "content": "",
-               "sort": "3",
-               "pnum": "",
-               "group": "0",
-               "titleType": "作文",
-               "qus": [
-                  {
-                     "quId": "1735068",
-                     "score": 1.0,
-                     "quType": "作文题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "3",
-                     "visible": true,
-                     "rIndex": "0"
-                  },
-                  {
-                     "quId": "1735069",
-                     "score": 1.0,
-                     "quType": "作文题",
-                     "nums": null,
-                     "content": "",
-                     "pnum": "4",
-                     "visible": true,
-                     "rIndex": "0"
-                  }
-               ]
-            }
-         ]
-      }
-   ],
+   "pageQus": [],
    "checkMsg": null,
-   "paperId": 1905,
-   "paperVid": 17,
-   "versionId": 10000,
+   "paperId": null,
+   "paperVid": null,
+   "versionId": null,
    "versionMsg": null,
    "recgParams": null
 }

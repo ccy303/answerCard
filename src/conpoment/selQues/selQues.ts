@@ -2,6 +2,7 @@ import GlobalData from '../global';
 export default class SelQues {
    data: any = null
    constructor(data: any) {
+      console.log(data)
       let _data = data
       _data.pros = _data.pros.filter((val: any) => {
          return val.qus[0].visible

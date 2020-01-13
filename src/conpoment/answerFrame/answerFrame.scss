@@ -176,7 +176,7 @@
   }
   & {
     * {
-      vertical-align: top;
+      vertical-align: top !important;
     }
   }
   &:not(:first-child) {

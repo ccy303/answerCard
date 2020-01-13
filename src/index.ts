@@ -1,7 +1,6 @@
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
-const dataJSON = require('./data.json');
 class AnswerCard {
    dataJson: any
    both: boolean //是否双面
@@ -98,7 +97,7 @@ class AnswerCard {
 }
 export default AnswerCard
 process.env.NODE_ENV == 'development'
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
    let test = require('./test')
-   test(AnswerCard, dataJSON)
+   test(AnswerCard)
 }
