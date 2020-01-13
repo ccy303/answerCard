@@ -130,10 +130,6 @@ export default class Header {
       return box;
    }
    private renderQrCode(position: any, type = 'colum') {
-      // position: absolute;
-      // top: ${ position.top };
-      // right: ${ position.right };
-      // bottom: ${ position.bottom };
       let qrcode = null;
       if (type === 'colum') {
          qrcode = $(`<div style="
@@ -178,6 +174,7 @@ export default class Header {
             dom.push(item)
          })
          box.append(dom)
+         box.css('max-height', '100px')
          return box
       } else {
          //学号大于13位且不是A3-3栏
@@ -189,6 +186,7 @@ export default class Header {
                dom.push(item)
             })
             box.append(dom)
+            box.css('max-height', '100px')
             return box
          } else {
             let dom: Array<JQuery<HTMLElement>> = []
@@ -200,6 +198,7 @@ export default class Header {
                dom.push(item)
             })
             box.append(dom)
+            box.css('max-height', '33px')
             return box
          }
       }

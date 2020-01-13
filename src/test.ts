@@ -38,6 +38,7 @@ const renderTestQue = () => {
     <option value="2">客观题</option>
   </select>`)
   $("#qus").change((e) => {
+    $("#answerCard").empty();
     //@ts-ignore
     if (e.target.value === "1") {
       let choosePro: any = {
@@ -74,7 +75,6 @@ const renderTestQue = () => {
       choosePro.pros.push(chooseQus)
       dataJSON.pageQus.push(choosePro)
     }
-    console.log(dataJSON)
     Test(_Obj)
   })
 }

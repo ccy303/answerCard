@@ -41,7 +41,7 @@ class AnswerCard {
       page.pageInit()
       this.pages = page
       setTimeout(() => {
-         console.log(GlobalData.AnswerFrameObj)
+         console.log(GlobalData)
       }, 1000);
       // $('#btn').on('click', () => {
       //    let res = window.prompt();
