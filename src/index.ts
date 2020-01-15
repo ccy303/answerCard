@@ -40,9 +40,9 @@ class AnswerCard {
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
-      setTimeout(() => {
-         console.log(GlobalData)
-      }, 1000);
+      // setTimeout(() => {
+      //    // console.log(GlobalData)
+      // }, 1000);
       // $('#btn').on('click', () => {
       //    let res = window.prompt();
       //    this.reRenderHeader(Number(res))

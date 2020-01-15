@@ -159,7 +159,7 @@ export default class AnswerFrame {
       let dom: JQuery<HTMLElement> = null;
       if (!this.html) {
          const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
-         const judge = 'dX';
+         const judge = '√×';
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" type="select" class="editor-box" contenteditable="false"></div>`)
          const arg = new SelQues(GlobalData.dataJSON.pageQus[0]).initSelQues();
          insertChild && arg.arr.map((arr: any, index: number) => {
@@ -183,7 +183,7 @@ export default class AnswerFrame {
                      //    <i class="iconfont icon-${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}"></i>
                      // </div>`)
                      opt.append(`<div class="opt-item" style="color:#000">
-                        [<font style="padding:0 1px">${option[k]}</font>]
+                        [<font style="padding:0 1px">${arr[j].data[i].quType === '判断题' ? judge[k] : option[k]}</font>]
                      </div>`)
                      k++
                   }
