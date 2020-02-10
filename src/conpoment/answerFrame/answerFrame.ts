@@ -106,7 +106,6 @@ export default class AnswerFrame {
                      this.data.rowCount :
                      this.data.pros[0].qus.length - i * this.data.rowCount
                   ;
-               console.log(i + ':' + rowCount)
                let row = $(`<div class="row" hash="${hash}"></div>`)
                while (rowCount > 0) {
                   row.append($(`<pre style="display:inline-block;margin:0">          _____________          </pre>`))
