@@ -93,7 +93,30 @@ export default class AnswerFrame {
    }
    private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
       let dom: JQuery<HTMLElement> = null;
-      if (!this.html) {
+      if (this.data.flag === 2) {
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="false" type="editor" class="editor-box"></div>`)
+         if (Object.keys(this.data).length) {
+            let pnum = $(`<div contenteditable="true" class="row" hash="${hash}">${this.data.pros[0].pnum}</div>`);
+            dom.append(pnum);
+            let totlalRow = Math.ceil(this.data.pros[0].qus.length / this.data.rowCount);
+            let i = 0;
+            while (totlalRow > i) {
+               let rowCount =
+                  this.data.pros[0].qus.length - i * this.data.rowCount >= this.data.rowCount ?
+                     this.data.rowCount :
+                     this.data.pros[0].qus.length - i * this.data.rowCount
+                  ;
+               console.log(i + ':' + rowCount)
+               let row = $(`<div class="row" hash="${hash}"></div>`)
+               while (rowCount > 0) {
+                  row.append($(`<pre style="display:inline-block;margin:0">          _____________          </pre>`))
+                  rowCount--;
+               }
+               dom.append(row);
+               i++;
+            }
+         }
+      } else if (!this.html) {
          const flg = ['判断题', '单选题', '多选题'];
          const option = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ';
          const judge = '✓✗';

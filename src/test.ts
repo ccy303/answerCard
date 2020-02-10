@@ -1,11 +1,27 @@
 let dataJSON = require('./data.json');
 let Test: any = null;
 let _Obj: any = null;
-const addChoose = () => {
+class proFrame {
+  sort: any = null
+  attribute: any = null
+  content: any = null
+  annexable: any = null
+  group: any = "0"
+  pIndex: any = null
+  pros: any = []
+  flag?: any; //编辑选择题1，标记填空题2
+  rowCount?: any  //添加填空题时标记每行显示的填空题数量
+}
+/**
+ * 添加选择题
+ * @param number 添加数量
+ */
+const addChoose = (number: number) => {
+  if (number <= 0) { return }
   if (dataJSON.pageQus[0] && dataJSON.pageQus[0].flag === 1) {//选择题
     let chooseQus: any = {
       proId: null,
-      score: 5,
+      score: 0,
       pureObjective: "1",
       content: "",
       sort: null,
@@ -15,7 +31,7 @@ const addChoose = () => {
       qus: [
         {
           quId: null,
-          score: 5,
+          score: 0,
           quType: "单选题",
           nums: "4",
           content: "",
@@ -27,16 +43,8 @@ const addChoose = () => {
     }
     dataJSON.pageQus[0].pros.push(chooseQus)
   } else {
-    let choosePro: any = {
-      sort: null,
-      attribute: null,
-      content: null,
-      annexable: null,
-      group: "0",
-      pIndex: null,
-      flag: 1,//选择题
-      pros: []
-    }
+    let choosePro = new proFrame()
+    choosePro.flag = 1;//选择题
     let chooseQus: any = {
       proId: null,
       score: 5,
@@ -62,20 +70,17 @@ const addChoose = () => {
     choosePro.pros.push(chooseQus)
     dataJSON.pageQus.unshift(choosePro)
   }
+  addChoose(--number)
 }
-const addFrame = (join: boolean) => {
-  let proFrame: any = {
-    sort: null,
-    attribute: null,
-    content: null,
-    annexable: null,
-    group: "0",
-    pIndex: null,
-    pros: []
-  };
-
+/**
+ * 添加主观题
+ * @param join 是否合并主观题小问
+ * @param count 小问个数
+ */
+const addFrame = (join: boolean, count?: number) => {
+  let proFrameObj = new proFrame();
   if (!join) {
-    proFrame.pros.push({
+    proFrameObj.pros.push({
       proId: null,
       score: 6,
       pureObjective: "2",
@@ -96,7 +101,7 @@ const addFrame = (join: boolean) => {
       }]
     })
   } else {
-    proFrame.pros.push({
+    proFrameObj.pros.push({
       proId: null,
       score: 6,
       pureObjective: "2",
@@ -126,7 +131,42 @@ const addFrame = (join: boolean) => {
       }]
     })
   }
-  dataJSON.pageQus.push(proFrame)
+  dataJSON.pageQus.push(proFrameObj)
+}
+/**
+ * 添加填空题
+ * @param count 填空个数
+ * @param rowCount 每行空格数
+*/
+const addBlankQues = (count: number, rowCount: number) => {
+  let proFrameObj = new proFrame();
+  proFrameObj.flag = 2;
+  proFrameObj.rowCount = rowCount;
+  proFrameObj.pros.push({
+    proId: null,
+    score: 6,
+    pureObjective: "2",
+    content: "",
+    sort: null,
+    pnum: "",
+    group: "0",
+    titleType: "填空题",
+    qus: []
+  });
+  while (count > 0) {
+    proFrameObj.pros[0].qus.push({
+      quId: null,
+      score: 6,
+      quType: "填空题",
+      nums: null,
+      content: "",
+      pnum: "",
+      visible: true,
+      rIndex: null
+    })
+    count--
+  }
+  dataJSON.pageQus.push(proFrameObj)
 }
 const renderTestTypeCom = () => {
   $('#answerCard').before(`<select id="type">
@@ -150,13 +190,14 @@ const renderTestQue = () => {
     <option value="1">选择题</option>
     <option value="2">客观题</option>
     <option value="3">合并观题</option>
+    <option value="4">提空提</option>
   </select>`)
   $("#qus > option").click((e) => {
     $("#answerCard").empty();
     //@ts-ignore
     switch (e.target.value) {
       case "1":
-        addChoose()
+        addChoose(5)
         break;
       case "2":
         addFrame(false)
@@ -164,6 +205,9 @@ const renderTestQue = () => {
       case "3":
         addFrame(true)
         break;
+      case "4":
+        addBlankQues(21, 4)
+        break
     }
     let pnum = 1;
     dataJSON.pageQus.map((obj: any, obj_i: number) => {
