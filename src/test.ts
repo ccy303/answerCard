@@ -206,7 +206,7 @@ const renderTestQue = () => {
         addFrame(true)
         break;
       case "4":
-        addBlankQues(21, 4)
+        addBlankQues(10, 3)
         break
     }
     let pnum = 1;
