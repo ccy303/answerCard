@@ -94,22 +94,25 @@ export default class AnswerFrame {
    private renderEditor(bIndex: number, insertChild: boolean, hash: string) {
       let dom: JQuery<HTMLElement> = null;
       if (this.data.flag === 2) { //新建答题卡生成填空题
-         dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="false" type="editor" class="editor-box"></div>`)
+         dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
          if (Object.keys(this.data).length) {
             // let pnum = $(`<div contenteditable="true" class="row" hash="${hash}">${this.data.pros[0].pnum}</div>`);
             // let pnum = $(`<div contenteditable="true" class="row" hash="${hash}">填空题</div>`);
             // dom.append(pnum);
             let totlalRow = Math.ceil(this.data.pros[0].qus.length / this.data.rowCount);
             let i = 0;
+            let j = 0;
             while (totlalRow > i) {
                let rowCount =
                   this.data.pros[0].qus.length - i * this.data.rowCount >= this.data.rowCount ?
                      this.data.rowCount :
                      this.data.pros[0].qus.length - i * this.data.rowCount
-                  ;
                let row = $(`<div class="row" hash="${hash}"></div>`)
                while (rowCount > 0) {
-                  row.append($(`<pre contenteditable="true" style="display:inline-block;margin:0">     _____________     </pre>`))
+                  row.append($(`<p style="display:inline-block;margin:0" contenteditable="false">
+                     ${this.data.pros[0].pnum + '.' + this.data.pros[0].qus[j].pnum}&nbsp;________________&nbsp;&nbsp;
+                  </p>`))
+                  j++;
                   rowCount--;
                }
                dom.append(row);
