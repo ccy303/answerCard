@@ -10,7 +10,7 @@ class proFrame {
   group: any = "0"
   pIndex: any = null
   pros: any = []
-  flag?: any; //编辑选择题1，标记填空题2
+  flag?: any; //标记选择题1，标记填空题2
   rowCount?: any  //添加填空题时标记每行显示的填空题数量
 }
 /**
@@ -22,6 +22,7 @@ const addChoose = (number: number, chooseCount: number = 4) => {
   if (number <= 0) { return }
   if (dataJSON.pageQus[0] && dataJSON.pageQus[0].flag === 1) {//选择题
     let chooseQus: any = {
+      joinProNum: false,
       proId: null,
       score: null,
       pureObjective: "1",
@@ -48,6 +49,7 @@ const addChoose = (number: number, chooseCount: number = 4) => {
     let choosePro = new proFrame()
     choosePro.flag = 1;//选择题
     let chooseQus: any = {
+      joinProNum: false,
       proId: null,
       score: null,
       pureObjective: "1",
@@ -84,7 +86,6 @@ const addChoose = (number: number, chooseCount: number = 4) => {
 const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: number) => {
   let proFrameObj: any = new proFrame();
   if (choose) {//选做题
-    console.log(20)
     proFrameObj.group = String(chooseGroup)
     let flag = count;
     while (flag > 0) {
@@ -112,65 +113,8 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
       flag--
     }
     chooseGroup++;
-1  } else {
-    if (!join) {//不合并题号
-      if (joinFrame) {//同框
-        proFrameObj.pros.push({
-          proId: null,
-          score: null,
-          pureObjective: "2",
-          content: "",
-          sort: null,
-          pnum: "",
-          group: "0",
-          titleType: "解答题",
-          joinProNum: join, //标记是否合并题号
-          qus: []
-        })
-        let flg = count
-        while (flg > 0) {
-          proFrameObj.pros[0].qus.push({
-            quId: null,
-            score: null,
-            quType: "解答题",
-            nums: null,
-            content: "",
-            pnum: "",
-            visible: true,
-            rIndex: null
-          })
-          flg--
-        }
-      } else {//不同框
-        let flag = count;
-        proFrameObj = [];
-        while (flag > 0) {
-          let frame = new proFrame();
-          frame.pros.push({
-            proId: null,
-            score: null,
-            pureObjective: "2",
-            content: "",
-            sort: null,
-            pnum: "",
-            group: "0",
-            titleType: "解答题",
-            qus: [{
-              quId: null,
-              score: null,
-              quType: "解答题",
-              nums: null,
-              content: "",
-              pnum: "",
-              visible: true,
-              rIndex: null
-            }]
-          })
-          proFrameObj.push(frame)
-          flag--;
-        }
-      }
-    } else {//合并题号
+  } else {
+    if (joinFrame) { // 同框
       proFrameObj.pros.push({
         proId: null,
         score: null,
@@ -180,11 +124,11 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
         pnum: "",
         group: "0",
         titleType: "解答题",
-        joinProNum: join,
+        joinProNum: join, //标记是否合并题号
         qus: []
       })
-      let flag = count;
-      while (flag > 0) {
+      let flg = count
+      while (flg > 0) {
         proFrameObj.pros[0].qus.push({
           quId: null,
           score: null,
@@ -195,47 +139,140 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
           visible: true,
           rIndex: null
         })
+        flg--
+      }
+    } else { //不同框
+      let flag = count;
+      proFrameObj = [];
+      while (flag > 0) {
+        let frame = new proFrame();
+        frame.pros.push({
+          proId: null,
+          score: null,
+          pureObjective: "2",
+          content: "",
+          sort: null,
+          pnum: "",
+          group: "0",
+          titleType: "解答题",
+          qus: [{
+            quId: null,
+            score: null,
+            quType: "解答题",
+            nums: null,
+            content: "",
+            pnum: "",
+            visible: true,
+            rIndex: null
+          }]
+        })
+        proFrameObj.push(frame)
         flag--;
       }
     }
   }
   Array.isArray(proFrameObj) ? dataJSON.pageQus.push(...proFrameObj) : dataJSON.pageQus.push(proFrameObj)
-
 }
 /**
  * 添加填空题
- * @param count 填空个数
- * @param rowCount 每行空格数
+ * @param joinFrame 同框
+ * @param joinProNum 合并题号
+ * @param argArr 每行空格数
 */
-const addBlankQues = (count: number, rowCount: number) => {
-  let proFrameObj = new proFrame();
+const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) => {
+  let proFrameObj: any = new proFrame();
   proFrameObj.flag = 2;
-  proFrameObj.rowCount = rowCount;
-  proFrameObj.pros.push({
-    proId: null,
-    score: null,
-    pureObjective: "2",
-    content: "",
-    sort: null,
-    pnum: "",
-    group: "0",
-    titleType: "填空题",
-    qus: []
-  });
-  while (count > 0) {
-    proFrameObj.pros[0].qus.push({
-      quId: null,
+  if (joinFrame) { //同框
+    proFrameObj.pros.push({
+      proId: null,
       score: null,
-      quType: "填空题",
-      nums: null,
+      pureObjective: "2",
       content: "",
+      sort: null,
       pnum: "",
-      visible: true,
-      rIndex: null
+      group: "0",
+      titleType: "填空题",
+      joinProNum: joinProNum, //标记是否合并题号
+      qus: []
     })
-    count--
+    for (let i = 0; i < argArr.length; i++) {
+      proFrameObj.pros[0].qus.push({
+        quId: null,
+        score: null,
+        quType: "填空题",
+        nums: null,
+        blankNums: argArr[i],
+        content: "",
+        pnum: "",
+        visible: true,
+        rIndex: null
+      })
+    }
+    // if (joinProNum) { //合并题号
+
+    // } else { //不合并题号
+
+    // }
+  } else { //不同框（只能不合并题号）
+    proFrameObj = [];
+    for (let i = 0; i < argArr.length; i++) {
+      let frame = new proFrame();
+      frame.flag = 2;
+      frame.pros.push({
+        proId: null,
+        score: null,
+        pureObjective: "2",
+        content: "",
+        sort: null,
+        pnum: "",
+        group: "0",
+        titleType: "填空题",
+        qus: [{
+          quId: null,
+          score: null,
+          quType: "填空题",
+          nums: null,
+          blankNums: argArr[i],
+          content: "",
+          pnum: "",
+          visible: true,
+          rIndex: null
+        }]
+      })
+      proFrameObj.push(frame)
+    }
+
   }
-  dataJSON.pageQus.push(proFrameObj)
+  Array.isArray(proFrameObj) ? dataJSON.pageQus.push(...proFrameObj) : dataJSON.pageQus.push(proFrameObj)
+  return
+  // let proFrameObj = new proFrame();
+  // proFrameObj.flag = 2;
+  // proFrameObj.rowCount = rowCount;
+  // proFrameObj.pros.push({
+  //   proId: null,
+  //   score: null,
+  //   pureObjective: "2",
+  //   content: "",
+  //   sort: null,
+  //   pnum: "",
+  //   group: "0",
+  //   titleType: "填空题",
+  //   qus: []
+  // });
+  // while (count > 0) {
+  //   proFrameObj.pros[0].qus.push({
+  //     quId: null,
+  //     score: null,
+  //     quType: "填空题",
+  //     nums: null,
+  //     content: "",
+  //     pnum: "",
+  //     visible: true,
+  //     rIndex: null
+  //   })
+  //   count--
+  // }
+  // dataJSON.pageQus.push(proFrameObj)
 }
 /**
  * 添加作文题
@@ -289,10 +326,11 @@ const renderTestQue = () => {
     <option value="2">客观题(不合并题号。同框)</option>
     <option value="7">客观题(不合并题号。不同框)</option>
     <option value="3">客观题(合并题号，同框)</option>
-    <option value="8">客观题(选做题)</option>
-    <option value="4">提空提</option>
+    <option value="6">客观题(选做)</option>
     <option value="5">作文题</option>
-    <option value="6">选做题</option>
+    <option value="40">提空提(同框，不合并题号)</option>
+    <option value="41">提空提(同框，合并题号)</option>
+    <option value="42">提空提(不同框)</option>
   </select>`)
   $("#qus > option").click((e) => {
     $("#answerCard").empty();
@@ -307,8 +345,14 @@ const renderTestQue = () => {
       case "3":
         addFrame(false, true, true, 2)
         break;
-      case "4":
-        addBlankQues(10, 3)
+      case "40":
+        addBlankQues(true, false, [1, 2, 3, 1, 1])
+        break
+      case "41":
+        addBlankQues(true, true, [1])
+        break
+      case "42":
+        addBlankQues(false, false, [2, 1, 3, 1, 1])
         break
       case "5":
         addWrite()
@@ -319,7 +363,6 @@ const renderTestQue = () => {
       case "7":
         addFrame(false, false, false, 2)
         break;
-
     }
     calculationPnum()
   })
@@ -334,22 +377,31 @@ const calculationPnum = () => {
     obj.pros.map((pro: any, pro_i: number) => {
       let flag = pnum;
       pro.sort = String(proSort); //pro结构中的sort排序
-      pro.pnum = pnum;
-      if (pro.qus.length === 1 && obj.flag === 1) {
-        pro.qus[0].pnum = pnum;
-      } else if (pro.qus.length !== 1) {
-        pro.qus.map((val: any, index: any) => {
-          if (!pro.joinProNum) {
-            val.pnum = String(pnum)
-            pro.pnum = '';
-            pnum++;
-          } else {
-            val.pnum = `(${index + 1})`
-          }
-        })
+      if (pro.joinProNum) {
+      } else {//不合并题号
+        console.log(123)
+        pro.pnum = pnum;
+        if (obj.flag === 1) {//选择题
+
+        }
+        pnum++;
       }
+      // if (pro.qus.length === 1) { // 选择题
+      //   pro.qus[0].pnum = pnum;
+      // } else if (pro.qus.length !== 1) {
+      //   pro.qus.map((val: any, index: any) => {
+      //     if (!pro.joinProNum) {
+      //       val.pnum = String(pnum)
+      //       pro.pnum = '';
+      //       pnum++;
+      //     } else {
+      //       val.pnum = `(${index + 1})`
+      //     }
+      //   })
+      // }
       proSort++;
-      pnum === flag && pnum++
+      // pnum === flag && pnum++
+      // pnum++
     })
   })
   console.log(dataJSON)
