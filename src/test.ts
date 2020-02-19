@@ -2,6 +2,7 @@ let dataJSON = require('./data.json');
 let Test: any = null;
 let _Obj: any = null;
 let chooseGroup = 1;
+let editor: any = null
 class proFrame {
   sort: any = null
   attribute: any = null
@@ -17,14 +18,15 @@ class proFrame {
  * 添加选择题
  * @param number 添加数量
  * @param chooseCount 选项个数
+ * @param multiple 是否多选题
  */
-const addChoose = (number: number, chooseCount: number = 4) => {
+const addChoose = (number: number, chooseCount: number = 4, multiple: boolean = false) => {
   if (number <= 0) { return }
   if (dataJSON.pageQus[0] && dataJSON.pageQus[0].flag === 1) {//选择题
     let chooseQus: any = {
       joinProNum: false,
       proId: null,
-      score: null,
+      score: 0,
       pureObjective: "1",
       content: "",
       sort: null,
@@ -34,11 +36,11 @@ const addChoose = (number: number, chooseCount: number = 4) => {
       qus: [
         {
           quId: null,
-          score: null,
-          quType: "单选题",
+          score: 0,
+          quType: multiple ? "多选题" : "单选题",
           nums: String(chooseCount),
           content: "",
-          pnum: 1,
+          pnum: "",
           visible: true,
           rIndex: null
         }
@@ -51,7 +53,7 @@ const addChoose = (number: number, chooseCount: number = 4) => {
     let chooseQus: any = {
       joinProNum: false,
       proId: null,
-      score: null,
+      score: 0,
       pureObjective: "1",
       content: "",
       sort: null,
@@ -61,11 +63,11 @@ const addChoose = (number: number, chooseCount: number = 4) => {
       qus: [
         {
           quId: null,
-          score: null,
-          quType: "单选题",
+          score: 0,
+          quType: multiple ? "多选题" : "单选题",
           nums: String(chooseCount),
           content: "",
-          pnum: 1,
+          pnum: "",
           visible: true,
           rIndex: null
         }
@@ -91,7 +93,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
     while (flag > 0) {
       proFrameObj.pros.push({
         proId: null,
-        score: null,
+        score: 0,
         pureObjective: "2",
         content: "",
         sort: null,
@@ -101,7 +103,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
         joinProNum: join, //标记是否合并题号
         qus: [{
           quId: null,
-          score: null,
+          score: 0,
           quType: "解答题",
           nums: null,
           content: "",
@@ -117,7 +119,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
     if (joinFrame) { // 同框
       proFrameObj.pros.push({
         proId: null,
-        score: null,
+        score: 0,
         pureObjective: "2",
         content: "",
         sort: null,
@@ -131,7 +133,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
       while (flg > 0) {
         proFrameObj.pros[0].qus.push({
           quId: null,
-          score: null,
+          score: 0,
           quType: "解答题",
           nums: null,
           content: "",
@@ -148,7 +150,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
         let frame = new proFrame();
         frame.pros.push({
           proId: null,
-          score: null,
+          score: 0,
           pureObjective: "2",
           content: "",
           sort: null,
@@ -157,7 +159,7 @@ const addFrame = (choose: boolean, join: boolean, joinFrame: boolean, count: num
           titleType: "解答题",
           qus: [{
             quId: null,
-            score: null,
+            score: 0,
             quType: "解答题",
             nums: null,
             content: "",
@@ -185,7 +187,7 @@ const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) =>
   if (joinFrame) { //同框
     proFrameObj.pros.push({
       proId: null,
-      score: null,
+      score: 0,
       pureObjective: "2",
       content: "",
       sort: null,
@@ -198,7 +200,7 @@ const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) =>
     for (let i = 0; i < argArr.length; i++) {
       proFrameObj.pros[0].qus.push({
         quId: null,
-        score: null,
+        score: 0,
         quType: "填空题",
         nums: null,
         blankNums: argArr[i],
@@ -220,7 +222,7 @@ const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) =>
       frame.flag = 2;
       frame.pros.push({
         proId: null,
-        score: null,
+        score: 0,
         pureObjective: "2",
         content: "",
         sort: null,
@@ -229,7 +231,7 @@ const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) =>
         titleType: "填空题",
         qus: [{
           quId: null,
-          score: null,
+          score: 0,
           quType: "填空题",
           nums: null,
           blankNums: argArr[i],
@@ -244,35 +246,6 @@ const addBlankQues = (joinFrame: boolean, joinProNum: boolean, argArr: any[]) =>
 
   }
   Array.isArray(proFrameObj) ? dataJSON.pageQus.push(...proFrameObj) : dataJSON.pageQus.push(proFrameObj)
-  return
-  // let proFrameObj = new proFrame();
-  // proFrameObj.flag = 2;
-  // proFrameObj.rowCount = rowCount;
-  // proFrameObj.pros.push({
-  //   proId: null,
-  //   score: null,
-  //   pureObjective: "2",
-  //   content: "",
-  //   sort: null,
-  //   pnum: "",
-  //   group: "0",
-  //   titleType: "填空题",
-  //   qus: []
-  // });
-  // while (count > 0) {
-  //   proFrameObj.pros[0].qus.push({
-  //     quId: null,
-  //     score: null,
-  //     quType: "填空题",
-  //     nums: null,
-  //     content: "",
-  //     pnum: "",
-  //     visible: true,
-  //     rIndex: null
-  //   })
-  //   count--
-  // }
-  // dataJSON.pageQus.push(proFrameObj)
 }
 /**
  * 添加作文题
@@ -290,7 +263,7 @@ const addWrite = () => {
     titleType: "作文",
     qus: [{
       quId: null,
-      score: null,
+      score: 0,
       quType: "作文题",
       nums: null,
       content: "",
@@ -302,7 +275,12 @@ const addWrite = () => {
   dataJSON.pageQus.push(proFrameObj)
 }
 
-
+const renageChangeNum = () => {
+  $('#answerCard').before(`<button id="changeNum">点击改变学号</button>`)
+  $('#changeNum').click(() => {
+    editor.reRenderHeader(Math.ceil(Math.random() * 10))
+  })
+}
 const renderTestTypeCom = () => {
   $('#answerCard').before(`<select id="type">
     <option value="1">生成答题卡</option>
@@ -349,7 +327,7 @@ const renderTestQue = () => {
         addBlankQues(true, false, [1, 2, 3, 1, 1])
         break
       case "41":
-        addBlankQues(true, true, [1])
+        addBlankQues(true, true, [1, 1, 1, 1, 1, 1])
         break
       case "42":
         addBlankQues(false, false, [2, 1, 3, 1, 1])
@@ -371,37 +349,24 @@ const renderTestQue = () => {
 const calculationPnum = () => {
   let pnum = 1;
   let proSort = 1;
-  //计算题号
+  //计算题号&生成proID,quID
   dataJSON.pageQus.map((obj: any, obj_i: number) => {
     obj.sort = String(obj_i + 1); //每一个框的排序
     obj.pros.map((pro: any, pro_i: number) => {
-      let flag = pnum;
+      pro.proId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
       pro.sort = String(proSort); //pro结构中的sort排序
-      if (pro.joinProNum) {
-      } else {//不合并题号
-        console.log(123)
-        pro.pnum = pnum;
-        if (obj.flag === 1) {//选择题
-
+      pro.qus.map((val: any, index: any) => {
+        val.quId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
+        if (pro.joinProNum) {
+          pro.pnum = pnum
+          val.pnum = `(${index + 1})`
+          index == pro.qus.length - 1 && pnum++
+        } else {
+          val.pnum = String(pnum)
+          pnum++;
         }
-        pnum++;
-      }
-      // if (pro.qus.length === 1) { // 选择题
-      //   pro.qus[0].pnum = pnum;
-      // } else if (pro.qus.length !== 1) {
-      //   pro.qus.map((val: any, index: any) => {
-      //     if (!pro.joinProNum) {
-      //       val.pnum = String(pnum)
-      //       pro.pnum = '';
-      //       pnum++;
-      //     } else {
-      //       val.pnum = `(${index + 1})`
-      //     }
-      //   })
-      // }
+      })
       proSort++;
-      // pnum === flag && pnum++
-      // pnum++
     })
   })
   console.log(dataJSON)
@@ -410,7 +375,7 @@ const calculationPnum = () => {
 
 Test = (OBJ: any) => {
   _Obj = OBJ;
-  new OBJ({
+  editor = new OBJ({
     dataJSON: dataJSON,
     both: true,
     config: {
@@ -424,6 +389,7 @@ Test = (OBJ: any) => {
   })
 }
 
+renageChangeNum()
 renderTestTypeCom()
 renderTestQue()
 module.exports = Test
