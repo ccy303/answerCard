@@ -380,7 +380,7 @@ export default class Page {
             //57一个editor只有一行所需最小距离
             if (!nextEditorBox) {
                pageHeight - innerHeight >= 57 && this.moveNextEditorBoxToThisColum(editorBox.parent());
-               !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
+               !editorBox.hasClass('header-box') && !editorBox.hasClass('exam-title') && !editorBox.children('.row').get(0) && editorBox.remove();
                return;
             } else {
                let nextBoxFirstChild = nextEditorBox.children(':first-child').height(); // 要移动的行的高度
