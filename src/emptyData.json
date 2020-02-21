@@ -22,5 +22,6 @@
    "paperVid": null,
    "versionId": null,
    "versionMsg": null,
-   "recgParams": null
+   "recgParams": null,
+   "operations": []
 }

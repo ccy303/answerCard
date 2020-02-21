@@ -31,7 +31,7 @@ export default class GlobalData {
          <span>第${length}页</span> / <span type="totalPage"></span>
       </p>`)
       val.page.append(pageNum);
-      $('[type=totalPage]').html(`共${length}页`)  
+      $('[type=totalPage]').html(`共${length}页`)
    }
    static get pageObject() {
       return this._pageObject
@@ -47,6 +47,7 @@ export default class GlobalData {
       }
    }
    static clearProps() {
+      this.dom && this.dom.empty();
       this.AnswerFrameObj = []
       this._currentImage = null
       this.pageType = ''
