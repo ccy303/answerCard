@@ -18,10 +18,18 @@
    "subjectName": null,
    "pageQus": [],
    "checkMsg": null,
-   "paperId": null,
-   "paperVid": null,
+   "paperId": 0,
+   "paperVid": 0,
    "versionId": null,
    "versionMsg": null,
    "recgParams": null,
+
+   "gradeId": null,
+   "score": null,
+   "quStat": [],
+   "derivedType": 2,
+   "teacherSubjectId": null,
+   "thumbs": null,
+   "isTemplate": null,
    "operations": []
 }

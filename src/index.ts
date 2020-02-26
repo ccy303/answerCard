@@ -164,6 +164,7 @@ class AnswerCard {
             operationId: operationId,
             qus: [
                {
+                  answer: '',
                   quId: null,
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
@@ -192,6 +193,7 @@ class AnswerCard {
             operationId: operationId,
             qus: [
                {
+                  answer: '',
                   quId: null,
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
@@ -242,6 +244,7 @@ class AnswerCard {
                joinProNum: join, //标记是否合并题号
                operationId: operation.operationId,
                qus: [{
+                  answer: '',
                   quId: null,
                   score: 0,
                   quType: "解答题",
@@ -273,6 +276,7 @@ class AnswerCard {
             let flg = count
             while (flg > 0) {
                proFrameObj.pros[0].qus.push({
+                  answer: '',
                   quId: null,
                   score: 0,
                   quType: "解答题",
@@ -300,6 +304,7 @@ class AnswerCard {
                   titleType: "解答题",
                   operationId: operation.operationId,
                   qus: [{
+                     answer: '',
                      quId: null,
                      score: 0,
                      quType: "解答题",
@@ -354,6 +359,7 @@ class AnswerCard {
          })
          for (let i = 0; i < argArr.length; i++) {
             proFrameObj.pros[0].qus.push({
+               answer: '',
                quId: null,
                score: 0,
                quType: "填空题",
@@ -381,6 +387,7 @@ class AnswerCard {
                titleType: "填空题",
                operationId: operation.operationId,
                qus: [{
+                  answer: '',
                   quId: null,
                   score: 0,
                   quType: "填空题",
@@ -426,6 +433,7 @@ class AnswerCard {
          titleType: "作文",
          operationId: operation.operationId,
          qus: [{
+            answer: '',
             quId: null,
             score: 0,
             quType: "作文题",
@@ -448,7 +456,7 @@ class AnswerCard {
     * @param operationId 操作id
    */
    public delPro(proId: any, operationId: any) {
-      let _obj = JSON.parse(JSON.stringify(this.obj));
+      let _obj = this.obj;
       _obj.dataJSON.pageQus.map((obj: any) => {
          obj.pros = obj.pros.filter((val: any) => {
             return val.proId != proId;
