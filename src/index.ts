@@ -22,6 +22,7 @@ class Operations {
    count: any = null
    operationId: any = null
    pnum: any = [0, 0] //[1,5] 1-5题
+   proId: any = [] //小题id
    constructor(type: any, multiple: any, title: any, optNum: any, count: any) {
       this.type = type
       this.multiple = multiple
@@ -44,18 +45,18 @@ class AnswerCard {
    constructor(obj: any) {
       this.init(obj)
    }
-   private init(obj: any, a?: any) {
+   public init(obj: any, a?: any) {
       GlobalData.clearProps();
       this.obj = obj
-      this.dataJson = obj.dataJSON;
-      this.both = obj.both
+      this.dataJson = this.obj.dataJSON;
+      this.both = this.obj.both
       GlobalData.dataJSON = this.dataJson;
-      GlobalData.config = obj.config;
-      GlobalData.pageType = obj.dataJSON.paperSize;
-      GlobalData.subjectId = obj.dataJSON.subjectId;
-      GlobalData.dom = obj.dom ? $(obj.dom) : $('#answerCard');
+      GlobalData.config = this.obj.config;
+      GlobalData.pageType = this.obj.dataJSON.paperSize;
+      GlobalData.subjectId = this.obj.dataJSON.subjectId;
+      GlobalData.dom = this.obj.dom ? $(this.obj.dom) : $('#answerCard');
       GlobalData.dom && GlobalData.dom.attr('id', 'answerCard');
-      GlobalData.pageColum = parseInt(obj.dataJSON.layoutType);
+      GlobalData.pageColum = parseInt(this.obj.dataJSON.layoutType);
       GlobalData.dom.on('click', () => {
          $('#contentText').remove()
       })
@@ -75,7 +76,6 @@ class AnswerCard {
       let page = new Page(this.addPage.bind(this))
       page.pageInit()
       this.pages = page
-      console.log(GlobalData.dataJSON)
    }
    private addPage() {
       let page = new Page(this.addPage.bind(this));
@@ -124,27 +124,29 @@ class AnswerCard {
       }
    }
    /**
-   * 添加选择题
+   * 添加选择题 只传number为判断题
    * @param number 添加数量
    * @param chooseCount 选项个数
    * @param multiple 是否多选题
    */
-   public addChoose(number: number, chooseCount: number = 4, multiple: boolean = false) {
-      // console.log(GlobalData.dataJSON.pageQus[0])
+   public addChoose(number: number, chooseCount: number, multiple: boolean = false) {
       let opera = new Operations(
-         'sel',
+         !chooseCount && !multiple ? 'judge' : 'sel',
          multiple,
-         multiple ? '多选题' : '单选题',
+         (!chooseCount && !multiple) ? '判断题' : multiple ? '多选题' : '单选题',
          chooseCount,
          number,
       )
+      if (!chooseCount && !multiple) {
+         opera.type = 'judge'
+      }
       GlobalData.dataJSON.operations.push(opera)
       this.chooseFun(number, chooseCount, multiple, opera.operationId)
       return GlobalData.dataJSON.operations
    }
    private chooseFun(number: number, chooseCount: number, multiple: boolean, operationId: any) {
       if (number <= 0) {
-         this.init(this.obj, 1);
+         this.init(this.obj);
          return
       }
       let dataJSON = GlobalData.dataJSON
@@ -164,8 +166,8 @@ class AnswerCard {
                {
                   quId: null,
                   score: 0,
-                  quType: multiple ? "多选题" : "单选题",
-                  nums: String(chooseCount),
+                  quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
+                  nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
                   content: "",
                   pnum: "",
                   visible: true,
@@ -192,8 +194,8 @@ class AnswerCard {
                {
                   quId: null,
                   score: 0,
-                  quType: multiple ? "多选题" : "单选题",
-                  nums: String(chooseCount),
+                  quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
+                  nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
                   content: "",
                   pnum: "",
                   visible: true,
@@ -317,6 +319,7 @@ class AnswerCard {
       GlobalData.dataJSON.operations.push(operation)
       this.calculationPnum();
       this.init(this.obj);
+      return GlobalData.dataJSON.operations
    }
    /**
     * 添加填空题
@@ -439,9 +442,51 @@ class AnswerCard {
       this.init(this.obj);
       return GlobalData.dataJSON.operations
    }
+   /**
+    * 删除题目
+    * @param proId 题目id
+    * @param operationId 操作id
+   */
+   public delPro(proId: any, operationId: any) {
+      let _obj = JSON.parse(JSON.stringify(this.obj));
+      _obj.dataJSON.pageQus.map((obj: any) => {
+         obj.pros = obj.pros.filter((val: any) => {
+            return val.proId != proId;
+         })
+      })
+      let flag: any = null;
+      _obj.dataJSON.operations.map((opera: Operations, index: any, arr: Array<Operations>) => {
+         if (opera.operationId == operationId) {
+            flag = index;
+            opera.count -= 1;
+            opera.pnum[1] = String(Number(opera.pnum[0]) + opera.count - 1)
+            opera.proId = opera.proId.filter((val: any) => { return val !== proId })
+         }
+         if (flag != null && index > flag) {
+            opera.pnum[0] = String(Number(opera.pnum[0]) - 1)
+            opera.pnum[1] = String(Number(opera.pnum[1]) - 1)
+         }
+      })
+      _obj.dataJSON.operations = _obj.dataJSON.operations.filter((val: Operations) => {
+         return val.proId.length > 0
+      })
+      _obj.dataJSON.pageQus = _obj.dataJSON.pageQus.filter((val: any) => {
+         return val.pros.length > 0
+      })
+      this.calculationPnum(_obj.dataJSON);
+      this.init(_obj);
+   }
+   /**
+    * 获取dataJSON.operations
+   */
+   public getOperations() {
+      return GlobalData.dataJSON.operations
+   }
 
-   private calculationPnum() {
-      let dataJSON = GlobalData.dataJSON
+   public calculationPnum(dataJSON?: any) {
+      if (!dataJSON) {
+         dataJSON = GlobalData.dataJSON
+      }
       let pnum = 1;
       let proSort = 1;
       dataJSON.pageQus.map((obj: any, obj_i: number) => {
@@ -451,6 +496,7 @@ class AnswerCard {
                return val.operationId === pro.operationId;
             })
             pro.proId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
+            opera.proId[pro_i] = pro.proId
             pro.sort = String(proSort); //pro结构中的sort排序
             pro.qus.map((val: any, index: any) => {
                val.quId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
@@ -475,10 +521,6 @@ class AnswerCard {
                   pnum++;
                }
             })
-            // if (!obj.pnum.length) {
-            //    console.log(123)
-            //    obj.pnum[0]
-            // }
             proSort++;
          })
       })

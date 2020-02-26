@@ -4,8 +4,12 @@ let editor: any = null
 let renderSel = true;
 const renageChangeNum = () => {
   $('#answerCard').before(`<button id="changeNum">点击改变学号</button>`)
+  $('#answerCard').before(`<button id="delPro">删除题目</button>`)
   $('#changeNum').click(() => {
     editor.reRenderHeader(Math.ceil(Math.random() * 10))
+  })
+  $('#delPro').click(() => {
+    editor.delPro(editor.dataJson.operations[0].proId[0], editor.dataJson.operations[0].operationId)
   })
 }
 const renderTestTypeCom = () => {
@@ -36,13 +40,14 @@ const renderTestQue = () => {
     <option value="40">提空提(同框，不合并题号)</option>
     <option value="41">提空提(同框，合并题号)</option>
     <option value="42">提空提(不同框)</option>
+    <option value="9">判断题</option>
   </select>`)
   $("#qus > option").click((e) => {
     $("#answerCard").empty();
     //@ts-ignore
     switch (e.target.value) {
       case "1":
-        editor.addChoose(5)
+        editor.addChoose(5, 4)
         break;
       case "2":
         editor.addFrame(false, false, true, 2)
@@ -67,6 +72,9 @@ const renderTestQue = () => {
         break;
       case "7":
         editor.addFrame(false, false, false, 2)
+        break;
+      case "9":
+        editor.addChoose(5)
         break;
     }
     // editor.calculationPnum()
