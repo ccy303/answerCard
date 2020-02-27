@@ -22,7 +22,7 @@ class Operations {
    count: any = null
    operationId: any = null
    pnum: any = [0, 0] //[1,5] 1-5题
-   proId: any = [] //小题id
+   pnumArr: any = [];
    constructor(type: any, multiple: any, title: any, optNum: any, count: any) {
       this.type = type
       this.multiple = multiple
@@ -141,10 +141,10 @@ class AnswerCard {
          opera.type = 'judge'
       }
       GlobalData.dataJSON.operations.push(opera)
-      this.chooseFun(number, chooseCount, multiple, opera.operationId)
+      this.chooseFun(number, chooseCount, multiple, opera)
       return GlobalData.dataJSON.operations
    }
-   private chooseFun(number: number, chooseCount: number, multiple: boolean, operationId: any) {
+   private chooseFun(number: number, chooseCount: number, multiple: boolean, opera: any) {
       if (number <= 0) {
          this.init(this.obj);
          return
@@ -153,7 +153,7 @@ class AnswerCard {
       if (dataJSON.pageQus[0] && dataJSON.pageQus[0].flag === 1) {//选择题
          let chooseQus: any = {
             joinProNum: false,
-            proId: null,
+            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "1",
             content: "",
@@ -161,11 +161,11 @@ class AnswerCard {
             pnum: "",
             group: "0",
             titleType: "选择题",
-            operationId: operationId,
+            operationId: opera.operationId,
             qus: [
                {
                   answer: '',
-                  quId: null,
+                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
                   nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
@@ -176,13 +176,21 @@ class AnswerCard {
                }
             ]
          }
+         opera.pnumArr.push({
+            title: opera.count - number + 1,
+            opt: !chooseCount && !multiple ? ['对', '错'] : 'ABCDEFGHIJKLNMOPRSTUVWXYZ'.slice(0, chooseCount).split(''),
+            answer: '',
+            score: '',
+            proId: chooseQus.proId,
+            qusId: chooseQus.qus[0].quId,
+         })
          dataJSON.pageQus[0].pros.push(chooseQus)
       } else {
          let choosePro = new proFrame()
          choosePro.flag = 1;//选择题
          let chooseQus: any = {
             joinProNum: false,
-            proId: null,
+            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "1",
             content: "",
@@ -190,11 +198,11 @@ class AnswerCard {
             pnum: "",
             group: "0",
             titleType: "选择题",
-            operationId: operationId,
+            operationId: opera.operationId,
             qus: [
                {
                   answer: '',
-                  quId: null,
+                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
                   nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
@@ -205,11 +213,19 @@ class AnswerCard {
                }
             ]
          }
+         opera.pnumArr.push({
+            title: opera.count - number + 1,
+            opt: !chooseCount && !multiple ? ['对', '错'] : 'ABCDEFGHIJKLNMOPRSTUVWXYZ'.slice(0, chooseCount).split(''),
+            answer: '',
+            score: '',
+            proId: chooseQus.proId,
+            qusId: chooseQus.qus[0].quId,
+         })
          choosePro.pros.push(chooseQus)
          dataJSON.pageQus.unshift(choosePro)
       }
       this.calculationPnum();
-      this.chooseFun(--number, chooseCount, multiple, operationId)
+      this.chooseFun(--number, chooseCount, multiple, opera)
    }
    /**
    * 添加主观题
@@ -230,10 +246,10 @@ class AnswerCard {
       );
       if (choose) {//选做题
          proFrameObj.group = String(chooseGroup)
-         let flag = count;
-         while (flag > 0) {
+         let flag = 0;
+         while (flag < count) {
             proFrameObj.pros.push({
-               proId: null,
+               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -245,7 +261,7 @@ class AnswerCard {
                operationId: operation.operationId,
                qus: [{
                   answer: '',
-                  quId: null,
+                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "解答题",
                   nums: null,
@@ -255,13 +271,21 @@ class AnswerCard {
                   rIndex: null
                }]
             })
-            flag--
+            operation.pnumArr.push({
+               title: flag + 1,
+               opt: '',
+               answer: '',
+               score: '',
+               proId: proFrameObj.pros[flag].proId,
+               qusId: proFrameObj.pros[flag].qus[0].quId,
+            })
+            flag++
          }
          chooseGroup++;
       } else {
          if (joinFrame) { // 同框
             proFrameObj.pros.push({
-               proId: null,
+               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -273,11 +297,11 @@ class AnswerCard {
                operationId: operation.operationId,
                qus: []
             })
-            let flg = count
-            while (flg > 0) {
+            let flag = 0
+            while (flag < count) {
                proFrameObj.pros[0].qus.push({
                   answer: '',
-                  quId: null,
+                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "解答题",
                   nums: null,
@@ -286,15 +310,23 @@ class AnswerCard {
                   visible: true,
                   rIndex: null
                })
-               flg--
+               operation.pnumArr.push({
+                  title: flag + 1,
+                  opt: '',
+                  answer: '',
+                  score: '',
+                  proId: proFrameObj.pros[0].proId,
+                  qusId: proFrameObj.pros[0].qus[flag].quId,
+               })
+               flag++
             }
          } else { //不同框
-            let flag = count;
+            let flag = 0;
             proFrameObj = [];
-            while (flag > 0) {
+            while (flag < count) {
                let frame = new proFrame();
                frame.pros.push({
-                  proId: null,
+                  proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   pureObjective: "2",
                   content: "",
@@ -305,7 +337,7 @@ class AnswerCard {
                   operationId: operation.operationId,
                   qus: [{
                      answer: '',
-                     quId: null,
+                     quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                      score: 0,
                      quType: "解答题",
                      nums: null,
@@ -315,8 +347,16 @@ class AnswerCard {
                      rIndex: null
                   }]
                })
+               operation.pnumArr.push({
+                  title: flag + 1,
+                  opt: '',
+                  answer: '',
+                  score: '',
+                  proId: frame.pros[0].proId,
+                  qusId: frame.pros[0].qus[0].quId,
+               })
                proFrameObj.push(frame)
-               flag--;
+               flag++
             }
          }
       }
@@ -345,7 +385,7 @@ class AnswerCard {
       proFrameObj.flag = 2;
       if (joinFrame) { //同框
          proFrameObj.pros.push({
-            proId: null,
+            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "2",
             content: "",
@@ -360,7 +400,7 @@ class AnswerCard {
          for (let i = 0; i < argArr.length; i++) {
             proFrameObj.pros[0].qus.push({
                answer: '',
-               quId: null,
+               quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                quType: "填空题",
                nums: null,
@@ -370,6 +410,14 @@ class AnswerCard {
                visible: true,
                rIndex: null
             })
+            operation.pnumArr.push({
+               title: i + 1,
+               opt: '',
+               answer: '',
+               score: '',
+               proId: proFrameObj.pros[0].proId,
+               qusId: proFrameObj.pros[0].qus[i].quId,
+            })
          }
       } else { //不同框（只能不合并题号）
          proFrameObj = [];
@@ -377,7 +425,7 @@ class AnswerCard {
             let frame = new proFrame();
             frame.flag = 2;
             frame.pros.push({
-               proId: null,
+               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -388,7 +436,7 @@ class AnswerCard {
                operationId: operation.operationId,
                qus: [{
                   answer: '',
-                  quId: null,
+                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "填空题",
                   nums: null,
@@ -398,6 +446,14 @@ class AnswerCard {
                   visible: true,
                   rIndex: null
                }]
+            })
+            operation.pnumArr.push({
+               title: i + 1,
+               opt: '',
+               answer: '',
+               score: '',
+               proId: frame.pros[0].proId,
+               qusId: frame.pros[0].qus[0].quId,
             })
             proFrameObj.push(frame)
          }
@@ -423,7 +479,7 @@ class AnswerCard {
       let dataJSON = GlobalData.dataJSON
       let proFrameObj = new proFrame();
       proFrameObj.pros.push({
-         proId: null,
+         proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
          score: null,
          pureObjective: "2",
          content: "",
@@ -434,7 +490,7 @@ class AnswerCard {
          operationId: operation.operationId,
          qus: [{
             answer: '',
-            quId: null,
+            quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             quType: "作文题",
             nums: null,
@@ -443,6 +499,14 @@ class AnswerCard {
             visible: true,
             rIndex: null
          }]
+      })
+      operation.pnumArr.push({
+         title: 1,
+         opt: '',
+         answer: '',
+         score: '',
+         proId: proFrameObj.pros[0].proId,
+         qusId: proFrameObj.pros[0].qus[0].quId,
       })
       dataJSON.pageQus.push(proFrameObj)
       GlobalData.dataJSON.operations.push(operation)
@@ -453,36 +517,35 @@ class AnswerCard {
    /**
     * 删除题目
     * @param proId 题目id
+    * @param queId 小题id
     * @param operationId 操作id
    */
-   public delPro(proId: any, operationId: any) {
-      let _obj = this.obj;
-      _obj.dataJSON.pageQus.map((obj: any) => {
-         obj.pros = obj.pros.filter((val: any) => {
-            return val.proId != proId;
+   public delPro(proId: any, queId: any, operationId: any) {
+      this.obj.dataJSON.pageQus = this.obj.dataJSON.pageQus.filter((obj: any) => {
+         obj.pros = obj.pros.filter((pro: any) => {
+            if (pro.operationId == operationId && pro.proId == proId) {
+               pro.qus = pro.qus.filter((qus: any) => {
+                  return qus.quId != queId;
+               })
+            }
+            return pro.qus.length > 0
          })
+         return obj.pros.length > 0
       })
       let flag: any = null;
-      _obj.dataJSON.operations.map((opera: Operations, index: any, arr: Array<Operations>) => {
+      this.obj.dataJSON.operations.map((opera: Operations, index: any, arr: Array<Operations>) => {
          if (opera.operationId == operationId) {
-            flag = index;
             opera.count -= 1;
-            opera.pnum[1] = String(Number(opera.pnum[0]) + opera.count - 1)
-            opera.proId = opera.proId.filter((val: any) => { return val !== proId })
-         }
-         if (flag != null && index > flag) {
-            opera.pnum[0] = String(Number(opera.pnum[0]) - 1)
-            opera.pnum[1] = String(Number(opera.pnum[1]) - 1)
+            opera.pnumArr = opera.pnumArr.filter((pnum: any) => {
+               return pnum.qusId != queId;
+            })
          }
       })
-      _obj.dataJSON.operations = _obj.dataJSON.operations.filter((val: Operations) => {
-         return val.proId.length > 0
+      this.obj.dataJSON.operations = this.obj.dataJSON.operations.filter((val: Operations) => {
+         return val.pnumArr.length > 0
       })
-      _obj.dataJSON.pageQus = _obj.dataJSON.pageQus.filter((val: any) => {
-         return val.pros.length > 0
-      })
-      this.calculationPnum(_obj.dataJSON);
-      this.init(_obj);
+      this.calculationPnum(this.obj.dataJSON);
+      this.init(this.obj);
    }
    /**
     * 获取dataJSON.operations
@@ -503,29 +566,32 @@ class AnswerCard {
             let opera: Operations = dataJSON.operations.find((val: Operations) => {
                return val.operationId === pro.operationId;
             })
-            pro.proId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
-            opera.proId[pro_i] = pro.proId
             pro.sort = String(proSort); //pro结构中的sort排序
             pro.qus.map((val: any, index: any) => {
-               val.quId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
                if (pro.joinProNum) {
-                  if (opera.operationId === pro.operationId) {
-                     if (opera.pnum[0] == 0) {
-                        opera.pnum[0] = `${pnum}(${index + 1})`;
-                     }
-                     opera.pnum[1] = `${pnum}(${index + 1})`;
-                  }
                   pro.pnum = pnum
                   val.pnum = `(${index + 1})`
                   index == pro.qus.length - 1 && pnum++
-               } else {
-                  if (opera.operationId === pro.operationId) {
-                     if (opera.pnum[0] == 0) {
-                        opera.pnum[0] = `${pnum}`;
+                  opera.pnumArr.map((pnumArr: any, index: any) => {
+                     if (pnumArr.qusId == val.quId) {
+                        if (index == 0) {
+                           opera.pnum[0] = `${pro.pnum}(${index + 1})`;
+                        }
+                        opera.pnum[1] = `${pro.pnum}(${index + 1})`;
+                        pnumArr.title = `第${pro.pnum}(${index + 1})题`
                      }
-                     opera.pnum[1] = `${pnum}`;
-                  }
+                  })
+               } else {
                   val.pnum = String(pnum)
+                  opera.pnumArr.map((pnumArr: any, index: any) => {
+                     if (pnumArr.qusId == val.quId) {
+                        if (index == 0) {
+                           opera.pnum[0] = String(val.pnum);
+                        }
+                        opera.pnum[1] = String(val.pnum);
+                        pnumArr.title = `第${val.pnum}题`
+                     }
+                  })
                   pnum++;
                }
             })

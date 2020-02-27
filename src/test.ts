@@ -9,7 +9,11 @@ const renageChangeNum = () => {
     editor.reRenderHeader(Math.ceil(Math.random() * 10))
   })
   $('#delPro').click(() => {
-    editor.delPro(editor.dataJson.operations[0].proId[0], editor.dataJson.operations[0].operationId)
+    editor.delPro(
+      editor.dataJson.operations[0].pnumArr[0].proId,
+      editor.dataJson.operations[0].pnumArr[0].qusId,
+      editor.dataJson.operations[0].operationId
+    )
   })
 }
 const renderTestTypeCom = () => {
