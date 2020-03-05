@@ -260,21 +260,9 @@ export default class AnswerFrame {
          tool.uploadFile(file, true, (arg: any) => {
             this.addImage(arg)
          })
-         // }
-         // let reader = new FileReader();
-         // reader.onload = () => {
-         //    tool.uploadFile(reader.result, true, (arg: any) => {
-         // this.addImage(reader.result)
-         // console.log(reader.result)
-         //       this.addImage(arg)
-         //    })
-         // }
-         // reader.readAsDataURL(file)
-         // reader.readAsBinaryString(file)
-         // reader.readAsArrayBuffer(file)
       } else {
          let html = e.originalEvent.clipboardData.getData('text/plain');
-         html = html.replace(/\r|\n|\s/g, '')
+         html = html.replace(/\r|\n/g, '')
          document.execCommand('insertText', false, html)
          return false
       }
