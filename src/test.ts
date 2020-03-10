@@ -81,35 +81,7 @@ const renderTestQue = () => {
         editor.addChoose(5)
         break;
     }
-    // editor.calculationPnum()
   })
-}
-
-const calculationPnum = () => {
-  let pnum = 1;
-  let proSort = 1;
-  //计算题号&生成proID,quID
-  dataJSON.pageQus.map((obj: any, obj_i: number) => {
-    obj.sort = String(obj_i + 1); //每一个框的排序
-    obj.pros.map((pro: any, pro_i: number) => {
-      pro.proId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
-      pro.sort = String(proSort); //pro结构中的sort排序
-      pro.qus.map((val: any, index: any) => {
-        val.quId = String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
-        if (pro.joinProNum) {
-          pro.pnum = pnum
-          val.pnum = `(${index + 1})`
-          index == pro.qus.length - 1 && pnum++
-        } else {
-          val.pnum = String(pnum)
-          pnum++;
-        }
-      })
-      proSort++;
-    })
-  })
-  // console.log(dataJSON)
-  // Test(_Obj)
 }
 
 export let Test: any = (OBJ: any) => {
