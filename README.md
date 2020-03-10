@@ -1,5 +1,5 @@
 ## 发包步骤 
-1.版本号修改；2.打包（npm run build）；3.发包（npm publish）
+1.版本号修改；2.打包（npm run build）；3.发包（npm publish）<br/>
 凡是修改了.scss(sass)样式文件都需要运行npm run css 独立打包所有样式文件，交由后端，用于生成PDF
 ## 项目中引用  
 ```javascript
@@ -25,12 +25,12 @@ let editor = new answerCard({
 editor.reRenderHeader(考号位数)
 ```
 ### 新建答题卡
-基本可参考test.ts
-传递特定数据json; 如 ./src/emptyDate.json
-添加题目操作中，每执行一个添加操作回在生成一个operation对象
-此对象存放于dataJSON中的operations(Array类型)字段中，
-对应的题目json结构中回存放此operation对象的operationId用于关联操作和题目结构；
-且会为所添加的题目或小问生成随机proId和quId(唯一)用于方便题目操做如删除操作等。
+基本可参考test.ts<br/>
+传递特定数据json; 如 ./src/emptyDate.json<br/>
+添加题目操作中，每执行一个添加操作回在生成一个operation对象;<br/>
+此对象存放于dataJSON中的operations(Array类型)字段中;<br/>
+对应的题目json结构中回存放此operation对象的operationId用于关联操作和题目结构；<br/>
+且会为所添加的题目或小问生成随机proId和quId(唯一)用于方便题目操做如删除操作等。<br/>
 ```javascript
 //添加选择题（单选）
 editor.addChoose(添加数量, 选择个数)
