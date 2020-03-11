@@ -17,13 +17,26 @@ let editor = new answerCard({
   }
 })
 ```
-## 实际项目使用两条线路
-### 生成答题卡
-传递特定数据json; 如 ./src/data.json
+## 公共方法
 ```javascript
 //动态修改学生考号位数
 editor.reRenderHeader(考号位数)
+//更新json中的所有数据
+editor.getLayoutData()
+//返回视图html->json
+editor.htmlToJson()
+//项目使用时一般调用顺序
+1、editor.getLayoutData() 更新所有数据
+2、let { dataJson } = editor;
+3、dataJson.cardHtml = editor.htmlToJson();
+4、dataJson.pageCnt...
 ```
+## 实际项目使用两条线路
+注意不同线路对应不同方法，方法不可交叉使用
+
+### 生成答题卡
+传递特定数据json; 如 ./src/data.json
+
 ### 新建答题卡
 基本可参考test.ts<br/>
 传递特定数据json; 如 ./src/emptyDate.json<br/>
