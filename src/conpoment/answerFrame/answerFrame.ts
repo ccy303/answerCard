@@ -1,5 +1,5 @@
 import './answerFrame.scss'
-import GlobalData from '../global'
+import GlobalData from '../global';
 import SelQues from '../selQues/selQues';
 import tool from '../../tool/tool';
 import ContentText from '../contentText/content';
@@ -70,11 +70,16 @@ export default class AnswerFrame {
          let totlaCount = this.number ? this.number / (this.width / 32) + 1 : -1;
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" class="editor-box" type="write" contenteditable="true"></div>`);
          if (Object.keys(this.data).length) {
+            GlobalData.dataJSON.newCard && dom.attr('operationId', this.data.pros[0].operationId)
+            GlobalData.dataJSON.newCard && dom.attr('proId', this.data.pros[0].proId)
             let row = $(`<div class="row" hash="${hash}"></div>`);
             row.css('text-align', 'left').css('margin', '0 15px').css('padding', '0')
             dom.attr("targetid", `${this.data.pros[0].proId}`)
             row.append(`${this.data.pros[0].qus[0].pnum}.(${this.data.pros[0].qus[0].score}分)`)
             dom.append(row)
+         } else if (GlobalData.dataJSON.newCard) {
+            dom.attr('operationId', $(`[boxIndex=${bIndex}]`).attr('operationid'))
+            dom.attr('proId', $(`[boxIndex=${bIndex}]`).attr('proId'))
          }
          let i = 0
          while (true) {
@@ -123,6 +128,10 @@ export default class AnswerFrame {
          const judge = '✓✗';
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
          if (Object.keys(this.data).length) {
+            if (GlobalData.dataJSON.newCard) {
+               dom.attr('operationId', this.data.pros[0].operationId)
+               dom.attr('proId', this.data.pros[0].proId)
+            }
             dom.attr("targetid", `${this.data.pros[0].proId}`)
             if (this.data.group != 0) {
                let chooseQues = $(`<div class="row" hash="${hash}">
@@ -170,9 +179,20 @@ export default class AnswerFrame {
                   i++
                }
             })
+         } else if (GlobalData.dataJSON.newCard) {
+            dom.attr('operationId', $(`[boxIndex=${bIndex}]`).attr('operationId'))
+            dom.attr('proId', $(`[boxIndex=${bIndex}]`).attr('proId'))
          }
       } else {
          dom = $(this.html)
+         if (GlobalData.dataJSON.bindExam) {
+            GlobalData.dataJSON.pageQus.forEach((val: any) => {
+               if (val.pros[0].proId === dom.attr('proId')) {
+                  // let bindPnum = `<div></div>`
+                  // dom.append()
+               }
+            })
+         }
       }
       dom.on('keydown', this.keyDowm.bind(this, false))
       dom.on('paste', this.paste.bind(this, true))

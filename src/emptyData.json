@@ -6,6 +6,7 @@
    "layoutType": "1",
    "sourceType": "2",
    "prohibitType": "1",
+   "newCard": true,
    "noMode": "2",
    "noCount": "8",
    "noBoth": "2",
@@ -23,7 +24,6 @@
    "versionId": null,
    "versionMsg": null,
    "recgParams": null,
-
    "gradeId": null,
    "score": null,
    "quStat": [],

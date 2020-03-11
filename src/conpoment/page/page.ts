@@ -106,7 +106,7 @@ export default class Page {
                      let index = $(item).attr('boxindex');
                      let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'select');
                      GlobalData.AnswerFrameObj.push(answerFrame)
-                     _colum.append(answerFrame.answerFrame)
+                     _colum.append(answerFrame.answerFrame)                     
                   } else if ($(item).attr('type') === 'editor') {
                      let index = $(item).attr('boxindex');
                      let answerFrame = new AnswerFrame({}, item).initAnswerFrame(Number(index), false, 'editor');
@@ -142,6 +142,11 @@ export default class Page {
             this.page.append(_colum);
             this.observeColum(_colum);
             i++
+         }
+         if (GlobalData.dataJSON.bindExam) {
+            // console.log(GlobalData.dataJSON)
+            $('.editor-box').attr('contenteditable', 'false')
+            // console.log(GlobalData.AnswerFrameObj)
          }
          Tool.dealImage();
       }

@@ -1,3 +1,4 @@
+import Page from './conpoment/page/page';
 let dataJSON = require('./data.json');
 let _Obj: any = null;
 let editor: any = null
@@ -20,14 +21,19 @@ const renderTestTypeCom = () => {
   $('#answerCard').before(`<select id="type">
     <option value="1">生成答题卡</option>
     <option value="2">新建答题卡</option>
+    <option value="3">绑定考试</option>
   </select>`)
   $('#type').change((e) => {
     $("#answerCard").empty();
     //@ts-ignore
     if (e.target.value === '1') {
       dataJSON = require('./data.json');
-    } else {
+      //@ts-ignore
+    } else if (e.target.value === '2') {
       dataJSON = require('./emptyData.json');
+      //@ts-ignore
+    } else if (e.target.value === '3') {
+      dataJSON = require('./bindPro.json');
     }
     Test(_Obj)
   })

@@ -153,7 +153,7 @@ class AnswerCard {
       if (dataJSON.pageQus[0] && dataJSON.pageQus[0].flag === 1) {//选择题
          let chooseQus: any = {
             joinProNum: false,
-            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+            proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "1",
             content: "",
@@ -165,7 +165,7 @@ class AnswerCard {
             qus: [
                {
                   answer: '',
-                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
                   nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
@@ -190,7 +190,7 @@ class AnswerCard {
          choosePro.flag = 1;//选择题
          let chooseQus: any = {
             joinProNum: false,
-            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+            proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "1",
             content: "",
@@ -202,7 +202,7 @@ class AnswerCard {
             qus: [
                {
                   answer: '',
-                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: !chooseCount && !multiple ? '判断题' : multiple ? "多选题" : "单选题",
                   nums: !chooseCount && !multiple ? '2 ' : String(chooseCount),
@@ -249,7 +249,7 @@ class AnswerCard {
          let flag = 0;
          while (flag < count) {
             proFrameObj.pros.push({
-               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+               proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -261,7 +261,7 @@ class AnswerCard {
                operationId: operation.operationId,
                qus: [{
                   answer: '',
-                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "解答题",
                   nums: null,
@@ -285,7 +285,7 @@ class AnswerCard {
       } else {
          if (joinFrame) { // 同框
             proFrameObj.pros.push({
-               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+               proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -301,7 +301,7 @@ class AnswerCard {
             while (flag < count) {
                proFrameObj.pros[0].qus.push({
                   answer: '',
-                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "解答题",
                   nums: null,
@@ -326,7 +326,7 @@ class AnswerCard {
             while (flag < count) {
                let frame = new proFrame();
                frame.pros.push({
-                  proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   pureObjective: "2",
                   content: "",
@@ -337,7 +337,7 @@ class AnswerCard {
                   operationId: operation.operationId,
                   qus: [{
                      answer: '',
-                     quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                     quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                      score: 0,
                      quType: "解答题",
                      nums: null,
@@ -385,7 +385,7 @@ class AnswerCard {
       proFrameObj.flag = 2;
       if (joinFrame) { //同框
          proFrameObj.pros.push({
-            proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+            proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             pureObjective: "2",
             content: "",
@@ -400,7 +400,7 @@ class AnswerCard {
          for (let i = 0; i < argArr.length; i++) {
             proFrameObj.pros[0].qus.push({
                answer: '',
-               quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+               quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                quType: "填空题",
                nums: null,
@@ -425,7 +425,7 @@ class AnswerCard {
             let frame = new proFrame();
             frame.flag = 2;
             frame.pros.push({
-               proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+               proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                score: 0,
                pureObjective: "2",
                content: "",
@@ -436,7 +436,7 @@ class AnswerCard {
                operationId: operation.operationId,
                qus: [{
                   answer: '',
-                  quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+                  quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
                   score: 0,
                   quType: "填空题",
                   nums: null,
@@ -479,7 +479,7 @@ class AnswerCard {
       let dataJSON = GlobalData.dataJSON
       let proFrameObj = new proFrame();
       proFrameObj.pros.push({
-         proId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+         proId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
          score: null,
          pureObjective: "2",
          content: "",
@@ -490,7 +490,7 @@ class AnswerCard {
          operationId: operation.operationId,
          qus: [{
             answer: '',
-            quId: String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
+            quId: 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5),
             score: 0,
             quType: "作文题",
             nums: null,
@@ -598,6 +598,7 @@ class AnswerCard {
             proSort++;
          })
       })
+      console.log(GlobalData.dataJSON)
    }
 }
 export default AnswerCard

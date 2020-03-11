@@ -40,6 +40,7 @@ editor.htmlToJson()
 ### 新建答题卡
 基本可参考test.ts<br/>
 传递特定数据json; 如 ./src/emptyDate.json<br/>
+绑定考试json中会有一个字段newCard:ture 并且只始终位true
 添加题目操作中，每执行一个添加操作回在生成一个operation对象;<br/>
 此对象存放于dataJSON中的operations(Array类型)字段中;<br/>
 对应的题目json结构中回存放此operation对象的operationId用于关联操作和题目结构；<br/>
@@ -62,4 +63,10 @@ editor.addFrame(true/false(选做题/非选座题), true/false(合并小问/不�
 editor.addWrite()
 //删除添加操作的小题
 editor.delPro(题目id,小题id,操作id)
+```
+### 答题卡绑定题目
+传递特定数据json; 如 ./src/bindPro.json<br/>
+绑定考试json中会比新建答题卡json中多出一个字段bindExam:ture 并且只始终位true
+```javascript
+
 ```
