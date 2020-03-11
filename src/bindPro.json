@@ -1,0 +1,289 @@
+{
+   "schoolId": null,
+   "id": null,
+   "subjectId": null,
+   "newCard": true,
+   "paperSize": "A4",
+   "layoutType": 1,
+   "sourceType": "2",
+   "prohibitType": "1",
+   "noMode": 2,
+   "noCount": "8",
+   "noBoth": "2",
+   "qrCode": null,
+   "alias": null,
+   "cardJson": null,
+   "bindExam": true,
+   "cardHtml": "[\"<div class=\\\"page A4\\\" id=\\\"1p\\\"><div class=\\\"colum A4-1\\\">\\n            <div class=\\\"exam-title\\\" hash=\\\"examTitle\\\" contenteditable=\\\"true\\\">\\n                  null\\n               </div>\\n            \\n            <div class=\\\"header-box\\\" hash=\\\"id2342297186560\\\"><div style=\\\"text-align:left\\\"><div class=\\\"student-info\\\" style=\\\"max-height: 33px;\\\" contenteditable=\\\"true\\\"><div style=\\\"display: inline-block; margin-right: 5px; text-align: left; height: 28px; line-height: 28px;\\\">\\n                  姓名:<font style=\\\"letter-spacing: -1px;\\\">__________________</font>\\n               </div><div style=\\\"display: inline-block; margin-right: 5px; text-align: left; height: 28px; line-height: 28px;\\\">\\n                  班级:<font style=\\\"letter-spacing: -1px;\\\">__________________</font>\\n               </div><div style=\\\"display: inline-block; margin-right: 5px; text-align: left; height: 28px; line-height: 28px;\\\">\\n                  考号:<font style=\\\"letter-spacing: -1px;\\\">__________________</font>\\n               </div></div></div><div style=\\\"text-align:left\\\"><div style=\\\"text-align:left;display:inline-block\\\"><div class=\\\"tip-box\\\" style=\\\"position: relative; display: block; width: 285px; float: inherit;\\\">  \\n         <div id=\\\"text\\\" style=\\\"position:relative;padding:10px\\\">\\n            <h5 style=\\\"margin:0;\\\">注意事项</h5>\\n            <p>1、选择题作答必须用2B铅笔填涂</p>\\n            <p>2、必须在指定区域答题，且不得超出黑色答题框。</p>\\n         </div><div class=\\\"good-print\\\" style=\\\"margin: 0px 0px 10px 10px;\\\">\\n            <span style=\\\"display:inline-block;width:84px;text-align:center;vertical-align:initial;\\\">正确填涂示例</span><div class=\\\"opt-item\\\" style=\\\"color:#000\\\">\\n               <div style=\\\"display:inline-block;width:16px;height:11px;background:#000;vertical-align:text-top\\\"></div>\\n            </div><div class=\\\"opt-item\\\" style=\\\"color:#000;\\\">\\n               [<font style=\\\"color:#000;vertical-align:unset\\\">B</font>]\\n            </div><div class=\\\"opt-item\\\" style=\\\"color:#000;\\\">\\n               [<font style=\\\"color:#000;vertical-align:unset\\\">C</font>]\\n            </div><div class=\\\"opt-item\\\" style=\\\"color:#000;\\\">\\n               [<font style=\\\"color:#000;vertical-align:unset\\\">D</font>]\\n            </div>\\n         </div>\\n      </div><div style=\\\"margin: 20px 0px 0px; font-size: 12px; line-height: inherit; position: inherit; top: -20px; display: inline-block; text-align: center;\\\">\\n            <img style=\\\"margin-right:10px;\\\" crossorigin=\\\"true\\\" src=\\\"https://master-ennjoy.oss-cn-shenzhen.aliyuncs.com/static/download/scan/wx_smart_prog.jpg\\\" width=\\\"65px\\\" height=\\\"65px\\\">\\n            <div style=\\\"display:inline-block;position:relative;top:-20px\\\">\\n               <p style=\\\"margin:0;text-align:left\\\">成绩查询</p>\\n               <p style=\\\"margin:2px 0 0;text-align:left\\\">微信小程序二维码</p>\\n            </div>\\n         </div></div><div style=\\\"float: right; width: 380px; text-align: center;\\\"><div class=\\\"student-num\\\" style=\\\"padding: 0px; height: 200px; margin-top: 10px;\\\"><p class=\\\"title\\\" style=\\\"font-size:12px;margin-right:5px\\\">考号填涂区</p><div class=\\\"num\\\" style=\\\"margin:0\\\"><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div><div class=\\\"num-colum\\\"><div class=\\\"frame\\\">[0]</div><div class=\\\"frame\\\">[1]</div><div class=\\\"frame\\\">[2]</div><div class=\\\"frame\\\">[3]</div><div class=\\\"frame\\\">[4]</div><div class=\\\"frame\\\">[5]</div><div class=\\\"frame\\\">[6]</div><div class=\\\"frame\\\">[7]</div><div class=\\\"frame\\\">[8]</div><div class=\\\"frame\\\">[9]</div></div></div></div></div></div></div><div boxindex=\\\"0\\\" hash=\\\"id2274659492305\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" operationid=\\\"8348912\\\" proid=\\\"init00662\\\" targetid=\\\"init00662\\\" contenteditable=\\\"true\\\"><div class=\\\"row\\\" hash=\\\"id2274659492305\\\">\\n                  1.(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\">\\n                  2.(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2274659492305\\\"><br></div></div><div boxindex=\\\"1\\\" hash=\\\"id2407327980102\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" operationid=\\\"4111130\\\" proid=\\\"init55094\\\" targetid=\\\"init55094\\\" contenteditable=\\\"true\\\"><div class=\\\"row\\\" hash=\\\"id2407327980102\\\">\\n                  3.(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2407327980102\\\"><br></div></div><div boxindex=\\\"2\\\" hash=\\\"id2178880022125\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" operationid=\\\"4111130\\\" proid=\\\"init34178\\\" targetid=\\\"init34178\\\" contenteditable=\\\"true\\\"><div class=\\\"row\\\" hash=\\\"id2178880022125\\\">\\n                  4.(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2178880022125\\\"><br></div><div style=\\\"height:4px\\\" swapheight=\\\"true\\\" contenteditable=\\\"false\\\"></div></div></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div><div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"top:162.75px;left:25px; position:absolute;width:12px;font-size:12px;transform: translate(-2px,0);\\\">\\n               <span style=\\\"position:absolute;top:-75px\\\">缺考标识</span>\\n               <div style=\\\"height:25px;width:8px;margin-top:0\\\" class=\\\"noAnswer\\\"></div>\\n               <span style=\\\"position:absolute;bottom: -75px\\\">考生禁填</span>\\n            </div><div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:8px;width:25px;top:40px;left:167.6px\\\" class=\\\"rectangle\\\"></div><p class=\\\"pageNum\\\" style=\\\"margin: 0 auto 15px; width:100px; \\\">\\n         <span>第1页</span> / <span type=\\\"totalPage\\\">共2页</span>\\n      </p></div>\",\"<div class=\\\"page A4\\\" id=\\\"2p\\\"><div class=\\\"colum A4-1\\\">\\n            \\n            <div boxindex=\\\"2\\\" hash=\\\"id2266677231877\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" operationid=\\\"4111130\\\" proid=\\\"init34178\\\" targetid=\\\"init34178\\\" contenteditable=\\\"true\\\"><div class=\\\"row\\\" hash=\\\"id2266677231877\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2266677231877\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2266677231877\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2266677231877\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2266677231877\\\"><br></div></div><div boxindex=\\\"3\\\" hash=\\\"id2535380375382\\\" type=\\\"editor\\\" class=\\\"editor-box\\\" operationid=\\\"7879770\\\" proid=\\\"init88895\\\" targetid=\\\"init88895\\\" contenteditable=\\\"true\\\"><div class=\\\"row\\\" hash=\\\"id2535380375382\\\">\\n                  5(1).(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\">\\n                  5(2).(0分)\\n               </div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div><div class=\\\"row\\\" hash=\\\"id2535380375382\\\"><br></div></div></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square left-bottom\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-top\\\"></div><div style=\\\"width:20px;height:20px\\\" class=\\\"square right-bottom\\\"></div><div style=\\\"height:25px;width:8px;top:295.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:561px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:25px;width:8px;top:826.5px;left:25px\\\" class=\\\"rectangle\\\"></div><div style=\\\"height:8px;width:25px;top:40px;left:320.2px\\\" class=\\\"rectangle\\\"></div><p class=\\\"pageNum\\\" style=\\\"margin: 0 auto 15px; width:100px; \\\">\\n         <span>第2页</span> / <span type=\\\"totalPage\\\">共2页</span>\\n      </p></div>\"]",
+   "attention": null,
+   "pageCnt": 102,
+   "subjectName": null,
+   "pageQus": [
+      {
+         "sort": "1",
+         "attribute": null,
+         "content": null,
+         "annexable": null,
+         "group": "0",
+         "pIndex": "1@1",
+         "pros": [
+            {
+               "proId": "init00662",
+               "score": 0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "1",
+               "pnum": "",
+               "group": "0",
+               "titleType": "解答题",
+               "joinProNum": 0,
+               "operationId": 8348912,
+               "qus": [
+                  {
+                     "answer": "",
+                     "quId": "init61543",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "1",
+                     "visible": true,
+                     "rIndex": null
+                  },
+                  {
+                     "answer": "",
+                     "quId": "init35414",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "2",
+                     "visible": true,
+                     "rIndex": null
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "2",
+         "attribute": null,
+         "content": null,
+         "annexable": null,
+         "group": "0",
+         "pIndex": "1@2",
+         "pros": [
+            {
+               "proId": "init55094",
+               "score": 0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "2",
+               "pnum": "",
+               "group": "0",
+               "titleType": "解答题",
+               "operationId": 4111130,
+               "qus": [
+                  {
+                     "answer": "",
+                     "quId": "init21525",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "3",
+                     "visible": true,
+                     "rIndex": null
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "3",
+         "attribute": null,
+         "content": null,
+         "annexable": null,
+         "group": "0",
+         "pIndex": "1@3-2@1",
+         "pros": [
+            {
+               "proId": "init34178",
+               "score": 0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "3",
+               "pnum": "",
+               "group": "0",
+               "titleType": "解答题",
+               "operationId": 4111130,
+               "qus": [
+                  {
+                     "answer": "",
+                     "quId": "init06835",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "4",
+                     "visible": true,
+                     "rIndex": null
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "sort": "4",
+         "attribute": null,
+         "content": null,
+         "annexable": null,
+         "group": "0",
+         "pIndex": "2@2",
+         "pros": [
+            {
+               "proId": "init88895",
+               "score": 0,
+               "pureObjective": "2",
+               "content": "",
+               "sort": "4",
+               "pnum": 5,
+               "group": "0",
+               "titleType": "解答题",
+               "joinProNum": 1,
+               "operationId": 7879770,
+               "qus": [
+                  {
+                     "answer": "",
+                     "quId": "init58543",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(1)",
+                     "visible": true,
+                     "rIndex": null
+                  },
+                  {
+                     "answer": "",
+                     "quId": "init92603",
+                     "score": 0,
+                     "quType": "解答题",
+                     "nums": null,
+                     "content": "",
+                     "pnum": "(2)",
+                     "visible": true,
+                     "rIndex": null
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "checkMsg": null,
+   "paperId": 0,
+   "paperVid": 0,
+   "versionId": 0,
+   "versionMsg": null,
+   "recgParams": null,
+   "gradeId": null,
+   "score": null,
+   "quStat": "[{\"type\":\"normalPro\",\"multiple\":false,\"title\":\"解答题\",\"optNum\":null,\"count\":\"2\",\"operationId\":8348912,\"pnum\":[\"1\",\"2\"],\"pnumArr\":[{\"title\":\"第1题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init00662\",\"qusId\":\"init61543\"},{\"title\":\"第2题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init00662\",\"qusId\":\"init35414\"}]},{\"type\":\"normalPro\",\"multiple\":false,\"title\":\"解答题\",\"optNum\":null,\"count\":\"2\",\"operationId\":4111130,\"pnum\":[\"3\",\"4\"],\"pnumArr\":[{\"title\":\"第3题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init55094\",\"qusId\":\"init21525\"},{\"title\":\"第4题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init34178\",\"qusId\":\"init06835\"}]},{\"type\":\"normalPro\",\"multiple\":false,\"title\":\"解答题\",\"optNum\":null,\"count\":\"2\",\"operationId\":7879770,\"pnum\":[\"5(1)\",\"5(2)\"],\"pnumArr\":[{\"title\":\"第5(1)题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init88895\",\"qusId\":\"init58543\"},{\"title\":\"第5(2)题\",\"opt\":\"\",\"answer\":\"\",\"score\":\"\",\"proId\":\"init88895\",\"qusId\":\"init92603\"}]}]",
+   "derivedType": 2,
+   "teacherSubjectId": null,
+   "thumbs": "https://ennjoypaper.oss-cn-shenzhen.aliyuncs.com/ba5f/109/Examcard/20200311/0/0/72/1019ca8a82f94b849edf7918992ae0e4,https://ennjoypaper.oss-cn-shenzhen.aliyuncs.com/ba5f/109/Examcard/20200311/0/0/72/d0b4af1035724845b2a07062efb62394",
+   "isTemplate": null,
+   "operations": [
+      {
+         "type": "normalPro",
+         "multiple": false,
+         "title": "解答题",
+         "optNum": null,
+         "count": "2",
+         "operationId": 8348912,
+         "pnum": [
+            "1",
+            "2"
+         ],
+         "pnumArr": [
+            {
+               "title": "第1题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init00662",
+               "qusId": "init61543"
+            },
+            {
+               "title": "第2题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init00662",
+               "qusId": "init35414"
+            }
+         ]
+      },
+      {
+         "type": "normalPro",
+         "multiple": false,
+         "title": "解答题",
+         "optNum": null,
+         "count": "2",
+         "operationId": 4111130,
+         "pnum": [
+            "3",
+            "4"
+         ],
+         "pnumArr": [
+            {
+               "title": "第3题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init55094",
+               "qusId": "init21525"
+            },
+            {
+               "title": "第4题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init34178",
+               "qusId": "init06835"
+            }
+         ]
+      },
+      {
+         "type": "normalPro",
+         "multiple": false,
+         "title": "解答题",
+         "optNum": null,
+         "count": "2",
+         "operationId": 7879770,
+         "pnum": [
+            "5(1)",
+            "5(2)"
+         ],
+         "pnumArr": [
+            {
+               "title": "第5(1)题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init88895",
+               "qusId": "init58543"
+            },
+            {
+               "title": "第5(2)题",
+               "opt": "",
+               "answer": "",
+               "score": "",
+               "proId": "init88895",
+               "qusId": "init92603"
+            }
+         ]
+      }
+   ],
+   "layoutMode": 2
+}
