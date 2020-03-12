@@ -600,6 +600,65 @@ class AnswerCard {
       })
       console.log(GlobalData.dataJSON)
    }
+   /**
+    * 绑定题目,两个参数传空值表示解绑
+    * @param proId 需要绑定题目的Id
+    * @param qusId 需要绑定小题的Id
+    */
+   public bindPro(proId: any, qusId: any) {
+      if (!qusId && !proId) {
+         let initProId = 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
+         let initQusId = 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5)
+         //修改operations中的proId,qusId
+         this.dataJson.operations.forEach((operation: any) => {
+            if (operation.operationId === GlobalData.bindProTarget.pro.pros[0].operationId) {
+               operation.pnumArr.forEach((pnum: any) => {
+                  if (pnum.qusId === GlobalData.bindProTarget.qus.quId) {
+                     pnum.proId = initProId
+                     pnum.qusId = initQusId
+                  }
+               })
+            }
+         })
+         //修改样式
+         GlobalData.bindProTarget.dom.css('background', '#F08080')
+         let _proId = GlobalData.bindProTarget.dom.attr('proId')
+         let _qusId = GlobalData.bindProTarget.dom.attr('qusId')
+         $(`[proId=${_proId}][qusId=${_qusId}]`).css('background', '#F08080')
+         //修改dataJson.pageQus中的数据
+         GlobalData.bindProTarget.pro.pros[0].proId = initProId;
+         GlobalData.bindProTarget.qus.quId = initQusId
+         //改变Arrt
+         let oldProId = GlobalData.bindProTarget.dom.attr('proId');
+         $(`[proId=${oldProId}]`).attr('proId', initProId)
+         GlobalData.bindProTarget.dom.attr('qusId', initQusId)
+      } else {
+         //修改operations中的proId,qusId
+         this.dataJson.operations.forEach((operation: any) => {
+            if (operation.operationId === GlobalData.bindProTarget.pro.pros[0].operationId) {
+               operation.pnumArr.forEach((pnum: any) => {
+                  if (pnum.qusId === GlobalData.bindProTarget.qus.quId) {
+                     pnum.qusId = String(qusId);
+                     pnum.proId = String(proId);
+                  }
+               })
+            }
+         })
+         //修改样式
+         GlobalData.bindProTarget.dom.css('background', '#32CD32')
+         let _proId = GlobalData.bindProTarget.dom.attr('proId')
+         let _qusId = GlobalData.bindProTarget.dom.attr('qusId')
+         $(`[proId=${_proId}][qusId=${_qusId}]`).css('background', '#32CD32')
+         //修改dataJson.pageQus中的数据
+         GlobalData.bindProTarget.pro.pros[0].proId = String(proId);
+         GlobalData.bindProTarget.qus.quId = String(qusId);
+         //改变Arrt
+         let oldProId = GlobalData.bindProTarget.dom.attr('proId');
+         $(`[proId=${oldProId}]`).attr('proId', proId)
+         GlobalData.bindProTarget.dom.attr('qusId', qusId)
+
+      }
+   }
 }
 export default AnswerCard
 process.env.NODE_ENV == 'development'

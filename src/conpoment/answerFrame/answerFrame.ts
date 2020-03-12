@@ -43,8 +43,36 @@ export default class AnswerFrame {
       this.observeRow();
       return this
    }
+   private initBindProFun(dom: JQuery<HTMLElement>[]) {//生成绑定题目题号点击事件
+      dom.forEach((val: JQuery<HTMLElement>) => {
+         val.on('click', (e: any) => {
+            if (GlobalData.bindProTarget.dom && e.target === GlobalData.bindProTarget.dom[0]) {
+               $(e.target).css('border', 'none')
+               GlobalData.bindProTarget = {
+                  dom: null,
+                  pro: null,
+                  qus: null,
+               }
+            } else {
+               GlobalData.bindProTarget.dom && GlobalData.bindProTarget.dom.css('border', 'none')
+               let pro = GlobalData.dataJSON.pageQus.find((val: any) => {
+                  return val.pros[0].proId === $(e.target).attr('proId')
+               })
+               GlobalData.bindProTarget.pro = pro;
+               GlobalData.bindProTarget.dom = $(e.target);
+               $(e.target).css('border', '1px solid #000')
+               if ($(e.target).attr('qusId')) {
+                  GlobalData.bindProTarget.qus = GlobalData.bindProTarget.pro.pros[0].qus.find((val: any) => {
+                     return val.quId === $(e.target).attr('qusId');
+                  })
+               }
+            }
+         })
+      })
+   }
    private contextmenu(e: any) {//右键菜单
       e.preventDefault();
+      if (GlobalData.dataJSON.bindExam) { return }
       $('#contentText').get(0) && $('#contentText').remove()
       GlobalData.contentTextTarget = { targetObj: this, targetDom: $(e.currentTarget), targetRow: $(e.target) };
       let contentText = new ContentText().init()
@@ -188,8 +216,44 @@ export default class AnswerFrame {
          if (GlobalData.dataJSON.bindExam) {
             GlobalData.dataJSON.pageQus.forEach((val: any) => {
                if (val.pros[0].proId === dom.attr('proId')) {
-                  // let bindPnum = `<div></div>`
-                  // dom.append()
+                  let bindPnum: JQuery<HTMLElement>[] = [];
+                  if (val.pros[0].joinProNum) {
+                     let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="" class="bindPro">第${val.pros[0].pnum}题</div>`)
+                     pnumDom
+                        .css('position', 'absolute')
+                        .css('top', '15px')
+                        .css('left', '40px')
+                        .css('padding', '10px 20px')
+                        // .css('background', '#32CD32')
+                        .css('background', '#F08080')
+                        .css('color', '#000')
+                        .css('font-size', '12px')
+                        .css('cursor', 'pointer')
+                     bindPnum.push(pnumDom)
+                     dom.append(bindPnum)
+                  } else {
+                     let container = $(`<div></div>`)
+                     dom.append(container)
+                     container
+                        .css('position', 'absolute')
+                        .css('top', '15px')
+                        .css('left', `40px`)
+                     for (let i = 0; i < val.pros[0].qus.length; i++) {
+                        let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="${val.pros[0].qus[i].quId}" class="bindPro">第${val.pros[0].qus[i].pnum}题</div>`)
+                        pnumDom
+                           .css('padding', '10px 20px')
+                           // .css('background', '#32CD32')
+                           .css('background', '#F08080')
+                           .css('color', '#000')
+                           .css('font-size', '12px')
+                           .css('cursor', 'pointer')
+                           .css('display', 'inline-block')
+                        i !== 0 && pnumDom.css('margin-left', '10px')
+                        bindPnum.push(pnumDom)
+                        container.append(bindPnum)
+                     }
+                  }
+                  this.initBindProFun(bindPnum)
                }
             })
          }

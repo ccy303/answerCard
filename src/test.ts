@@ -6,6 +6,7 @@ let renderSel = true;
 const renageChangeNum = () => {
   $('#answerCard').before(`<button id="changeNum">点击改变学号</button>`)
   $('#answerCard').before(`<button id="delPro">删除题目</button>`)
+  $('#answerCard').before(`<button id="bindPro">绑定题目</button>`)
   $('#changeNum').click(() => {
     editor.reRenderHeader(Math.ceil(Math.random() * 10))
   })
@@ -15,6 +16,11 @@ const renageChangeNum = () => {
       editor.dataJson.operations[0].pnumArr[0].qusId,
       editor.dataJson.operations[0].operationId
     )
+  })
+  $('#bindPro').click(() => {
+    let proId = Math.floor(Math.random() * 10000);
+    let qusId = Math.floor(Math.random() * 10000);
+    editor.bindPro(proId, qusId);
   })
 }
 const renderTestTypeCom = () => {

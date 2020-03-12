@@ -16,6 +16,11 @@ export default class GlobalData {
    static _pageObject: Array<Page> = [];
    static selectionLastRow: boolean = false;
    static subjectId = '';
+   static bindProTarget: any = {
+      dom: null,
+      pro: null,
+      qus: null,
+   }; //绑定题目时当前点击的题目
    static set currentImage(val) {
       val !== this._currentImage && $(this._currentImage).parent().removeClass('active')
       val !== this._currentImage && $(this._currentImage).parent().children('span').remove()
@@ -62,5 +67,10 @@ export default class GlobalData {
       this._pageObject = []
       this.selectionLastRow = false;
       this.subjectId = '';
+      this.bindProTarget = {
+         dom: null,
+         pro: null,
+         qus: null,
+      };
    }
 }
