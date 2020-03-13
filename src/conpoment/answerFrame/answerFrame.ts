@@ -46,8 +46,8 @@ export default class AnswerFrame {
    private initBindProFun(dom: JQuery<HTMLElement>[]) {//生成绑定题目题号点击事件
       dom.forEach((val: JQuery<HTMLElement>) => {
          val.on('click', (e: any) => {
-            if (GlobalData.bindProTarget.dom && e.target === GlobalData.bindProTarget.dom[0]) {
-               $(e.target).css('border', 'none')
+            if (GlobalData.bindProTarget.dom && e.currentTarget === GlobalData.bindProTarget.dom[0]) {
+               $(e.currentTarget).css('border', 'none')
                GlobalData.bindProTarget = {
                   dom: null,
                   pro: null,
@@ -56,14 +56,20 @@ export default class AnswerFrame {
             } else {
                GlobalData.bindProTarget.dom && GlobalData.bindProTarget.dom.css('border', 'none')
                let pro = GlobalData.dataJSON.pageQus.find((val: any) => {
-                  return val.pros[0].proId === $(e.target).attr('proId')
+                  let index = val.pros.findIndex((pro: any) => {
+                     return pro.proId === $(e.currentTarget).attr('proId');
+                  })
+                  return index !== -1
                })
                GlobalData.bindProTarget.pro = pro;
-               GlobalData.bindProTarget.dom = $(e.target);
-               $(e.target).css('border', '1px solid #000')
-               if ($(e.target).attr('qusId')) {
-                  GlobalData.bindProTarget.qus = GlobalData.bindProTarget.pro.pros[0].qus.find((val: any) => {
-                     return val.quId === $(e.target).attr('qusId');
+               GlobalData.bindProTarget.dom = $(e.currentTarget);
+               $(e.currentTarget).css('border', '1px solid #000')
+               if ($(e.currentTarget).attr('qusId')) {
+                  let pro = GlobalData.bindProTarget.pro.pros.find((pro: any) => {
+                     return pro.proId === $(e.currentTarget).attr('proId');
+                  })
+                  GlobalData.bindProTarget.qus = pro.qus.find((val: any) => {
+                     return val.quId === $(e.currentTarget).attr('qusId');
                   })
                }
             }
@@ -117,6 +123,50 @@ export default class AnswerFrame {
          }
       } else {
          dom = $(this.html)
+         if (GlobalData.dataJSON.bindExam) {
+            GlobalData.dataJSON.pageQus.forEach((val: any) => {
+               if (val.pros[0].proId === dom.attr('proId')) {
+                  let bindPnum: JQuery<HTMLElement>[] = [];
+                  if (val.pros[0].joinProNum) {
+                     let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="" class="bindPro">第${val.pros[0].pnum}题</div>`)
+                     pnumDom
+                        .css('position', 'absolute')
+                        .css('top', '15px')
+                        .css('left', '40px')
+                        .css('padding', '10px 20px')
+                        // .css('background', '#32CD32')
+                        .css('background', '#F08080')
+                        .css('color', '#000')
+                        .css('font-size', '12px')
+                        .css('cursor', 'pointer')
+                     bindPnum.push(pnumDom)
+                     dom.append(bindPnum)
+                  } else {
+                     let container = $(`<div></div>`)
+                     dom.append(container)
+                     container
+                        .css('position', 'absolute')
+                        .css('top', '15px')
+                        .css('left', `40px`)
+                     for (let i = 0; i < val.pros[0].qus.length; i++) {
+                        let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="${val.pros[0].qus[i].quId}" class="bindPro">第${val.pros[0].qus[i].pnum}题</div>`)
+                        pnumDom
+                           .css('padding', '10px 20px')
+                           // .css('background', '#32CD32')
+                           .css('background', '#F08080')
+                           .css('color', '#000')
+                           .css('font-size', '12px')
+                           .css('cursor', 'pointer')
+                           .css('display', 'inline-block')
+                        i !== 0 && pnumDom.css('margin-left', '10px')
+                        bindPnum.push(pnumDom)
+                        container.append(bindPnum)
+                     }
+                  }
+                  this.initBindProFun(bindPnum)
+               }
+            })
+         }
       }
       tool.hideLoading()
       dom.on('keydown', this.keyDowm.bind(this, false))
@@ -129,6 +179,10 @@ export default class AnswerFrame {
       if (this.data.flag === 2) { //新建答题卡生成填空题
          dom = $(`<div boxIndex=${bIndex} hash="${hash}" contenteditable="true" type="editor" class="editor-box"></div>`)
          if (Object.keys(this.data).length) {
+            if (GlobalData.dataJSON.newCard) {
+               dom.attr('operationId', this.data.pros[0].operationId)
+               dom.attr('proId', this.data.pros[0].proId)
+            }
             for (let i = 0; i < this.data.pros.length; i++) {
                for (let j = 0; j < this.data.pros[i].qus.length; j++) {
                   let flag = this.data.pros[i].qus[j].blankNums;
@@ -159,6 +213,9 @@ export default class AnswerFrame {
             if (GlobalData.dataJSON.newCard) {
                dom.attr('operationId', this.data.pros[0].operationId)
                dom.attr('proId', this.data.pros[0].proId)
+               if (this.data.group != 0) {
+                  dom.attr('group', this.data.group)
+               }
             }
             dom.attr("targetid", `${this.data.pros[0].proId}`)
             if (this.data.group != 0) {
@@ -214,48 +271,76 @@ export default class AnswerFrame {
       } else {
          dom = $(this.html)
          if (GlobalData.dataJSON.bindExam) {
-            GlobalData.dataJSON.pageQus.forEach((val: any) => {
-               if (val.pros[0].proId === dom.attr('proId')) {
-                  let bindPnum: JQuery<HTMLElement>[] = [];
-                  if (val.pros[0].joinProNum) {
-                     let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="" class="bindPro">第${val.pros[0].pnum}题</div>`)
-                     pnumDom
-                        .css('position', 'absolute')
-                        .css('top', '15px')
-                        .css('left', '40px')
-                        .css('padding', '10px 20px')
-                        // .css('background', '#32CD32')
-                        .css('background', '#F08080')
-                        .css('color', '#000')
-                        .css('font-size', '12px')
-                        .css('cursor', 'pointer')
-                     bindPnum.push(pnumDom)
-                     dom.append(bindPnum)
-                  } else {
-                     let container = $(`<div></div>`)
-                     dom.append(container)
-                     container
-                        .css('position', 'absolute')
-                        .css('top', '15px')
-                        .css('left', `40px`)
-                     for (let i = 0; i < val.pros[0].qus.length; i++) {
-                        let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="${val.pros[0].qus[i].quId}" class="bindPro">第${val.pros[0].qus[i].pnum}题</div>`)
+            if (dom.attr('group')) {
+               let bindPnum: JQuery<HTMLElement>[] = [];
+               let pro = GlobalData.dataJSON.pageQus.find((val: any) => {
+                  return val.group == dom.attr('group')
+               })
+               let container = $(`<div></div>`)
+               dom.append(container)
+               container
+                  .css('position', 'absolute')
+                  .css('top', '15px')
+                  .css('left', `40px`)
+               for (let i = 0; i < pro.pros.length; i++) {
+                  let pnumDom = $(`<div proId="${pro.pros[i].proId}" qusId="${pro.pros[i].qus[0].quId}" class="bindPro">第${pro.pros[i].qus[0].pnum}题</div>`)
+                  pnumDom
+                     .css('padding', '10px 20px')
+                     // .css('background', '#32CD32')
+                     .css('background', '#F08080')
+                     .css('color', '#000')
+                     .css('font-size', '12px')
+                     .css('cursor', 'pointer')
+                     .css('display', 'inline-block')
+                  i !== 0 && pnumDom.css('margin-left', '10px')
+                  bindPnum.push(pnumDom)
+               }
+               container.append(bindPnum)
+               this.initBindProFun(bindPnum)
+            } else {
+               GlobalData.dataJSON.pageQus.forEach((val: any) => {
+                  if (val.pros[0].proId === dom.attr('proId')) {
+                     let bindPnum: JQuery<HTMLElement>[] = [];
+                     if (val.pros[0].joinProNum) {
+                        let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="" class="bindPro">第${val.pros[0].pnum}题</div>`)
                         pnumDom
+                           .css('position', 'absolute')
+                           .css('top', '15px')
+                           .css('left', '40px')
                            .css('padding', '10px 20px')
                            // .css('background', '#32CD32')
                            .css('background', '#F08080')
                            .css('color', '#000')
                            .css('font-size', '12px')
                            .css('cursor', 'pointer')
-                           .css('display', 'inline-block')
-                        i !== 0 && pnumDom.css('margin-left', '10px')
                         bindPnum.push(pnumDom)
-                        container.append(bindPnum)
+                        dom.append(bindPnum)
+                     } else {
+                        let container = $(`<div></div>`)
+                        dom.append(container)
+                        container
+                           .css('position', 'absolute')
+                           .css('top', '15px')
+                           .css('left', `40px`)
+                        for (let i = 0; i < val.pros[0].qus.length; i++) {
+                           let pnumDom = $(`<div proId="${val.pros[0].proId}" qusId="${val.pros[0].qus[i].quId}" class="bindPro">第${val.pros[0].qus[i].pnum}题</div>`)
+                           pnumDom
+                              .css('padding', '10px 20px')
+                              // .css('background', '#32CD32')
+                              .css('background', '#F08080')
+                              .css('color', '#000')
+                              .css('font-size', '12px')
+                              .css('cursor', 'pointer')
+                              .css('display', 'inline-block')
+                           i !== 0 && pnumDom.css('margin-left', '10px')
+                           bindPnum.push(pnumDom)
+                           container.append(bindPnum)
+                        }
                      }
+                     this.initBindProFun(bindPnum)
                   }
-                  this.initBindProFun(bindPnum)
-               }
-            })
+               })
+            }
          }
       }
       dom.on('keydown', this.keyDowm.bind(this, false))
@@ -285,6 +370,11 @@ export default class AnswerFrame {
                   //渲染选项
                   let k = 0
                   let opt = $(`<div class="opts"></div>`)
+                  if (GlobalData.dataJSON.newCard) {
+                     opt.attr('operationId', arr[j].data[i].operationId)
+                     opt.attr('proId', arr[j].data[i].proId)
+                     opt.attr('qusId', arr[j].data[i].quId)
+                  }
                   while (true) {//选项
                      if (k > optLen - 1 || isNaN(optLen)) break
                      // opt.append(`<div class="opt-item">
@@ -325,6 +415,18 @@ export default class AnswerFrame {
          }, 0)
       } else {
          dom = $(this.html)
+         if (GlobalData.dataJSON.bindExam) {
+            let opts = dom.find('.opts');
+            let _opts = [];
+            $(opts)
+               .css('background', '#F08080')
+               .css('cursor', 'pointer')
+            // .css('box-shadow', '-40px 0 0 #F08080')
+            for (let i = 0; i < opts.length; i++) {
+               _opts.push($(opts[i]))
+            }
+            this.initBindProFun(_opts)
+         }
       }
       return dom
    }

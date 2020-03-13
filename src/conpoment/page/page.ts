@@ -145,7 +145,7 @@ export default class Page {
          }
          if (GlobalData.dataJSON.bindExam) {
             // console.log(GlobalData.dataJSON)
-            $('.editor-box').attr('contenteditable', 'false')
+            $('[contenteditable=true]').attr('contenteditable', 'false')
             // console.log(GlobalData.AnswerFrameObj)
          }
          Tool.dealImage();

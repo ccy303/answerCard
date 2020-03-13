@@ -31,7 +31,7 @@ editor.htmlToJson()
 3、dataJson.cardHtml = editor.htmlToJson();
 4、dataJson.pageCnt...
 ```
-## 实际项目使用两条线路
+## 实际项目使用三条线路
 注意不同线路对应不同方法，方法不可交叉使用
 
 ### 生成答题卡
@@ -67,6 +67,10 @@ editor.delPro(题目id,小题id,操作id)
 ### 答题卡绑定题目
 传递特定数据json; 如 ./src/bindPro.json<br/>
 绑定考试json中会比新建答题卡json中多出一个字段bindExam:ture 并且只始终位true
+交互：先点击红色方框，然后调用绑定函数，即可完成绑定
 ```javascript
-
+//基本方法
+editor.bindPro('需要绑定题目的Id','需要绑定小题的Id')
+editor.bindPro('','') //解绑
+//绑定结束后editor.dataJson即为绑定后的最新json数据，无需其他操作;
 ```

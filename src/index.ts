@@ -606,12 +606,17 @@ class AnswerCard {
     * @param qusId 需要绑定小题的Id
     */
    public bindPro(proId: any, qusId: any) {
+      let _proId = GlobalData.bindProTarget.dom.attr('proId')
+      let _qusId = GlobalData.bindProTarget.dom.attr('qusId')
+      let pro = GlobalData.bindProTarget.pro.pros.find((pro: any) => {
+         return pro.proId === _proId
+      })
       if (!qusId && !proId) {
          let initProId = 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5);
          let initQusId = 'init' + String(new Date().getTime() + parseInt(String(Math.random() * 100000))).substr(-5)
          //修改operations中的proId,qusId
          this.dataJson.operations.forEach((operation: any) => {
-            if (operation.operationId === GlobalData.bindProTarget.pro.pros[0].operationId) {
+            if (operation.operationId === pro.operationId) {
                operation.pnumArr.forEach((pnum: any) => {
                   if (pnum.qusId === GlobalData.bindProTarget.qus.quId) {
                      pnum.proId = initProId
@@ -622,12 +627,13 @@ class AnswerCard {
          })
          //修改样式
          GlobalData.bindProTarget.dom.css('background', '#F08080')
-         let _proId = GlobalData.bindProTarget.dom.attr('proId')
-         let _qusId = GlobalData.bindProTarget.dom.attr('qusId')
          $(`[proId=${_proId}][qusId=${_qusId}]`).css('background', '#F08080')
          //修改dataJson.pageQus中的数据
-         GlobalData.bindProTarget.pro.pros[0].proId = initProId;
+         pro.proId = String(initProId)
          GlobalData.bindProTarget.qus.quId = initQusId
+         if (GlobalData.bindProTarget.qus.proId) {
+            GlobalData.bindProTarget.qus.proId = String(initProId)
+         }
          //改变Arrt
          let oldProId = GlobalData.bindProTarget.dom.attr('proId');
          $(`[proId=${oldProId}]`).attr('proId', initProId)
@@ -635,7 +641,7 @@ class AnswerCard {
       } else {
          //修改operations中的proId,qusId
          this.dataJson.operations.forEach((operation: any) => {
-            if (operation.operationId === GlobalData.bindProTarget.pro.pros[0].operationId) {
+            if (operation.operationId === pro.operationId) {
                operation.pnumArr.forEach((pnum: any) => {
                   if (pnum.qusId === GlobalData.bindProTarget.qus.quId) {
                      pnum.qusId = String(qusId);
@@ -646,17 +652,17 @@ class AnswerCard {
          })
          //修改样式
          GlobalData.bindProTarget.dom.css('background', '#32CD32')
-         let _proId = GlobalData.bindProTarget.dom.attr('proId')
-         let _qusId = GlobalData.bindProTarget.dom.attr('qusId')
          $(`[proId=${_proId}][qusId=${_qusId}]`).css('background', '#32CD32')
          //修改dataJson.pageQus中的数据
-         GlobalData.bindProTarget.pro.pros[0].proId = String(proId);
+         pro.proId = String(proId)
          GlobalData.bindProTarget.qus.quId = String(qusId);
-         //改变Arrt
+         if (GlobalData.bindProTarget.qus.proId) {
+            GlobalData.bindProTarget.qus.proId = String(proId)
+         }
+         //改变Attr
          let oldProId = GlobalData.bindProTarget.dom.attr('proId');
          $(`[proId=${oldProId}]`).attr('proId', proId)
          GlobalData.bindProTarget.dom.attr('qusId', qusId)
-
       }
    }
 }

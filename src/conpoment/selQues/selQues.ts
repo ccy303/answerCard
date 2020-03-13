@@ -29,6 +29,8 @@ export default class SelQues {
       let ques: Array<any> = []
       this.data.pros.map((val: any) => {
          val.qus.map((qus: any) => {
+            qus.proId = val.proId;
+            qus.operationId = val.operationId;
             /^\(/.test(qus.pnum) && (qus.pnum = val.pnum + qus.pnum)
             obj.max = Number(qus.nums) > obj.max ? Number(qus.nums) : obj.max;
             qus.visible && ques.push(qus)
