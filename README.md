@@ -20,7 +20,7 @@ let editor = new answerCard({
 ## 公共方法
 ```javascript
 //动态修改学生考号位数
-editor.reRenderHeader(考号位数)
+editor.reRenderHeader(考号位数)    
 //更新json中的所有数据
 editor.getLayoutData()
 //返回视图html->json
