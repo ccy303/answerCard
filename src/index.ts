@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import GlobalData from './conpoment/global'
 import Page from './conpoment/page/page';
 import Tool from './tool/tool'
